@@ -38,7 +38,11 @@ angular.module( 'ngBoilerplate.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope ) {
+.controller( 'HomeCtrl', function HomeController( $scope, $http ) {
+  $http.get('/api/project').
+    success(function(data, status, headers, config) {
+      $scope.projects = data.projects;
+    }); 
 })
 
 ;
