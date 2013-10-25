@@ -20,7 +20,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.static(path.join(__dirname, '../bin')));
+app.use(express.static(path.join(__dirname, '/bin')));
 app.use(app.router);
 
 // development only
