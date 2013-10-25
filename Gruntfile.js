@@ -353,10 +353,11 @@ module.exports = function ( grunt ) {
         configFile: '<%= build_dir %>/karma-unit.js'
       },
       unit: {
-        runnerPort: 9101,
-        background: true
+        background: true,
+        port: 9877 // IMPORTANT!
       },
       continuous: {
+        background: true,
         singleRun: true
       }
     },
@@ -479,7 +480,7 @@ module.exports = function ( grunt ) {
         files: [ 
           'src/assets/**/*'
         ],
-        tasks: [ 'copy:build_assets' ]
+        tasks: [ 'copy:build_app_assets' ]
       },
 
       /**

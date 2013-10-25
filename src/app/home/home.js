@@ -1,3 +1,4 @@
+
 /**
  * Each section of the site has its own module. It probably also has
  * submodules, though this boilerplate is too simple to demonstrate it. Within
@@ -16,7 +17,7 @@ angular.module( 'ngBoilerplate.home', [
   'ui.state',
   'plusOne'
 ])
-
+.value('$anchorScroll', angular.noop)
 /**
  * Each section or module of the site can also have its own routes. AngularJS
  * will handle ensuring they are all available at run-time, but splitting it
@@ -38,11 +39,24 @@ angular.module( 'ngBoilerplate.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope, $http ) {
+.controller( 'HomeCtrl', function HomeController( $scope, $http, $location ) {
+
   $http.get('/api/project').
     success(function(data, status, headers, config) {
       $scope.projects = data.projects;
-    }); 
+    });
+   
+  /*$scope.go = function (path) {
+    $location.path(path);
+    
+  };*/
+      
+  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+    /*$location.hash('project6');
+    $anchorScroll();*/
+    
+  });
+
 })
 
 ;

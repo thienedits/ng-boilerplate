@@ -1,2 +1,104 @@
+.mainView {
+	margin-top: 60px;
+	margin-right: auto;
+	margin-left: auto;
+	width: auto;
+    min-height: 300px;
+}
 
+.touch {
 
+    ul.imgList {
+
+        li {
+            .border-radius(0);
+        }
+
+    }
+}
+
+ul.imgList {
+    list-style: none;
+    margin: 0 auto;
+    display: block;
+
+    li {
+        margin:0 auto 12px;
+        background: #fff;
+        width: 100%;
+        height: auto;
+        min-height: 230px;
+        display: inline-block;
+        cursor:pointer;
+        .box-shadow(0 1px 1px #999);
+        .border-radius(2px);
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            height: auto;
+        }
+    }
+    
+    .copy {
+        margin: 0 12px;
+    }
+}
+
+/*Phone Portrait*/
+@media (max-width: 320px) { 
+
+ul.imgList {
+
+    li {
+	   width: 306px;
+    }
+    .copy {
+        margin-right: 60px;
+    }
+}
+
+}
+
+/*Phone Landscape*/
+@media (min-width: 480px)  { 
+
+ul.imgList {
+
+    li {
+        width: 48%;
+        margin: 0 4px 8px;
+    }
+}
+
+}
+
+/*Tablet Portrait Nexus 7*/
+@media (min-width: 600px)  { 
+
+ul.imgList {
+
+    li {
+        min-height: 280px;
+        margin: 0 5px 10px;
+    }
+}
+
+}
+
+/*Tablet Portrait iPad*/
+@media (min-width: 767px)  { 
+
+.mainView {
+
+}
+ul.imgList {
+
+    li {
+        min-height: 280px;
+        margin: 0 14px 14px 0;
+    }
+}
+
+}

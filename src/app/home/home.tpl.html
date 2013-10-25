@@ -1,3 +1,15 @@
-<div ng-repeat="project in projects">
-  <p>{{project.title}}</p>
+<div class="container">
+<div class="row-fluid show-grid">
+<ul class="imgList">
+  <li id="project{{project.id}}" ng-repeat="project in projects">
+  	<a ng-href="#/project/{{project.id}}">
+  	<img ng-src="assets/img/{{project.images[0]}}.jpg">
+  	<div class="copy">
+  		<h4>{{project.title}}</h4>
+  		<h5>{{project.subtitle}}</h5>
+  	</div>
+  	</a>
+  </li>
+</ul>
+</div>
 </div>

@@ -1,7 +1,34 @@
-<div>
-  <h1 >
-    The Elevator Pitch
-    <small>For the lazy and impatient.</small>
-  </h1>
-</div>
+<div class="container">
+<div class="profile row-fluid show-grid">
+	<nav>
+		<a href="#/home" class="back" title="Home"><i class="icon-chevron-left"></i>&nbsp;Home</a>
+	</nav>
+	<a href="https://plus.google.com/u/0/102157534092095391789/about" class="profile-img" target="_blank"></a>
+	<div class="row-fluid show-grid heading">
+		<h3>Thien Pham</h3>
+		<h5>UX Web Designer at Simpson Strong-Tie</h5>
+		<h5>Attended University of Wisconsin-Madison</h5>
+		<h5>Lives in Fremont, CA</h5>
+		<button class="nobg" ng-click="expanded = !expanded" title="View More">
+			<i class="icon-caret-down icon-large" ng-hide="expanded"></i>
+			<i class="icon-caret-up icon-large" ng-show="expanded"></i>
+		</button>
+	</div>
+	<div ng-show="expanded">
+		<p>A recent bay area transplant originally from chicago interested in front-end web development and visual/UI design. I enjoy making clean, simple, engaging designs.</p>
 
+		<p>I'm passionate about designing websites and web applications using new technologies such as HTML5, CSS3 and Javascript. I really love front-end visual design and creating great user experiences.</p>
+		<hr>
+		<div class="contact">
+			<h4>Contact Info</h4>
+			<ul class="info">
+				<li><span>Mobile</span><a href="tel://1-312-380-5256">312-380-5256</a></li>
+				<li><span>Email</span><a href="mailto:thienpham.us@gmail.com">thienpham.us@gmail.com</a></li>
+			</ul>
+			<ul class="social">
+				<li><a href="http://plus.google.com/102157534092095391789/about" target="_blank" title="Google Plus"><i class="icon-google-plus-sign icon-2x"></i></a></li><li><a href="http://www.facebook.com/thienpham.us" target="_blank" title="Facebook"><i class="icon-facebook-sign icon-2x"></i></a></li><li><a href="http://www.linkedin.com/in/thienpham" target="_blank"><i class="icon-linkedin-sign icon-2x" title="Linkedin"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
