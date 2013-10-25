@@ -34,9 +34,9 @@ angular.module( 'ngBoilerplate.project', [
       }
     },
     resolve: {
-      api: function($http, $stateParams) {
+      api: ['$http', '$stateParams', function($http, $stateParams) {
         return $http.get('/api/project/' + $stateParams.id);
-      }
+      }]
     }
   })
   .state('project.view', {
