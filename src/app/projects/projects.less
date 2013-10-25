@@ -1,0 +1,207 @@
+/*
+generic styles applied to any carousel
+must be ul/li 
+*/
+.project {
+  margin-left: auto;
+  margin-right: auto;
+  .box-shadow(0 1px 1px #999999);
+  background-color: #fff;
+  overflow: hidden;
+  padding: 20px;
+
+  /*Tablet Portrait iPad*/
+  @media (max-width: 768px)  { 
+  padding: 10px;
+  }
+
+  nav.back {
+    background-color: #fff;
+    padding: 20px;
+    margin: -20px -20px 0;
+
+    /*Tablet Portrait iPad*/
+    @media (max-width: 768px)  { 
+    padding: 10px;
+    margin: -10px -10px 0; 
+    }
+  }
+
+  .copy {
+   
+
+    h5 {
+      white-space: normal;
+    }
+  }
+
+  p {
+
+  }
+
+  .rn-carousel-container {
+    margin: 0 -20px 10px;
+  }
+
+}
+
+.project-large {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 940px;
+  min-height: 450px;
+  background-color: #fff;
+  position: relative;
+
+    /*Tablet Portrait iPad*/
+  @media (max-width: 768px)  { 
+    margin-left: -6px;
+    margin-right:-6px;
+  }
+
+  .container {
+    max-width: 940px;
+
+    @media (max-width: 979px)  { 
+      width: auto;
+    }
+  }
+
+  nav.close {
+    background-color: #fff;
+    padding: 20px;
+
+    /*Tablet Portrait iPad*/
+    @media (max-width: 768px)  { 
+        padding: 10px; 
+    }
+  }
+  
+  nav {
+
+    a.close {
+
+      [class^="icon-"], [class*=" icon-"] {
+        vertical-align:top;
+      }
+    }
+
+    button.btn {
+      position: absolute;
+      z-index: 10;
+      top: 20%;
+      color: #fff;
+      .opacity(50);
+      background-color: #444;
+      text-shadow: none;
+    }
+
+    button.btn.prev {
+      left: 10px;
+    }
+
+    button.btn.next {
+      right: 10px;
+    }
+
+    .btn.disabled, .btn[disabled] {
+      .opacity(10);
+    }
+  }
+
+  .rn-carousel-indicator {
+    top:0;
+  }
+}
+
+a.gray-icon {
+  display: inline-block;
+  float: right;
+  width: 21px;
+  height: 21px;
+  line-height: 21px;
+  color: @grayLighter;
+  padding: 4px;
+  font-size: 20px;
+  vertical-align: top;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.touch {
+
+  .project-large {
+    top: -22px;
+    z-index: 9999;
+
+    nav.close {
+      position: fixed;
+      z-index: 20;
+      width: 100%;
+      top: 0;
+      background-color: #fff;
+    }
+  }
+}
+
+
+/*Carousel Tweaks*/
+
+.rn-carousel-container {
+  overflow: hidden;
+  position: relative;
+
+    /*Tablet Portrait iPad*/
+  @media (max-width: 768px)  { 
+    
+  }
+  
+}
+ul {
+  &.rn-carousel-slides {
+    position: relative;
+    white-space: nowrap;
+    overflow: visible;
+    .translate(0, 0);
+    padding: 0;
+    margin: 0;
+
+    li {
+      white-space: normal;
+      vertical-align:top;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      .backface-visibility(hidden);
+    } 
+  }
+}
+
+.rn-carousel-animate {
+  -webkit-transition: -webkit-transform .1s ease-out;
+  -moz-transition: -moz-transform .1s ease-out;
+  transition: transform .1s ease-out;
+}
+.rn-carousel-noanimate {
+  .transition(none);
+}
+.rn-carousel-indicator {
+  width: 100%;
+  text-align:center;
+  position:absolute;
+  bottom:0;
+  height:25px;
+}
+.rn-carousel-indicator {
+  
+  span {
+    padding: 0 5px;
+    color: @grayLighter;
+    .transition(color .2s ease-out);
+    font-size: 18px;
+    &.active {
+      color:@gray;
+    }
+  }
+}
