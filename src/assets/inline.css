@@ -10,6 +10,9 @@ body {
     /*Tweaks to Bootstrap 2.3.2 navbar fixed top*/
 
     @media (max-width: 768px) {
+      .navbar .nav-collapse {
+        top: -300px;
+      }
       .navbar .header {
         float: none;
         border-bottom: 1px solid #cdcdcd;
