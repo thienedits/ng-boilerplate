@@ -180,6 +180,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
 /*Tweaks to Bootstrap 2.3.2 navbar fixed top*/
 
 .navbar-fixed-top {
+    display: block;
     position: fixed;
     top:-1px;
     right: 0;
@@ -188,6 +189,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
     margin-right: 0px;
     margin-left: 0px;
     border-bottom: 1px solid @grayLighter;
+}
+
+.csstransforms3d.csstransitions .nav-collapse {
+    top: -300px !important;
+    .translate3d(0, -300px, 0);
+    &.expanded {
+        .translate3d(0, 0, 0);
+    }
 }
 
 .navbar {
@@ -220,8 +229,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
         position: relative; 
         z-index: 10;
         .gradient;
-        float: left;
-        border: none;
+        float: none;
+        border-bottom: 1px solid @grayLighter;
     }
 
     .nav {
@@ -229,11 +238,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
         position: relative;
         left: 0;
         display: block;
-        float: left;
+        float: none;
         margin: 0 10px 0 0;
 
          > li {
-            float: left;
+            float: none;
 
             > a {
                 margin-bottom:0;
@@ -254,20 +263,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
     .brand {
         font-family: 'robotoregular', sans-serif;
         margin: 0;
-        padding: 13px 30px;
+        
+        padding: 15px;
         float: right;
         font-size: @fontSizeLarge;
         color: #bcbcbc;
     }
 
     .nav-collapse {
-        height: auto !important;
-        overflow: visible !important;
-        clear: none;
+        top:-300px;
+        height: auto;
+        background-color: #e0e0e0;
+        z-index: 1;
+        border-top: 1px solid #fff;
+        border-bottom: none;
+        .box-shadow(none);
+        .transition(-webkit-transform 500ms cubic-bezier(0.165,0.630,0.140,0.820));
+        .backface-visibility(hidden);
+        &.expanded {
+            top: 0;
+        }
     }
 
     .btn-navbar {
-        display: none;
+        display: block;
         margin: 13px 10px;
         background-color: transparent;
         border-color: transparent;
@@ -303,54 +322,43 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
     }
 }
 
-@media (max-width: 768px)  { 
+@media (min-width: 769px)  { 
 
 .navbar {
 
     .header {
-        float: none;
-        border-bottom: 1px solid @grayLighter;
+        float: left;
+        border: none;
     }
 
     .btn-navbar {
-         display: block;
+         display: none;
     }
 
     .brand {
-        padding: 13px 15px;
+        padding: 15px 30px;
     }
 
     .nav {
-        float: none;
+        float: left;
 
          > li {
-            float: none;
+           float: left; 
         }
     }
 
     .nav-collapse {
-        top:-300px;
-        height: auto;
-        background-color: #e0e0e0;
-        z-index: 1;
-        border-top: 1px solid #fff;
-        border-bottom: none;
-        .box-shadow(none);
-        .transition(-webkit-transform 500ms cubic-bezier(0.165,0.630,0.140,0.820));
-        .backface-visibility(hidden);
-        &.expanded {
-            top: 0;
-        }
+        top: 0;
     }
+
 }
 
 .csstransforms3d.csstransitions .nav-collapse {
-    top: -300px !important;
-    .translate3d(0, -300px, 0);
-    &.expanded {
+        height: auto !important;
+        overflow: visible !important;
+        clear: none;
         .translate3d(0, 0, 0);
     }
-}
 
 }
 
