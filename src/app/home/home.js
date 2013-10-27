@@ -17,7 +17,6 @@ angular.module( 'ngBoilerplate.home', [
   'ui.state',
   'plusOne'
 ])
-.value('$anchorScroll', angular.noop)
 /**
  * Each section or module of the site can also have its own routes. AngularJS
  * will handle ensuring they are all available at run-time, but splitting it

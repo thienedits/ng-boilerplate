@@ -41,6 +41,6 @@ angular.module( 'ngBoilerplate', [
     };
   });*/
 
-}).value('$anchorScroll', angular.noop)
+})
 
 ;
