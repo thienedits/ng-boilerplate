@@ -1,5 +1,5 @@
 /**
- * qpham-portfolio - v1.0.0 - 2013-10-29
+ * qpham-portfolio - v1.0.0 - 2013-10-30
  * http://bit.ly/ng-boilerplate
  *
  * Copyright (c) 2013 Thien Pham
