@@ -65,8 +65,6 @@ angular.module( 'ngBoilerplate.project', [
     $scope.siteLink = true;
   }
 
-  console.log(project.largeImages);
-
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     $scope.$parent.pageTitle = project.title + '| qpham.com';
   });

@@ -39,6 +39,10 @@ if (app.get('env') === 'production') {
  * Routes
  */
 
+// This route deals enables HTML5Mode by forwarding missing files to the index.html
+app.use(function(req, res) {
+res.sendfile(__dirname + '/bin/index.html');
+});
 
 // JSON API
 app.get('/api/project', api.projects);

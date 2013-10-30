@@ -40,10 +40,7 @@ angular.module( 'ngBoilerplate.home', [
  */
 .controller( 'HomeCtrl', function HomeController( $scope, $http, $location ) {
 
-  $http.get('/api/project').
-    success(function(data, status, headers, config) {
-      $scope.projects = data.projects;
-    });
+  
    
   /*$scope.go = function (path) {
     $location.path(path);
