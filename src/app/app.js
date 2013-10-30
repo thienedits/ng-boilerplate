@@ -9,10 +9,12 @@ angular.module( 'ngBoilerplate', [
   'ui.route'
 ])
 
+.value('$anchorScroll', angular.noop)
+
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise( '/home' );
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true).hashPrefix('!');
 })
 
 .run( function run () {
