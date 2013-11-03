@@ -7,7 +7,7 @@ var data = {
         "afmarketing-1",
         "afmarketing-2"
       ],
-      "url":"http://www.qpham.com/allstate/afmarketing",
+      "url":"/assets/allstate/afmarketing",
       "id": 0,
       "title": "Allstate Marketing Portal",
       "subtitle": "Web Design, Responsive Design, HTML5, Jquery, CSS3",
@@ -18,7 +18,7 @@ var data = {
         "besuccessful-1",
         "besuccessful-2"
       ],
-      "url":"http://www.qpham.com/allstate/afmarketing/life/besuccessful",
+      "url":"/assets/allstate/afmarketing/life/besuccessful",
       "id": 1,
       "title": "Besuccessful in Life",
       "subtitle": "Web Design, Responsive Design, HTML5, Jquery, CSS3",
@@ -30,7 +30,7 @@ var data = {
         "growthprotector-2",
         "iul-1"
       ],
-      "url":"http://www.qpham.com/allstate/afmarketing/retirement/growthprotector",
+      "url":"/assets/allstate/afmarketing/retirement/growthprotector",
       "id": 2,
       "title": "Allstate Product Pages",
       "subtitle": "Web Design, Responsive Design, HTML5, Jquery, CSS3",
@@ -58,7 +58,7 @@ var data = {
         "cqb-3",
         "cqb-4"
       ],
-      "url":"http://www.qpham.com/allstate/cqb/landing",
+      "url":"/assets/allstate/cqb/landing",
       "id": 4,
       "title": "Allstate Life Quote",
       "subtitle": "Web Application, Web Design, HTML Email, CSS3",
@@ -70,7 +70,7 @@ var data = {
         "hpb-landing-2",
         "hpb-landing-3"
       ],
-      "url":"http://www.qpham.com/hpb/landing",
+      "url":"/assets/hpb/landing",
       "id": 5,
       "title": "HPB Landing",
       "subtitle": "Flash, AS3, Web Design",
@@ -82,7 +82,7 @@ var data = {
         "mycfo-2",
         "mycfo-3"
       ],
-      "url":"http://www.qpham.com/mycfo/banner",
+      "url":"/assets/mycfo/banner",
       "id": 6,
       "title": "MyCFO Banner",
       "subtitle": "Flash, AS3, Banner",
@@ -106,7 +106,7 @@ var data = {
         "c2c-1",
         "c2c-2"
       ],
-      "url":"http://www.qpham.com/allstate/c2c",
+      "url":"/assets/allstate/c2c",
       "id": 8,
       "title": "Accessallstate ClicktoChat",
       "subtitle": "Web Design, Responsive Design, HTML5, CSS3",

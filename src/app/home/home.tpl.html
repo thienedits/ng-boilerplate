@@ -3,7 +3,10 @@
 <ul class="imgList">
   <li id="project{{project.id}}" ng-repeat="project in projects">
   	<a ng-href="project/{{project.id}}">
-  	<img ng-src="assets/img/{{project.images[0]}}.jpg">
+  	<div class="defer-image image-ratio:4x3 is-loading">
+  		<div></div>
+  		<img ng-src="assets/img/{{project.images[0]}}.jpg" imgload>
+	</div>
   	<div class="copy">
   		<h4>{{project.title}}</h4>
   		<h5>{{project.subtitle}}</h5>

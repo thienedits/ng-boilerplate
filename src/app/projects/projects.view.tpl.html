@@ -6,7 +6,10 @@
 	</nav>
 	<ul rn-carousel rn-carousel-index="currentImage" rn-carousel-indicator="true" class="image">
 		<li ng-repeat="image in project.images" >
-			<img ng-src="assets/img/{{image}}.jpg" alt="">
+			<div class="defer-image image-ratio:4x3 is-loading">
+  				<div></div>
+				<img ng-src="assets/img/{{image}}.jpg" imgload>
+			</div>
 		</li>
 	</ul>
 	<nav>
