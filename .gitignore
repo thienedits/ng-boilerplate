@@ -1,6 +1,6 @@
 *.sw*
 *~
 _art/
-bin/
+build/
 node_modules/
 vendor/
