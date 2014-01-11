@@ -1,0 +1,523 @@
+/**
+ * Inline CSS
+ */
+
+/**
+ * Typography
+ */
+
+ @font-face {
+    font-family: 'robotolight';
+    src: url('fonts/Roboto-Light-webfont.eot');
+    src: url('fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Light-webfont.woff') format('woff'),
+         url('fonts/Roboto-Light-webfont.ttf') format('truetype'),
+         url('fonts/Roboto-Light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  margin:0;
+  font-family: @baseFontFamily;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  color: @textColor;
+  background-color: @bodyBackground;
+  padding: 0 6px;
+}
+
+a {
+  color: @linkColor;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+h4 {
+  font-family: @baseFontFamily;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 17.5px;
+  font-weight: normal;
+  color: #4285f4;
+  margin: 10px 0;
+  margin-bottom: 4px;
+  line-height: 20px;
+  text-rendering: optimizelegibility;
+}
+
+h5 {
+  font-family: @baseFontFamily;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: normal;
+  color: #999;
+  margin: 10px 0;
+  margin-top: 0;
+  line-height: 20px;
+  text-rendering: optimizelegibility;
+}
+
+footer {
+  display: none;
+}
+
+
+/**
+ * Layout
+ */
+
+.mainView {
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  width: auto;
+  min-height: 300px;
+}
+
+.container {
+margin-right: auto;
+margin-left: auto;
+max-width: 720px;
+    
+  //Clearfix
+  &:before, &:after {
+      display: table;
+      line-height: 0;
+      content: "";
+  }
+
+  @media (max-width: 767px) {
+      width: auto;
+  }
+}
+
+
+/**
+ * Navigation
+ */
+
+.gradient {
+background: #f3f3f3; /* Old browsers */
+background: -moz-linear-gradient(top,  #f3f3f3 0%, #e0e0e0 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f3f3), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f3f3f3 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f3f3f3 0%,#e0e0e0 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f3f3f3 0%,#e0e0e0 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f3f3f3 0%,#e0e0e0 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
+}
+
+
+/*Tweaks to Bootstrap 2.3.2 navbar fixed top*/
+
+.navbar-fixed-top {
+  display: block;
+  position: fixed;
+  top:-1px;
+  right: 0;
+  left: 0;
+  margin-bottom: 10px;
+  margin-right: 0px;
+  margin-left: 0px;
+  border-bottom: 1px solid @grayLighter;
+  z-index: 9999;
+}
+
+.navbar {
+
+    .navbar-inner {
+        padding: 0;
+        border: none;
+        .box-shadow(none);
+        .gradient;
+    }
+
+    .navbar-inner:before,
+    .navbar-inner:after {
+      display: table;
+      line-height: 0;
+      content: "";
+    }
+
+    .navbar-inner:after {
+      clear: both;
+    }
+
+    .container {
+        height: 50px;
+        max-width: 768px;
+    }
+
+    .header {
+        height: 50px;
+        position: relative; 
+        z-index: 10;
+        .gradient;
+        float: none;
+        border-bottom: 1px solid @grayLighter;
+    }
+
+    .nav {
+        list-style: none;
+        position: relative;
+        left: 0;
+        display: block;
+        float: none;
+        margin: 0;
+
+         > li {
+            float: none;
+
+            > a {
+                margin-bottom:0;
+                font-family: 'robotolight', sans-serif;
+                text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+                font-weight: normal;
+                padding: 15px 15px 15px;
+                display: block;
+                color: #777777;
+            }
+
+            > a:hover, > a:focus {
+                background-color: #f2f2f2;
+            }
+        }
+    }
+
+    .brand {
+        font-family: 'robotoregular', sans-serif;
+        margin: 0;
+        padding: 15px;
+        float: right;
+        font-size: @fontSizeLarge;
+        color: #bcbcbc;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+    }
+
+    .nav-collapse {
+        position: relative;
+        top: -151px;
+        width: 100%;
+        height: auto;
+        background-color: #e0e0e0;
+        z-index: 1;
+        border-top: 1px solid #fff;
+        border-bottom: none;
+        .box-shadow(none);
+        .transition(-webkit-transform 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000));
+        .backface-visibility(hidden);
+        
+    }
+
+    .btn-navbar {
+        display: block;
+        margin: 10px;
+        padding: 6px;
+        background-color: transparent;
+        border-color: transparent;
+        background-image: none;
+        float: left;
+        .box-shadow(none);
+        border: 1px solid transparent;
+        .border-radius(4px);
+
+        .icon-bar {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background-color: #bcbcbc;
+            .box-shadow(0 1px 0 rgba(255, 255, 255, .5));
+            .border-radius(1px);
+
+            +.icon-bar {
+                margin-top: 3px;
+            }
+        }
+    }
+
+    .btn-navbar:hover,
+    .btn-navbar:focus,
+    .btn-navbar:active,
+    .btn-navbar.active,
+    .btn-navbar.disabled,
+    .btn-navbar[disabled] {
+        color: #ffffff;
+        background-color: #ddd;
+        *background-color: #d9d9d9;
+    }
+}
+
+.csstransforms3d.csstransitions .nav-collapse {
+    .translate3d(0, 0px, 0);
+    &.expanded {
+        .translate3d(0, 151px, 0);
+        .box-shadow(0px 1px 2px rgba(0, 0, 0, .8));
+        @media (min-width: 769px)  { 
+          .box-shadow(none);
+        }
+    }
+}
+
+@media (min-width: 769px)  { 
+
+.navbar {
+
+    .header {
+        float: left;
+        border: none;
+        background: none;
+    }
+
+    .btn-navbar {
+         display: none;
+    }
+
+    .brand {
+        padding: 15px 30px;
+    }
+
+    .nav {
+        float: left;
+
+         > li {
+           float: left; 
+        }
+    }
+
+    .nav-collapse {
+        top: 0;
+        position: static;
+    }
+
+}
+
+.csstransforms3d.csstransitions .nav-collapse, .csstransforms3d.csstransitions .nav-collapse.expanded {
+        height: auto !important;
+        overflow: visible !important;
+        clear: none;
+        .translate3d(0, 0, 0);
+    }
+
+}
+
+/**
+ * Author:      Matt Hinchliffe <www.maketea.co.uk>
+ * Description: Responsive image placeholders
+ */
+
+.no-js .defer-image {
+  display: none;
+}
+
+.defer-image > img {
+  display: none;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.defer-image.is-loading {
+  position: relative;
+  background: #fff;
+}
+
+/* Image aspect ratios - % is relative to width of containing block */
+
+.image-ratio\:1x2 > div {
+  padding-top: 200%;
+}
+
+.image-ratio\:9x16 > div {
+  padding-top: 177.777%;
+}
+
+.image-ratio\:10x16 > div {
+  padding-top: 160%;
+}
+
+.image-ratio\:2x3 > div {
+  padding-top: 150%;
+}
+
+.image-ratio\:3x4 > div {
+  padding-top: 133.333%;
+}
+
+.image-ratio\:1x1 > div {
+  padding-top: 100%;
+}
+
+.image-ratio\:4x3 > div {
+  padding-top: 75%;
+}
+
+.image-ratio\:3x2 > div {
+  padding-top: 66.66%;
+}
+
+.image-ratio\:16x10 > div {
+  padding-top: 62.5%;
+}
+
+.image-ratio\:16x9 > div {
+  padding-top: 56.25%;
+}
+
+.image-ratio\:2x1 > div {
+  padding-top: 50%;
+}
+
+/* Preload and loaded animations */
+
+@-webkit-keyframes bobble {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+  }
+  35% {
+    opacity: 1;
+    -webkit-transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes bobble {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+.defer-image.is-loading::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  margin: -0.5em 0 0 -0.5em;
+  background: rgba(125, 125, 125, 0.5);
+  border-radius: 100%;
+  content: ' ';
+  -webkit-animation: bobble 1s cubic-bezier(0.6, 1, 1, 1) infinite;
+          animation: bobble 1s cubic-bezier(0.6, 1, 1, 1) infinite;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.defer-image.is-loaded > img {
+  display: block;
+  -webkit-animation: fadeIn 250ms both;
+          animation: fadeIn 250ms both;
+}
+
+.show-grid {
+margin-top: 10px;
+margin-bottom: 20px;
+}
+
+.touch ul.imgList li {
+    .border-radius(0);
+}
+
+ul.imgList {
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  list-style: none;
+}
+
+ul.imgList li {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  min-height: 230px;
+  margin: 0 auto 12px;
+  cursor: pointer;
+  background: #fff;
+  .border-radius(2px);
+  .box-shadow(0 1px 1px rgba(153, 153, 153, 1));
+}
+
+ul.imgList li:last-child {
+  margin-bottom: 0;
+}
+
+ul.imgList li a {
+  height: auto;
+}
+
+ul.imgList .copy {
+  margin: 0 12px;
+}
+
+/*Phone Portrait*/
+
+@media (max-width: 320px) {
+  ul.imgList li {
+    width: 306px;
+  }
+  ul.imgList .copy {
+    margin-right: 60px;
+  }
+}
+
+/*Phone Landscape*/
+
+@media (min-width: 480px) {
+  ul.imgList li {
+    width: 48%;
+    margin: 0 4px 8px;
+  }
+}
+
+/*Tablet Portrait Nexus 7*/
+
+@media (min-width: 600px) {
+  ul.imgList li {
+    min-height: 280px;
+    margin: 0 5px 10px;
+  }
+}
+
+/*Tablet Portrait iPad*/
+
+@media (min-width: 767px) {
+  ul.imgList li {
+    min-height: 280px;
+    margin: 0 14px 14px 0;
+  }
+}

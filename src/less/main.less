@@ -10,30 +10,75 @@
  * project should be imported as the rest are just wasting space.
  */
 
-@import '../../vendor/bootstrap/less/mixins.less';
+/*@import '../../vendor/bootstrap/less/mixins.less';*/
 @import '../../vendor/bootstrap/less/reset.less';
-@import '../../vendor/bootstrap/less/scaffolding.less';
+/*@import '../../vendor/bootstrap/less/scaffolding.less';
 @import '../../vendor/bootstrap/less/type.less';
 @import '../../vendor/bootstrap/less/grid.less';
 @import '../../vendor/bootstrap/less/layouts.less';
-/*@import '../../vendor/bootstrap/less/navs.less';
-@import '../../vendor/bootstrap/less/navbar.less';*/
+@import '../../vendor/bootstrap/less/navs.less';
+@import '../../vendor/bootstrap/less/navbar.less';
 @import '../../vendor/bootstrap/less/responsive.less';
-/*@import '../../vendor/bootstrap/less/responsive-navbar.less';*/
+@import '../../vendor/bootstrap/less/responsive-navbar.less';
 @import '../../vendor/bootstrap/less/responsive-utilities.less';
-@import '../../vendor/bootstrap/less/buttons.less';
+@import '../../vendor/bootstrap/less/buttons.less';*/
+
+
+@import 'mixins.less';
+@import 'variables.less';
+@import 'inline.less';
+
 
 /**
- * This is our main variables file. It in turn imports the `variables` file from
- * Twitter Bootstrap. We must include it last so we can overwrite any variable
- * definitions in our imported stylesheets.
+ * Non Critical CSS
  */
 
-@import 'variables.less';
+@import 'fontawesome.less';
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  margin: (@baseLineHeight / 2) 0;
+  font-family: @baseFontFamily;
+  font-weight: @headingsFontWeight;
+  line-height: @baseLineHeight;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
+  small {
+    font-weight: normal;
+    line-height: 1;
+    color: @grayLight;
+  }
+}
+
+h3 { 
+  line-height: @baseLineHeight * 2;
+  font-size: @baseFontSize * 1.75; // ~24px
+}
+
+// Lists
+// --------------------------------------------------
+
+// Unordered and Ordered lists
+ul, ol {
+  padding: 0;
+  margin: 0 0 @baseLineHeight / 2 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+li {
+  line-height: @baseLineHeight;
+}
 
 .btn {
-    color: @gray;
+  color: @gray;
+  .border-radius(4px);
 }
+
 .touch {
 
     .btn {
@@ -51,7 +96,7 @@ button.nobg {
   padding: 4px 4px;
   color: @blue;
   font-size: 16px;
-  font-family: @sansFontFamily;
+  font-family: @baseFontFamily;
 
   [class^="icon-"], [class*=" icon-"] {
     vertical-align:middle;
@@ -62,435 +107,9 @@ button.disabled, button[disabled] {
   .opacity(15);
 }
 
-/**
- * Author:      Matt Hinchliffe <www.maketea.co.uk>
- * Description: Responsive image placeholders
- */
-
-.no-js .defer-image {
-    display: none;
+footer {
+  display: block;
 }
-
-.defer-image > img {
-    display: none;
-    min-width: 100%;
-    max-width: 100%;
-}
-
-.defer-image.is-loading {
-    position: relative;
-    background: #fff;
-}
-
-/* Image aspect ratios - % is relative to width of containing block */
-.image-ratio\:1x2   > div { padding-top: 200%; }
-.image-ratio\:9x16  > div { padding-top: 177.777%; }
-.image-ratio\:10x16 > div { padding-top: 160%; }
-.image-ratio\:2x3   > div { padding-top: 150%; }
-.image-ratio\:3x4   > div { padding-top: 133.333%; }
-.image-ratio\:1x1   > div { padding-top: 100%; }
-.image-ratio\:4x3   > div { padding-top: 75%; }
-.image-ratio\:3x2   > div { padding-top: 66.66%; }
-.image-ratio\:16x10 > div { padding-top:62.5%; }
-.image-ratio\:16x9  > div { padding-top: 56.25%; }
-.image-ratio\:2x1   > div { padding-top: 50%; }
-
-/* Preload and loaded animations */
-@-webkit-keyframes bobble {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateY(0);
-    }
-    35% {
-        opacity: 1;
-        -webkit-transform: translateY(-20px);
-    }
-    100% {
-        opacity: 0;
-        -webkit-transform: translateY(0);
-    }
-}
-
-@keyframes bobble {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
-    }
-    35% {
-        opacity: 1;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0);
-    }
-}
-
-.defer-image.is-loading::after {
-    content: ' ';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1em;
-    height: 1em;
-    margin: -0.5em 0 0 -0.5em;
-    background: rgba(125, 125, 125, 0.5);
-    border-radius: 100%;
-    -webkit-animation: bobble 1s cubic-bezier(0.6, 1, 1, 1) infinite;
-            animation: bobble 1s cubic-bezier(0.6, 1, 1, 1) infinite;
-}
-
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.defer-image.is-loaded > img {
-    display: block;
-    -webkit-animation: fadeIn 250ms both;
-            animation: fadeIn 250ms both;
-}
-
-
-/**
- * Layout
- */
-
-.container {
-max-width: 720px;
-}
-.show-grid {
-margin-top: 10px;
-margin-bottom: 20px;
-}
-.spinner {
-width: 100%;
-height: 100%;
-margin: 0 -6px;
-/*background: url(img/spinner.gif) no-repeat center center;
-background-size: 24px 24px;*/
-background-color: rgba(0,0,0,1);
-
-.opacity(50);
-position: fixed;
-top: 0;
-z-index: 9999;
-
-    &:after {
-        content: ' ';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1em;
-    height: 1em;
-    margin: -0.5em 0 0 -0.5em;
-    background: rgba(125, 125, 125, 1);
-    border-radius: 100%;
-    -webkit-animation: bobble 1s cubic-bezier(0.6, 1, 1, 1) infinite;
-            animation: bobble 1s cubic-bezier(0.6, 1, 1, 1) infinite;
-    }
-    /*Tablet Portrait*/
-    @media (min-width: 600px)  { 
-    min-height: 400px;
-    }
-    /*Max Image Size at 100% width*/
-    @media (min-width: 720px)  { 
-    min-height: 480px
-    }
-    /*Desktop*/
-    @media (min-width: 962px) { 
-    min-height: 400px;
-    }
-}
-
-@media (max-width: 992px) {
-body {
-padding-right: 6px;
-padding-left: 6px;
-}
-}
-
-
-/**
- * Typography
- */
-
-a, a:hover, a:focus {
-  text-decoration: none;
-}
-
- h4 {
-    margin-bottom: 4px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    color: #4285f4;
-}
-h5 {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    margin-top: 0;
-    color: #999;
-}
- @font-face {
-    font-family: 'robotolight';
-    src: url('fonts/Roboto-Light-webfont.eot');
-    src: url('fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Roboto-Light-webfont.woff') format('woff'),
-         url('fonts/Roboto-Light-webfont.ttf') format('truetype'),
-         url('fonts/Roboto-Light-webfont.svg#robotolight') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'robotoregular';
-    src: url('fonts/Roboto-Regular-webfont.eot');
-    src: url('fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Roboto-Regular-webfont.woff') format('woff'),
-         url('fonts/Roboto-Regular-webfont.ttf') format('truetype'),
-         url('fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'robotomedium';
-    src: url('fonts/Roboto-Medium-webfont.eot');
-    src: url('fonts/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Roboto-Medium-webfont.woff') format('woff'),
-         url('fonts/Roboto-Medium-webfont.ttf') format('truetype'),
-         url('fonts/Roboto-Medium-webfont.svg#robotomedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-/**
- * Navigation
- */
-
-.gradient {
-background: #f3f3f3; /* Old browsers */
-background: -moz-linear-gradient(top,  #f3f3f3 0%, #e0e0e0 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f3f3), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #f3f3f3 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #f3f3f3 0%,#e0e0e0 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #f3f3f3 0%,#e0e0e0 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #f3f3f3 0%,#e0e0e0 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
-}
-
-
-/*Tweaks to Bootstrap 2.3.2 navbar fixed top*/
-
-.navbar-fixed-top {
-    display: block;
-    position: fixed;
-    top:-1px;
-    right: 0;
-    left: 0;
-    margin-bottom: 10px;
-    margin-right: 0px;
-    margin-left: 0px;
-    border-bottom: 1px solid @grayLighter;
-    z-index: 9999;
-}
-
-.navbar {
-
-    .navbar-inner {
-        padding: 0;
-        border: none;
-        .box-shadow(none);
-        .gradient;
-    }
-
-    .navbar-inner:before,
-    .navbar-inner:after {
-      display: table;
-      line-height: 0;
-      content: "";
-    }
-
-    .navbar-inner:after {
-      clear: both;
-    }
-
-    .container {
-        height: 50px;
-        max-width: 768px;
-    }
-
-    .header {
-        height: 50px;
-        position: relative; 
-        z-index: 10;
-        .gradient;
-        float: none;
-        border-bottom: 1px solid @grayLighter;
-    }
-
-    .nav {
-        list-style: none;
-        position: relative;
-        left: 0;
-        display: block;
-        float: none;
-        margin: 0 10px 0;
-
-         > li {
-            float: none;
-
-            > a {
-                margin-bottom:0;
-                font-family: 'robotolight', sans-serif;
-                text-shadow:none;
-                font-weight: normal;
-                padding: 15px 15px 15px;
-                display: block;
-                color: #777777;
-            }
-
-            > a:hover, > a:focus {
-                background-color: #f2f2f2;
-            }
-        }
-    }
-
-    .brand {
-        font-family: 'robotoregular', sans-serif;
-        margin: 0;
-        
-        padding: 15px;
-        float: right;
-        font-size: @fontSizeLarge;
-        color: #bcbcbc;
-    }
-
-    .nav-collapse {
-        position: absolute;
-        top:-100px;
-        width: 100%;
-        height: auto;
-        background-color: #e0e0e0;
-        z-index: 1;
-        border-top: 1px solid #fff;
-        border-bottom: none;
-        .box-shadow(none);
-        .transition(-webkit-transform 500ms cubic-bezier(0.165,0.630,0.140,0.820));
-        .backface-visibility(hidden);
-        &.expanded {
-            top: 51px;
-        }
-    }
-
-    .btn-navbar {
-        display: block;
-        margin: 13px 10px;
-        background-color: transparent;
-        border-color: transparent;
-        background-image: none;
-        float: left;
-        .box-shadow(none);
-        border: 1px solid transparent;
-        .border-radius(4px);
-
-        .icon-bar {
-            display: block;
-            width: 18px;
-            height: 2px;
-            background-color: #bcbcbc;
-            .box-shadow(0 1px 0 rgba(255, 255, 255, 1));
-            .border-radius(1px);
-
-            +.icon-bar {
-                margin-top: 3px;
-            }
-        }
-    }
-
-    .btn-navbar:hover,
-    .btn-navbar:focus,
-    .btn-navbar:active,
-    .btn-navbar.active,
-    .btn-navbar.disabled,
-    .btn-navbar[disabled] {
-        color: #ffffff;
-        background-color: #ddd;
-        *background-color: #d9d9d9;
-    }
-}
-
-.csstransforms3d.csstransitions .nav-collapse {
-    top: -100px !important;
-    .translate3d(0, -100px, 0);
-    &.expanded {
-        top: 0px !important;
-        .translate3d(0, 51px, 0);
-    }
-}
-
-@media (min-width: 769px)  { 
-
-.navbar {
-
-    .header {
-        float: left;
-        border: none;
-    }
-
-    .btn-navbar {
-         display: none;
-    }
-
-    .brand {
-        padding: 15px 30px;
-    }
-
-    .nav {
-        float: left;
-
-         > li {
-           float: left; 
-        }
-    }
-
-    .nav-collapse {
-        top: 0;
-        position: static;
-    }
-
-}
-
-.csstransforms3d.csstransitions .nav-collapse, .csstransforms3d.csstransitions .nav-collapse.expanded {
-        height: auto !important;
-        overflow: visible !important;
-        clear: none;
-        .translate3d(0, 0, 0);
-    }
-
-}
-
-
-/**
- * Footer
- */
 
 
 /**
