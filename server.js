@@ -21,8 +21,21 @@ app.use(express.compress());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(function(req, res, next) {
+	if(req.url.indexOf("/assets/img") === 0) {
+        res.setHeader("Cache-Control", "public, max-age=345600"); // 4 days
+        res.setHeader("Expires", new Date(Date.now() + 345600000).toUTCString());
+    }
+    if(req.url == "/assets/qpham-portfolio-1.0.0.css") {
+        res.setHeader("Cache-Control", "public, max-age=86400"); // 1 day
+        res.setHeader("Expires", new Date(Date.now() + 86400).toUTCString());
+    }
+    next();
+});
 app.use(express.static(path.join(__dirname, '/bin')));
 app.use(app.router);
+
+
 
 // development only
 if (app.get('env') === 'development') {
