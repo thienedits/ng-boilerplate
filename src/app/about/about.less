@@ -12,19 +12,14 @@
         padding: 10px;
     }
 
-    .heading {
-
-        button {
-            margin: 0 auto;
-            width: 100%;
-            display: block;
-        }
-    }
-
     nav {
         margin: -20px -20px 0;
         background-color: @lightBlue;
         padding: 20px;
+
+        a.back {
+            color: #fff;
+        }
 
         /*Tablet Portrait iPad*/
         @media (max-width: 768px)  { 
@@ -32,25 +27,6 @@
              padding: 20px 6px;
         }
 
-    }
-
-    h3 {
-        text-align: center;
-        margin: 0;
-    }
-
-    h5 {
-        text-align: center;
-        margin: 0;
-        color: @grayDark;
-    }
-
-    p {
-
-    }
-
-    a.back {
-        color: #fff;
     }
 
     a.profile-img {
@@ -64,82 +40,126 @@
         margin-top: -40px;
     }
 
+    h3 {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    h4 {
+        color: @textColor;
+        font-weight: @headingsFontWeight;
+        margin: (@baseLineHeight / 2) 0;
+    }
+
+    h5 {
+        margin: 0;
+        color: @textColor;
+    }
+
+    .heading {
+
+        h5 {
+            text-align: center;
+
+        }
+    }
+
+    ul.social {
+        margin: 0 auto;
+        width: 138px;
+
+        .fa-google-plus{
+            color: #ce3925;
+        }
+
+        .fa-facebook {
+            color: #3b5998;
+        }
+
+        .fa-linkedin {
+            color: #006599;
+        }
+
+        li {
+            padding: 0;
+
+            i {
+                color: #ccc;
+                margin: 8px;
+                padding: 9px 7px;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            a:hover, a:focus {
+                text-decoration: none;
+            } 
+        }
+    } 
+
     .contact {
 
-        ul {
-            list-style: none;
-            margin: 0 0 10px 0;
+        ul.inline {
+            > li {
+                padding: 0;
+            }
         }
 
         ul.info {
 
             li {
+                position: relative;
+                line-height: 16px;
+                height: 48px;
+
+                a {
+                    font-size: 16px;
+                    display: block;
+                    padding: 6px 0;
+                }
+
+                p {
+                    margin: 0;
+                    font-size: 16px;
+                }
+
+                .fa-mobile {
+                    margin-left: 4px;
+                }
+
+                .fa-envelope-o {
+                    font-size: 1.4em;                
+                }
+
+                .content {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 86%;
+                }
+
+                .title {
+                    margin: 0;
+                    font-size: 12px;
+                    color: @grayDark;
+                }
 
                span:first-child {
-                    display: inline-block;
+                    display: block;
                     width: 60px;
+                    font-size: 12px;
                 }
 
                 span.gc-cs-link {
                     width: auto;
                 } 
-            }
-        }
 
-        ul.social {
-
-            .icon-google-plus-sign {
-                color: #ce3925;
-            }
-
-            .icon-facebook-sign {
-                color: #3b5998;
-            }
-
-            .icon-linkedin-sign {
-                color: #006599;
-            }
-
-            li {
-                display: inline-block;
-
-                i {
+                .fa {
+                    color: @blue;
                     display: inline-block;
-                    color: #ccc;
-                    margin-right: 14px;
-                    text-align: center;
                     vertical-align: middle;
+                    text-align: right;
                 }
-
-                a:hover, a:focus {
-                    text-decoration: none;
-                } 
             }
-        }        
+        }       
     }
-}
-
-
-/*Phone Portrait*/
-@media (max-width: 320px) { 
-
-
-}
-
-/*Phone Landscape*/
-@media (min-width: 480px)  { 
-
-
-}
-
-/*Tablet Portrait Nexus 7*/
-@media (min-width: 600px)  { 
-
-}
-
-/*Tablet Portrait iPad*/
-@media (min-width: 767px)  { 
-
-
-
 }

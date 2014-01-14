@@ -3,15 +3,48 @@
 
     h4 {
         margin-top: 16px;
-        margin-bottom: 10px;
+        font-family: @headingsFontFamily;
     }
 
     h5 {
+        margin-bottom: 4px;
+    }
+
+    small {
+        display: block;
+        line-height: 1.4;
+        color: @grayLight;
+    }
+
+    .address {
+        .fa {
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+    }
+
+    ul.actions {
+
+        margin: 0 auto;
+        width: 152px;
+
+        li {
+            font-size: 12px;
+            text-align: center;
+            color: @blue;
+            padding: 0;
+            width: 48px;
+            height: 48px;
+            margin: 0;
+        }
+
+        .fa  {
+            display: block;
+        }
         
     }
 
     ul {
-        margin-left: 18px;
 
         li {
             margin-bottom: 6px;
@@ -47,29 +80,4 @@
         } 
     }
     
-}
-
-
-/*Phone Portrait*/
-@media (max-width: 320px) { 
-
-
-}
-
-/*Phone Landscape*/
-@media (min-width: 480px)  { 
-
-
-}
-
-/*Tablet Portrait Nexus 7*/
-@media (min-width: 600px)  { 
-
-}
-
-/*Tablet Portrait iPad*/
-@media (min-width: 767px)  { 
-
-
-
 }

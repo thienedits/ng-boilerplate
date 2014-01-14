@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
     }
     next();
 });
-app.use(express.static(path.join(__dirname, '/bin')));
+app.use(express.static(path.join(__dirname, '/build')));
 app.use(app.router);
 
 
@@ -54,7 +54,7 @@ if (app.get('env') === 'production') {
 
 // This route deals enables HTML5Mode by forwarding missing files to the index.html
 app.use(function(req, res) {
-res.sendfile(__dirname + '/bin/index.html');
+res.sendfile(__dirname + '/build/index.html');
 });
 
 // JSON API

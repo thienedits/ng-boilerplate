@@ -2,10 +2,8 @@
  * Inline CSS
  */
 
-/**
- * Typography
- */
-
+// Body reset
+// -------------------------
 body {
   margin:0;
   font-family: @baseFontFamily;
@@ -16,42 +14,28 @@ body {
   padding: 0 6px;
 }
 
-a {
-  color: @linkColor;
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
-}
-
-h4 {
-  font-family: @baseFontFamily;
+.imgList h4 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 17.5px;
+  font-size: @baseFontSize * 1.25;
   font-weight: normal;
-  color: #4285f4;
-  margin: 10px 0;
+  line-height: @baseLineHeight;
   margin-bottom: 4px;
-  line-height: 20px;
-  text-rendering: optimizelegibility;
+  color: @linkColor;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
 }
 
-h5 {
-  font-family: @baseFontFamily;
+.imgList h5 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 15px;
+  font-size: @baseFontSize;
   font-weight: normal;
-  color: #999;
-  margin: 10px 0;
+  line-height: @baseLineHeight;
   margin-top: 0;
-  line-height: 20px;
-  text-rendering: optimizelegibility;
+  color: @grayLight;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
 }
 
 footer {
