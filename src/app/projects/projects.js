@@ -13,7 +13,7 @@
  * specified, as shown below.
  */
 angular.module( 'ngBoilerplate.project', [
-  'ui.state',
+  'ui.router.compat',
   'plusOne',
   'angular-carousel'
 ])

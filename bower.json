@@ -2,16 +2,20 @@
   "name": "qpham-portfolio",
   "version": "1.0.0",
   "devDependencies": {
-    "angular": "~1.0.7",
-    "angular-mocks": "~1.0.7",
+    "angular": "1.2.9",
+    "angular-mocks": "1.2.9",
+    "angular-animate": "1.2.9",
     "bootstrap": "~2.3.2",
     "angular-bootstrap": "~0.3.0",
-    "angular-ui-router": "~0.0.1",
+    "angular-ui-router": "0.2.7",
     "angular-ui-utils": "~0.0.3",
     "modernizr": "~2.6.2",
     "fastclick": "~0.6.10"
   },
   "dependencies": {
-    "revolunet-angular-carousel": "*"
+    "revolunet-angular-carousel": "0.0.8"
+  },
+  "resolutions": {
+    "angular": "1.2.9"
   }
 }

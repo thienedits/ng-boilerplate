@@ -1,5 +1,5 @@
 angular.module( 'ngBoilerplate.resume', [
-  'ui.state',
+  'ui.router',
   'placeholders',
   'ui.bootstrap'
 ])

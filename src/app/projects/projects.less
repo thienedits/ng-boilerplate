@@ -1,7 +1,6 @@
 .project {
   margin-left: auto;
   margin-right: auto;
-  .box-shadow(0 1px 1px #999999);
   background-color: #fff;
   overflow: hidden;
   padding: 20px;
@@ -13,16 +12,24 @@
   min-height: 400px;
   }
 
-  nav.back {
-    background-color: #fff;
+  nav.back, nav.viewer {
+    background: #00afd8;
     padding: 20px;
     margin: -20px -20px 0;
+
+    a, button {
+      color: #fff;
+    }
 
     /*Tablet Portrait iPad*/
     @media (max-width: 768px)  { 
     padding: 10px;
     margin: -10px -10px 0; 
     }
+  }
+
+  nav.viewer {
+
   }
 
   h4 {
@@ -33,7 +40,7 @@
   h5 {
     white-space: normal;
     margin: 0;
-    color: @grayLight;
+    color: #3d4247;
   }
 
   p {

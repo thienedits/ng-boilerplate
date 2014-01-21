@@ -18,6 +18,8 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-concurrent');
 
   /**
    * Load in our build configuration file.
@@ -34,7 +36,6 @@ module.exports = function ( grunt ) {
      * version. It's already there, so we don't repeat ourselves here.
      */
     pkg: grunt.file.readJSON("package.json"),
-
     /**
      * The banner is the comment that is placed at the top of our compiled 
      * source files. It is first processed as a Grunt template, where the `<%=`
@@ -416,7 +417,6 @@ module.exports = function ( grunt ) {
         ]
       }
     },
-
     /**
      * And for rapid development, we have a watch set up that checks to see if
      * any of the files listed below change, and then to execute the listed 
@@ -428,6 +428,12 @@ module.exports = function ( grunt ) {
      * But we don't need the same thing to happen for all the files. 
      */
     delta: {
+      server: {
+        files: ['.grunt/rebooted'],
+        options: {
+          livereload: true
+        }
+      },
       /**
        * By default, we want the Live Reload to work for all tasks; this is
        * overridden in some tasks (like this file) where browser resources are
@@ -537,6 +543,19 @@ module.exports = function ( grunt ) {
           livereload: false
         }
       }
+    },
+    concurrent: {
+      target: {
+        tasks: ['watch', 'nodemon'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
+    nodemon: {
+      dev: {
+        script: 'server.js'
+      }
     }
   };
 
@@ -551,6 +570,7 @@ module.exports = function ( grunt ) {
    */
   grunt.renameTask( 'watch', 'delta' );
   grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask( 'start', [ 'concurrent:target' ] );
 
   /**
    * The default task is to build and compile.

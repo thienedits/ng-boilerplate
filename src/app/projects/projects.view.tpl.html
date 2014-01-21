@@ -12,7 +12,7 @@
 			</div>
 		</li>
 	</ul>
-	<nav>
+	<nav class="viewer">
 		<button class="nobg" ng-click="currentImage = currentImage - 1" ng-disabled="currentImage == 0" title="Previous"><i class="qp-previous qp-lg"></i>&nbsp;prev</button>
 		<button class="nobg" ng-click="currentImage = currentImage + 1" ng-disabled="currentImage == project.images.length - 1" title="Next">next&nbsp;<i class="qp-next qp-lg"></i></button>
 		<a ng-href="project/{{project.id}}/large" class="gray-icon" ng-hide="siteLink" title="View Larger"><i class="qp-expand qp-2x"></i></a>

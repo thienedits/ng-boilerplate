@@ -70,3 +70,10 @@
   *display: inline; /* IE7 inline-block hack */
   *zoom: 1;
 }
+
+// Box sizing
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}

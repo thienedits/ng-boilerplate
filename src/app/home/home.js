@@ -14,7 +14,7 @@
  * specified, as shown below.
  */
 angular.module( 'ngBoilerplate.home', [
-  'ui.state',
+  'ui.router.compat',
   'plusOne'
 ])
 /**

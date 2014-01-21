@@ -5,8 +5,7 @@ angular.module( 'ngBoilerplate', [
   'ngBoilerplate.about',
   'ngBoilerplate.project',
   'ngBoilerplate.resume',
-  'ui.state',
-  'ui.route'
+  'ui.router'
 ])
 
 .value('$anchorScroll', angular.noop)
@@ -126,5 +125,74 @@ angular.module( 'ngBoilerplate', [
     }
   };
 }])
+
+/*.directive('resize', function ($window) {
+  return function (scope, element) {
+
+    scope.getWinHeight = function() {
+      return $window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+    };
+
+    var setNavHeight = function(newHeight) {
+      element.css('height', newHeight + 'px');
+    };
+
+    // Set on load
+    scope.$watch(scope.getWinHeight, function (newValue, oldValue) {
+      setNavHeight(scope.getWinHeight() - 100);
+    }, true);
+
+    // Set on resize
+    angular.element($window).bind('resize', function () {
+      scope.$apply();
+    });
+  };
+})*/
+
+.directive('resize', function ($window) {
+  return function (scope, iElement, iAttrs) {
+
+      var w = angular.element($window),
+      d = document,
+      e = d.documentElement,
+      g = d.getElementsByTagName('body')[0],
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+      scope.getWindowDimensions = function () {
+        return { 'h': $window.innerHeight, 'w': $window.innerWidth };
+      };
+
+      var setNavHeight = function(newHeight) {
+        iElement.css('height', newHeight + 'px');
+      };
+
+      scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
+        scope.windowHeight = newValue.h;
+        scope.windowWidth = newValue.w;
+         
+        scope.style = function () {
+          if(scope.expanded) {
+            return { 
+              'height': newValue.h + 'px'
+            };
+          } else {
+            return {
+              'height':'auto'
+            };
+          }
+          /*return { 
+              'height': newValue.h + 'px'
+            };*/
+        };
+              
+      }, true);
+
+      w.bind('resize', function () {
+        
+        scope.$apply();
+      });
+    };
+  })
 
 ;
