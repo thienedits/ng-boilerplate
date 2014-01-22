@@ -59,7 +59,7 @@ angular.module( 'ngBoilerplate.project', [
   $scope.currentImage = 0;
   $scope.siteLink = false;
   $scope.project = project;
-  $state.transitionTo('project.view', {id: $stateParams.id});
+  
 
   if (project.largeImages == null) {
     $scope.siteLink = true;

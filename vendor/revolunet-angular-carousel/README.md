@@ -10,12 +10,13 @@ Proudly brought to you by the [@revolunet](http://twitter.com/revolunet) team.
 
 ## Usage :
 
- 1. Add `angular-carousel.css`, `angular-carousel.js` and `angular-mobile.js` (from this repo) to your code:
+ 1. If you use bower, just `bower install angular-rn-carousel`. If not, download files [from the github repo](./dist)
+ 2. Add `angular-carousel.css`, `angular-carousel.js` to your code:
 ```html
-<link href="lib/angular-carousel.css" rel="stylesheet" type="text/css" />
-<script src="lib/angular.js"></script>
-<script src="lib/angular-mobile.js"></script>
-<script src="lib/angular-carousel.js"></script>
+<link href="angular-carousel.css" rel="stylesheet" type="text/css" />
+<script src="angular.js"></script>
+<script src="angular-touch.js"></script>
+<script src="angular-carousel.js"></script>
 ```
 
  2. Add a dependency to the `angular-carousel` module in your application.
@@ -31,6 +32,7 @@ angular.module('MyApp', ['angular-carousel']);
   </li>
 </ul>
 ```
+
  4. You can also use `rn-carousel` without ng-repeat ;)
 ```html
 <ul rn-carousel class="image">
@@ -39,46 +41,36 @@ angular.module('MyApp', ['angular-carousel']);
   <li>slide #3</li>
 </ul>
 ```
- 5. Alternatively, for an infinite carousel, use the `rn-carousel-prev` and `rn-carousel-next` callbacks :
-```html
-<div rn-carousel-infinite rn-carousel-next="next(item)" rn-carousel-prev="prev(item)" rn-carousel-current="product">
-  <h1> #{{ product.id }} </h1>
-  {{ product.description }}
-</div>
-```
 
-The `prev()` and `next()` function return promises containing the prev and next slide.
+**NOTE :** if you use older Android (<4) please include the [requestAnimationFrame polyfill](https://github.com/darius/requestAnimationFrame/blob/master/requestAnimationFrame.js) in your application.
 
 ## Features :
  - Mobile friendly, tested on webkit+firefox
- - CSS 3D transformations with GPU accel
+ - use CSS 3D transformations and `requestAnimationFrame`.
+ - DOM buffering
+ - index data-binding
+ - optional indicators
 
 ### Regular carousel :
  - `rn-carousel-index` two way binding to control the carousel position.
- - `rn-carousel-indicator` to turn on the indicator, see demo page.
- - `rn-carousel-buffered` to buffer the carousel, good to minimize the DOM.
- - ~~`rn-carousel-cycle` to have an forever-cycling carousel.~~ (BROKEN)
- - `rn-carousel-watch` force deep watch of the ngRepeat collection (listen to add/remove items).
-
-
-### Infinite carousel :
-
- You can setup a dynamic, infinite carousel that will load slides on demand using a promise.
- - `rn-carousel-infinite` : use this to setup an infinite carousel without the initial ul/li structure.
- - `rn-carousel-next="getNextSlide(item)"` : callback called when carousel reach the last slide, that should return a single slide. great for generating slides on-demand.
- - `rn-carousel-prev="getPrevSlide(item)"` : callback called when carousel reach the first slide, that should return a single slide. great for generating slides on-demand.
- - `rn-carousel-current` : data-binding to the current carousel item. will be sent as first argument to the prev/next callbacks.
+ - `rn-carousel-indicator` boolean value to enable the indicator, see demo page.
+ - `rn-carousel-buffered` boolean value to enable the carousel buffering, good to minimize the DOM, defaults to 5 slides. (works only with arrays)
+ - `rn-carousel-swipe` boolean value to enable/disable swiping (default true)
+ - `rn-carousel-control` boolean value to enable builtin prev/next buttons (you can override by CSS)
 
 ## Todo :
- - memory profiling
- - optional auto-slide
- - buffering : allow buffer size tuning (default=3 slides)
- - buffering : add intelligent indicators
+ - see the [TODO file](./TODO)
+
+## Contributing 
+ - Please follow [AngularJS GIT conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
+ - Please add tests
+ - Please update the README and demo (index.html)
 
 ## Inspirations
  - https://github.com/ajoslin/angular-mobile-nav
  - http://mobile.smashingmagazine.com/2012/06/21/play-with-hardware-accelerated-css/
- - Thanks @ganarajpr @bennadel and angular folks for all the tips :)
+ - http://ariya.ofilabs.com/2013/08/javascript-kinetic-scrolling-part-1.html
+ - Thanks to all angular folks for all the tips :)
 
 ## Licence
 As AngularJS itself, this module is released under the permissive [MIT license](http://revolunet.mit-license.org). Your contributions are always welcome.

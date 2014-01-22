@@ -1,10 +1,9 @@
-<div class="row-fluid show-grid">
 <div class="project-large">
 	<div class="container">
 	<nav class="close">
 		<a href="project/{{project.id}}" class="close" title="Close"><i class="fa fa-times-circle"></i>&nbsp;Close</a>
 	</nav>
-	<ul rn-carousel rn-carousel-index="currentImage" rn-carousel-indicator="true" class="image">
+	<ul rn-carousel rn-carousel-index="currentImage" rn-carousel-indicator rn-carousel-control class="image">
 		<li ng-repeat="image in project.largeImages" >
 			<div class="defer-image image-ratio:3x4 is-loading">
   				<div></div>
@@ -12,10 +11,5 @@
 			</div>
 		</li>
 	</ul>
-	<nav>
-		<button class="btn nobg prev" ng-click="currentImage = currentImage - 1" ng-disabled="currentImage == 0"><i class="fa fa-chevron-left"></i>&nbsp;prev</button>
-		<button class="btn nobg next" ng-click="currentImage = currentImage + 1" ng-disabled="currentImage == project.largeImages.length - 1">next&nbsp;<i class="fa fa-chevron-right"></i></button>
-	</nav>
-</div>
 </div>
 </div>

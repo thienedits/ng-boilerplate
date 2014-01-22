@@ -58,15 +58,11 @@ footer {
   width: 100%;
 
 
-  a {
+  a, a:hover, a:visited, a:active {
     color: #fff;
     text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
-
-  a:hover,
-  a:focus {
-    text-decoration: none;
-  } 
 
   p {
     color: #d6dfe2;
@@ -77,6 +73,46 @@ footer {
     padding: 15px;
   }
 }
+
+ul.social {
+  width: 145px;
+  margin: 0 auto;
+  list-style: none;
+
+  .fa-google-plus{
+      color: #ce3925;
+  }
+
+  .fa-facebook {
+      color: #3b5998;
+  }
+
+  .fa-linkedin {
+      color: #006599;
+  }
+
+  li {
+      padding: 4px;
+      display: inline-block;
+      .border-radius(50%);
+      background-color: #b7bec4;
+      margin: 0 8px;
+      .transition(background-color 250ms linear);
+      &:hover, &:active {
+        background-color: #3d4247;
+      }
+
+      i {
+          color: #fff;
+          text-align: center;
+          vertical-align: middle;
+      }
+
+      a:hover, a:focus {
+          text-decoration: none;
+      } 
+  }
+} 
 
 
 /**
@@ -141,7 +177,6 @@ footer {
 .main-ui {
   width: 100%;
   margin: 0 auto;
-  padding: 5px;
   .box-sizing(border-box);
 
 }
@@ -353,6 +388,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
 .defer-image.is-loading {
   position: relative;
   background: #fff;
+  .opacity(0);
+  .transition(opacity 250ms linear);
 }
 
 /* Image aspect ratios - % is relative to width of containing block */
@@ -467,8 +504,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', end
 
 .defer-image.is-loaded > img {
   display: block;
-  -webkit-animation: fadeIn 250ms both;
-          animation: fadeIn 250ms both;
+  /*-webkit-animation: fadeIn 250ms both;
+          animation: fadeIn 250ms both;*/
+  .opacity(100);
+  &:hover {
+    /*.opacity(85);*/
+  }
 }
 
 .show-grid {
@@ -495,7 +536,24 @@ ul.imgList li {
   margin: 0 auto 5px;
   cursor: pointer;
   background: #fff;
-  .border-radius(2px);
+
+  .defer-image {
+    position: relative;
+  }
+  
+  .defer-image:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .transition(box-shadow 150ms ease-in-out);
+  }
+  
+  &:hover .defer-image:before, &:active .defer-image:before {
+    .box-shadow(inset 0px 0px 100px rgba(0,0,0,0.4));
+  }
 }
 
 ul.imgList li:last-child {

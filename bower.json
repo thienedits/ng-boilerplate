@@ -13,7 +13,7 @@
     "fastclick": "~0.6.10"
   },
   "dependencies": {
-    "revolunet-angular-carousel": "0.0.8"
+    "revolunet-angular-carousel": "0.1.6"
   },
   "resolutions": {
     "angular": "1.2.9"

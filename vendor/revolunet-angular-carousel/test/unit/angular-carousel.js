@@ -7,11 +7,11 @@ describe('carousel', function () {
 
 
   //$('body').append("<link href='/base/dist/angular-carousel.min.css' rel='stylesheet' type='text/css'>");
-  $('body').append("<style>ul,li {padding:0;margin:0;width:200px !important} " +
+  /*$('body').append("<style>ul,li {padding:0;margin:0;width:200px !important} " +
       ".rn-carousel-animate { -webkit-transition: -webkit-transform 0.001s ease-out; " +
       "-moz-transition: -moz-transform 0.001s ease-out; transition: transform 0.001s ease-out;} "+
       ".rn-carousel-noanimate {-webkit-transition: none;-moz-transition: none;-ms-transition: none;" +
-      "-o-transition: none;transition: none;}</style>");
+      "-o-transition: none;transition: none;}</style>");*/
 
   //console.log(document.location);
   beforeEach(
@@ -21,15 +21,15 @@ describe('carousel', function () {
   beforeEach(inject(function ($rootScope, _$compile_) {
       scope = $rootScope;
       $compile = _$compile_;
-      $('body').css({
-        padding: 0,
-        margin:0
-      });
-      $sandbox = $('<div id="sandbox"></div>').appendTo($('body'));
+      // $('body').css({
+      //   padding: 0,
+      //   margin:0
+      // });
+     // $sandbox = $('<div id="sandbox"></div>').appendTo($('body'));
   }));
 
   afterEach(function() {
-    $sandbox.remove();
+    //$sandbox.remove();
     scope.$destroy();
   });
 
@@ -37,6 +37,7 @@ describe('carousel', function () {
     var options = {
       useIndex: false,
       useIndicator: false,
+      useControl: false,
       useBuffer: false,
       nbItems: 25,
       useWatch: false
@@ -56,13 +57,14 @@ describe('carousel', function () {
     }
     var tpl = '<ul rn-carousel ';
     if (options.useIndicator) tpl += ' rn-carousel-indicator ';
+    if (options.useControl) tpl += ' rn-carousel-control ';
     if (options.useBuffer) tpl += ' rn-carousel-buffered ';
     if (options.useWatch) tpl += ' rn-carousel-watch ';
     if (options.useIndex) tpl += ' rn-carousel-index="' + options.useIndex + '" ';
     tpl += '><li class="test" style="width:200px" ng-repeat="item in items" id="slide-{{ item.id }}">{{ item.text }}</li></ul>';
     angular.extend(scope, sampleData.scope);
-    var $element = $(tpl).appendTo($sandbox);
-    $element = $compile($element)(scope);
+ //   var $element = $(tpl).appendTo($sandbox);
+    var $element = $compile(tpl)(scope);
     scope.$digest();
     return $element;
   }
@@ -73,11 +75,15 @@ describe('carousel', function () {
     return curMatrix;
   }
   function validCSStransform(elm) {
-    var expectedPosition = (elm.outerWidth() * elm.scope().carouselCollection.index * -1),
+    var expectedPosition = (elm.offsetWidth * elm.scope().carouselCollection.index * -1),
         expectedMatrix = 'matrix(1, 0, 0, 1, ' + expectedPosition + ', 0)',
         curMatrix = getElmTransform(elm);
     expect(curMatrix).toBe(expectedMatrix);
   }
+/*
+  it('should load test', function() {
+    expect(1).toBe(1);
+  });
 
   describe('directive', function () {
     it('should add a wrapper div around the ul/li', function () {
@@ -94,7 +100,7 @@ describe('carousel', function () {
     });
     it('generated container outerWidth should match the ul outerWidth', function () {
         var elm = compileTpl();
-        expect(elm.parent().outerWidth()).toBe(elm.outerWidth());
+        expect(elm.parent()[0].offsetWidth).toBe(elm[0].offsetWidth);
     });
   });
 
@@ -192,6 +198,54 @@ describe('carousel', function () {
         scope.localIndex = 2;
         scope.$digest();
         expect(elm.parent().find('.rn-carousel-indicator span:nth-of-type(' + (scope.localIndex + 1) + ')').hasClass('active')).toBe(true);
+    });
+  });
+
+  describe('controls directive', function () {
+    it('should add an controls div', function () {
+        var elm = compileTpl({useControl: true});
+        expect(elm.parent().find('.rn-carousel-controls').length).toBe(1);
+    });
+    it('should have next control but not back', function () {
+        var elm = compileTpl({useControl: true});
+        expect(elm.parent().find('.rn-carousel-control-next').length).toBe(1);
+        expect(elm.parent().find('.rn-carousel-control-back').length).toBe(0);
+    });
+    it('should have next and back controls when local index changes', function () {
+        var elm = compileTpl({useControl: true, useIndex: 'localIndex'});
+        scope.localIndex = 1;
+        scope.$digest();
+        expect(elm.parent().find('.rn-carousel-control').length).toBe(2);
+    });
+    it('should have only back controls when local index is at the end', function () {
+        var elm = compileTpl({useControl: true, useIndex: 'localIndex'});
+        scope.localIndex = scope.items.length - 1;
+        scope.$digest();
+        expect(elm.parent().find('.rn-carousel-control-next').length).toBe(0);
+        expect(elm.parent().find('.rn-carousel-control-back').length).toBe(1);
+    });
+  });
+
+  describe('directive with no index defined', function () {
+    it('should add a wrapper div around the ul/li', function () {
+        var elm = compileTpl({useIndex:false});
+        expect(elm.parent().hasClass('rn-carousel-container')).toBe(true);
+    });
+    it('should add a class to the ul', function () {
+        var elm = compileTpl({useIndex:false});
+        expect(elm.hasClass('rn-carousel-slides')).toBe(true);
+    });
+    it('should have enough slides', function () {
+        var elm = compileTpl({useIndex:false});
+        expect(elm.find('li').length).toBe(scope.items.length);
+    });
+    it('generated container outerWidth should match the ul outerWidth', function () {
+        var elm = compileTpl({useIndex:false});
+        expect(elm.parent().outerWidth()).toBe(elm.outerWidth());
+    });
+    it('the index attribute should be used to position the first visible slide', function () {
+        var elm = compileTpl({useIndex:false});
+        validCSStransform(elm);
     });
   });
 
@@ -312,7 +366,7 @@ describe('carousel', function () {
 
   function fakeMove(elm, distance) {
     // trigger a carousel swipe movement
-    var startX = 10,
+    var startX = 100,
         startY = 10,
         endX = distance + startX;
 
@@ -364,17 +418,18 @@ describe('carousel', function () {
     });
     it('should follow multiple moves', function() {
         var elm = compileTpl();
-        var minMove = -(elm.outerWidth() * 0.1 + 1);
-        fakeMove(elm, minMove);
-        fakeMove(elm, minMove);
-        fakeMove(elm, minMove);
+       // var minMove = -(elm.outerWidth() * 0.1 + 1);
+        fakeMove(elm, -minMove);
+        //console.log(minMove, elm.scope().carouselCollection.index);
+        fakeMove(elm,-minMove);
+        fakeMove(elm, -minMove);
         expect(elm.scope().carouselCollection.index).toBe(3);
-        fakeMove(elm, -minMove);
-        fakeMove(elm, -minMove);
+        fakeMove(elm, minMove);
+        fakeMove(elm, minMove);
         expect(elm.scope().carouselCollection.index).toBe(1);
-        fakeMove(elm, -minMove);
-        fakeMove(elm, -minMove);
-        fakeMove(elm, -minMove);
+        fakeMove(elm, minMove);
+        fakeMove(elm, minMove);
+        fakeMove(elm, minMove);
         expect(elm.scope().carouselCollection.index).toBe(0);
     });
   });
@@ -563,6 +618,7 @@ describe('carousel', function () {
     //     });
     // });
   //});
-
+*/
 
 });
+

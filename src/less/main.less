@@ -81,15 +81,11 @@ h4 small { font-size: @baseFontSize; }
 
 // Links
 // -------------------------
-a {
-  color: @linkColor;
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
-} 
+a, a:hover, a:visited, a:active {
+    color: @linkColor;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
 
 
 // Lists

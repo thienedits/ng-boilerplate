@@ -10,9 +10,9 @@ angular.module("about/about.tpl.html", []).run(["$templateCache", function($temp
     "		<a href=\"https://plus.google.com/u/0/102157534092095391789/about\" class=\"profile-img\" target=\"_blank\"></a>\n" +
     "		<div class=\"row-fluid show-grid heading\">\n" +
     "			<h3>Thien Pham</h3>\n" +
-    "			<ul class=\"social inline\">\n" +
-    "				<li><a href=\"http://plus.google.com/102157534092095391789/about\" target=\"_blank\" title=\"Google Plus\"><i class=\"fa fa-google-plus fa-lg\"></i></a></li><li><a href=\"http://www.facebook.com/thienpham.us\" target=\"_blank\" title=\"Facebook\"><i class=\"fa fa-facebook fa-lg\"></i></a></li><li><a href=\"http://www.linkedin.com/in/thienpham\" target=\"_blank\"><i class=\"fa fa-linkedin fa-lg\" title=\"Linkedin\"></i></a></li>\n" +
-    "			</ul>\n" +
+    "			<ul class=\"social\">\n" +
+    "            	<li><a href=\"http://plus.google.com/102157534092095391789/about\" target=\"_blank\" title=\"Google Plus\"><i class=\"qp-google-plus qp-lg\"></i></a></li><li><a href=\"http://www.facebook.com/thienpham.us\" target=\"_blank\" title=\"Facebook\"><i class=\"qp-facebook qp-lg\"></i></a></li><li><a href=\"http://www.linkedin.com/in/thienpham\" target=\"_blank\"><i class=\"qp-linkedin qp-lg\" title=\"Linkedin\"></i></a></li>\n" +
+    "	        </ul>\n" +
     "			<h5>UX Web Designer at Simpson Strong-Tie</h5>\n" +
     "			<h5>Attended University of Wisconsin-Madison</h5>\n" +
     "			<h5>Lives in Fremont, CA</h5>\n" +
@@ -70,13 +70,12 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
 
 angular.module("projects/projects.large.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("projects/projects.large.tpl.html",
-    "<div class=\"row-fluid show-grid\">\n" +
     "<div class=\"project-large\">\n" +
     "	<div class=\"container\">\n" +
     "	<nav class=\"close\">\n" +
     "		<a href=\"project/{{project.id}}\" class=\"close\" title=\"Close\"><i class=\"fa fa-times-circle\"></i>&nbsp;Close</a>\n" +
     "	</nav>\n" +
-    "	<ul rn-carousel rn-carousel-index=\"currentImage\" rn-carousel-indicator=\"true\" class=\"image\">\n" +
+    "	<ul rn-carousel rn-carousel-index=\"currentImage\" rn-carousel-indicator rn-carousel-control class=\"image\">\n" +
     "		<li ng-repeat=\"image in project.largeImages\" >\n" +
     "			<div class=\"defer-image image-ratio:3x4 is-loading\">\n" +
     "  				<div></div>\n" +
@@ -84,11 +83,6 @@ angular.module("projects/projects.large.tpl.html", []).run(["$templateCache", fu
     "			</div>\n" +
     "		</li>\n" +
     "	</ul>\n" +
-    "	<nav>\n" +
-    "		<button class=\"btn nobg prev\" ng-click=\"currentImage = currentImage - 1\" ng-disabled=\"currentImage == 0\"><i class=\"fa fa-chevron-left\"></i>&nbsp;prev</button>\n" +
-    "		<button class=\"btn nobg next\" ng-click=\"currentImage = currentImage + 1\" ng-disabled=\"currentImage == project.largeImages.length - 1\">next&nbsp;<i class=\"fa fa-chevron-right\"></i></button>\n" +
-    "	</nav>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>");
 }]);
@@ -103,13 +97,8 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
 
 angular.module("projects/projects.view.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("projects/projects.view.tpl.html",
-    "<div class=\"row-fluid show-grid\">\n" +
-    "<div class=\"container\">\n" +
     "<div class=\"project\">\n" +
-    "	<nav class=\"back\">\n" +
-    "		<a href=\"/home\" class=\"back\" title=\"\"><span class=\"qp-previous qp-lg\"></span><span>&nbsp;Back</span></a>\n" +
-    "	</nav>\n" +
-    "	<ul rn-carousel rn-carousel-index=\"currentImage\" rn-carousel-indicator=\"true\" class=\"image\">\n" +
+    "	<ul rn-carousel rn-carousel-index=\"currentImage\" rn-carousel-indicator rn-carousel-control class=\"image\">\n" +
     "		<li ng-repeat=\"image in project.images\" >\n" +
     "			<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
     "  				<div></div>\n" +
@@ -117,9 +106,8 @@ angular.module("projects/projects.view.tpl.html", []).run(["$templateCache", fun
     "			</div>\n" +
     "		</li>\n" +
     "	</ul>\n" +
-    "	<nav class=\"viewer\">\n" +
-    "		<button class=\"nobg\" ng-click=\"currentImage = currentImage - 1\" ng-disabled=\"currentImage == 0\" title=\"Previous\"><i class=\"qp-previous qp-lg\"></i>&nbsp;prev</button>\n" +
-    "		<button class=\"nobg\" ng-click=\"currentImage = currentImage + 1\" ng-disabled=\"currentImage == project.images.length - 1\" title=\"Next\">next&nbsp;<i class=\"qp-next qp-lg\"></i></button>\n" +
+    "	<nav class=\"back\">\n" +
+    "		<a href=\"/home\" class=\"back\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span><span></span></a>\n" +
     "		<a ng-href=\"project/{{project.id}}/large\" class=\"gray-icon\" ng-hide=\"siteLink\" title=\"View Larger\"><i class=\"qp-expand qp-2x\"></i></a>\n" +
     "		<a ng-href=\"{{project.url}}\" class=\"gray-icon\" ng-show=\"siteLink\" title=\"View Site\" target=\"_blank\"><i class=\"qp-open qp-2x\"></i></a>\n" +
     "	</nav>\n" +
@@ -128,8 +116,6 @@ angular.module("projects/projects.view.tpl.html", []).run(["$templateCache", fun
     "	<h5>{{project.subtitle}}</h5>\n" +
     "	<p>{{project.desc}}</p>\n" +
     "	</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>");
 }]);
 
