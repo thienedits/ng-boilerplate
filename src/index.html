@@ -8,13 +8,13 @@
     <base href="/index.html">
     <style type="text/css">
     /*inlined css for above the fold view*/
-  
+    .spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c}.spinner:after{position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-0.5em 0 0 -0.5em;background:#00afd8;border-radius:100%;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}@media(min-width:600px){.spinner{min-height:400px}}@media(min-width:720px){.spinner{min-height:480px}}
     </style>
   </head>
  <!--  ng-style="style()" resize -->
-  <body  ng-style="style()" resize>
+  <body  ng-style="style()" resize ng-cloak>
     <div class="containerLrg">
-    <nav class="menu"  ng-style="style()" resize>
+    <nav class="menu"  ng-style="style()" resize ng-hide="loading()">
       <ul class="menubar">
         <li><a class="brand" href="#/home" title="qpham.com">thienpham</a></li>
         <li>
@@ -40,7 +40,7 @@
     <div class="spinner" ng-show="loading()"></div>
     <div class="mainView" ng-class="{move: move}" >
       <div class="container">
-      <div class="header">
+      <div class="header" ng-hide="loading()">
           <button type="button" class="btn btn-navbar" ng-click="move = !move" title="Menu" expand>
             <span class="icon-bar">Menu</span>
           </button>
@@ -73,8 +73,6 @@
     <!-- compiled CSS -->
     <% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
-    
-    <!-- <link rel="stylesheet" type="text/css" href="assets/qpham-portfolio-1.0.0.css"> -->
 
     <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
     <script async type="text/javascript">

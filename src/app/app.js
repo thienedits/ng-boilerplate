@@ -22,6 +22,7 @@ angular.module( 'ngBoilerplate', [
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $http, projectsFactory ) {
+  $scope.loading = true;
   projectsFactory.getProjects()
     .success(function (data) {
         $scope.projects = data.projects;
