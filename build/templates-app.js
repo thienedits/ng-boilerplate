@@ -2,27 +2,31 @@ angular.module('templates-app', ['about/about.tpl.html', 'home/home.tpl.html', '
 
 angular.module("about/about.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/about.tpl.html",
-    "<div class=\"container\">\n" +
-    "	<div class=\"profile row-fluid show-grid\">\n" +
-    "		<nav>\n" +
-    "			<a href=\"/home\" class=\"back\" title=\"Home\"><i class=\"fa fa-chevron-left\"></i>&nbsp;Home</a>\n" +
+    "\n" +
+    "	<div class=\"profile\">\n" +
+    "		<nav class=\"back\">\n" +
+    "			<a href=\"/home\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "		</nav>\n" +
-    "		<a href=\"https://plus.google.com/u/0/102157534092095391789/about\" class=\"profile-img\" target=\"_blank\"></a>\n" +
-    "		<div class=\"row-fluid show-grid heading\">\n" +
-    "			<h3>Thien Pham</h3>\n" +
-    "			<ul class=\"social\">\n" +
-    "            	<li><a href=\"http://plus.google.com/102157534092095391789/about\" target=\"_blank\" title=\"Google Plus\"><i class=\"qp-google-plus qp-lg\"></i></a></li><li><a href=\"http://www.facebook.com/thienpham.us\" target=\"_blank\" title=\"Facebook\"><i class=\"qp-facebook qp-lg\"></i></a></li><li><a href=\"http://www.linkedin.com/in/thienpham\" target=\"_blank\"><i class=\"qp-linkedin qp-lg\" title=\"Linkedin\"></i></a></li>\n" +
-    "	        </ul>\n" +
-    "			<h5>UX Web Designer at Simpson Strong-Tie</h5>\n" +
-    "			<h5>Attended University of Wisconsin-Madison</h5>\n" +
-    "			<h5>Lives in Fremont, CA</h5>\n" +
+    "		\n" +
+    "		<div class=\"heading\">\n" +
+    "			<div class=\"container\">\n" +
+    "				<a href=\"https://plus.google.com/u/0/102157534092095391789/about\" class=\"profile-img\" target=\"_blank\"></a>\n" +
+    "				<h3>Thien Pham</h3>\n" +
+    "				<h5>UX Web Designer at Simpson Strong-Tie</h5>\n" +
+    "				<h5>Attended University of Wisconsin-Madison</h5>\n" +
+    "				<h5>Lives in Fremont, CA</h5>\n" +
+    "				<ul class=\"social\">\n" +
+    "	            	<li><a href=\"http://plus.google.com/102157534092095391789/about\" target=\"_blank\" title=\"Google Plus\"><i class=\"qp-google-plus qp-lg\"></i></a></li><li><a href=\"http://www.facebook.com/thienpham.us\" target=\"_blank\" title=\"Facebook\"><i class=\"qp-facebook qp-lg\"></i></a></li><li><a href=\"http://www.linkedin.com/in/thienpham\" target=\"_blank\"><i class=\"qp-linkedin qp-lg\" title=\"Linkedin\"></i></a></li>\n" +
+    "		        </ul>\n" +
+    "			</div>\n" +
     "		</div>\n" +
-    "		<div class=\"content\">\n" +
+    "		<div class=\"copy\">\n" +
     "			<p>A recent bay area transplant originally from chicago interested in front-end web development and visual/UI design. I enjoy making clean, simple, engaging designs.</p>\n" +
     "\n" +
     "			<p>I'm passionate about designing websites and web applications using new technologies such as HTML5, CSS3 and Javascript. I really love front-end visual design and creating great user experiences.</p>\n" +
+    "			<hr>\n" +
     "		</div>\n" +
-    "		<hr>\n" +
+    "		\n" +
     "		<div class=\"contact\">\n" +
     "			<h4>Contact Info</h4>\n" +
     "			<ul class=\"info unstyled\">\n" +
@@ -47,43 +51,37 @@ angular.module("about/about.tpl.html", []).run(["$templateCache", function($temp
     "			</ul>\n" +
     "		</div>\n" +
     "	</div>\n" +
-    "</div>");
+    "");
 }]);
 
 angular.module("home/home.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/home.tpl.html",
-    "<ul class=\"imgList\">\n" +
-    "  <li id=\"project{{project.id}}\" ng-repeat=\"project in projects\">\n" +
-    "  	<a ng-href=\"project/{{project.id}}\">\n" +
-    "  	<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
-    "  		<div></div>\n" +
-    "  		<img ng-src=\"assets/img/{{project.images[0]}}.jpg\" imgload>\n" +
-    "	</div>\n" +
-    "  	<!-- <div class=\"copy\">\n" +
-    "  		<h4>{{project.title}}</h4>\n" +
-    "  		<h5>{{project.subtitle}}</h5>\n" +
-    "  	</div> -->\n" +
-    "  	</a>\n" +
-    "  </li>\n" +
-    "</ul>");
+    "\n" +
+    "  <ul class=\"imgList\">\n" +
+    "    <li id=\"project{{project.id}}\" ng-repeat=\"project in projects\">\n" +
+    "    	<a ng-href=\"project/{{project.id}}\">\n" +
+    "    	<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
+    "        <img ng-src=\"assets/img/{{project.images[0]}}.jpg\" imgload>\n" +
+    "      </div>\n" +
+    "    	</a>\n" +
+    "    </li>\n" +
+    "  </ul>\n" +
+    "");
 }]);
 
 angular.module("projects/projects.large.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("projects/projects.large.tpl.html",
-    "<div class=\"project-large\">\n" +
-    "	<div class=\"container\">\n" +
-    "	<nav class=\"close\">\n" +
-    "		<a href=\"project/{{project.id}}\" class=\"close\" title=\"Close\"><i class=\"fa fa-times-circle\"></i>&nbsp;Close</a>\n" +
+    "<div class=\"project large\">\n" +
+    "	<nav class=\"back\">\n" +
+    "		<a href=\"project/{{project.id}}\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "	</nav>\n" +
     "	<ul rn-carousel rn-carousel-index=\"currentImage\" rn-carousel-indicator rn-carousel-control class=\"image\">\n" +
     "		<li ng-repeat=\"image in project.largeImages\" >\n" +
     "			<div class=\"defer-image image-ratio:3x4 is-loading\">\n" +
-    "  				<div></div>\n" +
     "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
     "			</div>\n" +
     "		</li>\n" +
     "	</ul>\n" +
-    "</div>\n" +
     "</div>");
 }]);
 
@@ -98,18 +96,19 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
 angular.module("projects/projects.view.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("projects/projects.view.tpl.html",
     "<div class=\"project\">\n" +
+    "	<nav class=\"back\">\n" +
+    "		<a href=\"/home\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "	</nav>\n" +
     "	<ul rn-carousel rn-carousel-index=\"currentImage\" rn-carousel-indicator rn-carousel-control class=\"image\">\n" +
     "		<li ng-repeat=\"image in project.images\" >\n" +
     "			<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
-    "  				<div></div>\n" +
     "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
     "			</div>\n" +
     "		</li>\n" +
     "	</ul>\n" +
-    "	<nav class=\"back\">\n" +
-    "		<a href=\"/home\" class=\"back\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span><span></span></a>\n" +
-    "		<a ng-href=\"project/{{project.id}}/large\" class=\"gray-icon\" ng-hide=\"siteLink\" title=\"View Larger\"><i class=\"qp-expand qp-2x\"></i></a>\n" +
-    "		<a ng-href=\"{{project.url}}\" class=\"gray-icon\" ng-show=\"siteLink\" title=\"View Site\" target=\"_blank\"><i class=\"qp-open qp-2x\"></i></a>\n" +
+    "	<nav class=\"more\">\n" +
+    "		<a ng-href=\"project/{{project.id}}/large\" class=\"\" ng-hide=\"siteLink\" title=\"View Larger\"><i class=\"qp-expand qp-2x\"></i></a>\n" +
+    "		<a ng-href=\"{{project.url}}\" class=\"\" ng-show=\"siteLink\" title=\"View Site\" target=\"_blank\"><i class=\"qp-open qp-2x\"></i></a>\n" +
     "	</nav>\n" +
     "	<div class=\"copy\">\n" +
     "	<h4>{{project.title}}</h4>\n" +
@@ -121,51 +120,42 @@ angular.module("projects/projects.view.tpl.html", []).run(["$templateCache", fun
 
 angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("resume/resume.tpl.html",
-    "<div class=\"container\">\n" +
-    "<div class=\"resume row-fluid show-grid\">\n" +
-    "	<nav>\n" +
-    "		<a href=\"/home\" class=\"back\" title=\"Home\"><i class=\"fa fa-chevron-left\"></i>&nbsp;Home</a>\n" +
+    "<div class=\"resume\">\n" +
+    "	<nav class=\"back\">\n" +
+    "		<a href=\"/home\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "	</nav>\n" +
-    "	<a href=\"https://plus.google.com/u/0/102157534092095391789/about\" class=\"profile-img\" target=\"_blank\"></a>\n" +
-    "	<div class=\"row-fluid show-grid heading\">\n" +
-    "		<h3>Thien Pham</h3>\n" +
-    "		<div class=\"contact\">\n" +
-    "			<ul class=\"social inline\">\n" +
-    "				<li><a href=\"http://plus.google.com/102157534092095391789/about\" target=\"_blank\" title=\"Google Plus\"><i class=\"fa fa-google-plus fa-lg\"></i></a></li><li><a href=\"http://www.facebook.com/thienpham.us\" target=\"_blank\" title=\"Facebook\"><i class=\"fa fa-facebook fa-lg\"></i></a></li><li><a href=\"http://www.linkedin.com/in/thienpham\" target=\"_blank\"><i class=\"fa fa-linkedin fa-lg\" title=\"Linkedin\"></i></a></li>\n" +
-    "			</ul>\n" +
+    "	\n" +
+    "	<div class=\"heading\">\n" +
+    "		<div class=\"container\">\n" +
+    "			<a href=\"https://plus.google.com/u/0/102157534092095391789/about\" class=\"profile-img\" target=\"_blank\"></a>\n" +
+    "			<h3>Thien Pham</h3>\n" +
+    "			<h5 class=\"address\"><a href=\"http://maps.google.com/?q=4321 Margery Dr, Fremont, CA, 94538\"><span class=\"qp-pin qp-2x\" title=\"Get Directions\"></span><span>4321 Margery Dr &bull; Fremont, CA 94538</span></a></h5>\n" +
     "		</div>\n" +
-    "		<h5 class=\"address\"><a href=\"http://maps.google.com/?q=4321 Margery Dr, Fremont, CA, 94538\"><i class=\"qp-pin\" title=\"Get Directions\"></i>4321 Margery Dr &bull; Fremont, CA 94538</a></h5>\n" +
-    "		<!-- <ul class=\"inline actions\">\n" +
-    "			<li><a href=\"mailto:thiepham.us@gmail.com\" target=\"_blank\"><i class=\"fa fa-envelope fa-2x\"></i></a>email</li>\n" +
-    "			<li><a href=\"tel://1-312-380-5256\"><i class=\"fa fa-phone fa-2x\"></i></a>call</li>\n" +
-    "			<li><a href=\"https://docs.google.com/file/d/0B0qdt7xwL6A8eVhrcEprQXdzTGc/edit?usp=sharing\" title=\"Download Resume\" target=\"_blank\"><i class=\"fa fa-download fa-2x\"></i></a>download</li>\n" +
-    "		</ul> -->\n" +
-    "		\n" +
     "	</div>\n" +
     "	<div class=\"contact\">\n" +
-    "			<ul class=\"info unstyled\">\n" +
-    "				<li>\n" +
-    "					<a href=\"tel://1-312-380-5256\">\n" +
-    "						<div class=\"content\">\n" +
-    "							<p class=\"title\">Mobile</p>\n" +
-    "							<p>312-380-5256</p>\n" +
-    "						</div>\n" +
-    "						<i class=\"qp-phone qp-2x\"></i>\n" +
-    "					</a>\n" +
-    "				</li>\n" +
-    "				<li>\n" +
-    "					<a href=\"mailto:thienpham.us@gmail.com\">\n" +
-    "						<div class=\"content\">\n" +
-    "							<p class=\"title\">Email</p>\n" +
-    "							<p>thienpham.us@gmail.com</p>\n" +
-    "						</div>\n" +
-    "						<i class=\"qp-mail qp-2x\"></i>\n" +
-    "					</a>\n" +
-    "				</li>\n" +
-    "			</ul>\n" +
-    "			<hr>\n" +
-    "		</div>\n" +
-    "	<div>\n" +
+    "		<ul class=\"info unstyled\">\n" +
+    "			<li>\n" +
+    "				<a href=\"tel://1-312-380-5256\">\n" +
+    "					<div class=\"content\">\n" +
+    "						<p class=\"title\">Mobile</p>\n" +
+    "						<p>312-380-5256</p>\n" +
+    "					</div>\n" +
+    "					<i class=\"qp-phone qp-2x\"></i>\n" +
+    "				</a>\n" +
+    "			</li>\n" +
+    "			<li>\n" +
+    "				<a href=\"mailto:thienpham.us@gmail.com\">\n" +
+    "					<div class=\"content\">\n" +
+    "						<p class=\"title\">Email</p>\n" +
+    "						<p>thienpham.us@gmail.com</p>\n" +
+    "					</div>\n" +
+    "					<i class=\"qp-mail qp-2x\"></i>\n" +
+    "				</a>\n" +
+    "			</li>\n" +
+    "		</ul>\n" +
+    "		<hr>\n" +
+    "	</div>\n" +
+    "	<div class=\"copy\">\n" +
     "		<h4>Objective</h4>\n" +
     "		<p>I just relocated to the Bay Area from Chicago and currently seeking a challenging position in web/mobile development environment utilizing my skills in web, graphic, and multimedia design.</p>\n" +
     "\n" +
@@ -182,12 +172,15 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "			<ul>\n" +
     "				<li>HTML5</li>\n" +
     "				<li>CSS3</li>\n" +
-    "				<li>Javascript</li>\n" +
     "				<li>Responsive Design</li>\n" +
-    "				<li>Angular JS</li>\n" +
-    "				<li>Visual Design</li>\n" +
-    "				<li>Front-end Dev</li>\n" +
     "				<li>UX</li>\n" +
+    "				<li>Visual Design</li>\n" +
+    "				<li>Javascript</li>\n" +
+    "				\n" +
+    "				<li>Angular JS</li>\n" +
+    "				\n" +
+    "				<li>Front-end Dev</li>\n" +
+    "				\n" +
     "				<li>Wireframing</li>\n" +
     "				<li>HTML Email</li>\n" +
     "				<li>Photoshop</li>\n" +
@@ -274,6 +267,5 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "		</section>\n" +
     "		\n" +
     "	</div>\n" +
-    "</div>\n" +
     "</div>");
 }]);

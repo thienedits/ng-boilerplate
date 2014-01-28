@@ -1,32 +1,19 @@
 .profile {
     background-color: #fff;
-    margin-left: auto;
-    margin-right: auto;
-    .box-shadow(0 1px 1px #999999);
-    overflow: hidden;
-    padding: 20px;
+    /*.box-shadow(0px 0px 10px 1px rgba(0,0,0,0.25));*/
     .box-sizing(border-box);
 
     /*Tablet Portrait iPad*/
-    @media (max-width: 768px)  { 
-        padding: 10px;
+    @media (min-width: 940px)  { 
+        
     }
 
-    nav {
-        margin: -20px -20px 0;
-        background-color: @lightBlue;
-        padding: 20px;
+    nav.back {
+        background-color: #1d222c;
 
-        a.back {
-            color: #fff;
+        a {
+            margin-top: 8px;
         }
-
-        /*Tablet Portrait iPad*/
-        @media (max-width: 768px)  { 
-             margin: -10px -10px 0;
-             padding: 20px 6px;
-        }
-
     }
 
     a.profile-img {
@@ -37,35 +24,64 @@
         background: url(img/profile.jpg) no-repeat center center;
         background-size: 100%;
         margin: 0 auto;
-        margin-top: -40px;
-    }
-
-    h3 {
-        text-align: center;
-        margin-bottom: 0;
+        margin-top: 0px;
     }
 
     h4 {
-        color: @textColor;
+        color: #3d4247;;
         font-weight: @headingsFontWeight;
         margin: (@baseLineHeight / 2) 0;
     }
 
     h5 {
         margin: 0;
-        color: @textColor;
+        color: @linkColor;
     }
 
     .heading {
+        background-color: #1d222c;
+
+        h3 {
+            text-align: center;
+            color: #a1a6b5;
+            margin-bottom: 0;
+        }
 
         h5 {
             text-align: center;
+        }
 
+        .container {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        ul.social {
+            margin-top: 10px;
+            width: 180px;
+
+            li {
+                background-color: rgba(0, 0, 0, 0);
+                border: 1px solid #ff1915;
+                padding: 8px;
+            }
         }
     }
- 
+
+    .copy {
+        padding: 0 10px;
+
+        @media (min-width: 940px)  { 
+            padding: 0 20px;
+        } 
+    }
 
     .contact {
+        padding: 0 10px;
+
+        @media (min-width: 940px)  { 
+            padding: 0 20px;
+        }  
 
         ul.inline {
             > li {
@@ -91,18 +107,16 @@
                     font-size: 16px;
                 }
 
-                .fa-mobile {
-                    margin-left: 4px;
-                }
-
-                .fa-envelope-o {
-                    font-size: 1.4em;                
-                }
 
                 .content {
                     display: inline-block;
                     vertical-align: middle;
-                    width: 86%;
+                }
+
+                i {
+                    vertical-align: middle;
+                    float: right;
+                    margin-right: 8px;
                 }
 
                 .title {
@@ -120,14 +134,11 @@
                 span.gc-cs-link {
                     width: auto;
                 } 
-
-                .fa {
-                    color: @blue;
-                    display: inline-block;
-                    vertical-align: middle;
-                    text-align: right;
-                }
             }
         }       
     }
+}
+
+.no-touch .contact {
+    padding-bottom: 260px;
 }

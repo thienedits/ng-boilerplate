@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ngBoilerplate" ng-controller="AppCtrl" ng-class="{expanded: expanded}">
+<html ng-app="ngBoilerplate" ng-controller="AppCtrl" >
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,90 +12,44 @@
     </style>
   </head>
  <!--  ng-style="style()" resize -->
-  <body ng-class="{expanded: expanded}" ng-style="style()" resize>
-    <nav class="navbar navbar-fixed-top" ng-class="{expanded: expanded}" ng-style="style()" resize>
-            <ul class="nav">
-              <li class="">
-                <a href="/home">Home</a>
-              </li>
-              <li class="">
-                <a href="/about">About Me</a>
-              </li>
-              <li class="">
-                <a href="/resume">Resume</a>
-              </li>
-            </ul>
-            <ul class="nav">
-              <li class="">
-                <a href="/project/0">project 0</a>
-              </li>
-              <li class="">
-                <a href="/about">About Me</a>
-              </li>
-              <li class="">
-                <a href="/resume">Resume</a>
-              </li>
-            </ul>
-            <ul class="nav">
-              <li class="">
-                <a href="/home">Home</a>
-              </li>
-              <li class="">
-                <a href="/about">About Me</a>
-              </li>
-              <li class="">
-                <a href="/resume">Resume</a>
-              </li>
-            </ul>
-            <ul class="nav">
-              <li class="">
-                <a href="/home">Home</a>
-              </li>
-              <li class="">
-                <a href="/about">About Me</a>
-              </li>
-              <li class="">
-                <a href="/resume">Resume</a>
-              </li>
-            </ul>
-            <ul class="nav">
-              <li class="">
-                <a href="/home">Home</a>
-              </li>
-              <li class="">
-                <a href="/about">About Me</a>
-              </li>
-              <li class="">
-                <a href="/resume">Resume</a>
-              </li>
-            </ul>
-            <ul class="nav">
-              <li class="">
-                <a href="/home">Home</a>
-              </li>
-              <li class="">
-                <a href="/about">About Me</a>
-              </li>
-              <li class="">
-                <a href="/resume">Resume</a>
-              </li>
-            </ul>
+  <body  ng-style="style()" resize>
+    <div class="containerLrg">
+    <nav class="menu"  ng-style="style()" resize>
+      <ul class="menubar">
+        <li><a class="brand" href="#/home" title="qpham.com">thienpham</a></li>
+        <li>
+          <ul class="nav">
+            <li class="menuitem" ng-class="{active: $location.path() == '/home'}"><a href="/home" onclick="return false;" delay-click>Home</a></li>
+            <li class="menuitem" ng-class="{active: $location.path() == '/about'}"><a href="/about" onclick="return false;" delay-click>About Me</a></li>
+            <li class="menuitem" ng-class="{active: $location.path() == '/resume'}"><a href="/resume" onclick="return false;"delay-click>Resume</a></li>
+          </ul>
+        </li>
+        <li>
+          <ul class="nav">
+            <li><h4>Projects</h4></li>
+            <li class="menuitem" id="project{{project.id}}" ng-repeat="project in projects" ng-class="{active: isActive(project)}">
+              <a ng-href="project/{{project.id}}" delay-click onclick="return false;">
+                {{project.title}}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>      
     </nav>
     
     <div class="spinner" ng-show="loading()"></div>
-    <div class="mainView" ng-class="{expanded: expanded}" >
+    <div class="mainView" ng-class="{move: move}" >
+      <div class="container">
       <div class="header">
-        <button type="button" class="btn btn-navbar" ng-click="expanded = !expanded" title="Menu">
-          <span class="icon-bar">Menu</span>
-        </button>
-        <a class="brand" href="#/home" title="qpham.com">thienpham</a>
+          <button type="button" class="btn btn-navbar" ng-click="move = !move" title="Menu" expand>
+            <span class="icon-bar">Menu</span>
+          </button>
+          <a class="brand" href="#/home" title="qpham.com">thienpham</a>
       </div>
       <div class="main-ui" ui-view="main"></div>
-    </div>
+      <footer class="footer" ng-hide="loading()">
 
-    <footer class="footer">
-        <div class="container">
-          <div class="footer-inner">
+          <div class="inner">
             <p>
             This site was designed using <a href="http://github.com/joshdmiller/ng-boilerplate">ng-boilerplate</a>, an AngularJS templating engine based on
             <a href="http://www.angularjs.org">AngularJS</a>,
@@ -105,20 +59,24 @@
             <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.         
           </p>
           <p>(c) 2013 Thien Pham</p>
-          </div>
           <ul class="social">
             <li><a href="http://plus.google.com/102157534092095391789/about" target="_blank" title="Google Plus"><i class="qp-google-plus qp-lg"></i></a></li><li><a href="http://www.facebook.com/thienpham.us" target="_blank" title="Facebook"><i class="qp-facebook qp-lg"></i></a></li><li><a href="http://www.linkedin.com/in/thienpham" target="_blank"><i class="qp-linkedin qp-lg" title="Linkedin"></i></a></li>
           </ul>
-        </div>
+          </div>
     </footer>
+    </div>
+    </div>
+  </div>
+    
     
 
     <!-- compiled CSS -->
+    
     <link rel="stylesheet" type="text/css" href="assets/qpham-portfolio-1.0.0.css" />
     
     <!-- <link rel="stylesheet" type="text/css" href="assets/qpham-portfolio-1.0.0.css"> -->
 
-    <script type="text/javascript" src="assets/modernizr.custom.89563.js"></script>
+    <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
     <script async type="text/javascript">
       Modernizr.load(['assets/qpham-portfolio-1.0.0.css'
         ]);
@@ -135,8 +93,7 @@
     <script type="text/javascript" src="vendor/fastclick/lib/fastclick.js"></script>
     <script type="text/javascript" src="src/app/about/about.js"></script>
     <script type="text/javascript" src="src/app/app.js"></script>
-    <script type="text/javascript" src="src/app/directives/imgload.js"></script>
-    <script type="text/javascript" src="src/app/directives/scrollPosition.js"></script>
+    <script type="text/javascript" src="src/app/directives/directives.js"></script>
     <script type="text/javascript" src="src/app/home/home.js"></script>
     <script type="text/javascript" src="src/app/projects/projects.js"></script>
     <script type="text/javascript" src="src/app/resume/resume.js"></script>

@@ -340,8 +340,8 @@ angular.module('angular-carousel')
                         amplitude = 0;
                         timestamp = Date.now();
 
-                        event.preventDefault();
-                        event.stopPropagation();
+                        /*event.preventDefault();
+                        event.stopPropagation();*/
                         return false;
                     }
 
@@ -358,8 +358,8 @@ angular.module('angular-carousel')
                                 });
                             }
                         }
-                        event.preventDefault();
-                        event.stopPropagation();
+                        /*event.preventDefault();
+                        event.stopPropagation();*/
                         return false;
                     }
 
@@ -393,8 +393,8 @@ angular.module('angular-carousel')
                         requestAnimationFrame(autoScroll);
 
                         if (event) {
-                            event.preventDefault();
-                            event.stopPropagation();
+                            /*event.preventDefault();
+                            event.stopPropagation();*/
                         }
                         return false;
                     }

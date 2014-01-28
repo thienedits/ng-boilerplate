@@ -1,16 +1,17 @@
 <div class="project">
+	<nav class="back">
+		<a href="/home" title="Go Back"><span class="qp-back qp-2x"></span></a>
+	</nav>
 	<ul rn-carousel rn-carousel-index="currentImage" rn-carousel-indicator rn-carousel-control class="image">
 		<li ng-repeat="image in project.images" >
 			<div class="defer-image image-ratio:4x3 is-loading">
-  				<div></div>
 				<img ng-src="assets/img/{{image}}.jpg" imgload>
 			</div>
 		</li>
 	</ul>
-	<nav class="back">
-		<a href="/home" class="back" title="Go Back"><span class="qp-back qp-2x"></span><span></span></a>
-		<a ng-href="project/{{project.id}}/large" class="gray-icon" ng-hide="siteLink" title="View Larger"><i class="qp-expand qp-2x"></i></a>
-		<a ng-href="{{project.url}}" class="gray-icon" ng-show="siteLink" title="View Site" target="_blank"><i class="qp-open qp-2x"></i></a>
+	<nav class="more">
+		<a ng-href="project/{{project.id}}/large" class="" ng-hide="siteLink" title="View Larger"><i class="qp-expand qp-2x"></i></a>
+		<a ng-href="{{project.url}}" class="" ng-show="siteLink" title="View Site" target="_blank"><i class="qp-open qp-2x"></i></a>
 	</nav>
 	<div class="copy">
 	<h4>{{project.title}}</h4>

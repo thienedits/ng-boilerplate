@@ -14,8 +14,7 @@
  * specified, as shown below.
  */
 angular.module( 'ngBoilerplate.home', [
-  'ui.router.compat',
-  'plusOne'
+  'ui.router'
 ])
 /**
  * Each section or module of the site can also have its own routes. AngularJS
@@ -30,26 +29,15 @@ angular.module( 'ngBoilerplate.home', [
         controller: 'HomeCtrl',
         templateUrl: 'home/home.tpl.html'
       }
-    },
-    data:{ pageTitle: 'Home' }
+    }
   });
 })
 
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope, $http, $location ) {
-   
-  /*$scope.go = function (path) {
-    $location.path(path);
-    
-  };*/
-      
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    /*$location.hash('project6');
-    $anchorScroll();*/
-    
-  });
+.controller( 'HomeCtrl', function HomeController( $scope ) {
+  $scope.pageTitle = 'Home | qpham.com';
 
 })
 

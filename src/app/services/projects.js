@@ -1,19 +1,16 @@
 angular.module('ngBoilerplate.services.projects', [])
-  .factory('projects', ['$http', '$q',
-    function($http, $q){
-      var deffered = $q.defer();
-      var data = [];  
-      var projects = {};
+  .factory('projectsFactory', ['$http', function($http) {
+    var urlBase = '/api/project', 
+    projectsFactory = {};
 
-      projects.async = function() {
-        $http.get('/api/project')
-        .success(function (d) {
-          data = d;
-          deffered.resolve();
-        });
-        return deffered.promise;
-      };
-      projects.data = function() { return data; };
+    projectsFactory.getProjects = function() {
+      return $http.get(urlBase);
+    };
 
-      return projects;
-    }]);
+    projectsFactory.getProject = function(id) { 
+      return $http.get(urlBase + '/' + id);
+    };
+
+    return projectsFactory;
+
+  }]);

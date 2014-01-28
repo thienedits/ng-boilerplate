@@ -13,8 +13,7 @@
  * specified, as shown below.
  */
 angular.module( 'ngBoilerplate.project', [
-  'ui.router.compat',
-  'plusOne',
+  'ui.router',
   'angular-carousel'
 ])
 
@@ -32,12 +31,12 @@ angular.module( 'ngBoilerplate.project', [
         controller: 'ProjectsCtrl',
         templateUrl: 'projects/projects.tpl.html'
       }
-    },
+    }/*,
     resolve: {
       api: ['$http', '$stateParams', function($http, $stateParams) {
         return $http.get('/api/project/' + $stateParams.id);
       }]
-    }
+    }*/
   })
   .state('project.view', {
     url: '',
@@ -52,22 +51,22 @@ angular.module( 'ngBoilerplate.project', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'ProjectsCtrl', function ProjectController( $scope, $stateParams, $state, api ) {
-
-  var project = api.data.project;
-
+.controller( 'ProjectsCtrl', function ProjectController( $scope, $stateParams, projectsFactory ) {
+  var id = $stateParams.id;
   $scope.currentImage = 0;
   $scope.siteLink = false;
-  $scope.project = project;
-  
 
-  if (project.largeImages == null) {
-    $scope.siteLink = true;
-  }
-
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    $scope.$parent.pageTitle = project.title + '| qpham.com';
-  });
+  projectsFactory.getProject(id)
+    .success(function (data) {
+        $scope.project = data.project;
+        $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
+        if ($scope.project.largeImages == null) {
+          $scope.siteLink = true;
+        }
+    })
+    .error(function (error) {
+        $scope.status = 'Unable to load project data: ' + error.message;
+    });
   
 })
 

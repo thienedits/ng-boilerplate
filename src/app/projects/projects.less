@@ -1,20 +1,111 @@
+/*Carousel Tweaks*/
+
+@indicatorHeight:20px;
+@indicatorTopPadding:15px;
+@controlHeight:30px;
+/* general */
+.rn-carousel-container {
+    position: relative;
+    overflow: hidden;
+}
+.rn-carousel-slides {
+    transform: translate3d(0,0,0);
+    position: relative;
+    white-space: nowrap;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+}
+.rn-carousel-slide {
+    white-space: normal;
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/* indicators */
+.rn-carousel-indicator {
+  width: 100%;
+  text-align:center;
+  height: @indicatorHeight;
+  padding-top: @indicatorTopPadding;
+  cursor: pointer;
+
+  span {
+    font-size: @fontSizeLarge;
+    transition: color .2s ease-out;
+    padding: 0 3px;
+    color: #9da6ae;
+    &:before {
+      content: "\25cf";
+    }
+  }
+
+  .active {
+    color: @blue;
+  }
+}
+
+/* controls */
+.rn-carousel-control {
+  transition: opacity 0.2s ease-out;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  margin-top: -@indicatorHeight - @indicatorTopPadding - (@controlHeight / 2);
+  opacity: 0.75;
+  cursor: pointer;
+  padding: 7px 5px;
+  border: 1px solid #ccc;
+  .border-radius(50%);
+  color: #3d4247;
+  background: #fff;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  line-height: normal;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.rn-carousel-control-prev {
+    padding: 7px;
+    font-family: 'qpham';
+    left: 10px;
+    &:before {
+      content: "\e609";
+    }
+  }
+
+  &.rn-carousel-control-next {
+    padding: 7px;
+    font-family: 'qpham';
+    right: 10px;
+    &:before {
+      content: "\e603";
+    }
+  }
+}
+
 .project {
-  margin-left: auto;
-  margin-right: auto;
   background-color: #fff;
-  overflow: hidden;
   min-height: 700px;
   font-size: 16px;
 
   /*Tablet Portrait iPad*/
   @media (max-width: 768px)  { 
-  min-height: 400px;
+    min-height: 400px;
+  }
+
+  @media (min-width: 940px)  { 
+    
   }
 
 
-  nav.back, nav.viewer {
-    padding: 0 10px;
-    margin-top: -10px;
+  nav.viewer {
+    padding: 0 15px;
+    height: 40px;
     position: relative;
 
     a, button {
@@ -24,6 +115,19 @@
     /*Tablet Portrait iPad*/
     @media (max-width: 768px)  { 
 
+    }
+  }
+
+  nav.more {
+    text-align: right;
+    padding: 0 10px;
+    margin-top: -30px;
+    position: relative;
+    height: 48px;
+
+    a {
+      display: inline-block;
+      margin-top: 4px;
     }
   }
 
@@ -48,18 +152,39 @@
 
 }
 
-.project-large {
+nav.back {
+    padding: 0 15px;
+    height: 48px;
+    position: relative;
+    clear: both;
+
+    a {
+      display: inline-block;
+    }
+
+    /*Tablet Portrait iPad*/
+    @media (max-width: 768px)  { 
+
+    }
+  }
+
+.large {
   margin-left: auto;
   margin-right: auto;
-  max-width: 940px;
   min-height: 1000px;
   background-color: #fff;
   position: relative;
 
+  .rn-carousel-container {
+    overflow: hidden;
+  }
+
+  .rn-carousel-control {
+    margin-top: -150px;
+  }
+
     /*Tablet Portrait iPad*/
   @media (max-width: 768px)  { 
-    margin-left: -6px;
-    margin-right:-6px;
     min-height: 400px;
   }
 
@@ -118,14 +243,6 @@
   }
 }
 
-a.gray-icon {
-  display: inline-block;
-  float: right;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 .touch {
 
   .project-large {
@@ -141,93 +258,3 @@ a.gray-icon {
     }
   }
 }
-
-
-/*Carousel Tweaks*/
-
-
-/* general */
-.rn-carousel-container {
-    position: relative;
-}
-.rn-carousel-slides {
-    transform: translate3d(0,0,0);
-    position: relative;
-    white-space: nowrap;
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-}
-.rn-carousel-slide {
-    white-space: normal;
-    vertical-align: top;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-}
-
-/* indicators */
-.rn-carousel-indicator {
-  width: 100%;
-  text-align:center;
-  height: 20px;
-  position: relative;
-  bottom: -20px;
-  cursor: pointer;
-
-  span {
-    font-size: @fontSizeLarge;
-    transition: color .2s ease-out;
-    padding: 0 3px;
-    color: #9da6ae;
-    &:before {
-      content: "\25cf";
-    }
-  }
-
-  .active {
-    color: @blue;
-  }
-}
-
-/* controls */
-.rn-carousel-control {
-  transition: opacity 0.2s ease-out;
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  margin-top: -20px - (30px / 2);
-  opacity: 0.75;
-  cursor: pointer;
-  padding: 7px 5px;
-  border: 1px solid #ccc;
-  .border-radius(50%);
-  color: #3d4247;
-  background: #fff;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  line-height: normal;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  &.rn-carousel-control-prev {
-    padding: 7px;
-    font-family: 'qpham';
-    left: 10px;
-    &:before {
-      content: "\e609";
-    }
-  }
-
-  &.rn-carousel-control-next {
-    padding: 7px;
-    font-family: 'qpham';
-    right: 10px;
-    &:before {
-      content: "\e603";
-    }
-  }
-}
-
