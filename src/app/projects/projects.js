@@ -53,6 +53,7 @@ angular.module( 'ngBoilerplate.project', [
  */
 .controller( 'ProjectsCtrl', function ProjectController( $scope, $stateParams, projectsFactory ) {
   var id = $stateParams.id;
+  $scope.loading = true;
   $scope.currentImage = 0;
   $scope.siteLink = false;
 
@@ -60,9 +61,11 @@ angular.module( 'ngBoilerplate.project', [
     .success(function (data) {
         $scope.project = data.project;
         $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
+        $scope.loading = false;
         if ($scope.project.largeImages == null) {
           $scope.siteLink = true;
         }
+        
     })
     .error(function (error) {
         $scope.status = 'Unable to load project data: ' + error.message;

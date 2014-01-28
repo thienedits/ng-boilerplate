@@ -27,11 +27,13 @@ angular.module('ngBoilerplate.project', [
   'projectsFactory',
   function ProjectController($scope, $stateParams, projectsFactory) {
     var id = $stateParams.id;
+    $scope.loading = true;
     $scope.currentImage = 0;
     $scope.siteLink = false;
     projectsFactory.getProject(id).success(function (data) {
       $scope.project = data.project;
       $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
+      $scope.loading = false;
       if ($scope.project.largeImages == null) {
         $scope.siteLink = true;
       }

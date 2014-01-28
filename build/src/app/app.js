@@ -25,15 +25,13 @@ angular.module('ngBoilerplate', [
     $scope.loading = true;
     projectsFactory.getProjects().success(function (data) {
       $scope.projects = data.projects;
+      $scope.loading = false;
     }).error(function (error) {
       $scope.status = 'Unable to load project data: ' + error.message;
     });
     window.addEventListener('load', function () {
       FastClick.attach(document.body);
     }, false);
-    $scope.loading = function () {
-      return $http.pendingRequests.length > 0;
-    };
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       $scope.move = false;
     });
