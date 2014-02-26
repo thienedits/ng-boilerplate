@@ -1,144 +1,45 @@
-.profile {
-    background-color: #fff;
-    /*.box-shadow(0px 0px 10px 1px rgba(0,0,0,0.25));*/
-    .box-sizing(border-box);
+.about {
 
-    /*Tablet Portrait iPad*/
-    @media (min-width: 940px)  { 
-        
-    }
-
-    nav.back {
-        background-color: #1d222c;
-
-        a {
-            margin-top: 8px;
-        }
-    }
-
-    a.profile-img {
-        .border-radius(50%);
-        display: block;
-        width: 100px;
-        height: 100px;
-        background: url(img/profile.jpg) no-repeat center center;
-        background-size: 100%;
-        margin: 0 auto;
-        margin-top: 0px;
-    }
-
-    h4 {
-        color: #3d4247;;
-        font-weight: @headingsFontWeight;
-        margin: (@baseLineHeight / 2) 0;
-    }
-
-    h5 {
-        margin: 0;
-        color: @linkColor;
-    }
-
-    .heading {
-        background-color: #1d222c;
-
-        h3 {
-            text-align: center;
-            color: #a1a6b5;
-            margin-bottom: 0;
-        }
-
-        h5 {
-            text-align: center;
-        }
-
-        .container {
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        ul.social {
-            margin-top: 10px;
-            width: 180px;
-
-            li {
-                background-color: rgba(0, 0, 0, 0);
-                border: 1px solid #ff1915;
-                padding: 8px;
-            }
-        }
-    }
-
-    .copy {
-        padding: 0 10px;
-
-        @media (min-width: 940px)  { 
-            padding: 0 20px;
-        } 
-    }
-
-    .contact {
-        padding: 0 10px;
-
-        @media (min-width: 940px)  { 
-            padding: 0 20px;
-        }  
-
-        ul.inline {
-            > li {
-                padding: 0;
-            }
-        }
-
-        ul.info {
-
-            li {
-                position: relative;
-                line-height: 16px;
-                height: 48px;
-
-                a {
-                    font-size: 16px;
-                    display: block;
-                    padding: 6px 0;
-                }
-
-                p {
-                    margin: 0;
-                    font-size: 16px;
-                }
-
-
-                .content {
-                    display: inline-block;
-                    vertical-align: middle;
-                }
-
-                i {
-                    vertical-align: middle;
-                    float: right;
-                    margin-right: 8px;
-                }
-
-                .title {
-                    margin: 0;
-                    font-size: 12px;
-                    color: @grayDark;
-                }
-
-               span:first-child {
-                    display: block;
-                    width: 60px;
-                    font-size: 12px;
-                }
-
-                span.gc-cs-link {
-                    width: auto;
-                } 
-            }
-        }       
-    }
+  nav.back {
+    background-color: #1d222c;
+  }
+    
 }
 
-.no-touch .contact {
-    padding-bottom: 260px;
+.header-section {
+  background-color: #1d222c;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+
+  h3 {
+    color: #a1a6b5;
+  }
+
+  h5 {
+    margin: 0;
+    color: @link-color;
+  }
+
+  a.profile-img {
+    border-radius:50%;
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: url(img/profile.jpg) no-repeat center center;
+    background-size: 100%;
+    margin: 0 auto;
+    margin-top: 0px;
+  }
+
+  ul.social {
+    margin: 10px auto;
+    width: 180px;
+
+    li {
+      background-color: rgba(0, 0, 0, 0);
+      border: 1px solid #ff1915;
+      padding: 8px;
+    }
+  }
 }
+

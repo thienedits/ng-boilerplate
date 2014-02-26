@@ -1,4 +1,4 @@
-angular.module('ngBoilerplate.home', ['ui.router']).config([
+angular.module('qpham.home', ['ui.router']).config([
   '$stateProvider',
   function config($stateProvider) {
     $stateProvider.state('home', {

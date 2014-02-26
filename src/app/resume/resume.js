@@ -1,7 +1,5 @@
-angular.module( 'ngBoilerplate.resume', [
-  'ui.router',
-  'placeholders',
-  'ui.bootstrap'
+angular.module( 'qpham.resume', [
+  'ui.router'
 ])
 
 .config(function config( $stateProvider ) {
@@ -18,8 +16,8 @@ angular.module( 'ngBoilerplate.resume', [
 })
 
 .controller( 'ResumeCtrl', function AboutCtrl( $scope ) {
-  
   $scope.expanded = false;
+  $scope.loadingObj.loading = false;
 
   $scope.dropdownDemoItems = [
     "The first choice!",

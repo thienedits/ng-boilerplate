@@ -2,7 +2,7 @@
   "author": "Thien Pham",
   "name": "qpham-portfolio",
   "version": "1.0.0",
-  "homepage": "http://bit.ly/ng-boilerplate",
+  "homepage": "http://www.qpham.com",
   "licenses": {
     "type": "MIT",
     "url": "https://raw.github.com/joshdmiller/ng-boilerplate/master/LICENSE"
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-recess": "~0.3.0",
+    "grunt-contrib-less": "*",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-jshint": "~0.4.3",

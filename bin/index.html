@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html ng-app="ngBoilerplate" ng-controller="AppCtrl" >
+<html ng-app="qpham" ng-controller="AppCtrl" >
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-bind="pageTitle"></title>
     <base href="/index.html">
     <style type="text/css">
     /*inlined css for above the fold view*/
-    .spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c}.spinner:after{position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-0.5em 0 0 -0.5em;background:#00afd8;border-radius:100%;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}@media(min-width:600px){.spinner{min-height:400px}}@media(min-width:720px){.spinner{min-height:480px}}@-webkit-keyframes bobble{0%{opacity:0;-webkit-transform:translateY(0)}35%{opacity:1;-webkit-transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(0)}}@keyframes bobble{0%{opacity:0;transform:translateY(0)}35%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(0)}}
+    .spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c;opacity: .75;}.spinner:after{position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-0.5em 0 0 -0.5em;background:#00afd8;border-radius:100%;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}@media(min-width:600px){.spinner{min-height:400px}}@media(min-width:720px){.spinner{min-height:480px}}@-webkit-keyframes bobble{0%{opacity:0;-webkit-transform:translateY(0)}35%{opacity:1;-webkit-transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(0)}}@keyframes bobble{0%{opacity:0;transform:translateY(0)}35%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(0)}}
     </style>
   </head>
- <!--  ng-style="style()" resize -->
   <body  ng-style="style()" resize>
-    <div class="containerLrg">
-    <nav class="menu"  ng-style="style()" resize>
-      <ul class="menubar">
+    <div class="spinner" ng-show="loadingObj.loading == true"></div>
+    <nav class="menu"  ng-style="style()" ng-class="{move: move}" resize>
+      <ul class="list-nav list-unstyled">
         <li><a class="brand" href="#/home" title="qpham.com">thienpham</a></li>
         <li>
-          <ul class="nav">
-            <li class="menuitem" ng-class="{active: $location.path() == '/home'}"><a href="/home" onclick="return false;" delay-click>Home</a></li>
+          <ul class="list-unstyled">
+            <li class="menuitem" ng-class="{active: $location.path() == '/projects'}"><a href="/projects" onclick="return false;" delay-click>Home</a></li>
             <li class="menuitem" ng-class="{active: $location.path() == '/about'}"><a href="/about" onclick="return false;" delay-click>About Me</a></li>
             <li class="menuitem" ng-class="{active: $location.path() == '/resume'}"><a href="/resume" onclick="return false;"delay-click>Resume</a></li>
+            <li class="menuitem" ng-class="{active: $location.path() == '/contacts'}"><a href="/contacts" onclick="return false;"delay-click>Contacts</a></li>
           </ul>
         </li>
         <li>
-          <ul class="nav">
+          <ul class="list-unstyled">
             <li><h4>Projects</h4></li>
             <li class="menuitem" id="project{{project.id}}" ng-repeat="project in projects" ng-class="{active: isActive(project)}">
-              <a ng-href="project/{{project.id}}" delay-click onclick="return false;">
+              <a ng-href="projects/{{project.id}}" delay-click onclick="return false;">
                 {{project.title}}
               </a>
             </li>
@@ -36,47 +36,30 @@
         </li>
       </ul>      
     </nav>
-    
-    <div class="spinner" ng-show="loading"></div>
-    <div class="mainView" ng-class="{move: move}" >
+    <!-- TranslateX applied to main-content DIV for animation  --> 
+    <div class="main-content" ng-class="{move: move}">
+    <div class="main-content-header">
       <div class="container">
-      <div class="header">
-          <button type="button" class="btn btn-navbar" ng-click="move = !move" title="Menu" expand>
-            <span class="icon-bar">Menu</span>
-          </button>
-          <a class="brand" href="#/home" title="qpham.com">thienpham</a>
-      </div>
-      <div class="main-ui" ui-view="main"></div>
-      <footer class="footer" ng-hide="loading">
+        <button type="button" class="btn btn-navbar" ng-click="move = !move" title="Menu" expand>
+          <span class="icon-bar">Menu</span>
+        </button>
+        <a class="brand" href="/" title="qpham.com">thienpham</a>
+      </div> 
+    </div>
+    <div ui-view="main"></div>
+    
+    </div>
+    
 
-          <div class="inner">
-            <p>
-            This site was designed using <a href="http://github.com/joshdmiller/ng-boilerplate">ng-boilerplate</a>, an AngularJS templating engine based on
-            <a href="http://www.angularjs.org">AngularJS</a>,
-            <a href="http://getbootstrap.com">Bootstrap</a>, 
-            <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
-            and 
-            <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.         
-          </p>
-          <p>(c) 2013 Thien Pham</p>
-          <ul class="social">
-            <li><a href="http://plus.google.com/102157534092095391789/about" target="_blank" title="Google Plus"><i class="qp-google-plus qp-lg"></i></a></li><li><a href="http://www.facebook.com/thienpham.us" target="_blank" title="Facebook"><i class="qp-facebook qp-lg"></i></a></li><li><a href="http://www.linkedin.com/in/thienpham" target="_blank"><i class="qp-linkedin qp-lg" title="Linkedin"></i></a></li>
-          </ul>
-          </div>
-    </footer>
-    </div>
-    </div>
-  </div>
     <!-- compiled CSS -->
+    
+    <link rel="stylesheet" type="text/css" href="assets/qpham-portfolio-1.0.0.css" />
 
     <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
-    <script async type="text/javascript">
-      Modernizr.load(['assets/qpham-portfolio-1.0.0.css'
-        ]);
-    </script>
+    <script async src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
     <!-- compiled JavaScript -->
-    <script type="text/javascript" src="assets/qpham-portfolio-1.0.0.js"></script>
+    <script async type="text/javascript" src="assets/qpham-portfolio-1.0.0.js"></script>
 
   </body>
 </html>

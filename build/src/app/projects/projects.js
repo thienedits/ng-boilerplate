@@ -1,45 +1,69 @@
-angular.module('ngBoilerplate.project', [
+angular.module('qpham.project', [
   'ui.router',
   'angular-carousel'
 ]).config([
   '$stateProvider',
   function config($stateProvider) {
-    $stateProvider.state('project', {
-      url: '/project/:id',
+    $stateProvider.state('projects', {
       abstract: true,
+      url: '/projects',
+      resolve: {
+        projects: [
+          'apiFactory',
+          function (apiFactory) {
+            return apiFactory.getProjects();
+          }
+        ]
+      },
       views: {
         'main': {
           controller: 'ProjectsCtrl',
-          templateUrl: 'projects/projects.tpl.html'
+          template: '<div class="projects" ui-view></div>'
         }
       }
-    }).state('project.view', {
+    }).state('projects.list', {
       url: '',
-      templateUrl: 'projects/projects.view.tpl.html'
-    }).state('project.large', {
-      url: '/large',
+      templateUrl: 'projects/projects.tpl.html',
+      controller: 'ProjectsCtrl'
+    }).state('projects.detail', {
+      url: '/:id',
+      controller: [
+        '$scope',
+        '$stateParams',
+        'statesFactory',
+        function ($scope, $stateParams, statesFactory) {
+          $scope.loadingObj.loading = false;
+          var id = $stateParams.id;
+          $scope.project = $scope.projects[id];
+          $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
+          if ($scope.project.largeImages == null) {
+            $scope.siteLink = true;
+          }
+        }
+      ],
+      templateUrl: 'projects/projects.detail.tpl.html'
+    }).state('projects.large', {
+      url: '/:id/large',
+      controller: [
+        '$scope',
+        '$stateParams',
+        'statesFactory',
+        function ($scope, $stateParams, statesFactory) {
+          $scope.loadingObj.loading = false;
+          var id = $stateParams.id;
+          $scope.project = $scope.projects[id];
+        }
+      ],
       templateUrl: 'projects/projects.large.tpl.html'
     });
   }
 ]).controller('ProjectsCtrl', [
   '$scope',
-  '$stateParams',
-  'projectsFactory',
-  function ProjectController($scope, $stateParams, projectsFactory) {
-    var id = $stateParams.id;
-    $scope.loading = true;
-    $scope.currentImage = 0;
+  'projects',
+  function ProjectController($scope, projects) {
+    $scope.projects = projects;
     $scope.siteLink = false;
-    projectsFactory.getProject(id).success(function (data) {
-      $scope.project = data.project;
-      $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
-      $scope.loading = false;
-      if ($scope.project.largeImages == null) {
-        $scope.siteLink = true;
-      }
-    }).error(function (error) {
-      $scope.status = 'Unable to load project data: ' + error.message;
-    });
+    $scope.loadingObj.loading = true;
   }
 ]);
 ;

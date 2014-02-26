@@ -1,0 +1,65 @@
+<div class="container">
+  <!-- <div class="search input-group">
+    <input type="text" class="form-control" ng-model="search" placeholder="Search">
+    <span class="input-group-addon">.00</span>
+  </div> -->
+  <div class="search">
+    <input type="text" class="form-control" ng-model="search" placeholder="Search"/>
+    <!-- <a>Search</a> -->
+  </div>
+
+  <!-- <div ng-if="mobileSize == false">
+    <div class="info">
+      <h5>{{contactsCount}} Contacts</h5>
+      <span>Page {{contactListPos.page}} of {{numPages}}</span>
+      <div ng-show="contactsCount == 0">
+        <h3>No Contacts Found</h3>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead >
+        <tr>
+          <th ng-repeat="header in headers">
+            <a sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr ng-click="$location.path('contacts/' + data.contactId)" ng-repeat="data in filtered | startFrom:(contactListPos.page-1)*entryLimit | limitTo:entryLimit">
+        <td>{{data.contactId + 1}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.address}}</td>
+        <td>{{data.city}}</td>
+        <td>{{data.state}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div ng-show="contactsCount == 0">
+      <h3>No Contacts Found</h3>
+    </div>
+    <div class="align-center">
+      <pagination  total-items="contactsCount" items-per-page="entryLimit" num-pages="numPages" page="contactListPos.page" rotate="false" boundary-links="true" max-size="10"></pagination>
+    </div>
+  </div> -->
+
+  <div class="" ng-swipe-left="setPage(contactListPos.page + 1)" ng-swipe-right="setPage(contactListPos.page - 1)">
+      <div class="clearfix">
+        <h5 class="pull-left">{{contactsCount}} Contacts <!-- <span ng-show="search">with "{{search}}"</span> --></h5>
+        <h5 class="pull-right">Page {{contactListPos.page}} of {{numPages}}</h5>
+      </div>
+      
+      <div >
+        <h3 ng-show="contactsCount == 0">No Contacts Found</h3>
+      </div>
+    <ul class="list-contacts list-group">
+      <li class="list-group-item" ng-click="$location.path('contacts/' + data.contactId)" ng-repeat="data in filtered | startFrom:(contactListPos.page-1)*entryLimit | limitTo:entryLimit">
+        <span class="profile-img"></span>
+        <span>{{data.name}}</span>
+        <span class="qp-next"></span>
+      </li>
+    </ul>
+    <h5>Page {{contactListPos.page}} of {{numPages}}</h5>
+    <pagination on-select-page="setPage(page)" total-items="contactsCount" items-per-page="entryLimit" num-pages="numPages" page="contactListPos.page" rotate="false" boundary-links="false" max-size="3"></pagination>
+  </div>
+</div>

@@ -60,7 +60,7 @@ angular.module('qpham.directives', [])
   };
 })
 
-.directive('mainView', function ($window) {
+.directive('mainContent', function ($window) {
   return {
     restrict: 'C',
     link: function (scope, iElement, iAttrs) {
@@ -74,10 +74,11 @@ angular.module('qpham.directives', [])
         var elX = el.getBoundingClientRect(),
         navX = nav.getBoundingClientRect();
         
-        if (elX.left === navX.left) {
+        if (elX.left < navX.left + 15 || elX.left === 0) {
           html.removeClass('expanded');
         }
       });
+    
     }
   };
 })
@@ -88,12 +89,10 @@ angular.module('qpham.directives', [])
     link: function (scope, iElement, iAttrs) {
 
       iElement.bind('load', function(e){
-        /*iElement.parent.removeClass('is-loading').addClass('is-loaded');*/
         var parent = iElement.parent();
         parent.removeClass('is-loading').addClass('is-loaded');
-        parent.find('div').remove();
-      });
- 
+      }); 
+      scope.loadingObj.loading = false;
     }
   };
 })
@@ -110,6 +109,12 @@ angular.module('qpham.directives', [])
       };
       
       scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) { 
+        if (newValue.w > 360) {
+          scope.mobileSize = false;
+        } else {
+          scope.mobileSize = true;
+        }
+
         scope.style = function () {
           return { 
             'height': newValue.h + 'px'
@@ -150,14 +155,14 @@ angular.module('qpham.directives', [])
     restrict: 'A',
     link: function (scope, iElement, iAttrs) {
       var link = iAttrs.ngHref || iAttrs.href,
-      main = angular.element(document.getElementsByClassName('mainView'));
-
-          
+      main = angular.element(document.getElementsByClassName('main-content'));
+      nav = angular.element(document.getElementsByClassName('menu'));    
 
       iElement.bind('click', function(e){
         main.removeClass('move');
-        scope.move = false;
-        var timer = $timeout(function() {$location.path(link);}, 500);  
+        nav.removeClass('move');
+        
+        var timer = $timeout(function() {$location.path(link);}, 300);  
         timer.then(
           function() {
 
@@ -177,6 +182,31 @@ angular.module('qpham.directives', [])
 
     }
   };
+})
+
+.directive('input', function() {
+    return {
+        restrict: 'E',
+        require: 'ngModel',
+        priority: '101',
+        link: function(scope, elm, attr, ngModelCtrl) {
+          if (attr.type === 'radio' || attr.type === 'checkbox') {
+            return;
+          }
+          
+          elm.unbind('input').unbind('keydown').unbind('change');
+          elm.bind('blur', function() {
+              scope.$apply(function() {
+                  ngModelCtrl.$setViewValue(elm.val());
+              });         
+          })
+          .bind("keypress", function(event) {
+            if (event.which === 13) {
+              event.target.blur();
+            }
+          });
+        }
+    };
 })
 
 ;

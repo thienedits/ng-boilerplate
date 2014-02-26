@@ -1,39 +1,45 @@
-angular.module('ngBoilerplate', [
+angular.module('qpham', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
-  'ngBoilerplate.project',
-  'ngBoilerplate.resume',
+  'qpham.home',
+  'qpham.about',
+  'qpham.project',
+  'qpham.resume',
+  'qpham.contacts',
   'ui.router',
-  'ngBoilerplate.services.projects',
+  'restangular',
+  'qpham.services.api',
   'qpham.directives'
 ]).value('$anchorScroll', angular.noop).config([
   '$stateProvider',
   '$urlRouterProvider',
   '$locationProvider',
   function myAppConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/projects');
     $locationProvider.html5Mode(true).hashPrefix('!');
   }
 ]).run(function run() {
 }).controller('AppCtrl', [
+  '$rootScope',
   '$scope',
+  '$state',
+  '$stateParams',
   '$http',
-  'projectsFactory',
-  function AppCtrl($scope, $http, projectsFactory) {
-    $scope.loading = true;
-    projectsFactory.getProjects().success(function (data) {
-      $scope.projects = data.projects;
-      $scope.loading = false;
-    }).error(function (error) {
-      $scope.status = 'Unable to load project data: ' + error.message;
+  function AppCtrl($rootScope, $scope, $state, $stateParams, $http) {
+    $http.get('api/projects').then(function (resp) {
+      $scope.projects = resp.data;
     });
-    window.addEventListener('load', function () {
-      FastClick.attach(document.body);
-    }, false);
-    $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    $scope.loadingObj = {};
+    $scope.contactListPos = {};
+    $scope.contactListPos.page = 1;
+    $scope.lastSearch = {};
+    $scope.lastSearch.search = '';
+    $scope.loadingObj.loading = true;
+    $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       $scope.move = false;
+      $scope.loadingObj.loading = true;
     });
   }
 ]);

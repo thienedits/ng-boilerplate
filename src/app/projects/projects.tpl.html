@@ -1,3 +1,28 @@
-<div ui-view>
-
+<div class="container">
+	<ul class="list-projects list-unstyled">
+		<li id="project{{project.id}}" class="list-projects-item" ng-repeat="project in projects">
+			<a ng-href="projects/{{project.id}}">
+			<div class="defer-image image-ratio:4x3 is-loading">
+				<img ng-src="assets/img/{{project.images[0]}}.jpg" imgload>
+			</div>
+			</a>
+		</li>
+	</ul>
 </div>
+<footer class="footer">
+	<div class="container">
+		<p>
+		This site was designed using 
+		<a href="http://www.angularjs.org">AngularJS</a>,
+		<a href="http://github.com/joshdmiller/ng-boilerplate">ng-boilerplate</a>,
+		<a href="https://github.com/angular-ui/ui-router">ui-router</a>,
+		<a href="http://angular-ui.github.io/bootstrap/">ui-bootstrap</a>,
+		and 
+		<a href="http://icomoon.io/">IcoMoon</a>.         
+		</p>
+		<p>(c) 2013 Thien Pham</p>
+		<ul class="social">
+			<li><a href="http://plus.google.com/102157534092095391789/about" target="_blank" title="Google Plus"><i class="qp-google-plus qp-lg"></i></a></li><li><a href="http://www.facebook.com/thienpham.us" target="_blank" title="Facebook"><i class="qp-facebook qp-lg"></i></a></li><li><a href="http://www.linkedin.com/in/thienpham" target="_blank"><i class="qp-linkedin qp-lg" title="Linkedin"></i></a></li>
+		</ul>
+	</div>
+</footer>

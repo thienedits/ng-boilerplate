@@ -1,7 +1,5 @@
-angular.module( 'ngBoilerplate.about', [
-  'ui.router',
-  'placeholders',
-  'ui.bootstrap'
+angular.module( 'qpham.about', [
+  'ui.router'
 ])
 
 .config(function config( $stateProvider ) {
@@ -18,7 +16,7 @@ angular.module( 'ngBoilerplate.about', [
 })
 
 .controller( 'AboutCtrl', function AboutCtrl( $scope ) {
-  
+  $scope.loadingObj.loading = 'false';
   $scope.expanded = false;
 
   $scope.dropdownDemoItems = [

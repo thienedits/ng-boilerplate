@@ -12,7 +12,7 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'ngBoilerplate.project', [
+angular.module( 'qpham.project', [
   'ui.router',
   'angular-carousel'
 ])
@@ -22,28 +22,50 @@ angular.module( 'ngBoilerplate.project', [
  * will handle ensuring they are all available at run-time, but splitting it
  * this way makes each module more "self-contained".
  */
-.config(function config( $stateProvider ) {
-  $stateProvider.state( 'project', {
-    url: '/project/:id',
+ .config(function config( $stateProvider ) {
+  $stateProvider.state( 'projects', {
     abstract: true,
+    url: '/projects',
+    resolve: {
+      projects: [ 'apiFactory', function (apiFactory) {
+        return apiFactory.getProjects();
+      }]
+    },
     views: {
       "main": {
         controller: 'ProjectsCtrl',
-        templateUrl: 'projects/projects.tpl.html'
+        template: '<div class="projects" ui-view></div>'
       }
-    }/*,
-    resolve: {
-      api: ['$http', '$stateParams', function($http, $stateParams) {
-        return $http.get('/api/project/' + $stateParams.id);
-      }]
-    }*/
+    }
   })
-  .state('project.view', {
+  .state('projects.list', {
     url: '',
-    templateUrl: 'projects/projects.view.tpl.html'
+    templateUrl: 'projects/projects.tpl.html',
+    controller: 'ProjectsCtrl'
   })
-  .state('project.large', {
-    url: '/large',
+  .state('projects.detail', {
+    url: '/:id',
+    controller: ['$scope', '$stateParams', 'statesFactory', function($scope, $stateParams, statesFactory) {
+      $scope.loadingObj.loading = false;
+      var id = $stateParams.id;
+      $scope.project = $scope.projects[id];
+      $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
+
+      if ($scope.project.largeImages == null) {
+        $scope.siteLink = true;
+      }
+       
+    }],
+    templateUrl: 'projects/projects.detail.tpl.html'
+  })
+  .state('projects.large', {
+    url: '/:id/large',
+    controller: ['$scope', '$stateParams', 'statesFactory', function($scope, $stateParams, statesFactory) {
+      $scope.loadingObj.loading = false;
+      var id = $stateParams.id;
+      $scope.project = $scope.projects[id];
+   
+    }],
     templateUrl: 'projects/projects.large.tpl.html'
   });
 })
@@ -51,25 +73,10 @@ angular.module( 'ngBoilerplate.project', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'ProjectsCtrl', function ProjectController( $scope, $stateParams, projectsFactory ) {
-  var id = $stateParams.id;
-  $scope.loading = true;
-  $scope.currentImage = 0;
+.controller( 'ProjectsCtrl', function ProjectController( $scope, projects ) {
+  $scope.projects = projects;
   $scope.siteLink = false;
-
-  projectsFactory.getProject(id)
-    .success(function (data) {
-        $scope.project = data.project;
-        $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
-        $scope.loading = false;
-        if ($scope.project.largeImages == null) {
-          $scope.siteLink = true;
-        }
-        
-    })
-    .error(function (error) {
-        $scope.status = 'Unable to load project data: ' + error.message;
-    });
+  $scope.loadingObj.loading = true;
   
 })
 

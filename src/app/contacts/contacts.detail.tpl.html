@@ -1,0 +1,41 @@
+<div class="container">
+  <nav class="back">
+    <a href="contacts" title="Go Back"><span class="qp-back qp-2x"></span></a>
+    <a ui-sref="contacts.edit({id:contact.contactId})"  class="edit-save">Edit</a>
+  </nav>
+
+  <div class="contact-heading">
+    <span class="profile-img"></span>
+    <h3>{{contact.name}}</h3>
+  </div>
+  <ul class="list-contact list-unstyled">
+    <li>
+      <a href="tel://{{contact.phone}}">
+        <span class="content">
+          <p class="title">Phone</p>
+          <p>{{contact.phone}}</p>
+        </span>
+        <span class="qp-phone qp-2x"></span>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:{{contact.email}}">
+        <span class="content">
+          <p class="title">Email</p>
+          <p>{{contact.email}}</p>
+        </span>
+        <span class="qp-mail qp-2x"></span>
+      </a>
+    </li>
+    <li>
+      <a href="http://maps.google.com/?q={{contact.address}}, {{contact.city}}, {{contact.state}}, {{contact.zip}}">
+        <span class="content">
+          <p class="title">Address</p>
+          <p>{{contact.address}}</p>
+          <p>{{contact.city}}, {{contact.state}} {{contact.zip}}</p>
+        </span>
+        <span class="qp-pin qp-2x"></span>
+      </a>
+    </li>
+  </ul>
+</div>

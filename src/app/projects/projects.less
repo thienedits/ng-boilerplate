@@ -1,15 +1,20 @@
-/*Carousel Tweaks*/
+/* Revolunet Angular-Carousel
+ * https://github.com/revolunet/angular-carousel
+*/
 
-@indicatorHeight:20px;
-@indicatorTopPadding:15px;
+@indicatorHeight:25px;
+@indicatorTopPadding:10px;
 @controlHeight:30px;
 /* general */
 .rn-carousel-container {
     position: relative;
     overflow: hidden;
+    min-height: 255px;
 }
 .rn-carousel-slides {
-    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     position: relative;
     white-space: nowrap;
     overflow: visible;
@@ -22,6 +27,8 @@
     display: inline-block;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
@@ -29,12 +36,11 @@
 .rn-carousel-indicator {
   width: 100%;
   text-align:center;
-  height: @indicatorHeight;
-  padding-top: @indicatorTopPadding;
+  padding: @indicatorTopPadding 0;
   cursor: pointer;
 
   span {
-    font-size: @fontSizeLarge;
+    font-size: @font-size-large;
     transition: color .2s ease-out;
     padding: 0 3px;
     color: #9da6ae;
@@ -59,7 +65,7 @@
   cursor: pointer;
   padding: 7px 5px;
   border: 1px solid #ccc;
-  .border-radius(50%);
+  border-radius:50%;
   color: #3d4247;
   background: #fff;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -88,42 +94,26 @@
   }
 }
 
+.projects {
+
+  .list-projects {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
 .project {
-  background-color: #fff;
-  min-height: 700px;
-  font-size: 16px;
-
-  /*Tablet Portrait iPad*/
-  @media (max-width: 768px)  { 
-    min-height: 400px;
-  }
-
-  @media (min-width: 940px)  { 
-    
-  }
-
-
+  
   nav.viewer {
     padding: 0 15px;
     height: 40px;
-    position: relative;
-
-    a, button {
-      
-    }
-
-    /*Tablet Portrait iPad*/
-    @media (max-width: 768px)  { 
-
-    }
   }
 
   nav.more {
     text-align: right;
-    padding: 0 10px;
-    margin-top: -30px;
+    margin-top: -@indicatorHeight - @indicatorTopPadding - @indicatorTopPadding;
     position: relative;
-    height: 48px;
+    height: @indicatorHeight + @indicatorTopPadding + @indicatorTopPadding;
 
     a {
       display: inline-block;
@@ -132,129 +122,47 @@
   }
 
   h4 {
-    color: @linkColor;
-    margin-bottom: 4px;
+    color: @link-color;
   } 
-
-  h5 {
-    white-space: normal;
-    margin: 0;
-    color: #3d4247;
-  }
-
-  p {
-    font-size: @baseFontSize;
-  }
-
-  .copy {
-    padding: 10px;
-  }
 
 }
 
 nav.back {
-    padding: 0 15px;
-    height: 48px;
-    position: relative;
-    clear: both;
-
-    a {
-      display: inline-block;
-    }
-
-    /*Tablet Portrait iPad*/
-    @media (max-width: 768px)  { 
-
-    }
-  }
-
-.large {
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 1000px;
-  background-color: #fff;
+  height: 44px;
   position: relative;
+  clear: both;
 
-  .rn-carousel-container {
-    overflow: hidden;
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: @font-size-large;
+    margin: 6px 0;
   }
 
-  .rn-carousel-control {
-    margin-top: -150px;
-  }
-
-    /*Tablet Portrait iPad*/
+  /*Tablet Portrait iPad*/
   @media (max-width: 768px)  { 
-    min-height: 400px;
-  }
 
-  .container {
-    max-width: 940px;
-
-    @media (max-width: 979px)  { 
-      width: auto;
-    }
-  }
-
-  nav.close {
-    background-color: #fff;
-    padding: 20px;
-
-    /*Tablet Portrait iPad*/
-    @media (max-width: 768px)  { 
-        padding: 10px; 
-    }
-  }
-  
-  nav {
-
-    a.close {
-
-      [class^="icon-"], [class*=" icon-"] {
-        vertical-align:top;
-      }
-    }
-
-    button.btn {
-      position: absolute;
-      z-index: 10;
-      top: 20%;
-      color: #fff;
-      .opacity(50);
-      background-color: #444;
-      text-shadow: none;
-    }
-
-    button.btn.prev {
-      left: 10px;
-    }
-
-    button.btn.next {
-      right: 10px;
-    }
-
-    .btn.disabled, .btn[disabled] {
-      .opacity(10);
-    }
-  }
-
-  .rn-carousel-indicator {
-    top:0;
   }
 }
 
-.touch {
+.large {
 
-  .project-large {
-    top: -22px;
-    z-index: 9999;
-
-    nav.close {
-      position: fixed;
-      z-index: 20;
-      width: 100%;
-      top: 0;
-      background-color: #fff;
-    }
+  .rn-carousel-container {
+    margin-bottom: 10px;
   }
+
+  .rn-carousel-indicator {
+    position: absolute;
+    top: 0;
+  }
+
+  .rn-carousel-control {
+    top: 30%;
+
+    @media (min-width: 940px)  { 
+      top:20%;
+    }
+
+  }
+
 }
