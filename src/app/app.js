@@ -1,7 +1,6 @@
   angular.module( 'qpham', [
   'templates-app',
   'templates-common',
-  'qpham.home',
   'qpham.about',
   'qpham.project',
   'qpham.resume',

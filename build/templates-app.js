@@ -6,7 +6,7 @@ angular.module("about/about.tpl.html", []).run(["$templateCache", function($temp
     "	<div class=\"header-section\">\n" +
     "		<div class=\"container\">\n" +
     "			<nav class=\"back\">\n" +
-    "				<a href=\"/home\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "				<a href=\"/projects\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "			</nav>\n" +
     "			<a href=\"https://plus.google.com/u/0/102157534092095391789/about\" class=\"profile-img\" target=\"_blank\"></a>\n" +
     "			<h3 class=\"text-center\">Thien Pham</h3>\n" +
@@ -298,6 +298,7 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
     "		and \n" +
     "		<a href=\"http://icomoon.io/\">IcoMoon</a>.         \n" +
     "		</p>\n" +
+    "		\n" +
     "		<p>(c) 2013 Thien Pham</p>\n" +
     "		<ul class=\"social\">\n" +
     "			<li><a href=\"http://plus.google.com/102157534092095391789/about\" target=\"_blank\" title=\"Google Plus\"><i class=\"qp-google-plus qp-lg\"></i></a></li><li><a href=\"http://www.facebook.com/thienpham.us\" target=\"_blank\" title=\"Facebook\"><i class=\"qp-facebook qp-lg\"></i></a></li><li><a href=\"http://www.linkedin.com/in/thienpham\" target=\"_blank\"><i class=\"qp-linkedin qp-lg\" title=\"Linkedin\"></i></a></li>\n" +
@@ -312,7 +313,7 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "	<div class=\"header-section\">\n" +
     "		<div class=\"container\">\n" +
     "			<nav class=\"back \">\n" +
-    "				<a href=\"/home\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "				<a href=\"/projects\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "			</nav>\n" +
     "			<a href=\"https://plus.google.com/u/0/102157534092095391789/about\" class=\"profile-img\" target=\"_blank\"></a>\n" +
     "			<h3 class=\"text-center\">Thien Pham</h3>\n" +

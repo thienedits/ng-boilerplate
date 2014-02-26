@@ -348,7 +348,7 @@ ul.social {
   background: #f1f5f7;
   height: auto;
   visibility: hidden;
-  padding: 0;
+  padding: 0 25px;
   font-family: @headings-font-family;
 
   @media (max-width:768px) {
@@ -359,7 +359,7 @@ ul.social {
     visibility: visible;
     width: 34.5%;
     max-width: 480px;
-    padding: 54px 36px;
+    padding: 0 36px;
   }
 
   @media (min-width: 1170px) {
@@ -381,7 +381,7 @@ ul.social {
       visibility: visible;
       width: 34.5%;
       max-width: 480px;
-      padding: 54px 36px;
+      padding: 0 36px;
     }
 
     @media (min-width: 1170px) {
@@ -418,7 +418,11 @@ ul.social {
 
   > ul > li {
     border-bottom: 1px solid #dbe3e5;
-    padding: 20px 0px 20px 20px;
+    padding: 20px 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   ul > li > ul > li {
