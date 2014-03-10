@@ -6,7 +6,6 @@ angular.module('qpham', [
   'qpham.resume',
   'qpham.contacts',
   'ui.router',
-  'restangular',
   'qpham.services.api',
   'qpham.directives'
 ]).value('$anchorScroll', angular.noop).config([
@@ -24,7 +23,9 @@ angular.module('qpham', [
   '$state',
   '$stateParams',
   '$http',
-  function AppCtrl($rootScope, $scope, $state, $stateParams, $http) {
+  '$window',
+  '$location',
+  function AppCtrl($rootScope, $scope, $state, $stateParams, $http, $window, $location) {
     $http.get('api/projects').then(function (resp) {
       $scope.projects = resp.data;
     });
@@ -36,6 +37,10 @@ angular.module('qpham', [
     $scope.lastSearch = {};
     $scope.lastSearch.search = '';
     $scope.loadingObj.loading = true;
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      $window.ga('send', 'pageview', { 'page': $location.path() });
+      console.log($location.path());
+    });
     $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       $scope.move = false;
       $scope.loadingObj.loading = true;

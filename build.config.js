@@ -66,9 +66,7 @@ module.exports = {
       'vendor/angular-touch/angular-touch.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-      'vendor/restangular/dist/restangular.js',
-      'vendor/lodash/dist/lodash.js',
-      'vendor/revolunet-angular-carousel/dist/angular-carousel.js',
+      'vendor/angular-carousel/dist/angular-carousel.js',
       'vendor/fastclick/lib/fastclick.js'
     ],
     css: [

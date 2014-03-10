@@ -63,20 +63,21 @@
   margin-top: -@indicatorHeight - @indicatorTopPadding - (@controlHeight / 2);
   opacity: 0.75;
   cursor: pointer;
-  padding: 7px 5px;
+  width: 40px;
+  height: 40px;
+  padding: 3px 8px;
   border: 1px solid #ccc;
   border-radius:50%;
   color: #3d4247;
   background: #fff;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  line-height: normal;
 
   &:hover {
     opacity: 1;
   }
 
   &.rn-carousel-control-prev {
-    padding: 7px;
+    padding: 3px 4px;
     font-family: 'qpham';
     left: 10px;
     &:before {
@@ -85,7 +86,6 @@
   }
 
   &.rn-carousel-control-next {
-    padding: 7px;
     font-family: 'qpham';
     right: 10px;
     &:before {
@@ -165,4 +165,8 @@ nav.back {
 
   }
 
+}
+
+img {
+  max-width: 100%;
 }

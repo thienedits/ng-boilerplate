@@ -6,7 +6,6 @@
   'qpham.resume',
   'qpham.contacts',
   'ui.router',
-  'restangular',
   'qpham.services.api',
   'qpham.directives'
 ])
@@ -22,7 +21,7 @@
 .run( function run () {
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $rootScope, $scope, $state, $stateParams, $http) {
+.controller( 'AppCtrl', function AppCtrl ( $rootScope, $scope, $state, $stateParams, $http, $window, $location) {
   $http.get('api/projects').then(function (resp) {
     $scope.projects = resp.data;
   });
@@ -40,6 +39,11 @@
   /*window.addEventListener('load', function() {
     FastClick.attach(document.body);
   }, false);*/
+  
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    $window.ga('send', 'pageview', {'page': $location.path()});
+    console.log($location.path());
+  });
 
   $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
     $scope.move = false;

@@ -36,19 +36,31 @@ app.use(function(req, res, next) {
     }
     next();
 });
-app.use(express.static(path.join(__dirname, '/bin')));
+
 app.use(app.router);
 
 
 
 // development only
 if (app.get('env') === 'development') {
+  app.use(express.static(path.join(__dirname, '/build')));
+
+  // This route deals enables HTML5Mode by forwarding missing files to the index.html
+  app.use(function(req, res) {
+    res.sendfile(__dirname + '/build/index.html');
+  });
+  
   app.use(express.errorHandler());
 }
 
 // production only
 if (app.get('env') === 'production') {
-  // TODO
+  app.use(express.static(path.join(__dirname, '/bin')));
+
+  // This route deals enables HTML5Mode by forwarding missing files to the index.html
+  app.use(function(req, res) {
+    res.sendfile(__dirname + '/bin/index.html');
+  });
 };
 
 
@@ -56,10 +68,7 @@ if (app.get('env') === 'production') {
  * Routes
  */
 
-// This route deals enables HTML5Mode by forwarding missing files to the index.html
-app.use(function(req, res) {
-res.sendfile(__dirname + '/bin/index.html');
-});
+
 
 // JSON API
 

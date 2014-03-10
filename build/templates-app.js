@@ -232,7 +232,6 @@ angular.module("projects/projects.detail.tpl.html", []).run(["$templateCache", f
     "			<a href=\"/projects\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "		</nav>\n" +
     "	</div>\n" +
-    "	\n" +
     "\n" +
     "	<ul rn-carousel rn-carousel-indicator rn-carousel-control>\n" +
     "		<li ng-repeat=\"image in project.images\" >\n" +
@@ -241,6 +240,7 @@ angular.module("projects/projects.detail.tpl.html", []).run(["$templateCache", f
     "			</div>\n" +
     "		</li>\n" +
     "	</ul>\n" +
+    "\n" +
     "	<div class=\"container content-section\">\n" +
     "		<nav class=\"more\">\n" +
     "			<a ng-href=\"projects/{{project.id}}/large\" class=\"\" ng-hide=\"siteLink\" title=\"View Larger\"><i class=\"qp-expand qp-2x\"></i></a>\n" +

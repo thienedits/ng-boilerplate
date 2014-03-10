@@ -136,6 +136,8 @@ ul.social {
   }
 
   li {
+      width: 32px;
+      height: 32px;
       padding: 4px;
       display: inline-block;
       border-radius: 50%;
@@ -213,21 +215,21 @@ ul.social {
   height: auto;
   min-height: 100%;
   max-width: 900px;
-  -webkit-transform: none;
-  transform: none;
+  
   .transition(-webkit-transform 400ms ease-in-out);
+  .box-shadow(0 0 15px 2px rgba(0,0,0,0.25));
 
   @media (min-width:768px) {
-
+    .translate(0, 0);
     width: 65%;
     margin-left: 35%;
-    .box-shadow(0 0 15px 2px rgba(0,0,0,0.25));
+    
   }
 
   @media (min-width: 1170px) {
     width: 70%;
-    margin-left: 27.5%;
-    margin-right: 2.5%;
+    margin-left: 27%;
+    margin-right: 3%;
   }
 
   &.move {
@@ -236,8 +238,7 @@ ul.social {
     .translate(75%, 0);
 
     @media (min-width:768px) {
-      -webkit-transform: none;
-      transform: none;
+      .translate(0, 0);
 
     }
 
@@ -262,6 +263,7 @@ ul.social {
   margin: 0 auto;
   background: #fff;
   min-width: 300px;
+  height: 56px;
 
   @media (min-width:940px) {
     .container  {
@@ -274,7 +276,7 @@ ul.social {
     width: 40px;
     height: 26px;
     padding: 0;
-    margin: 9px 15px 9px 0;
+    margin-top: 15px;
     background-color: #fff;
     border: 1px solid #8a9298;
     float: left;
@@ -316,7 +318,7 @@ ul.social {
 .brand {
   font-family: 'robotoregular', sans-serif;
   margin: 0;
-  padding: 6px;
+  padding-top: 12px;
   font-size: 23px;
   color: #8a9298;
   display: block;
@@ -352,12 +354,12 @@ ul.social {
   font-family: @headings-font-family;
 
   @media (max-width:768px) {
-    .box-shadow(inset -5px 0px 8px -2px rgba(0, 0, 0, 0.25));
+    
   }
 
   @media (min-width: 768px)  { 
     visibility: visible;
-    width: 34.5%;
+    width: 35%;
     max-width: 480px;
     padding: 0 36px;
   }
@@ -379,7 +381,7 @@ ul.social {
 
     @media (min-width: 768px)  { 
       visibility: visible;
-      width: 34.5%;
+      width: 35%;
       max-width: 480px;
       padding: 0 36px;
     }
