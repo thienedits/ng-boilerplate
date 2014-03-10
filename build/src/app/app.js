@@ -37,6 +37,9 @@ angular.module('qpham', [
     $scope.lastSearch = {};
     $scope.lastSearch.search = '';
     $scope.loadingObj.loading = true;
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      $window.ga('send', 'pageview', { 'page': $location.path() });
+    });
     $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       $scope.move = false;
       $scope.loadingObj.loading = true;
