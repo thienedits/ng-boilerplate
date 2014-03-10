@@ -40,10 +40,9 @@
     FastClick.attach(document.body);
   }, false);*/
   
-  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+  /*$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $window.ga('send', 'pageview', {'page': $location.path()});
-    console.log($location.path());
-  });
+  });*/
 
   $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
     $scope.move = false;
