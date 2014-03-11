@@ -17,6 +17,7 @@ angular.module('qpham', [
     $locationProvider.html5Mode(true).hashPrefix('!');
   }
 ]).run(function run() {
+  FastClick.attach(document.body);
 }).controller('AppCtrl', [
   '$rootScope',
   '$scope',

@@ -66,15 +66,11 @@ angular.module('qpham.directives', [])
     link: function (scope, iElement, iAttrs) {
 
       var el   = iElement[0],
-          html = angular.element(document.getElementsByTagName('html')),
-          a = angular.element(document.getElementsByClassName('menu')),
-          nav = a[0];
+      html = angular.element(document.getElementsByTagName('html'));
 
-      iElement.bind('webkitTransitionEnd', function(){
-        var elX = el.getBoundingClientRect(),
-        navX = nav.getBoundingClientRect();
-        
-        if (elX.left < navX.left + 15 || elX.left === 0) {
+      iElement.bind('transitionend webkitTransitionEnd', function(){
+        console.log(el.getBoundingClientRect().left);
+        if (el.getBoundingClientRect().left === 0) {
           html.removeClass('expanded');
         }
       });
@@ -162,7 +158,7 @@ angular.module('qpham.directives', [])
         main.removeClass('move');
         nav.removeClass('move');
         
-        var timer = $timeout(function() {$location.path(link);}, 300);  
+        var timer = $timeout(function() {$location.path(link);}, 500);  
         timer.then(
           function() {
 

@@ -19,6 +19,7 @@
 })
 
 .run( function run () {
+  FastClick.attach(document.body);
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $rootScope, $scope, $state, $stateParams, $http, $window, $location) {
@@ -35,10 +36,6 @@
   $scope.lastSearch = {};
   $scope.lastSearch.search = '';
   $scope.loadingObj.loading = true; //shows loading spinner when true
-
-  /*window.addEventListener('load', function() {
-    FastClick.attach(document.body);
-  }, false);*/
   
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $window.ga('send', 'pageview', {'page': $location.path()});
