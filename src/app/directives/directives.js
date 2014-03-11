@@ -79,6 +79,20 @@ angular.module('qpham.directives', [])
   };
 })
 
+.directive('spinner', function ($window) {
+  return {
+    restrict: 'C',
+    link: function (scope, iElement, iAttrs) {
+
+      iElement.bind('load', function(){
+        console.log('pac inserted');
+        iElement.addClass('needsclick');
+      });
+    
+    }
+  };
+})
+
 .directive('imgload', function () {
   return {
     restrict: 'A',
@@ -158,7 +172,7 @@ angular.module('qpham.directives', [])
         main.removeClass('move');
         nav.removeClass('move');
         
-        var timer = $timeout(function() {$location.path(link);}, 500);  
+        var timer = $timeout(function() {$location.path(link);}, 300);  
         timer.then(
           function() {
 
