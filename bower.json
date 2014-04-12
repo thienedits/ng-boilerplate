@@ -11,9 +11,6 @@
     
   },
   "dependencies": {
-    "angular-animate": "1.2.12",
-    "angular-touch": "1.2.12",
-    "modernizr": "~2.6.2",
     "angularfire": "~0.7.0",
     "ionic": "1.0.0-beta.1"
   }
