@@ -106,6 +106,7 @@ angular.module('qpham.directives', [])
         nav.removeClass('move');
         
         var timer = $timeout(function() {$location.path(link);}, 250);  
+
         timer.then(
           function() {
 
