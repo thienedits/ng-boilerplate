@@ -2,7 +2,7 @@ angular.module( 'qpham.contacts', [
   'ui.router',
   'contacts.directives',
   'ui.bootstrap',
-  'qpham.services.api',
+  'qpham.services.contacts',
   'qpham.services.states'
 ])
 
@@ -16,13 +16,31 @@ angular.module( 'qpham.contacts', [
     };
 })
 
+.filter('statesFilter', function() {
+  return function(contacts, states) {
+    var result = [];
+    angular.forEach(contacts, function(contact) {
+      if(states[0].name === false) {
+          result.push(contact);
+        }
+        else if(states[0].name === true && contact.state == 'Alabama'){
+          result.push(contact);
+        }
+        /*else if(types.double_suite == true && types.luxury == false && contact.type == 'double suite'){
+          result.push(contact);
+        }*/
+    });
+    return result;
+  };
+})
+
 .config(function config( $stateProvider ) {
   $stateProvider.state( 'contacts', {
     abstract: true,
     url: '/contacts',
     resolve: {
-      contacts: [ 'apiFactory', function (apiFactory) {
-        return apiFactory.getContacts();
+      contacts: [ 'contactsFactory', function (contactsFactory) {
+        return contactsFactory.collection();
       }]
     },
     views: {
@@ -38,56 +56,56 @@ angular.module( 'qpham.contacts', [
     controller: 'contactsCtrl'
   })
   .state('contacts.detail', {
-    url: '/:id',
-    controller: ['$scope', '$stateParams', 'statesFactory', function($scope, $stateParams, statesFactory) {
-      $scope.loadingObj.loading = false;
-      var id = $stateParams.id;
-      $scope.contact = $scope.contacts[id];
+    url: '/:contactId',
+    controller: ['$scope', '$stateParams', 'statesFactory', 'contactsFactory', 'FBURL', function($scope, $stateParams, statesFactory, contactsFactory, FBURL) {
+      $scope.contactId = $stateParams.contactId;
       $scope.states = statesFactory.states;
-      $scope.contact.state = $scope.states[getByKey($scope.states, $scope.contact.state)].name;
+      $scope.loadingObj.loading = false;
 
-      function getByKey(arr, name) {
-        for(var i = 0, len = arr.length; i < len; i += 1) {
-          if (arr[i].name === name) {
-            return i;
-          }
-        }
-      }
+      var _fburl = new Firebase(FBURL);
+      var contactRef = _fburl.child('contacts/'+$stateParams.contactId);
+      
+      contactRef.on('value', function(dataSnapshot) {
+        $scope.contact = dataSnapshot.val();
+      });
    
     }],
     templateUrl: 'contacts/contacts.detail.tpl.html'
   })
   .state('contacts.edit', {
-    url: '/:id/edit',
+    url: '/:contactId/edit',
     templateUrl: 'contacts/contacts.edit.tpl.html',
-    controller: ['$scope', '$http', '$location', '$stateParams', 'statesFactory', '$timeout', function ($scope, $http, $location, $stateParams, statesFactory, $timeout) {
-
-      $scope.loadingObj.loading = false;
-      var id = $stateParams.id;
-      $scope.contact = $scope.contacts[id];
+    controller: ['$scope', '$http', '$location', '$stateParams', 'statesFactory', '$timeout', 'contactsFactory', 'FBURL', function ($scope, $http, $location, $stateParams, statesFactory, $timeout, contactsFactory, FBURL) {
       $scope.states = statesFactory.states;
-      $scope.contact.state = $scope.states[getByKey($scope.states, $scope.contact.state)].name;
-
-      function getByKey(arr, name) {
-        for(var i = 0, len = arr.length; i < len; i += 1) {
-          if (arr[i].name === name) {
-            return i;
-          }
-        }
-      }
+      $scope.loadingObj.loading = false;
       
+      var _fburl = new Firebase(FBURL);
+      var contactRef = _fburl.child('contacts/'+$stateParams.contactId);
+      
+      contactRef.on('value', function(dataSnapshot) {
+        $scope.contact = dataSnapshot.val();
+      });
 
-      $scope.saveContact = function () {
-        $http.put('/api/contacts/' + $stateParams.id, $scope.contact).
-          success(function(data) {
-            $location.url('contacts/' + $stateParams.id);
-            console.log('contact edit success');
-          })
-          .error(function (error) {
-            $scope.status = 'Unable to load contacts data: ' + error;
-            console.log(error);
-          });
+      var onComplete = function(error) {
+        if (error) {
+          alert('Saved Failed.');
+        } else {
+          $scope.loadingObj.loading = false;
+          $location.path('contacts/' + $stateParams.contactId);
+          $scope.$apply();
+        }
       };
+      
+      $scope.saveContact = function () {
+        $scope.loadingObj.loading = true;
+        contactRef.update($scope.contact, onComplete);
+
+      };
+
+      $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        $scope.loadingObj.loading = true;
+        contactRef.update($scope.contact, onComplete);
+      });
 
       var componentForm = {
         street_number: 'short_name',
@@ -105,6 +123,14 @@ angular.module( 'qpham.contacts', [
       google.maps.event.addListener(autocomplete, 'place_changed', function() {
         fillInAddress();
       });
+
+      function getByKey(arr, name) {
+        for(var i = 0, len = arr.length; i < len; i += 1) {
+          if (arr[i].name === name) {
+            return i;
+          }
+        }
+      }
 
       function fillInAddress() {
         // Get the place details from the autocomplete object.
@@ -162,14 +188,24 @@ angular.module( 'qpham.contacts', [
   });
 })
 
-
-
-.controller( 'contactsCtrl', function contactsCtrl( $scope, filterFilter, contacts ) {
-  $scope.contacts = contacts;
-  $scope.contactsCount = contacts.length;
+.controller( 'contactsCtrl', function contactsCtrl( $scope, FBURL, filterFilter, orderByPriorityFilter, contactsFactory, statesFactory ) {
   $scope.entryLimit = 50;
+  $scope.contacts = contactsFactory.contacts;
+  $scope.contactsCount = contactsFactory.getContactsCount();
+  $scope.states = statesFactory.states;
+  $scope.filtered = [];
   $scope.loadingObj.loading = false;
   $scope.search = $scope.lastSearch.search;
+  $scope.predicate = 'name';
+
+  /*var contactsRef = new Firebase(FBURL+'/contacts');
+  contactsRef.on('value', function(snap) {
+    angular.forEach(snap.val(), function(value, key) {
+      $scope.contacts.push(value);
+    });
+    console.log($scope.contacts);
+  });*/
+
   $scope.headers = [
   {
     title: 'Id',
@@ -196,33 +232,34 @@ angular.module( 'qpham.contacts', [
     value: 'state'
   }];
 
+  /*$scope.$on('onContactsAdded', function() {
+    $scope.$apply(function() {
+      $scope.contactsCount = contactsFactory.getContactsCount();
+    });
+  });*/
+  
+  $scope.$watch('search', function(oldTerm, newTerm) {
+
+      $scope.page = 1;
+      // Use orderByPriorityFilter to convert Firebase Object into Array
+      $scope.filtered = filterFilter(orderByPriorityFilter($scope.contacts), $scope.search);
+      $scope.lastSearch.search = oldTerm;
+      $scope.contactsCount = $scope.filtered.length;
+    
+  });
+
   $scope.setPage = function (page) {
     var totalPages = Math.ceil($scope.contactsCount/$scope.entryLimit);
     if (page <= 0) {
-      $scope.contactListPos.page = 1;
+      $scope.page = 1;
     } else if (page > totalPages) {
-      $scope.contactListPos.page = totalPages;
+      $scope.page = totalPages;
     } else {
-      $scope.contactListPos.page = page;
+      $scope.page = page;
     }
 
     window.scroll(0, 0);
   };
-
-  $scope.$watch('search', function(oldTerm, newTerm) {
-    // Create $scope.filtered and then calculat $scope.noOfPages, no racing!
-    $scope.filtered = filterFilter($scope.contacts, oldTerm);
-    $scope.contactsCount = $scope.filtered.length;
-    $scope.lastSearch.search = oldTerm;
-
-    //sets contacts list page to 1 on new searches
-    if (oldTerm != newTerm) {
-      $scope.contactListPos.page = 1;
-    }
-    
-  });
-
-  
 
 })
 

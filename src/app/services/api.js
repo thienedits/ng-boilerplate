@@ -5,19 +5,7 @@ angular.module('qpham.services.api', [])
       return resp.data;
     });
 
-    var projects = $http.get(urlBase + '/projects').then(function (resp) {
-      return resp.data;
-    });
-
     var apiFactory = {};
-
-    apiFactory.getProjects = function() {
-      return projects;
-    };
-
-    apiFactory.getProject = function(id) { 
-      return $http.get(urlBase + '/project/' + id);
-    };
 
     apiFactory.getStates = function() { 
       /*return Restangular.all('states').getList();*/

@@ -13,8 +13,8 @@
  * specified, as shown below.
  */
 angular.module( 'qpham.project', [
-  'ui.router',
-  'angular-carousel'
+  'ionic',
+  'qpham.services.projects'
 ])
 
 /**
@@ -27,8 +27,8 @@ angular.module( 'qpham.project', [
     abstract: true,
     url: '/projects',
     resolve: {
-      projects: [ 'apiFactory', function (apiFactory) {
-        return apiFactory.getProjects();
+      projects: [ 'projectsFactory', function (projectsFactory) {
+        return projectsFactory.collection();
       }]
     },
     views: {
@@ -44,27 +44,72 @@ angular.module( 'qpham.project', [
     controller: 'ProjectsCtrl'
   })
   .state('projects.detail', {
-    url: '/:id',
-    controller: ['$scope', '$stateParams', 'statesFactory', function($scope, $stateParams, statesFactory) {
-      $scope.loadingObj.loading = false;
-      var id = $stateParams.id;
-      $scope.project = $scope.projects[id];
+    url: '/:projectId',
+    controller: ['$scope', '$stateParams', 'statesFactory', 'projectsFactory', 'FBURL', '$ionicSlideBoxDelegate', function($scope, $stateParams, statesFactory, projectsFactory, FBURL, $ionicSlideBoxDelegate) {
+      $scope.projectId = $stateParams.projectId;
+      $scope.project = projectsFactory.find($stateParams.projectId);
       $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
+      $scope.loadingObj.loading = false;
 
-      if ($scope.project.largeImages == null) {
-        $scope.siteLink = true;
-      }
+      var _fburl = new Firebase(FBURL);
+      var projectRef = _fburl.child('projects/'+$stateParams.projectId);
+      projectRef.on('value', function(dataSnapshot) {
+
+        if (dataSnapshot.hasChild('largeImages')) {
+          $scope.siteLink = false;
+        }
+
+        $scope.imgLength = dataSnapshot.child('images').numChildren();
+        $ionicSlideBoxDelegate.update();
+      });
+
+      $scope.nextSlide = function() {
+        $ionicSlideBoxDelegate.next();
+      };
+
+      $scope.prevSlide = function() {
+        $ionicSlideBoxDelegate.previous();
+      };
+
+      // Called each time the slide changes
+      $scope.slideChanged = function(index) {
+        $scope.slideIndex = index;
+      };
        
     }],
     templateUrl: 'projects/projects.detail.tpl.html'
   })
   .state('projects.large', {
-    url: '/:id/large',
-    controller: ['$scope', '$stateParams', 'statesFactory', function($scope, $stateParams, statesFactory) {
+    url: '/:projectId/large',
+    controller: ['$scope', '$stateParams', 'statesFactory', 'projectsFactory', 'FBURL', '$ionicSlideBoxDelegate', '$timeout', function($scope, $stateParams, statesFactory, projectsFactory, FBURL, $ionicSlideBoxDelegate, $timeout) {
+      $scope.projectId = $stateParams.projectId;
+      $scope.project = projectsFactory.find($stateParams.projectId);
       $scope.loadingObj.loading = false;
-      var id = $stateParams.id;
-      $scope.project = $scope.projects[id];
-   
+
+      var _fburl = new Firebase(FBURL);
+      var projectRef = _fburl.child('projects/'+$stateParams.projectId);
+      projectRef.on('value', function(dataSnapshot) {
+        $scope.imgLength = dataSnapshot.child('largeImages').numChildren();
+        $scope.slideIndex = 0;
+      });
+
+      $scope.nextSlide = function() {
+        $ionicSlideBoxDelegate.next();
+      };
+
+      $scope.prevSlide = function() {
+        $ionicSlideBoxDelegate.previous();
+      };
+
+      // Called each time the slide changes
+      $scope.slideChanged = function(index) {
+        $scope.slideIndex = index;
+      };
+
+      $scope.project.$on("loaded", function() {
+        $ionicSlideBoxDelegate.update();
+      });
+
     }],
     templateUrl: 'projects/projects.large.tpl.html'
   });
@@ -73,11 +118,16 @@ angular.module( 'qpham.project', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'ProjectsCtrl', function ProjectController( $scope, projects ) {
-  $scope.projects = projects;
-  $scope.siteLink = false;
-  $scope.loadingObj.loading = true;
-  
+.controller( 'ProjectsCtrl', function ProjectController( $rootScope, $scope, projectsFactory, $ionicSlideBoxDelegate ) {
+  $scope.projects = projectsFactory.collection();
+  $scope.siteLink = true;
+  $scope.loadingObj.loading = false;
+
+  $scope.openMenu = function() {
+    $rootScope.expand = true;
+  };
+
+
 })
 
 ;

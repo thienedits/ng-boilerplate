@@ -1,4 +1,4 @@
-angular.module('templates-app', ['about/about.tpl.html', 'contacts/contacts.detail.tpl.html', 'contacts/contacts.edit.tpl.html', 'contacts/contacts.tpl.html', 'home/home.tpl.html', 'projects/projects.detail.tpl.html', 'projects/projects.large.tpl.html', 'projects/projects.tpl.html', 'resume/resume.tpl.html']);
+angular.module('templates-app', ['about/about.tpl.html', 'contacts/contacts.detail.tpl.html', 'contacts/contacts.edit.tpl.html', 'contacts/contacts.tpl.html', 'home/home.tpl.html', 'projects/projects.detail.tpl.html', 'projects/projects.large.tpl.html', 'projects/projects.tpl.html', 'resume/resume.tpl.html', 'swipe/swipe.detail.tpl.html', 'swipe/swipe.large.tpl.html', 'swipe/swipe.tpl.html']);
 
 angular.module("about/about.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/about.tpl.html",
@@ -59,8 +59,8 @@ angular.module("contacts/contacts.detail.tpl.html", []).run(["$templateCache", f
   $templateCache.put("contacts/contacts.detail.tpl.html",
     "<div class=\"container\">\n" +
     "  <nav class=\"back\">\n" +
-    "    <a href=\"contacts\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
-    "    <a ui-sref=\"contacts.edit({id:contact.contactId})\"  class=\"edit-save\">Edit</a>\n" +
+    "    <a href=\"/contacts\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "    <a ui-sref=\"contacts.edit({id:contact.$id})\"  class=\"edit-save\">Edit</a>\n" +
     "  </nav>\n" +
     "\n" +
     "  <div class=\"contact-heading\">\n" +
@@ -132,7 +132,7 @@ angular.module("contacts/contacts.edit.tpl.html", []).run(["$templateCache", fun
     "      </div>\n" +
     "      <div class=\"form-group\">\n" +
     "        <label class=\"title\" for=\"\">Address</label>\n" +
-    "        <input ng-model=\"contact.address\" type=\"text\" class=\"form-control show-grid\" ng-focus=\"geolocate()\" id=\"address\" placeholder=\"Street Address\" required>\n" +
+    "        <input ng-model=\"contact.address\" type=\"text\" class=\"form-control show-grid address\" ng-focus=\"geolocate()\" id=\"address\" placeholder=\"Street Address\" required>\n" +
     "        <input ng-model=\"contact.city\" type=\"text\" class=\"form-control show-grid\" id=\"locality\" placeholder=\"City\" required>\n" +
     "        <div class=\"row\">\n" +
     "        <div class=\"col-xs-8\">\n" +
@@ -152,71 +152,78 @@ angular.module("contacts/contacts.edit.tpl.html", []).run(["$templateCache", fun
 
 angular.module("contacts/contacts.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("contacts/contacts.tpl.html",
+    "\n" +
     "<div class=\"container\">\n" +
-    "  <!-- <div class=\"search input-group\">\n" +
-    "    <input type=\"text\" class=\"form-control\" ng-model=\"search\" placeholder=\"Search\">\n" +
-    "    <span class=\"input-group-addon\">.00</span>\n" +
-    "  </div> -->\n" +
-    "  <div class=\"search\">\n" +
+    "  <nav class=\"back\">\n" +
+    "    <a href=\"/projects\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "  </nav>\n" +
+    "</div>\n" +
+    "<div class=\"container\">\n" +
+    "  <div id=\"search\" class=\"search\">\n" +
     "    <input type=\"text\" class=\"form-control\" ng-model=\"search\" placeholder=\"Search\"/>\n" +
     "    <!-- <a>Search</a> -->\n" +
     "  </div>\n" +
     "\n" +
-    "  <!-- <div ng-if=\"mobileSize == false\">\n" +
-    "    <div class=\"info\">\n" +
-    "      <h5>{{contactsCount}} Contacts</h5>\n" +
-    "      <span>Page {{contactListPos.page}} of {{numPages}}</span>\n" +
-    "      <div ng-show=\"contactsCount == 0\">\n" +
-    "        <h3>No Contacts Found</h3>\n" +
-    "      </div>\n" +
-    "    </div>\n" +
-    "    <table class=\"table table-striped\">\n" +
-    "      <thead >\n" +
-    "        <tr>\n" +
-    "          <th ng-repeat=\"header in headers\">\n" +
-    "            <a sort-by onsort=\"onSort\" sortdir=\"filterCriteria.sortDir\" sortedby=\"filterCriteria.sortedBy\" sortvalue=\"{{ header.value }}\">{{ header.title }}</a>\n" +
-    "          </th>\n" +
-    "        </tr>\n" +
-    "      </thead>\n" +
-    "      <tbody>\n" +
-    "      <tr ng-click=\"$location.path('contacts/' + data.contactId)\" ng-repeat=\"data in filtered | startFrom:(contactListPos.page-1)*entryLimit | limitTo:entryLimit\">\n" +
-    "        <td>{{data.contactId + 1}}</td>\n" +
-    "        <td>{{data.name}}</td>\n" +
-    "        <td>{{data.email}}</td>\n" +
-    "        <td>{{data.address}}</td>\n" +
-    "        <td>{{data.city}}</td>\n" +
-    "        <td>{{data.state}}</td>\n" +
-    "      </tr>\n" +
-    "      </tbody>\n" +
-    "    </table>\n" +
+    "<!-- <div ng-if=\"mobileSize == false\">\n" +
+    "  <div class=\"info\">\n" +
+    "    <h5>{{contactsCount}} Contacts</h5>\n" +
+    "    <span>Page {{page}} of {{numPages}}</span>\n" +
     "    <div ng-show=\"contactsCount == 0\">\n" +
     "      <h3>No Contacts Found</h3>\n" +
     "    </div>\n" +
-    "    <div class=\"align-center\">\n" +
-    "      <pagination  total-items=\"contactsCount\" items-per-page=\"entryLimit\" num-pages=\"numPages\" page=\"contactListPos.page\" rotate=\"false\" boundary-links=\"true\" max-size=\"10\"></pagination>\n" +
-    "    </div>\n" +
-    "  </div> -->\n" +
+    "  </div>\n" +
+    "  <table class=\"table table-striped\">\n" +
+    "    <thead >\n" +
+    "      <tr>\n" +
+    "        <th ng-repeat=\"header in headers\">\n" +
+    "          <a sort-by onsort=\"onSort\" sortdir=\"filterCriteria.sortDir\" sortedby=\"filterCriteria.sortedBy\" sortvalue=\"{{ header.value }}\">{{ header.title }}</a>\n" +
+    "        </th>\n" +
+    "      </tr>\n" +
+    "    </thead>\n" +
+    "    <tbody>\n" +
+    "    <tr ng-click=\"$location.path('contacts/' + data.contactId)\" ng-repeat=\"data in filtered | startFrom:(page-1)*entryLimit | limitTo:entryLimit\">\n" +
+    "      <td>{{data.contactId + 1}}</td>\n" +
+    "      <td>{{data.name}}</td>\n" +
+    "      <td>{{data.email}}</td>\n" +
+    "      <td>{{data.address}}</td>\n" +
+    "      <td>{{data.city}}</td>\n" +
+    "      <td>{{data.state}}</td>\n" +
+    "    </tr>\n" +
+    "    </tbody>\n" +
+    "  </table>\n" +
+    "  <div ng-show=\"contactsCount == 0\">\n" +
+    "    <h3>No Contacts Found</h3>\n" +
+    "  </div>\n" +
+    "  <div class=\"align-center\">\n" +
+    "    <pagination  total-items=\"contactsCount\" items-per-page=\"entryLimit\" num-pages=\"numPages\" page=\"page\" rotate=\"false\" boundary-links=\"true\" max-size=\"10\"></pagination>\n" +
+    "  </div>\n" +
+    "</div> -->\n" +
     "\n" +
-    "  <div class=\"\" ng-swipe-left=\"setPage(contactListPos.page + 1)\" ng-swipe-right=\"setPage(contactListPos.page - 1)\">\n" +
+    "  <div class=\"\" ng-swipe-left=\"setPage(page + 1)\" ng-swipe-right=\"setPage(page - 1)\">\n" +
     "      <div class=\"clearfix\">\n" +
     "        <h5 class=\"pull-left\">{{contactsCount}} Contacts <!-- <span ng-show=\"search\">with \"{{search}}\"</span> --></h5>\n" +
-    "        <h5 class=\"pull-right\">Page {{contactListPos.page}} of {{numPages}}</h5>\n" +
+    "        <h5 class=\"pull-right\">Page {{page}} of {{numPages}}</h5>\n" +
     "      </div>\n" +
     "      \n" +
     "      <div >\n" +
     "        <h3 ng-show=\"contactsCount == 0\">No Contacts Found</h3>\n" +
     "      </div>\n" +
+    "      <nav class=\"back\">\n" +
+    "        <a href=\"\" ng-click=\"predicate = 'name'; reverse=!reverse\">Name <span class=\"qp-next\" ng-class=\"{'down-arr': reverse, 'up-arr': !reverse}\"></span></a><br>\n" +
+    "      </nav>\n" +
+    "    \n" +
     "    <ul class=\"list-contacts list-group\">\n" +
-    "      <li class=\"list-group-item\" ng-click=\"$location.path('contacts/' + data.contactId)\" ng-repeat=\"data in filtered | startFrom:(contactListPos.page-1)*entryLimit | limitTo:entryLimit\">\n" +
+    "      <li class=\"list-group-item\" ng-click=\"$location.path('contacts/' + contact.$id)\" ng-repeat=\"contact in filtered | orderBy:predicate:reverse | startFrom:(page-1)*entryLimit | limitTo:entryLimit\">\n" +
     "        <span class=\"profile-img\"></span>\n" +
-    "        <span>{{data.name}}</span>\n" +
+    "        <span>{{contact.name}}</span>\n" +
     "        <span class=\"qp-next\"></span>\n" +
     "      </li>\n" +
     "    </ul>\n" +
-    "    <h5>Page {{contactListPos.page}} of {{numPages}}</h5>\n" +
-    "    <pagination on-select-page=\"setPage(page)\" total-items=\"contactsCount\" items-per-page=\"entryLimit\" num-pages=\"numPages\" page=\"contactListPos.page\" rotate=\"false\" boundary-links=\"false\" max-size=\"3\"></pagination>\n" +
+    "    <h5>Page {{page}} of {{numPages}}</h5>\n" +
+    "    <pagination on-select-page=\"setPage(page)\" total-items=\"contactsCount\" items-per-page=\"entryLimit\" num-pages=\"numPages\" page=\"page\" rotate=\"false\" boundary-links=\"false\" max-size=\"3\"></pagination>\n" +
     "  </div>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("home/home.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -226,29 +233,31 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
 
 angular.module("projects/projects.detail.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("projects/projects.detail.tpl.html",
-    "<div class=\"project\">\n" +
+    "<div class=\"project\" ng-style=\"style()\" resize>\n" +
     "	<div class=\"container\">\n" +
     "		<nav class=\"back\">\n" +
     "			<a href=\"/projects\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "		</nav>\n" +
     "	</div>\n" +
-    "\n" +
-    "	<ul rn-carousel rn-carousel-indicator rn-carousel-control>\n" +
-    "		<li ng-repeat=\"image in project.images\" >\n" +
-    "			<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
+    "	<ion-slide-box on-slide-changed=\"slideChanged(index)\">\n" +
+    "    <ion-slide ng-repeat=\"image in project.images\">\n" +
+    "      <div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
     "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
     "			</div>\n" +
-    "		</li>\n" +
-    "	</ul>\n" +
-    "\n" +
+    "    </ion-slide>\n" +
+    "  </ion-slide-box>\n" +
+    "	<div class=\"slider-controls\">\n" +
+    "    <span class=\"slider-control slider-control-prev\" ng-click=\"prevSlide()\" ng-if=\"slideIndex > 0\"></span>\n" +
+    "    <span class=\"slider-control slider-control-next\" ng-click=\"nextSlide()\" ng-if=\"slideIndex != imgLength - 1\"></span>\n" +
+    "  </div>\n" +
     "	<div class=\"container content-section\">\n" +
     "		<nav class=\"more\">\n" +
-    "			<a ng-href=\"projects/{{project.id}}/large\" class=\"\" ng-hide=\"siteLink\" title=\"View Larger\"><i class=\"qp-expand qp-2x\"></i></a>\n" +
+    "			<a ng-href=\"projects/{{project.$id}}/large\" class=\"\" ng-hide=\"siteLink\" title=\"View Larger\"><i class=\"qp-expand qp-2x\"></i></a>\n" +
     "			<a ng-href=\"{{project.url}}\" class=\"\" ng-show=\"siteLink\" title=\"View Site\" target=\"_blank\"><i class=\"qp-open qp-2x\"></i></a>\n" +
     "		</nav>\n" +
-    "		<h4>{{project.title}}</h4>\n" +
-    "		<h5>{{project.subtitle}}</h5>\n" +
-    "		<p>{{project.desc}}</p>\n" +
+    "		<h4 ng-cloak>{{project.title}}</h4>\n" +
+    "		<h5 ng-cloak>{{project.subtitle}}</h5>\n" +
+    "		<p ng-cloak>{{project.desc}}</p>\n" +
     "	</div>\n" +
     "	\n" +
     "</div>\n" +
@@ -258,28 +267,41 @@ angular.module("projects/projects.detail.tpl.html", []).run(["$templateCache", f
 
 angular.module("projects/projects.large.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("projects/projects.large.tpl.html",
-    "<div class=\"project large\">\n" +
+    "<div class=\"project large\" ng-style=\"style()\" resize>\n" +
     "	<div class=\"container\">\n" +
     "		<nav class=\"back\">\n" +
-    "			<a href=\"/projects/{{project.id}}\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "			<a href=\"/projects/{{project.$id}}\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
     "		</nav>\n" +
     "	</div>\n" +
-    "	<ul rn-carousel rn-carousel-indicator rn-carousel-control>\n" +
-    "		<li ng-repeat=\"image in project.largeImages\" >\n" +
-    "			<div class=\"defer-image image-ratio:3x4 is-loading\">\n" +
+    "\n" +
+    "	<ion-slide-box on-slide-changed=\"slideChanged(index)\" delegate-handle=\"large-slide\">\n" +
+    "    <ion-slide ng-repeat=\"image in project.largeImages\">\n" +
+    "      <div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
     "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
     "			</div>\n" +
-    "		</li>\n" +
-    "	</ul>\n" +
+    "    </ion-slide>\n" +
+    "  </ion-slide-box>\n" +
+    "  <div class=\"slider-controls\">\n" +
+    "    <span class=\"slider-control slider-control-prev\" ng-click=\"prevSlide()\" ng-if=\"slideIndex > 0\"></span>\n" +
+    "    <span class=\"slider-control slider-control-next\" ng-click=\"nextSlide()\" ng-if=\"slideIndex != imgLength - 1\"></span>\n" +
+    "  </div>\n" +
     "</div>");
 }]);
 
 angular.module("projects/projects.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("projects/projects.tpl.html",
+    "<div class=\"main-content-header\">\n" +
+    "  <div class=\"container\">\n" +
+    "    <button type=\"button\" class=\"btn btn-navbar\" ng-click=\"openMenu()\" title=\"Menu\">\n" +
+    "      <span class=\"icon-bar\">Menu</span>\n" +
+    "    </button>\n" +
+    "    <a class=\"brand\" href=\"/\" title=\"qpham.com\">thienpham</a>\n" +
+    "  </div> \n" +
+    "</div>\n" +
     "<div class=\"container\">\n" +
     "	<ul class=\"list-projects list-unstyled\">\n" +
-    "		<li id=\"project{{project.id}}\" class=\"list-projects-item\" ng-repeat=\"project in projects\">\n" +
-    "			<a ng-href=\"projects/{{project.id}}\">\n" +
+    "		<li id=\"project{{project.$id}}\" class=\"list-projects-item\" ng-repeat=\"project in projects | orderByPriority\">\n" +
+    "			<a href=\"projects/{{project.$id}}\">\n" +
     "			<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
     "				<img ng-src=\"assets/img/{{project.images[0]}}.jpg\" imgload>\n" +
     "			</div>\n" +
@@ -287,7 +309,7 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
     "		</li>\n" +
     "	</ul>\n" +
     "</div>\n" +
-    "<footer class=\"footer\">\n" +
+    "<footer class=\"footer\" ng-cloak>\n" +
     "	<div class=\"container\">\n" +
     "		<p>\n" +
     "		This site was designed using \n" +
@@ -295,6 +317,7 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
     "		<a href=\"http://github.com/joshdmiller/ng-boilerplate\">ng-boilerplate</a>,\n" +
     "		<a href=\"https://github.com/angular-ui/ui-router\">ui-router</a>,\n" +
     "		<a href=\"http://angular-ui.github.io/bootstrap/\">ui-bootstrap</a>,\n" +
+    "		<a href=\"https://www.firebase.com/\">firebase</a>,\n" +
     "		and \n" +
     "		<a href=\"http://icomoon.io/\">IcoMoon</a>.         \n" +
     "		</p>\n" +
@@ -465,4 +488,110 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "		</div>\n" +
     "	</div>\n" +
     "</div>");
+}]);
+
+angular.module("swipe/swipe.detail.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("swipe/swipe.detail.tpl.html",
+    "<div class=\"project\">\n" +
+    "	<div class=\"container\">\n" +
+    "		<nav class=\"back\">\n" +
+    "			<a href=\"/projects\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "		</nav>\n" +
+    "	</div>\n" +
+    "\n" +
+    "	<ul rn-carousel rn-carousel-indicator rn-carousel-control>\n" +
+    "		<li ng-repeat=\"image in project.images\" >\n" +
+    "			<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
+    "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
+    "			</div>\n" +
+    "		</li>\n" +
+    "	</ul>\n" +
+    "\n" +
+    "	<div class=\"container content-section\">\n" +
+    "		<nav class=\"more\">\n" +
+    "			<a ng-href=\"projects/{{project.$id}}/large\" class=\"\" ng-hide=\"siteLink\" title=\"View Larger\"><i class=\"qp-expand qp-2x\"></i></a>\n" +
+    "			<a ng-href=\"{{project.url}}\" class=\"\" ng-show=\"siteLink\" title=\"View Site\" target=\"_blank\"><i class=\"qp-open qp-2x\"></i></a>\n" +
+    "		</nav>\n" +
+    "		<h4>{{project.title}}</h4>\n" +
+    "		<h5>{{project.subtitle}}</h5>\n" +
+    "		<p>{{project.desc}}</p>\n" +
+    "	</div>\n" +
+    "	\n" +
+    "</div>\n" +
+    "\n" +
+    "");
+}]);
+
+angular.module("swipe/swipe.large.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("swipe/swipe.large.tpl.html",
+    "<div class=\"project large\">\n" +
+    "	<div class=\"container\">\n" +
+    "		<nav class=\"back\">\n" +
+    "			<a href=\"/projects/{{project.$id}}\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
+    "		</nav>\n" +
+    "	</div>\n" +
+    "	<ul rn-carousel rn-carousel-indicator rn-carousel-control>\n" +
+    "		<li ng-repeat=\"image in project.largeImages\" >\n" +
+    "			<div class=\"defer-image image-ratio:3x4 is-loading\">\n" +
+    "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
+    "			</div>\n" +
+    "		</li>\n" +
+    "	</ul>\n" +
+    "</div>");
+}]);
+
+angular.module("swipe/swipe.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("swipe/swipe.tpl.html",
+    "<!-- <div class=\"container\">\n" +
+    "	<ul class=\"list-projects list-unstyled\">\n" +
+    "		<li id=\"project{{project.$id}}\" class=\"list-projects-item\" ng-repeat=\"project in projects | orderByPriority\">\n" +
+    "			<a href=\"projects/{{project.$id}}\">\n" +
+    "			<div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
+    "				<img ng-src=\"assets/img/{{project.images[0]}}.jpg\" imgload>\n" +
+    "			</div>\n" +
+    "			</a>\n" +
+    "		</li>\n" +
+    "	</ul>\n" +
+    "</div> -->\n" +
+    "\n" +
+    "<swipe-cards >\n" +
+    "  <!-- <swipe-card on-swipe=\"cardSwiped()\" id=\"start-card\">\n" +
+    "    Swipe down for a new card\n" +
+    "  </swipe-card> -->\n" +
+    "  <swipe-card ng-repeat=\"project in cards\" on-destroy=\"cardDestroyed($index)\" on-swipe=\"cardSwiped($index)\">\n" +
+    "    <div ng-controller=\"CardCtrl\">\n" +
+    "      <div class=\"image\">\n" +
+    "        <div class=\"title\">\n" +
+    "          <h4>{{project.title}}</h4>\n" +
+    "          <h5>{{project.subtitle}}</h5>\n" +
+    "          <p>{{project.desc}}</p>\n" +
+    "        </div>\n" +
+    "        <img ng-src=\"assets/img/{{project.images[0]}}.jpg\">\n" +
+    "        <div class=\"button-bar\">\n" +
+    "          <a class=\"button button-clear button-positive\" ng-click=\"goAway()\">Answer</a>\n" +
+    "          <a class=\"button button-clear button-positive\" ng-click=\"goAway()\">Decline</a>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </swipe-card>\n" +
+    "</swipe-cards>\n" +
+    "\n" +
+    "<!-- <footer class=\"footer\">\n" +
+    "	<div class=\"container\">\n" +
+    "		<p>\n" +
+    "		This site was designed using \n" +
+    "		<a href=\"http://www.angularjs.org\">AngularJS</a>,\n" +
+    "		<a href=\"http://github.com/joshdmiller/ng-boilerplate\">ng-boilerplate</a>,\n" +
+    "		<a href=\"https://github.com/angular-ui/ui-router\">ui-router</a>,\n" +
+    "		<a href=\"http://angular-ui.github.io/bootstrap/\">ui-bootstrap</a>,\n" +
+    "		and \n" +
+    "		<a href=\"http://icomoon.io/\">IcoMoon</a>.         \n" +
+    "		</p>\n" +
+    "		\n" +
+    "		<p>(c) 2013 Thien Pham</p>\n" +
+    "		<ul class=\"social\">\n" +
+    "			<li><a href=\"http://plus.google.com/102157534092095391789/about\" target=\"_blank\" title=\"Google Plus\"><i class=\"qp-google-plus qp-lg\"></i></a></li><li><a href=\"http://www.facebook.com/thienpham.us\" target=\"_blank\" title=\"Facebook\"><i class=\"qp-facebook qp-lg\"></i></a></li><li><a href=\"http://www.linkedin.com/in/thienpham\" target=\"_blank\"><i class=\"qp-linkedin qp-lg\" title=\"Linkedin\"></i></a></li>\n" +
+    "		</ul>\n" +
+    "	</div>\n" +
+    "</footer> -->");
 }]);

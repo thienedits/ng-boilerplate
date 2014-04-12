@@ -9,12 +9,12 @@ module.exports = function ( karma ) {
      * This is the list of file patterns to load into the browser during testing.
      */
     files: [
-      'vendor/fastclick/lib/fastclick.js',
-      'vendor/angular/angular.js',
-      'vendor/angular-touch/angular-touch.js',
-      'vendor/angular-ui-router/release/angular-ui-router.js',
+      'vendor/ionic/release/js/ionic.bundle.nightly.js',
+      'vendor/ionic-contrib-swipe-cards/ionic.swipecards.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-      'vendor/angular-carousel/dist/angular-carousel.js',
+      'vendor/firebase/firebase.js',
+      'vendor/angularfire/angularfire.js',
+      'vendor/smoothScroll/smoothscroll.js',
       'build/templates-app.js',
       'build/templates-common.js',
       'vendor/angular-mocks/angular-mocks.js',

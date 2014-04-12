@@ -1,14 +1,19 @@
-<div class="project large">
+<div class="project large" ng-style="style()" resize>
 	<div class="container">
 		<nav class="back">
-			<a href="/projects/{{project.id}}" title="Go Back"><span class="qp-back qp-2x"></span></a>
+			<a href="/projects/{{project.$id}}" title="Go Back"><span class="qp-back qp-2x"></span></a>
 		</nav>
 	</div>
-	<ul rn-carousel rn-carousel-indicator rn-carousel-control>
-		<li ng-repeat="image in project.largeImages" >
-			<div class="defer-image image-ratio:3x4 is-loading">
+
+	<ion-slide-box on-slide-changed="slideChanged(index)" delegate-handle="large-slide">
+    <ion-slide ng-repeat="image in project.largeImages">
+      <div class="defer-image image-ratio:4x3 is-loading">
 				<img ng-src="assets/img/{{image}}.jpg" imgload>
 			</div>
-		</li>
-	</ul>
+    </ion-slide>
+  </ion-slide-box>
+  <div class="slider-controls">
+    <span class="slider-control slider-control-prev" ng-click="prevSlide()" ng-if="slideIndex > 0"></span>
+    <span class="slider-control slider-control-next" ng-click="nextSlide()" ng-if="slideIndex != imgLength - 1"></span>
+  </div>
 </div>

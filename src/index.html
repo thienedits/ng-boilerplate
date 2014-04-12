@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="qpham" ng-controller="AppCtrl" >
+<html ng-app="qpham" ng-controller="AppCtrl" ng-class="{expand: expand}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title ng-bind="pageTitle"></title>
     <base href="/index.html">
     <style type="text/css">
@@ -11,45 +11,34 @@
     .spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c;opacity: .75;}.spinner:after{position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-0.5em 0 0 -0.5em;background:#00afd8;border-radius:100%;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}@media(min-width:600px){.spinner{min-height:400px}}@media(min-width:720px){.spinner{min-height:480px}}@-webkit-keyframes bobble{0%{opacity:0;-webkit-transform:translateY(0)}35%{opacity:1;-webkit-transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(0)}}@keyframes bobble{0%{opacity:0;transform:translateY(0)}35%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(0)}}
     </style>
   </head>
-  <body  ng-style="style()" resize>
+  <body id="body" ng-style="style()" ng-class="{expand: expand}" resize>
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
-    <nav class="menu"  ng-style="style()" ng-class="{move: move}" resize>
+    <nav class="menu"  ng-style="style()" ng-class="{expand: expand}" resize>
       <ul class="list-nav list-unstyled">
-        <li><a class="brand" href="#/home" title="qpham.com">thienpham</a></li>
+        <li><a class="brand" ng-click="menuitemClick('projects')" title="qpham.com">thienpham</a></li>
         <li>
           <ul class="list-unstyled">
-            <li class="menuitem" ng-class="{active: $location.path() == '/projects'}"><a href="/projects" onclick="return false;" delay-click>Home</a></li>
-            <li class="menuitem" ng-class="{active: $location.path() == '/about'}"><a href="/about" onclick="return false;" delay-click>About Me</a></li>
-            <li class="menuitem" ng-class="{active: $location.path() == '/resume'}"><a href="/resume" onclick="return false;"delay-click>Resume</a></li>
-            <li class="menuitem" ng-class="{active: $location.path() == '/contacts'}"><a href="/contacts" onclick="return false;"delay-click>Contacts</a></li>
+            <li class="menuitem" id="link{{$index}}" ng-repeat="link in links" ng-class="{active: isActive(link)}">
+              <a ng-click="menuitemClick(link)" ng-cloak>{{link}}</a>
+            </li>
           </ul>
         </li>
         <li>
           <ul class="list-unstyled">
             <li><h4>Projects</h4></li>
-            <li class="menuitem" id="project{{project.id}}" ng-repeat="project in projects" ng-class="{active: isActive(project)}">
-              <a ng-href="projects/{{project.id}}" delay-click onclick="return false;">
-                {{project.title}}
-              </a>
+            <li class="menuitem" id="link{{project.$id}}" ng-repeat="project in projects | orderByPriority" ng-class="{active: isActive(project)}">
+              <a ng-click="menuitemClick(project)" ng-cloak>{{project.title}}</a>
             </li>
           </ul>
         </li>
         <li>v<%= version %></li>
       </ul>     
     </nav>
-    <!-- TranslateX applied to main-content DIV for animation  --> 
-    <div class="main-content" ng-class="{move: move}">
-    <div class="main-content-header">
-      <div class="container">
-        <button type="button" class="btn btn-navbar" ng-click="move = !move" title="Menu" expand>
-          <span class="icon-bar">Menu</span>
-        </button>
-        <a class="brand" href="/" title="qpham.com">thienpham</a>
-      </div> 
+    <div class="main-content" ng-class="{expand: expand}">
+      <div ui-view="main"></div>
     </div>
-    <div ui-view="main"></div>
-    </div>
-    
+    <div class="scrim" ng-class="{expand: expand}" ng-click="closeMenu()"></div>
+    <a class="back-to-top" scroll-top></a>
 
     <!-- compiled CSS -->
     <% styles.forEach( function ( file ) { %>

@@ -1,26 +1,28 @@
-<div class="project">
+<div class="project" ng-style="style()" resize>
 	<div class="container">
 		<nav class="back">
 			<a href="/projects" title="Go Back"><span class="qp-back qp-2x"></span></a>
 		</nav>
 	</div>
-
-	<ul rn-carousel rn-carousel-indicator rn-carousel-control>
-		<li ng-repeat="image in project.images" >
-			<div class="defer-image image-ratio:4x3 is-loading">
+	<ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide ng-repeat="image in project.images">
+      <div class="defer-image image-ratio:4x3 is-loading">
 				<img ng-src="assets/img/{{image}}.jpg" imgload>
 			</div>
-		</li>
-	</ul>
-
+    </ion-slide>
+  </ion-slide-box>
+	<div class="slider-controls">
+    <span class="slider-control slider-control-prev" ng-click="prevSlide()" ng-if="slideIndex > 0"></span>
+    <span class="slider-control slider-control-next" ng-click="nextSlide()" ng-if="slideIndex != imgLength - 1"></span>
+  </div>
 	<div class="container content-section">
 		<nav class="more">
-			<a ng-href="projects/{{project.id}}/large" class="" ng-hide="siteLink" title="View Larger"><i class="qp-expand qp-2x"></i></a>
+			<a ng-href="projects/{{project.$id}}/large" class="" ng-hide="siteLink" title="View Larger"><i class="qp-expand qp-2x"></i></a>
 			<a ng-href="{{project.url}}" class="" ng-show="siteLink" title="View Site" target="_blank"><i class="qp-open qp-2x"></i></a>
 		</nav>
-		<h4>{{project.title}}</h4>
-		<h5>{{project.subtitle}}</h5>
-		<p>{{project.desc}}</p>
+		<h4 ng-cloak>{{project.title}}</h4>
+		<h5 ng-cloak>{{project.subtitle}}</h5>
+		<p ng-cloak>{{project.desc}}</p>
 	</div>
 	
 </div>

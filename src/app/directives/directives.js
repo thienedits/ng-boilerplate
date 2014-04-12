@@ -45,40 +45,6 @@ angular.module('qpham.directives', [])
   };
 })
 
-.directive('expand', function ($window) {
-  return {
-    restrict: 'A',
-    link: function (scope, iElement, iAttrs) {
-
-      var html = angular.element(document.getElementsByTagName('html'));
-
-      iElement.bind('click', function(){
-        html.addClass('expanded');
-      });
-
-    }
-  };
-})
-
-.directive('mainContent', function ($window) {
-  return {
-    restrict: 'C',
-    link: function (scope, iElement, iAttrs) {
-
-      var el   = iElement[0],
-      html = angular.element(document.getElementsByTagName('html'));
-
-      iElement.bind('transitionend webkitTransitionEnd', function(){
-        console.log(el.getBoundingClientRect().left);
-        if (el.getBoundingClientRect().left === 0) {
-          html.removeClass('expanded');
-        }
-      });
-    
-    }
-  };
-})
-
 .directive('imgload', function () {
   return {
     restrict: 'A',
@@ -127,25 +93,6 @@ angular.module('qpham.directives', [])
   };
 })
 
-.directive('menuitem', function ($location) {
-  return {
-    restrict: 'C',
-    link: function (scope, iElement, iAttrs) {
-
-    scope.$location = $location;
-
-	scope.isActive = function(project) {
-		if('/project/' + project.id == $location.path()) {
-		return true;
-		}
-
-		return false;
-	};
-
-    }
-  };
-})
-
 .directive('delayClick', function ($timeout, $location) {
   return {
     restrict: 'A',
@@ -158,7 +105,7 @@ angular.module('qpham.directives', [])
         main.removeClass('move');
         nav.removeClass('move');
         
-        var timer = $timeout(function() {$location.path(link);}, 500);  
+        var timer = $timeout(function() {$location.path(link);}, 250);  
         timer.then(
           function() {
 
@@ -203,6 +150,70 @@ angular.module('qpham.directives', [])
           });
         }
     };
+})
+
+.directive('noScroll', function($document) {
+
+  return {
+    restrict: 'A',
+    link: function($scope, $element, $attr) {
+
+      $document.on('touchmove', function(e) {
+        e.preventDefault();
+      });
+    }
+  };
+})
+
+.directive('scrollTop', function ($timeout, $location) {
+  return {
+    restrict: 'A',
+    link: function (scope, iElement, iAttrs) {
+      var cssPrefixString = {};
+      var cssPrefix = function(propertie) {
+          if (cssPrefixString[propertie] || cssPrefixString[propertie] === '') {
+            return cssPrefixString[propertie] + propertie;
+          }
+          var e = document.createElement('div');
+          var prefixes = ['', '-webkit-']; // Various supports...
+          for (var i in prefixes) {
+              if (typeof e.style[prefixes[i] + propertie] !== 'undefined') {
+                  cssPrefixString[propertie] = prefixes[i];
+                  return prefixes[i] + propertie;
+              }
+          }
+          return false;
+      };
+
+      
+        var cssProp = {};
+        var cssProp2 = {};
+        cssProp['opacity'] = 0;
+        cssProp[cssPrefix('transform')] = 'translate3d(0px, 150%, 0px)';
+        cssProp2['opacity'] = 1;
+        cssProp2[cssPrefix('transform')] = 'translate3d(0px, 0, 0px)';
+        
+        iElement.css(cssProp);
+    
+        window.onscroll = function() {
+
+          if (pageYOffset >= 200) {
+            iElement.css(cssProp2);
+          } else {
+            iElement.css(cssProp);
+          }  
+          
+        };
+      
+
+         
+
+      iElement.bind('click', function(e){
+        smoothScroll(document.getElementById('body'), 500);
+      });
+
+    }
+  };
 })
 
 ;

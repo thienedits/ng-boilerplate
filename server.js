@@ -20,7 +20,7 @@ var storage = new contactRepository();
  */
 
 // all environments
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 8080);
 app.use(express.compress());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());

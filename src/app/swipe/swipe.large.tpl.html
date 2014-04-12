@@ -1,0 +1,14 @@
+<div class="project large">
+	<div class="container">
+		<nav class="back">
+			<a href="/projects/{{project.$id}}" title="Go Back"><span class="qp-back qp-2x"></span></a>
+		</nav>
+	</div>
+	<ul rn-carousel rn-carousel-indicator rn-carousel-control>
+		<li ng-repeat="image in project.largeImages" >
+			<div class="defer-image image-ratio:3x4 is-loading">
+				<img ng-src="assets/img/{{image}}.jpg" imgload>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,12 +1,4 @@
-<div class="main-content-header">
-  <div class="container">
-    <button type="button" class="btn btn-navbar" ng-click="openMenu()" title="Menu">
-      <span class="icon-bar">Menu</span>
-    </button>
-    <a class="brand" href="/" title="qpham.com">thienpham</a>
-  </div> 
-</div>
-<div class="container">
+<!-- <div class="container">
 	<ul class="list-projects list-unstyled">
 		<li id="project{{project.$id}}" class="list-projects-item" ng-repeat="project in projects | orderByPriority">
 			<a href="projects/{{project.$id}}">
@@ -16,8 +8,31 @@
 			</a>
 		</li>
 	</ul>
-</div>
-<footer class="footer" ng-cloak>
+</div> -->
+
+<swipe-cards >
+  <!-- <swipe-card on-swipe="cardSwiped()" id="start-card">
+    Swipe down for a new card
+  </swipe-card> -->
+  <swipe-card ng-repeat="project in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
+    <div ng-controller="CardCtrl">
+      <div class="image">
+        <div class="title">
+          <h4>{{project.title}}</h4>
+          <h5>{{project.subtitle}}</h5>
+          <p>{{project.desc}}</p>
+        </div>
+        <img ng-src="assets/img/{{project.images[0]}}.jpg">
+        <div class="button-bar">
+          <a class="button button-clear button-positive" ng-click="goAway()">Answer</a>
+          <a class="button button-clear button-positive" ng-click="goAway()">Decline</a>
+        </div>
+      </div>
+    </div>
+  </swipe-card>
+</swipe-cards>
+
+<!-- <footer class="footer">
 	<div class="container">
 		<p>
 		This site was designed using 
@@ -25,7 +40,6 @@
 		<a href="http://github.com/joshdmiller/ng-boilerplate">ng-boilerplate</a>,
 		<a href="https://github.com/angular-ui/ui-router">ui-router</a>,
 		<a href="http://angular-ui.github.io/bootstrap/">ui-bootstrap</a>,
-		<a href="https://www.firebase.com/">firebase</a>,
 		and 
 		<a href="http://icomoon.io/">IcoMoon</a>.         
 		</p>
@@ -35,4 +49,4 @@
 			<li><a href="http://plus.google.com/102157534092095391789/about" target="_blank" title="Google Plus"><i class="qp-google-plus qp-lg"></i></a></li><li><a href="http://www.facebook.com/thienpham.us" target="_blank" title="Facebook"><i class="qp-facebook qp-lg"></i></a></li><li><a href="http://www.linkedin.com/in/thienpham" target="_blank"><i class="qp-linkedin qp-lg" title="Linkedin"></i></a></li>
 		</ul>
 	</div>
-</footer>
+</footer> -->
