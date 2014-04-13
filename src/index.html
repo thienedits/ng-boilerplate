@@ -15,11 +15,11 @@
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
     <nav class="menu"  ng-style="style()" ng-class="{expand: expand}" resize>
       <ul class="list-nav list-unstyled">
-        <li><a class="brand" ng-click="menuitemClick('projects')" title="qpham.com">thienpham</a></li>
+        <li><a class="brand" ng-href="/" ng-click="closeMenu()" title="qpham.com">thienpham</a></li>
         <li>
           <ul class="list-unstyled">
             <li class="menuitem" id="link{{$index}}" ng-repeat="link in links" ng-class="{active: isActive(link)}">
-              <a ng-click="menuitemClick(link)" ng-cloak>{{link}}</a>
+              <a ng-href="/{{link}}" ng-click="closeMenu()" ng-cloak>{{link}}</a>
             </li>
           </ul>
         </li>
@@ -27,7 +27,7 @@
           <ul class="list-unstyled">
             <li><h4>Projects</h4></li>
             <li class="menuitem" id="link{{project.$id}}" ng-repeat="project in projects | orderByPriority" ng-class="{active: isActive(project)}">
-              <a ng-click="menuitemClick(project)" ng-cloak>{{project.title}}</a>
+              <a ng-href="/projects/{{project.$id}}" ng-click="closeMenu()" ng-cloak>{{project.title}}</a>
             </li>
           </ul>
         </li>

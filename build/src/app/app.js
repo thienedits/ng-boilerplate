@@ -59,16 +59,6 @@ angular.module('qpham', [
       }
       return false;
     };
-    $scope.menuitemClick = function (project) {
-      if (project.$id) {
-        $location.path('/projects/' + project.$id);
-      } else if (project) {
-        $location.path('/' + project);
-      } else {
-        $location.path('/projects');
-      }
-      $rootScope.expand = false;
-    };
     $scope.closeMenu = function () {
       $rootScope.expand = false;
     };
