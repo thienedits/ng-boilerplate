@@ -1,6 +1,6 @@
 {
   "name": "qpham-portfolio",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "devDependencies": {
     "angular": "1.2.12",
     "angular-mocks": "1.2.12",
