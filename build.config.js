@@ -62,11 +62,11 @@ module.exports = {
    */
   vendor_files: {
     js: [
-      'vendor/ionic/release/ionic.bundle.nightly.js',
+      'vendor/ionic/release/js/ionic.bundle.nightly.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'vendor/firebase/firebase.js',
       'vendor/angularfire/angularfire.js',
-      'src/assets/smoothScroll/smoothscroll.js'
+      'vendor/smoothScroll/smoothscroll.js'
     ],
     css: [
       

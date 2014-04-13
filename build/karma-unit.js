@@ -9,11 +9,11 @@ module.exports = function ( karma ) {
      * This is the list of file patterns to load into the browser during testing.
      */
     files: [
-      'vendor/ionic/release/ionic.bundle.nightly.js',
+      'vendor/ionic/release/js/ionic.bundle.nightly.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'vendor/firebase/firebase.js',
       'vendor/angularfire/angularfire.js',
-      'src/assets/smoothScroll/smoothscroll.js',
+      'vendor/smoothScroll/smoothscroll.js',
       'build/templates-app.js',
       'build/templates-common.js',
       'vendor/angular-mocks/angular-mocks.js',
