@@ -49,10 +49,13 @@ angular.module('qpham.directives', [])
   return {
     restrict: 'A',
     link: function (scope, iElement, iAttrs) {
+      footer = angular.element(document.getElementsByClassName('footer'));
+      footer.css('opacity', 0);
 
       iElement.bind('load', function(e){
         var parent = iElement.parent();
         parent.removeClass('is-loading').addClass('is-loaded');
+        footer.css('opacity', 1);
       }); 
       scope.loadingObj.loading = false;
     }
