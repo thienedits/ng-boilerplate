@@ -160,7 +160,7 @@ angular.module("contacts/contacts.tpl.html", []).run(["$templateCache", function
     "</div>\n" +
     "<div class=\"container\">\n" +
     "  <div id=\"search\" class=\"search\">\n" +
-    "    <input type=\"text\" class=\"form-control\" ng-model=\"search\" placeholder=\"Search\"/>\n" +
+    "    <input type=\"text\" class=\"form-control\" ng-model=\"search\" placeholder=\"Search\" search/>\n" +
     "    <!-- <a>Search</a> -->\n" +
     "  </div>\n" +
     "\n" +

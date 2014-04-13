@@ -131,9 +131,9 @@ angular.module('qpham.directives', [])
   };
 })
 
-.directive('input', function() {
+.directive('search', function() {
     return {
-        restrict: 'E',
+        restrict: 'A',
         require: 'ngModel',
         priority: '101',
         link: function(scope, elm, attr, ngModelCtrl) {
