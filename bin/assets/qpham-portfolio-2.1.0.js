@@ -1,5 +1,5 @@
 /**
- * qpham-portfolio - v2.1.0 - 2014-04-12
+ * qpham-portfolio - v2.1.0 - 2014-04-26
  * http://www.qpham.com
  *
  * Copyright (c) 2014 Thien Pham
