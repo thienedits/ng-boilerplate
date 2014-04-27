@@ -59,11 +59,7 @@
         lCss('<%= file %>', 'all');
       }
 
-      if (window.addEventListener) {
-        window.addEventListener('DOMContentLoaded', deferredCSS, false);
-      } else {
-        window.onload = deferredCSS;
-      }
+      window.onload = deferredCSS;
     </script><% }); %>
     
     <script async src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
