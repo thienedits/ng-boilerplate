@@ -41,26 +41,6 @@
     <a class="back-to-top" scroll-top></a>
 
     <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
-
-    <!-- Defer loading of CSS -->
-    <% styles.forEach( function ( file ) { %>
-    <script async type="text/javascript">
-      function lCss(url, media) {
-        var d = document;
-        var l = d.createElement('link');
-        l.rel = 'stylesheet';
-        l.type = 'text/css';
-        l.href = url;
-        l.media = media;
-        d.getElementsByTagName('body')[0].appendChild(l);
-      }
-
-      function deferredCSS() {
-        lCss('<%= file %>', 'all');
-      }
-
-      window.onload = deferredCSS;
-    </script><% }); %>
     
     <script async src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     <script>
@@ -82,3 +62,6 @@
 
   </body>
 </html>
+<!-- Defer loading of CSS -->
+<% styles.forEach( function ( file ) { %>
+<link rel="stylesheet" href="<%= file %>"><% }); %>
