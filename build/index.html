@@ -12,7 +12,6 @@
     </style>
   </head>
   <body id="body" ng-style="style()" ng-class="{expand: expand}" resize>
-    <span id="noblock"></span>
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
     <nav class="menu"  ng-style="style()" ng-class="{expand: expand}" resize>
       <ul class="list-nav list-unstyled">
@@ -40,7 +39,11 @@
     </div>
     <div class="scrim" ng-class="{expand: expand}" ng-click="closeMenu()"></div>
     <a class="back-to-top" scroll-top></a>
-    
+
+    <!-- Modernizr -->
+    <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
+
+    <!-- Defer and Inject CSS -->
     
     <script async>
       function loadXMLDoc() {
@@ -72,29 +75,9 @@
 
       window.onload = loadXMLDoc;
     </script>
-
-    
-    <script async type="text/javascript">
-      function lCss(url, media) {
-        var d = document;
-        var l = d.getElementsByTagName('link');
-        l.rel = 'stylesheet';
-        l.type = 'text/css';
-        l.href = url;
-        l.media = media;
-        d.getElementsByTagName('body')[0].appendChild(l);
-      }
-
-      function deferredCSS() {
-        var d = document;
-        var n = d.getElementsByTagName('noscript')[0];
-        d.getElementsByTagName('body')[0].appendChild(n);
-      }
-
-      /*window.onload = deferredCSS;*/
-    </script>
     
     <script async src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -109,7 +92,8 @@
       });*/
     </script>
 
-    <!-- compiled JavaScript -->
+    <!-- Compiled JavaScript -->
+    
     <script type="text/javascript" src="vendor/ionic/release/js/ionic.bundle.nightly.js"></script>
     <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script type="text/javascript" src="vendor/firebase/firebase.js"></script>
@@ -132,8 +116,5 @@
     <script type="text/javascript" src="src/common/plusOne/plusOne.js"></script>
     <script type="text/javascript" src="templates-common.js"></script>
     <script type="text/javascript" src="templates-app.js"></script>
-
   </body>
 </html>
-<!-- Defer loading of CSS -->
-    
