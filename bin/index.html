@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="qpham" ng-controller="AppCtrl" ng-class="{expand: expand}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title ng-bind="pageTitle"></title>
+    <base href="/index.html">
+    <style type="text/css">
+    /*inlined css for above the fold view*/
+    [ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none!important;}*{box-sizing:border-box}html{font-family:sans-serif;font-size:62.5%;-webkit-tap-highlight-color:rgba(0,0,0,0);height:100%;line-height:1}body{margin:0 auto;font-family:robotolight,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#8a9298;background-color:#fafafa;height:100%;display:block;overflow:auto}.spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c;opacity:.75;min-height:480px}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}.menu{font-family:robotoregular,Arial,sans-serif;background-color:#f1f5f7;position:fixed;top:0;left:0;width:65%;height:auto;padding:0 36px;-webkit-transform:translate3d(-100%,0,0);-webkit-transition:-webkit-transform 200ms ease-out;transition:-webkit-transform 200ms ease-out;-webkit-box-shadow:rgba(0,0,0,.14902)1px 1px 1px 0;box-shadow:rgba(0,0,0,.14902)1px 1px 1px 0;z-index:10;background-position:initial initial;background-repeat:initial initial;max-width:480px}ol,ul{margin-top:0;margin-bottom:10px}ul{padding-left:20px}.list-unstyled{padding-left:0;list-style:none}.menu ul.list-nav{position:relative;margin:0;padding:0}.menu>ul>li{border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#dbe3e5;padding:20px 0}a{background-color:transparent;background-position:initial initial;background-repeat:initial initial}a,a:active,a:hover,a:visited{color:#00afd8;text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}.brand{font-family:robotoregular,sans-serif;padding:8px 0;font-size:23px;color:#8a9298;display:block;width:138px;margin:0 auto;text-align:center;text-shadow:rgba(255,255,255,.498039)0 1px 0}.brand:active,.brand:hover,.brand:visited{color:#8a9298}.menu .brand{text-align:left;margin:0;padding:0;cursor:pointer}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}.menu ul>li>ul>li{margin-top:15px}.menuitem a{transition:color 150ms ease-in-out,background-color;-webkit-transition:color 150ms ease-in-out,background-color;cursor:pointer}.menuitem.active a,.no-touch .menuitem a:hover{background-color:#fff;color:#3d4247;padding:5px 10px;box-sizing:border-box;border-top-left-radius:14px;border-top-right-radius:14px;border-bottom-right-radius:14px;border-bottom-left-radius:14px;margin-left:-10px;background-position:initial initial;background-repeat:initial initial}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:robotoregular,Arial,sans-serif;font-weight:400;line-height:1.1;color:#3d4247}.h4,.h5,.h6,h4,h5,h6{margin-top:10px;margin-bottom:10px}.h4,h4{font-size:18px}.menu>ul>li:last-child{border-bottom-style:none}.main-content{background-color:#fff;width:100%;height:auto;min-height:100%;max-width:900px;background-position:initial initial;background-repeat:initial initial}.main-content-header{z-index:4;margin:0 auto;background-color:#fff;min-width:300px;background-position:initial initial;background-repeat:initial initial}.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;width:100%;max-width:900px}button,input,optgroup,select,textarea{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant:inherit;font-weight:inherit;line-height:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}.main-content-header .btn-navbar{display:none;width:40px;height:32px;padding:0;margin:8px 0;background-color:#fff;border:1px solid #8a9298;float:left;-webkit-tap-highlight-color:rgba(0,0,0,0);border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:5px}.main-content-header .btn-navbar .icon-bar{height:3px;background-color:#8a9298;position:relative;display:block;text-indent:-999em;width:47%;margin:0 auto;border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:5px;background-position:initial initial;background-repeat:initial initial}.projects .list-projects{margin-left:-15px;margin-right:-15px}li.list-projects-item{min-width:280px;width:100%;margin-bottom:10px;cursor:pointer}li.list-projects-item .defer-image{position:relative}img{border:0;vertical-align:middle;max-width:100%}.defer-image>img{display:block;width:100%;min-width:100%;max-width:100%}.defer-image.is-loaded>img{display:block;-webkit-animation:fadeIn 250ms ease-in-out}.scrim{display:block;background-color:#1d222c;position:fixed;height:100%;top:0;right:0;bottom:0;left:0;visibility:hidden;cursor:pointer;opacity:0;transition:all 200ms;-webkit-transition:all 200ms;z-index:200}.back-to-top{text-indent:-119988px;overflow:hidden;text-align:left;background-image:url(http://safe-ridge-4235.herokuapp.com/assets/img/back-to-top.svg);background-color:transparent;-webkit-background-size:contain;background-size:contain;cursor:pointer;display:block;opacity:0;position:fixed;bottom:36px;right:60px;height:50px;width:50px;z-index:1000;transition:all 300ms;-webkit-transition:all 300ms;background-position:50% 50%;background-repeat:no-repeat no-repeat}footer{padding:30px 0;background-color:#7b858d;opacity:0}footer a,footer a:active,footer a:hover,footer a:visited{color:#fff;text-decoration:none}footer p{color:#d6dfe2;text-align:center}
+    </style>
+  </head>
+  <body id="body" ng-style="style()" ng-class="{expand: expand}" resize>
+    <div class="spinner" ng-show="loadingObj.loading == true"></div>
+    <nav class="menu"  ng-style="style()" ng-class="{expand: expand}" resize>
+      <ul class="list-nav list-unstyled">
+        <li><a class="brand" ng-href="/" ng-click="closeMenu()" title="qpham.com">thienpham</a></li>
+        <li>
+          <ul class="list-unstyled">
+            <li class="menuitem" id="link{{$index}}" ng-repeat="link in links" ng-class="{active: isActive(link)}">
+              <a ng-href="/{{link}}" ng-click="closeMenu()" ng-cloak>{{link}}</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul class="list-unstyled">
+            <li><h4>Projects</h4></li>
+            <li class="menuitem" id="link{{project.$id}}" ng-repeat="project in projects | orderByPriority" ng-class="{active: isActive(project)}">
+              <a ng-href="/projects/{{project.$id}}" ng-click="closeMenu()" ng-cloak>{{project.title}}</a>
+            </li>
+          </ul>
+        </li>
+        <li>v2.1.0</li>
+      </ul>     
+    </nav>
+    <div class="main-content" ng-class="{expand: expand}">
+      <div ui-view="main"></div>
+    </div>
+    <div class="scrim" ng-class="{expand: expand}" ng-click="closeMenu()"></div>
+    <a class="back-to-top" scroll-top></a>
+
+    <!-- Modernizr -->
+    <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
+
+    <!-- Defer and Inject CSS -->
+    <script async>
+      function loadXMLDoc() {
+        var xmlhttp, css,
+        head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
+        style.type = 'text/css';
+
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+        css=xmlhttp.responseText;
+        style.appendChild(document.createTextNode(css));
+        head.appendChild(style);
+        }
+        }
+        xmlhttp.open("GET","assets/qpham-portfolio-2.1.0.css",true);
+        xmlhttp.send();
+      }
+
+      window.onload = loadXMLDoc;
+    </script>
+
+    <!-- Compiled JavaScript -->
+    <script async type="text/javascript" src="assets/qpham-portfolio-2.1.0.js"></script>
+    
+    <!-- Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-40268036-1', 'qpham.com');
+      
+      //localhost testing
+      /*ga('create', 'UA-40268036-1', {
+        'cookieDomain': 'none'
+      });*/
+    </script>
+  </body>
+</html>
