@@ -12,6 +12,7 @@
     </style>
   </head>
   <body id="body" ng-style="style()" ng-class="{expand: expand}" resize>
+    <span id="noblock"></span>
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
     <nav class="menu"  ng-style="style()" ng-class="{expand: expand}" resize>
       <ul class="list-nav list-unstyled">
@@ -39,8 +40,59 @@
     </div>
     <div class="scrim" ng-class="{expand: expand}" ng-click="closeMenu()"></div>
     <a class="back-to-top" scroll-top></a>
+    
+    <% styles.forEach( function ( file ) { %>
+    <script async>
+      function loadXMLDoc() {
+        var xmlhttp, css,
+        head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
+        style.type = 'text/css';
 
-    <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+        css=xmlhttp.responseText;
+        style.appendChild(document.createTextNode(css));
+        head.appendChild(style);
+        }
+        }
+        xmlhttp.open("GET","<%= file %>",true);
+        xmlhttp.send();
+      }
+
+      window.onload = loadXMLDoc;
+    </script><% }); %>
+
+    <% styles.forEach( function ( file ) { %>
+    <script async type="text/javascript">
+      function lCss(url, media) {
+        var d = document;
+        var l = d.getElementsByTagName('link');
+        l.rel = 'stylesheet';
+        l.type = 'text/css';
+        l.href = url;
+        l.media = media;
+        d.getElementsByTagName('body')[0].appendChild(l);
+      }
+
+      function deferredCSS() {
+        var d = document;
+        var n = d.getElementsByTagName('noscript')[0];
+        d.getElementsByTagName('body')[0].appendChild(n);
+      }
+
+      /*window.onload = deferredCSS;*/
+    </script><% }); %>
     
     <script async src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     <script>
@@ -63,5 +115,4 @@
   </body>
 </html>
 <!-- Defer loading of CSS -->
-<% styles.forEach( function ( file ) { %>
-<link rel="stylesheet" href="<%= file %>"><% }); %>
+    
