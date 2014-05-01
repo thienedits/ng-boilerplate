@@ -62,6 +62,7 @@
       <li class="list-group-item" ng-click="$location.path('contacts/' + contact.$id)" ng-repeat="contact in filtered | orderBy:predicate:reverse | startFrom:(page-1)*entryLimit | limitTo:entryLimit">
         <span class="profile-img"></span>
         <span>{{contact.name}}</span>
+        <span>{{$index}}</span> <span>{{contact.$id}}</span>
         <span class="qp-next"></span>
       </li>
     </ul>

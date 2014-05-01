@@ -57,7 +57,7 @@ angular.module( 'qpham.contacts', [
   })
   .state('contacts.detail', {
     url: '/:contactId',
-    controller: ['$scope', '$stateParams', 'statesFactory', 'contactsFactory', 'FBURL', function($scope, $stateParams, statesFactory, contactsFactory, FBURL) {
+    controller: ['$scope', '$stateParams', 'statesFactory', 'FBURL', function($scope, $stateParams, statesFactory, FBURL) {
       $scope.contactId = $stateParams.contactId;
       $scope.states = statesFactory.states;
       $scope.loadingObj.loading = false;
@@ -75,7 +75,7 @@ angular.module( 'qpham.contacts', [
   .state('contacts.edit', {
     url: '/:contactId/edit',
     templateUrl: 'contacts/contacts.edit.tpl.html',
-    controller: ['$scope', '$http', '$location', '$stateParams', 'statesFactory', '$timeout', 'contactsFactory', 'FBURL', function ($scope, $http, $location, $stateParams, statesFactory, $timeout, contactsFactory, FBURL) {
+    controller: ['$scope', '$http', '$location', '$stateParams', 'statesFactory', '$timeout', 'FBURL', function ($scope, $http, $location, $stateParams, statesFactory, $timeout, FBURL) {
       $scope.states = statesFactory.states;
       $scope.loadingObj.loading = false;
       

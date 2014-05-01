@@ -1,14 +1,8 @@
 angular.module('qpham.services.contacts', ['qpham.services.firebaseRefs'])
   .factory('contactsFactory',
-    function($rootScope, FireRef, FBURL, $q) {
+    function(FireRef, FBURL, $q) {
       var contactsCount = 0;
       var contactsRef = new Firebase(FBURL+'/contacts');
-
-      // Get the contacts count and notify the application
-      contactsRef.on('value', function(snap) {
-        contactsCount = snap.numChildren();
-        $rootScope.$broadcast('onContactsAdded');
-      });
 
       return {
         contacts: null,

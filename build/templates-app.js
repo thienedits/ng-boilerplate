@@ -216,6 +216,7 @@ angular.module("contacts/contacts.tpl.html", []).run(["$templateCache", function
     "      <li class=\"list-group-item\" ng-click=\"$location.path('contacts/' + contact.$id)\" ng-repeat=\"contact in filtered | orderBy:predicate:reverse | startFrom:(page-1)*entryLimit | limitTo:entryLimit\">\n" +
     "        <span class=\"profile-img\"></span>\n" +
     "        <span>{{contact.name}}</span>\n" +
+    "        <span>{{$index}}</span> <span>{{contact.$id}}</span>\n" +
     "        <span class=\"qp-next\"></span>\n" +
     "      </li>\n" +
     "    </ul>\n" +

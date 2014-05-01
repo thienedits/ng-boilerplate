@@ -54,9 +54,8 @@ angular.module('qpham.contacts', [
         '$scope',
         '$stateParams',
         'statesFactory',
-        'contactsFactory',
         'FBURL',
-        function ($scope, $stateParams, statesFactory, contactsFactory, FBURL) {
+        function ($scope, $stateParams, statesFactory, FBURL) {
           $scope.contactId = $stateParams.contactId;
           $scope.states = statesFactory.states;
           $scope.loadingObj.loading = false;
@@ -78,9 +77,8 @@ angular.module('qpham.contacts', [
         '$stateParams',
         'statesFactory',
         '$timeout',
-        'contactsFactory',
         'FBURL',
-        function ($scope, $http, $location, $stateParams, statesFactory, $timeout, contactsFactory, FBURL) {
+        function ($scope, $http, $location, $stateParams, statesFactory, $timeout, FBURL) {
           $scope.states = statesFactory.states;
           $scope.loadingObj.loading = false;
           var _fburl = new Firebase(FBURL);
