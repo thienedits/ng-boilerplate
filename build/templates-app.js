@@ -391,47 +391,73 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "		<div class=\"copy-section\">\n" +
     "			<h4 id=\"skills\">Skills</h4>\n" +
     "			<ul class=\"list-skills\">\n" +
-    "				<li>HTML5</li>\n" +
+    "				<li>Visual Design</li> \n" +
+    "				<li>Front-End Development</li> \n" +
+    "				<li>Web Applications</li>\n" +
+    "				<li>Responsive Design</li> \n" +
+    "				<li>HTML5</li> \n" +
     "				<li>CSS3</li>\n" +
-    "				<li>Responsive Design</li>\n" +
-    "				<li>UX</li>\n" +
-    "				<li>Visual Design</li>\n" +
+    "				<li>AngularJS</li>\n" +
     "				<li>Javascript</li>\n" +
-    "				\n" +
-    "				<li>Angular JS</li>\n" +
-    "				\n" +
-    "				<li>Front-end Dev</li>\n" +
-    "				\n" +
-    "				<li>Wireframing</li>\n" +
+    "				<li>JQuery</li>\n" +
+    "				<li>Twitter Bootstrap</li>\n" +
     "				<li>HTML Email</li>\n" +
-    "				<li>Photoshop</li>\n" +
+    "				<li>Google Analytics</li>\n" +
+    "				<li>Graphic Design</li>\n" +
+    "				<li>Photoshop</li> \n" +
     "				<li>Illustrator</li>\n" +
+    "				<li>InDesign</li> \n" +
+    "				<li>Actionscript 3</li> \n" +
     "			</ul>\n" +
     "		</div>\n" +
     "		\n" +
     "		<div class=\"copy-section\">\n" +
     "			<h4 id=\"experience\">Experience</h4>\n" +
     "			<div class=\"experience-section\">\n" +
-    "				<h5>Allstate Financial</h5>\n" +
+    "				<h5>Simpson Strong-Tie</h5>\n" +
     "				<ul class=\"list-exp-title list-unstyled\">\n" +
-    "					<li>Multimedia Designer</li>\n" +
-    "					<li>Chicago, IL</li>\n" +
-    "					<li>Sep 2010&ndash;Apr 2013</li>\n" +
+    "					<li>Front-End Developer/Designer</li>\n" +
+    "					<li>Pleasanton, CA</li>\n" +
+    "					<li>Aug 2013&ndash;Present</li>\n" +
     "				</ul>\n" +
     "				<ul>\n" +
-    "					<li>Work on a variety of agent and consumer facing projects that include web applications, microsites, flash demos, html emails, banners and print materials.</li>\n" +
-    "					<li>Provide visual design and html/css support as part of a cross-functional team creating an online web application for selling life insurance.</li>\n" +
-    "					<li>Design and coded various marketing related websites and landing pages implementing responsive design, crossbrowser compatibility/testing and Google Analytics.</li>\n" +
-    "					<li>Design and concept various flash demos using Actionscript 3.</li>\n" +
-    "					<li>Design, create and test HTML emails for various consumer based campaigns.</li>\n" +
-    "					<li>Execute multiple projects on time while managing work load, meeting critical deadlines and milestones.</li>\n" +
+    "					<li>Responsible for making updates and maintaining current consumer facing website <a href=\"http://www.strongtie.com\" target=\"_blank\">www.strongtie.com</a>.</li>\n" +
+    "\n" +
+    "					<li>Design photoshop mockups and create HTML5/CSS3/visual assets for retailer locator.</li>\n" +
+    "\n" +
+    "					<li>Design and create visual assets for Literature Library Android Application.</li>\n" +
+    "\n" +
+    "					<li>Design and build other various marketing related HTML5 websites.</li>\n" +
+    "\n" +
+    "					<li>Create icons for CFS Designer Windows based application.</li>\n" +
+    "\n" +
+    "					<li>Maintain various monthly email newsletters.</li>\n" +
     "				</ul>\n" +
     "			</div>\n" +
     "			\n" +
     "			<div class=\"experience-section\">\n" +
-    "				<h5>Independent Consultant</h5>\n" +
+    "				<h5>Allstate Financial</h5>\n" +
     "				<ul class=\"list-exp-title list-unstyled\">\n" +
-    "					<li>Multimedia Designer</li>\n" +
+    "					<li>Senior Web Designer</li>\n" +
+    "					<li>Chicago, IL</li>\n" +
+    "					<li>Sep 2010&ndash;Apr 2013</li>\n" +
+    "				</ul>\n" +
+    "				<ul>\n" +
+    "					<li>Worked on a variety of agent and consumer facing projects that include web applications, microsites, flash demos, html emails, banners and print materials.</li>\n" +
+    "					<li>Provided visual design and html/css support as part of a cross-functional team creating an online web application for selling life insurance.</li>\n" +
+    "					<li>Designed and coded various marketing related websites and landing pages implementing responsive design, crossbrowser compatibility/testing and Google Analytics.</li>\n" +
+    "					<li>Designed and concepted various flash demos using Actionscript 3.</li>\n" +
+    "					<li>Designed, created and tested HTML emails for various consumer based campaigns.</li>\n" +
+    "					<li>Executed multiple projects on time while managing work load, meeting critical deadlines and milestones.</li>\n" +
+    "				</ul>\n" +
+    "			</div>\n" +
+    "\n" +
+    "			\n" +
+    "			\n" +
+    "			<div class=\"experience-section\">\n" +
+    "				<h5>Harris Private Bank</h5>\n" +
+    "				<ul class=\"list-exp-title list-unstyled\">\n" +
+    "					<li>Senior Graphic Designer</li>\n" +
     "					<li>Chicago, IL</li>\n" +
     "					<li>Nov 2007&ndash;Sep 2010</li>\n" +
     "				</ul>\n" +
@@ -439,7 +465,7 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "					<li>Produced various communication projects that include internal communication, marketing material, sales collateral, and web material for large corporations and independent clients.</li>\n" +
     "					<li>Designed a variety of B2C print, marketing material, collateral and presentations for Harris Private Bank.</li>\n" +
     "					<li>Worked with Harris marketing managers, creating online banners and materials for web.</li>\n" +
-    "					<li>Worked with marketing managers at Deloitte to design and layout brochures and communication collateral.</li>\n" +
+    "					<li>Worked with marketing managers to design and layout brochures and communication collateral.</li>\n" +
     "				</ul>\n" +
     "			</div>\n" +
     "\n" +
