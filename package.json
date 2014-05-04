@@ -1,13 +1,13 @@
 {
   "author": "Thien Pham",
   "name": "qpham-portfolio",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "homepage": "http://www.qpham.com",
   "licenses": {
     "type": "MIT",
-    "url": "https://raw.github.com/joshdmiller/ng-boilerplate/master/LICENSE"
+    "url": ""
   },
-  "bugs": "https://github.com/joshdmiller/ng-boilerplate/issues",
+  "bugs": "",
   "repository": {
     "type": "git",
     "url": "git@github.com:thienedits/portfolio.git"
