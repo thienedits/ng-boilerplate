@@ -45,7 +45,7 @@
 
     <!-- Defer and Inject CSS -->
     <% styles.forEach( function ( file ) { %>
-    <script async>
+    <script type="text/javascript" async>
       function loadXMLDoc() {
         var xmlhttp, css,
         head = document.head || document.getElementsByTagName('head')[0],
@@ -81,8 +81,10 @@
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
     
     <!-- Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-    
+    <script type="text/javascript" async>
+      Modernizr.load('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places');
+    </script>
+
     <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
