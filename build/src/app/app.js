@@ -21,7 +21,7 @@
 })
 
 .run( function run (FBURL, $rootScope, $location) {
-  $rootScope.expand = false;
+  /*$rootScope.expand = false;*/
   $rootScope.FBURL = FBURL;
 
 })
@@ -33,6 +33,8 @@
 .controller( 'AppCtrl', function AppCtrl ( $rootScope, $scope, $state, $stateParams, $window, $location, FBURL, projectsFactory) {
   $scope.projects = projectsFactory.collection();
   $scope.links = ['projects', 'about', 'resume', 'contacts'];
+
+  $scope.expand = false;
 
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
@@ -64,11 +66,15 @@
       $location.path('/projects');
     }
     
-    $rootScope.expand = false;
+    $scope.expand = false;
   };
 
   $scope.closeMenu = function() {
-    $rootScope.expand = false;
+    $scope.expand = false;
+  };
+
+  $scope.openMenu = function() {
+    $scope.expand = true;
   };
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -76,7 +82,7 @@
   });
 
   $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    $rootScope.expand = false;
+    $scope.expand = false;
     $scope.loadingObj.loading = true;
   });
 

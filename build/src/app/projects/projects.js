@@ -121,11 +121,7 @@ angular.module( 'qpham.project', [
 .controller( 'ProjectsCtrl', function ProjectController( $rootScope, $scope, projectsFactory, $ionicSlideBoxDelegate ) {
   $scope.projects = projectsFactory.collection();
   $scope.siteLink = true;
-  $scope.loadingObj.loading = false;
-
-  $scope.openMenu = function() {
-    $rootScope.expand = true;
-  };
+  
 
 
 })

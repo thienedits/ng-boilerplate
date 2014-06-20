@@ -1,5 +1,5 @@
 angular.module('qpham.directives', [])
-  .directive('html', function ($window, $timeout, $location) {
+  /*.directive('html', function ($window, $timeout, $location) {
   return {
     restrict: 'E',
     link: function (scope, iElement, iAttrs) {
@@ -43,7 +43,7 @@ angular.module('qpham.directives', [])
       });
     }
   };
-})
+})*/
 
 .directive('imgload', function () {
   return {
