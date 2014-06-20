@@ -62,7 +62,7 @@ module.exports = {
    */
   vendor_files: {
     js: [
-      'vendor/ionic/release/js/ionic.bundle.nightly.js',
+      'vendor/ionic/release/js/ionic.bundle.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'vendor/firebase/firebase.js',
       'vendor/angularfire/angularfire.js',

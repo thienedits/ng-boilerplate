@@ -19,20 +19,6 @@ li.list-projects-item {
   .defer-image {
     position: relative;
   }
-  
-  .defer-image:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    .transition(box-shadow 150ms ease-in-out);
-  }
-  
-  &:hover .defer-image:before, &:active .defer-image:before {
-    .box-shadow(inset 0px 0px 100px rgba(0,0,0,0.4));
-  }
 
   @media (min-width: 1170px)  { 
       float: left;

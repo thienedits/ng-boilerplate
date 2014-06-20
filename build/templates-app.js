@@ -318,9 +318,12 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
     "		<a href=\"https://github.com/angular-ui/ui-router\">ui-router</a>,\n" +
     "		<a href=\"http://angular-ui.github.io/bootstrap/\">ui-bootstrap</a>,\n" +
     "		<a href=\"https://www.firebase.com/\">firebase</a>,\n" +
+    "		<a href=\"http://nodejs.org/\">nodejs</a>,\n" +
     "		and \n" +
     "		<a href=\"http://icomoon.io/\">IcoMoon</a>.         \n" +
     "		</p>\n" +
+    "\n" +
+    "		<p><a href=\"https://github.com/thienedits/ng-boilerplate/tree/master\" target=\"_blank\">Project Github Repo</a></p>\n" +
     "		\n" +
     "		<p>(c) 2013 Thien Pham</p>\n" +
     "		<ul class=\"social\">\n" +
