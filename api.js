@@ -4,6 +4,17 @@ var data = {
   "projects": [
     {
       "images": [
+        "uibootstrap-1",
+        "uibootstrap-2"
+      ],
+      "url":"http://angular-ui.github.io/bootstrap/",
+      "id": 0,
+      "title": "Angular UI Boostrap",
+      "subtitle": "Visual Design, HTML5, CSS3",
+      "desc": "Contributed to the design and styling of the demo site for the open source github project Angular UI Boostrap."
+    },
+    {
+      "images": [
         "fasteners-1",
         "fasteners-2",
         "fasteners-3"
@@ -13,7 +24,7 @@ var data = {
         "fasteners-2",
         "fasteners-3"
       ],
-      "id": 0,
+      "id": 1,
       "title": "Simpson Strong-Tie Fasteners",
       "subtitle": "Visual Design, HTML5, CSS3",
       "desc": "Landing pages designed and built for Simpson Strong-Tie Fastener product lines."
@@ -29,7 +40,7 @@ var data = {
         "diylocator-2",
         "diylocator-3"
       ],
-      "id": 1,
+      "id": 2,
       "title": "Simpson Strong-Tie Retailer Locator",
       "subtitle": "Visual Design, HTML5, CSS3",
       "desc": "A retailer locator page I designed and created for the Simpson Strong-Tie DIY Done Right site."
@@ -40,7 +51,7 @@ var data = {
         "litlib-2"
       ],
       "url":"https://play.google.com/store/apps/details?id=com.strongtie.litlib",
-      "id": 2,
+      "id": 3,
       "title": "Simpson Strong-Tie Literature Library",
       "subtitle": "Android, Visual Design",
       "desc": "I helped to create visual assets for the Android tablet and phone versions of the Simpson Strong-Tie Literature Library App."
@@ -51,7 +62,7 @@ var data = {
         "afmarketing-2"
       ],
       "url":"/assets/allstate/afmarketing",
-      "id": 3,
+      "id": 4,
       "title": "Allstate Marketing Portal",
       "subtitle": "Visual Design, Responsive Design, HTML5, Jquery, CSS3",
       "desc": "This is a work in progress project for Allstate Financial Marketing. I am currently working on a portal for the marketing department. They want a site where Allstate Financial Agents can go to get news, sales strategies, and marketing collateral needed to conduct business for their agencies. I am building this site to be responsive for desktop, mobile, and tablets."
@@ -62,7 +73,7 @@ var data = {
         "besuccessful-2"
       ],
       "url":"/assets/allstate/afmarketing/life/besuccessful",
-      "id": 4,
+      "id": 5,
       "title": "Besuccessful in Life",
       "subtitle": "Visual Design, Responsive Design, HTML5, Jquery, CSS3",
       "desc": "This site was a marketing initiative to communicate to agents on how they can be more successful at selling life insurance. Working with marketing managers, I was able to design and create this site under tight deadlines."
@@ -74,7 +85,7 @@ var data = {
         "iul-1"
       ],
       "url":"/assets/allstate/afmarketing/retirement/growthprotector",
-      "id": 5,
+      "id": 6,
       "title": "Allstate Product Pages",
       "subtitle": "Visual Design, Responsive Design, HTML5, Jquery, CSS3",
       "desc": "I was responsible for designing and creating the style for various Allstate Life Product pages such as the Growth Protector Series and the Ultra Index product."
@@ -89,7 +100,7 @@ var data = {
         "mockup-lrg-1",
         "mockup-lrg-2"
       ],
-      "id": 6,
+      "id": 7,
       "title": "Life Quote Mockup",
       "subtitle": "Visual Design, UX",
       "desc": "Working with information architects, I designed the following Photoshop concepts for an Allstate Life Insurance Quote and Application tool. "
@@ -102,7 +113,7 @@ var data = {
         "cqb-4"
       ],
       "url":"/assets/allstate/cqb/landing",
-      "id": 7,
+      "id": 8,
       "title": "Allstate Life Quote",
       "subtitle": "Web Application, Visual Design, HTML, CSS3, HTML Email",
       "desc": "Direct Term Sales was an Allstate initiative to start selling life insurance online. Working with a team of developers, UX architects, and sales managers I was responsible for the visual design and front-end development of the website. I was also responsible for the design of various direct email campaigns and involved to help implement a workflow system for sending the emails via Salesforce.com."
@@ -114,7 +125,7 @@ var data = {
         "hpb-landing-3"
       ],
       "url":"/assets/hpb/landing",
-      "id": 8,
+      "id": 9,
       "title": "HPB Landing",
       "subtitle": "Flash, AS3, Visual Design",
       "desc": "Harris Private Bank wanted a new and fresh page to promote their various services. Working with the marketing manager, I created this simple interactive landing page using Flash and AS3."
@@ -126,7 +137,7 @@ var data = {
         "mycfo-3"
       ],
       "url":"/assets/mycfo/banner",
-      "id": 9,
+      "id": 10,
       "title": "MyCFO Banner",
       "subtitle": "Flash, AS3, Visual Design",
       "desc": "Harris MyCFO wanted a simple online banner to help promote their services. I designed and created this interactive banner using Flash and AS3."
@@ -139,7 +150,7 @@ var data = {
       "largeImages": [
         "hpb-seattle-lrg-1"
       ],
-      "id": 10,
+      "id": 11,
       "title": "HPB Seattle",
       "subtitle": "Print Design",
       "desc": "The Seattle Office at Harris Private Bank needed an invite for a special concert event they were hosting for some of their clients. Working under tight time constraints, I was able to conceptualize this invite while maintaining the Harris Brand."
@@ -150,7 +161,7 @@ var data = {
         "c2c-2"
       ],
       "url":"/assets/allstate/c2c",
-      "id": 11,
+      "id": 12,
       "title": "Accessallstate ClicktoChat",
       "subtitle": "Visual Design, Responsive Design, HTML5, CSS3",
       "desc": "Accessallstate.com is used by thousands of financial agents to help manage the life insurance sales process. This microsite was design to help them understand the benefits of using a new online help feature, Click to Chat. I built the site using responsive design for both a desktop and mobile optimized experience."
@@ -165,7 +176,7 @@ var data = {
         "ca23-lrg-1",
         "ca23-lrg-2"
       ],
-      "id": 12,
+      "id": 13,
       "title": "CA 23",
       "subtitle": "Print Brochure",
       "desc": "A 2 page advertisement that I created for a residential developer. I tried to complement the trendy modern condos in the design and layout of this project. I used smaller type font and bold headings along with white space to mirror the clean style of the new condos."
