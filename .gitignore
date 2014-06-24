@@ -1,5 +1,5 @@
 *.sw*
 *~
 _art/
-node_modules/
-vendor/
+/node_modules/
+/vendor/
