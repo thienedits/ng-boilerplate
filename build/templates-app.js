@@ -60,7 +60,7 @@ angular.module("contacts/contacts.detail.tpl.html", []).run(["$templateCache", f
     "<div class=\"container\">\n" +
     "  <nav class=\"back\">\n" +
     "    <a href=\"/contacts\" title=\"Go Back\"><span class=\"qp-back qp-2x\"></span></a>\n" +
-    "    <a ui-sref=\"contacts.edit({id:contact.$id})\"  class=\"edit-save\">Edit</a>\n" +
+    "    <a ui-sref=\"contacts.edit({contactId:contactId})\"  class=\"edit-save\">Edit</a>\n" +
     "  </nav>\n" +
     "\n" +
     "  <div class=\"contact-heading\">\n" +
