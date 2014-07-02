@@ -132,7 +132,7 @@ angular.module("contacts/contacts.edit.tpl.html", []).run(["$templateCache", fun
     "      </div>\n" +
     "      <div class=\"form-group\">\n" +
     "        <label class=\"title\" for=\"\">Address</label>\n" +
-    "        <input ng-model=\"contact.address\" type=\"text\" class=\"form-control show-grid address\" ng-focus=\"geolocate()\" id=\"address\" placeholder=\"Street Address\" required>\n" +
+    "        <input ng-model=\"contact.address\" type=\"text\" class=\"form-control show-grid address\" ng-focus=\"geolocate()\" id=\"address\" placeholder=\"Street Address\" autofill required>\n" +
     "        <input ng-model=\"contact.city\" type=\"text\" class=\"form-control show-grid\" id=\"locality\" placeholder=\"City\" required>\n" +
     "        <div class=\"row\">\n" +
     "        <div class=\"col-xs-8\">\n" +
