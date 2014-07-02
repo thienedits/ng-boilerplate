@@ -377,7 +377,8 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "		</div>\n" +
     "		<div class=\"copy-section\">\n" +
     "			<h4 id=\"objective\">Objective</h4>\n" +
-    "			<p>I just relocated to the Bay Area from Chicago and currently seeking a challenging position in web/mobile development environment utilizing my skills in web, graphic, and multimedia design.</p>\n" +
+    "			<p>I am currently seeking a challenging position in a web/mobile environment utilizing my experience in visual design and\n" +
+    "front-end web development.</p>\n" +
     "		</div>\n" +
     "		\n" +
     "		<div class=\"copy-section\">\n" +
@@ -464,7 +465,8 @@ angular.module("resume/resume.tpl.html", []).run(["$templateCache", function($te
     "					<li>Nov 2007&ndash;Sep 2010</li>\n" +
     "				</ul>\n" +
     "				<ul>\n" +
-    "					<li>Produced various communication projects that include internal communication, marketing material, sales collateral, and web material for large corporations and independent clients.</li>\n" +
+    "					<li>Produced various communication projects that include internal communication, marketing material, sales collateral,\n" +
+    "and web related materials.</li>\n" +
     "					<li>Designed a variety of B2C print, marketing material, collateral and presentations for Harris Private Bank.</li>\n" +
     "					<li>Worked with Harris marketing managers, creating online banners and materials for web.</li>\n" +
     "					<li>Worked with marketing managers to design and layout brochures and communication collateral.</li>\n" +
