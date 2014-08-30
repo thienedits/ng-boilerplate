@@ -56,6 +56,10 @@
 html {
   height: 100%;
   line-height: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   &.expand {
     overflow: hidden;
 
@@ -343,7 +347,6 @@ ul.social {
 }
 
 .scrim {
-  display: block;
   background-color: #1d222c;
   position: fixed;
   height: 100%;
@@ -351,16 +354,14 @@ ul.social {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  visibility: hidden;
+  display: none;
   cursor: pointer;
   .opacity(.75);
   z-index: 200;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 
   &.expand {
     
-    visibility: visible;
+    display: block;
   }
 }
 
@@ -391,12 +392,13 @@ ul.social {
   position: fixed;
   top:0;
   left: 0;
-  width: 75%;
+  width: 85%;
+  max-width: 304px;
   height: auto;
   padding: 0 25px;
   .translate3d(-100%, 0, 0);
-  -webkit-transition: -webkit-transform 200ms ease-out;
-  transition: transform 200ms ease-out;
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
   z-index: 1000;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
