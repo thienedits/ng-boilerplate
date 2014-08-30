@@ -347,6 +347,7 @@ ul.social {
 }
 
 .scrim {
+  display: block;
   background-color: #1d222c;
   position: fixed;
   height: 100%;
@@ -354,14 +355,16 @@ ul.social {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  display: none;
+  visibility: hidden;
   cursor: pointer;
   .opacity(.75);
   z-index: 200;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
   &.expand {
     
-    display: block;
+    visibility: visible;
   }
 }
 
