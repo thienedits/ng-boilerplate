@@ -1,40 +1,63 @@
-<div class="container">
-  <nav class="back">
+<header class="app-bar" ng-class="{dark: scroll > 50}" keylines="7">
+  <div class="container" layout="horizontal" layout-align="space-between center">
+    <a href="/contacts" class="icon-btn pull-left" title="Go Back" icon-btn delay-click>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-arrow-back"></use></svg>
+    </a>
+    <a ng-href="/contacts/{{contactId}}/edit" class="icon-btn pull-right edit-save" title="Edit Contact" icon-btn delay-click>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-create"></use></svg>
+    </a>
+  </div>
+</header>
+<div class="container" style="padding-top:56px;">
+  <!-- <nav layout="horizontal" layout-align="space-between center" keylines="7">
     <a href="/contacts" title="Go Back"><span class="qp-back qp-2x"></span></a>
     <a ui-sref="contacts.edit({contactId:contactId})"  class="edit-save">Edit</a>
-  </nav>
-
-  <div class="contact-heading">
-    <span class="profile-img"></span>
+  </nav> -->
+  
+  <div layout="horizontal" layout-align="start center">
+    <div class="tile">
+      <span class="profile-img"></span>
+    </div>
     <h3>{{contact.name}}</h3>
   </div>
   <ul class="list-contact list-unstyled">
     <li>
-      <a href="tel://{{contact.phone}}">
+      <a href="tel://{{contact.phone}}" layout="horizontal" layout-align="space-between center">
         <span class="content">
           <p class="title">Phone</p>
           <p>{{contact.phone}}</p>
         </span>
-        <span class="qp-phone qp-2x"></span>
+        <span class="icon-btn pull-right">
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-call"></use></svg>
+        </span>
       </a>
     </li>
     <li>
-      <a href="mailto:{{contact.email}}">
+      <a href="mailto:{{contact.email}}" layout="horizontal" layout-align="space-between center">
         <span class="content">
           <p class="title">Email</p>
           <p>{{contact.email}}</p>
         </span>
-        <span class="qp-mail qp-2x"></span>
+        <span class="icon-btn pull-right">
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-mail"></use></svg>
+        </span>
       </a>
     </li>
     <li>
-      <a href="http://maps.google.com/?q={{contact.address}}, {{contact.city}}, {{contact.state}}, {{contact.zip}}">
+      <a href="http://maps.google.com/?q={{contact.address}}, {{contact.city}}, {{contact.state}}, {{contact.zip}}" layout="horizontal" layout-align="space-between center">
         <span class="content">
           <p class="title">Address</p>
           <p>{{contact.address}}</p>
           <p>{{contact.city}}, {{contact.state}} {{contact.zip}}</p>
         </span>
-        <span class="qp-pin qp-2x"></span>
+        <span class="icon-btn pull-right">
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-place"></use></svg>
+        </span>
       </a>
     </li>
   </ul>

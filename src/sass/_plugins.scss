@@ -1,0 +1,289 @@
+/**
+ * ADD ONS AND PLUGINS
+ */
+
+/**
+ * Author:      Matt Hinchliffe <www.maketea.co.uk>
+ * Description: Responsive image placeholders
+ */
+
+.no-js .defer-image {
+  display: none;
+}
+
+.defer-image > img {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.defer-image.is-loading {
+  position: relative;
+}
+
+/* Image aspect ratios - % is relative to width of containing block */
+.image-ratio\:1x2    { padding-top: 200%; }
+.image-ratio\:9x16   { padding-top: 177.777%; }
+.image-ratio\:10x16  { padding-top: 160%; }
+.image-ratio\:2x3    { padding-top: 150%; }
+.is-loading.image-ratio\:3x4    { padding-top: 133.333%; }
+.image-ratio\:1x1    { padding-top: 100%; }
+.is-loading.image-ratio\:4x3    { padding-top: 75%; }
+.image-ratio\:3x2    { padding-top: 66.66%; }
+.image-ratio\:16x10  { padding-top:62.5%; }
+.image-ratio\:16x9   { padding-top: 56.25%; }
+.image-ratio\:2x1    { padding-top: 50%; }
+
+/* Preload and loaded animations */
+@-webkit-keyframes bobble {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+  }
+  35% {
+    opacity: 1;
+    -webkit-transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes bobble {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+.defer-image.is-loading::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  margin: -0.5em 0 0 -0.5em;
+  background: rgba(125, 125, 125, 0.5);
+  border-radius: 100%;
+  -webkit-animation: bobble 1s 0s cubic-bezier(0.6, 1, 1, 1) infinite;
+          animation: bobble 1s 0s cubic-bezier(0.6, 1, 1, 1) infinite;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.defer-image.is-loading > img {
+  display: none;
+}
+
+.defer-image.is-loaded > img {
+  display: block;
+  -webkit-animation: fadeIn 200ms;
+          animation: fadeIn 200ms;
+}
+
+/*! 
+ * angular-loading-bar v0.3.0
+ * https://chieffancypants.github.io/angular-loading-bar
+ * Copyright (c) 2014 Wes Cruver
+ * License: MIT
+ */
+
+/* Make clicks pass-through */
+#loading-bar,
+#loading-bar-spinner {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  -webkit-transition: 350ms linear all;
+  -moz-transition: 350ms linear all;
+  -o-transition: 350ms linear all;
+  transition: 350ms linear all;
+}
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active,
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave,
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave {
+  opacity: 1;
+}
+
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+
+  background: #29d;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -moz-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  -o-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+#loading-bar-spinner {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1d222c;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  border:  solid 2px transparent;
+  border-top-color:  #29d;
+  border-left-color: #29d;
+  border-radius: 10px;
+
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation:    loading-bar-spinner 400ms linear infinite;
+  -ms-animation:     loading-bar-spinner 400ms linear infinite;
+  -o-animation:      loading-bar-spinner 400ms linear infinite;
+  animation:         loading-bar-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes loading-bar-spinner {
+  0%   { -webkit-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes loading-bar-spinner {
+  0%   { -moz-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes loading-bar-spinner {
+  0%   { -o-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes loading-bar-spinner {
+  0%   { -ms-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+
+/*! 
+ * DOMNodeInserted Hack
+ * http://stackoverflow.com/questions/6997826/alternative-to-domnodeinserted
+ * http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/
+ */
+
+@keyframes nodeInserted {  
+    from {  
+        outline-color: #fff; 
+    }
+    to {  
+        outline-color: #000;
+    } 
+}
+
+@-moz-keyframes nodeInserted {  
+    from {  
+        outline-color: #fff; 
+    }
+    to {  
+        outline-color: #000;
+    }  
+}
+
+@-webkit-keyframes nodeInserted {  
+    from {  
+        outline-color: #fff; 
+    }
+    to {  
+        outline-color: #000;
+    }  
+}
+
+@-ms-keyframes nodeInserted {  
+    from {  
+        outline-color: #fff; 
+    }
+    to {  
+        outline-color: #000;
+    } 
+}
+
+@-o-keyframes nodeInserted {  
+    from {  
+        outline-color: #fff; 
+    }
+    to {  
+        outline-color: #000;
+    }  
+} 
+
+.pac-container {
+  animation-duration: 0.001s;
+  -o-animation-duration: 0.001s;
+  -ms-animation-duration: 0.001s;
+  -moz-animation-duration: 0.001s;
+  -webkit-animation-duration: 0.001s;
+  animation-name: nodeInserted;
+  -o-animation-name: nodeInserted;
+  -ms-animation-name: nodeInserted;        
+  -moz-animation-name: nodeInserted;
+  -webkit-animation-name: nodeInserted;
+}

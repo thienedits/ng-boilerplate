@@ -5,12 +5,8 @@ angular.module( 'qpham.resume', [
 .config(function config( $stateProvider ) {
   $stateProvider.state( 'resume', {
     url: '/resume',
-    views: {
-      "main": {
-        controller: 'ResumeCtrl',
-        templateUrl: 'resume/resume.tpl.html'
-      }
-    },
+    controller: 'ResumeCtrl',
+    templateUrl: 'resume/resume.tpl.html',
     data:{ pageTitle: 'Resume | qpham.com' }
   });
 })

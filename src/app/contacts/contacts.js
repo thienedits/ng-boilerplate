@@ -3,7 +3,8 @@ angular.module( 'qpham.contacts', [
   'contacts.directives',
   'ui.bootstrap',
   'qpham.services.contacts',
-  'qpham.services.states'
+  'qpham.services.states',
+  'material.components.form'
 ])
 
 .filter('startFrom', function() {
@@ -43,12 +44,8 @@ angular.module( 'qpham.contacts', [
         return contactsFactory.collection();
       }]
     },
-    views: {
-      "main": {
-        controller: 'contactsCtrl',
-        template: '<div class="contacts" ui-view></div>'
-      }
-    }
+    controller: 'contactsCtrl',
+    template: '<div class="contacts" ui-view></div>'
   })
   .state('contacts.list', {
     url: '',
@@ -99,7 +96,12 @@ angular.module( 'qpham.contacts', [
       
       
       $scope.saveContact = function () {
-        $scope.loadingObj.loading = true;
+        
+        $timeout(function() {
+          $scope.loadingObj.loading = true;
+          contactRef.update($scope.contact, onComplete);
+        }, 100); 
+
         contactRef.update($scope.contact, onComplete);
 
       };
@@ -122,6 +124,7 @@ angular.module( 'qpham.contacts', [
   $scope.loadingObj.loading = false;
   $scope.search = $scope.lastSearch.search;
   $scope.predicate = 'name';
+  $scope.searchOpen = false;
 
   /*var contactsRef = new Firebase(FBURL+'/contacts');
   contactsRef.on('value', function(snap) {

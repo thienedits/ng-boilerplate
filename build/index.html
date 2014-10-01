@@ -8,37 +8,29 @@
     <base href="/index.html">
     <style type="text/css">
     /*inlined css for above the fold view*/
-    @-webkit-keyframes bobble{0%{opacity:0;-webkit-transform:translateY(0)}35%{opacity:1;-webkit-transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(0)}}@keyframes bobble{0%{opacity:0;transform:translateY(0)}35%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(0)}}.defer-image.is-loading::after{content:' ';position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-.5em 0 0 -.5em;background:rgba(125,125,125,.5);border-radius:100%;-webkit-animation:bobble 1s 0s infinite;animation:bobble 1s 0s infinite}.spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c;opacity:1;min-height:480px}.spinner:after{position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px 0 0 -7px;background:#00afd8;border-radius:14px;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}ul.list-nav{visibility: hidden;display: none;}
+    @-webkit-keyframes bobble{0%{opacity:0;-webkit-transform:translateY(0)}35%{opacity:1;-webkit-transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(0)}}@keyframes bobble{0%{opacity:0;transform:translateY(0)}35%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(0)}}.defer-image.is-loading::after{content:' ';position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-.5em 0 0 -.5em;background:rgba(125,125,125,.5);border-radius:100%;-webkit-animation:bobble 1s 0s infinite;animation:bobble 1s 0s infinite}.spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c;opacity:1;min-height:480px}.spinner:after{position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px 0 0 -7px;background:#00afd8;border-radius:14px;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}.menu,ul.list-nav,.icon-btn{visibility: hidden;display: none;}
     </style>
   </head>
-  <body id="body" ng-style="style()" ng-class="{expand: expand}" resize gmaps>
+  <body id="body" ng-class="{expand: expand}" resize gmaps scroll-position="scroll">
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
-    <nav class="menu"  ng-style="style()" ng-class="{expand: expand}" resize>
+    <nav class="menu" ng-class="{expand: expand}" layout="vertical">
+      <header class="app-bar" keylines="7">
+        <div class="container" layout="horizontal" layout-align="end center">
+          <a href="#" class="icon-btn pull-right" title="Close" ng-click="closeMenu()" icon-btn>
+            <span class="ripple"></span>
+            <svg><use xlink:href="assets/qpham-portfolio.svg#icon-close"></use></svg>
+          </a>
+        </div>
+      </header>
       <ul class="list-nav list-unstyled">
-        <li><a class="brand" ng-href="/" ng-click="closeMenu()" title="qpham.com" ng-cloak>thienpham</a></li>
-        <li>
-          <ul class="list-unstyled">
-            <li class="menuitem" id="link{{$index}}" ng-repeat="link in links" ng-class="{active: isActive(link)}">
-              <a ng-href="/{{link}}" ng-click="closeMenu()" ng-cloak>{{link}}</a>
-            </li>
-          </ul>
+        <li class="menuitem" id="link{{$index}}" ng-repeat="link in links">
+          <a ng-href="/{{link}}" class="text-headline" ng-click="closeMenu()" keylines="7" ng-cloak delay-click>{{link}}</a>
         </li>
-        <li>
-          <ul class="list-unstyled">
-            <li><h4>Projects</h4></li>
-            <li class="menuitem" id="link{{project.$id}}" ng-repeat="project in projects | orderByPriority" ng-class="{active: isActive(project)}">
-              <a ng-href="/projects/{{project.$id}}" ng-click="closeMenu()" ng-cloak>{{project.title}}</a>
-            </li>
-          </ul>
-        </li>
-        <li ng-cloak>v2.3.1</li>
+        <li layout="vertical" layout-align="center" keylines="7" ng-cloak>v2.3.1</li>
       </ul>     
     </nav>
-    <div class="main-content" ng-class="{expand: expand}">
-      <div ui-view="main"></div>
-    </div>
-    <div class="scrim" ng-class="{expand: expand}" ng-click="closeMenu()"></div>
-    <a class="back-to-top" scroll-top></a>
+    <div class="main-content" ng-class="{expand: expand}" flex scroll-y ui-view></div>
+    <a class="back-to-top" ng-class="{show: scroll > 200}"></a>
 
     <!-- Modernizr -->
     <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
@@ -83,6 +75,8 @@
     <script type="text/javascript" src="vendor/firebase/firebase.js"></script>
     <script type="text/javascript" src="vendor/angularfire/angularfire.js"></script>
     <script type="text/javascript" src="vendor/smoothScroll/smoothscroll.js"></script>
+    <script type="text/javascript" src="vendor/classie/classie.js"></script>
+    <script type="text/javascript" src="vendor/material/dist/form/form.js"></script>
     <script type="text/javascript" src="src/app/about/about.js"></script>
     <script type="text/javascript" src="src/app/app.js"></script>
     <script type="text/javascript" src="src/app/contacts/contacts-directives.js"></script>
@@ -101,7 +95,8 @@
     <script type="text/javascript" src="templates-common.js"></script>
     <script type="text/javascript" src="templates-app.js"></script>
     
-    <!-- Maps API -->
+    
+    
     
 
     <!-- Google Analytics -->

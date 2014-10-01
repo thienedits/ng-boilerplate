@@ -1,0 +1,100 @@
+.no-touch .resume .contact {
+    padding-bottom: 0;
+}
+
+.resume {
+
+
+    .profile-section {
+
+      h5 {
+        margin: 0;
+      }
+
+      a {
+        @include text-subhead1();
+      }
+    }
+
+    p {
+      @include text-body1();
+    }
+
+    nav .back {
+      background-color: #1d222c;
+    }
+
+    h4 {
+      margin-top: 30px;
+    }
+
+    h5 {
+        margin-top: 24px;
+        font-weight: 500;
+    }   
+
+    h6 {
+        margin-bottom: 0;
+        margin-top: 0;
+        font-weight: 500;
+    }   
+
+    li {
+      @include text-body1();
+      margin-bottom: 8px;
+    }
+
+    .row-fluid {
+        margin-bottom: 10px;
+    }
+
+    .heading {
+        margin-bottom: 10px;
+
+        .address {
+
+            span {
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .experience-section {
+      margin-top: 24px;
+    }
+
+    ul.list-contact {
+
+      li:last-child {
+        
+      }
+    }
+
+    ul.list-exp-title {
+      margin-bottom: 8px;
+      li {
+        
+        margin-bottom: 0;
+
+        &:first-child {
+          color: $color-accent;
+        }
+      }
+    }
+
+    ul.list-skills {
+      padding-left: 0;
+
+      li {
+          padding: 6px 10px;
+          border-radius:4px;
+          background-color: #1d222c;
+          display: inline-block;
+          margin: 6px;
+          font-style: italic;
+          color: $color-accent;
+          white-space: nowrap;
+      }
+    }
+    
+}

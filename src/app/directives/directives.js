@@ -62,7 +62,7 @@ angular.module('qpham.directives', [])
   };
 })
 
-.directive('resize', function ($window) {
+/*.directive('resize', function ($window) {
   return {
     restrict: 'A',
     link: function (scope, iElement, iAttrs) {
@@ -94,44 +94,58 @@ angular.module('qpham.directives', [])
 
     }
   };
-})
+})*/
 
-.directive('delayClick', function ($timeout, $location) {
+.directive('delayClick', function ($timeout, $location, $state, $window) {
   return {
     restrict: 'A',
     link: function (scope, iElement, iAttrs) {
-      var link = iAttrs.ngHref || iAttrs.href,
-      main = angular.element(document.getElementsByClassName('main-content'));
-      nav = angular.element(document.getElementsByClassName('menu'));    
+      var link = iAttrs.ngHref || iAttrs.href;  
 
       iElement.bind('click', function(e){
-        main.removeClass('move');
-        nav.removeClass('move');
-        
-        var timer = $timeout(function() {$location.path(link);}, 250);  
-
-        timer.then(
-          function() {
-
-          },
-          function() {
-
-          }
-        );
-      });
-
-      scope.$on(
-        "$destroy",
-        function( event ) {
+        e.preventDefault();      
+        /*var timer = $timeout(function() {$location.path(link);}, 200),
+        deregister = scope.$on("$destroy", function( e ) {
             $timeout.cancel( timer );
+        });*/
+
+        if(link.indexOf('projects') >= 0 || link.indexOf('contacts') >= 0 || link.indexOf('about') >= 0 || link.indexOf('resume') >= 0) {
+          $timeout(function() {$location.path(link);}, 100); 
+          
         }
-      );
+
+        else {
+          $timeout(function() {
+            $window.open(link, "_blank");
+          }, 100);
+        }
+
+      });
 
     }
   };
 })
 
-.directive('search', function() {
+.directive('focusMe', function ($timeout, $parse) {
+  return {
+    restrict: 'A',
+    link: function (scope, iElement, iAttrs) {
+      var model = $parse(iAttrs.focusMe);
+      scope.$watch(model, function(value) {
+        if(value === true) { 
+          console.log('value=',value);
+          $timeout(function() {
+            iElement[0].focus();
+          });
+        }
+      });
+
+      
+    }
+  };
+})
+
+/*.directive('search', function() {
     return {
         restrict: 'A',
         require: 'ngModel',
@@ -154,7 +168,7 @@ angular.module('qpham.directives', [])
           });
         }
     };
-})
+})*/
 
 .directive('noScroll', function($document) {
 
@@ -169,51 +183,79 @@ angular.module('qpham.directives', [])
   };
 })
 
-.directive('scrollTop', function ($timeout, $location) {
+.directive('backToTop', function ($timeout, $location) {
+  return {
+    restrict: 'C',
+    link: function (scope, iElement, iAttrs) {
+      
+      iElement.bind('click', function(e){
+        smoothScroll(document.getElementById('body'), 500);
+      });
+
+    }
+  };
+})
+
+.directive('scrollPosition', function($window) {
+  return {
+    scope: {
+      scroll: '=scrollPosition'
+    },
+    link: function(scope, element, attrs) {
+      var windowEl = angular.element($window);
+      var handler = function() {
+        scope.scroll = window.pageYOffset;
+      };
+      windowEl.on('scroll', scope.$apply.bind(scope, handler));
+      handler();
+    }
+  };
+})
+
+.directive('iconBtn', function ($timeout) {
   return {
     restrict: 'A',
     link: function (scope, iElement, iAttrs) {
-      var cssPrefixString = {};
-      var cssPrefix = function(propertie) {
-          if (cssPrefixString[propertie] || cssPrefixString[propertie] === '') {
-            return cssPrefixString[propertie] + propertie;
-          }
-          var e = document.createElement('div');
-          var prefixes = ['', '-webkit-']; // Various supports...
-          for (var i in prefixes) {
-              if (typeof e.style[prefixes[i] + propertie] !== 'undefined') {
-                  cssPrefixString[propertie] = prefixes[i];
-                  return prefixes[i] + propertie;
-              }
-          }
-          return false;
-      };
+      /*var iconBtn = Array.prototype.slice.call( document.querySelectorAll( 'button.icon-btn' ) ),
+        totalIconBtn = iconBtn.length;
 
-      
-        var cssProp = {};
-        var cssProp2 = {};
-        cssProp['opacity'] = 0;
-        cssProp[cssPrefix('transform')] = 'translate3d(0px, 150%, 0px)';
-        cssProp2['opacity'] = 1;
-        cssProp2[cssPrefix('transform')] = 'translate3d(0px, 0, 0px)';
-        
-        iElement.css(cssProp);
-    
-        window.onscroll = function() {
+      iconBtn.forEach( function( el, i ) { el.addEventListener( 'click', activate, false ); } );
 
-          if (pageYOffset >= 200) {
-            iElement.css(cssProp2);
-          } else {
-            iElement.css(cssProp);
-          }  
-          
-        };
-      
+      function activate() {
+        var self = this, activatedClass = 'btn-activated';
 
-         
+        if( classie.has( this, 'icon-btn' ) ) {
+          // if it is the first of the two btn-7h then activatedClass = 'btn-error';
+          // if it is the second then activatedClass = 'btn-success'
+          activatedClass = 'ripple';
+        }
+
+        if( classie.has( this, 'btn-7h' ) ) {
+          // if it is the first of the two btn-7h then activatedClass = 'btn-error';
+          // if it is the second then activatedClass = 'btn-success'
+          activatedClass = buttons7Click.indexOf( this ) === totalButtons7Click-2 ? 'btn-error' : 'btn-success';
+        }
+        else if( classie.has( this, 'btn-8g' ) ) {
+          // if it is the first of the two btn-8g then activatedClass = 'btn-success3d';
+          // if it is the second then activatedClass = 'btn-error3d'
+          activatedClass = buttons9Click.indexOf( this ) === totalButtons9Click-2 ? 'btn-success3d' : 'btn-error3d';
+        }
+
+        if( !classie.has( this, activatedClass ) ) {
+          classie.add( this, activatedClass );
+          setTimeout( function() { classie.remove( self, activatedClass ) }, 1000 );
+        }
+      }*/
 
       iElement.bind('click', function(e){
-        smoothScroll(document.getElementById('body'), 500);
+        var activatedClass = 'ripple',
+        el = iElement[0];
+
+        if( !classie.has( el, activatedClass ) ) {
+          classie.add( el, activatedClass );
+          $timeout( function() { classie.remove( el, activatedClass ); }, 250 );
+        }
+
       });
 
     }

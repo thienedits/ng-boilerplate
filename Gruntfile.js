@@ -14,12 +14,14 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
-  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-svgstore');
+  grunt.loadNpmTasks('grunt-svgmin');
 
   /**
    * Load in our build configuration file.
@@ -163,9 +165,9 @@ module.exports = function ( grunt ) {
       build_css: {
         src: [
           '<%= vendor_files.css %>',
-          '<%= less.build.dest %>'
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
         ],
-        dest: '<%= less.build.dest %>'
+        dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
       },
       /**
        * The `compile_js` target is the concatenation of our application source
@@ -238,12 +240,70 @@ module.exports = function ( grunt ) {
       }
     },
 
+    svgmin: {                       // Task
+      /*options: {                  // Configuration that will be passed directly to SVGO
+        plugins: [{
+            removeViewBox: true
+        }, {
+            removeUselessStrokeAndFill: true
+        }, {
+            convertPathData: { 
+                straightCurves: true // advanced SVGO plugin option
+            }
+        }]
+      },*/
+      dist: {                     // Target
+        files: [{               // Dictionary of files
+            expand: true,       // Enable dynamic expansion.
+            cwd: 'src/svg',     // Src matches are relative to this path.
+            src: ['**/*.svg'],  // Actual pattern(s) to match.
+            dest: 'src/svg-min',       // Destination path prefix.
+            ext: '.min.svg'     // Dest filepaths will have this extension.
+            // ie: optimise img/src/branding/logo.svg and store it in img/branding/logo.min.svg
+        }]
+      }
+    },
+
+    /**
+     * Combine all SVGs into one definition file
+     */
+    svgstore: {
+      defaults: {
+        options: {
+          prefix: 'icon-',
+          includedemo: true
+        },
+        files: {
+          '<%= build_dir %>/assets/<%= pkg.name %>.svg': ['src/svg-min/*.svg']
+        }
+      }
+    },
+
+    sass: {                              // Task
+      build: {                            // Target
+        options: {                       // Target options
+          style: 'expanded'
+        },
+        files: {                         // Dictionary of files
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.sass %>'       // 'destination': 'source'
+        }
+      },
+      compile: {                            // Target
+        options: {                       // Target options
+          style: 'compressed'
+        },
+        files: {                         // Dictionary of files
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.sass %>'       // 'destination': 'source'
+        }
+      }
+    },
+
     /**
      * `less` handles our LESS compilation and uglification automatically.
      * Only our `main.less` file is included in compilation; all other files
      * must be imported from this file.
      */
-    less: {
+    /*less: {
       build: {
         src: [ '<%= app_files.less %>' ],
         dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css',
@@ -256,8 +316,8 @@ module.exports = function ( grunt ) {
         }
       },
       compile: {
-        src: [ '<%= less.build.dest %>' ],
-        dest: '<%= less.build.dest %>',
+        src: [ '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css' ],
+        dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css',
         options: {
           compile: true,
           compress: true,
@@ -266,7 +326,7 @@ module.exports = function ( grunt ) {
           zeroUnits: false
         }
       }
-    },
+    },*/
 
     /**
      * `jshint` defines the rules of our linter as well as which files we
@@ -383,7 +443,7 @@ module.exports = function ( grunt ) {
           '<%= html2js.common.dest %>',
           '<%= html2js.app.dest %>',
           '<%= vendor_files.css %>',
-          '<%= less.build.dest %>'
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
         ]
       },
 
@@ -397,7 +457,7 @@ module.exports = function ( grunt ) {
         src: [
           '<%= concat.compile_js.dest %>',
           '<%= vendor_files.css %>',
-          '<%= less.compile.dest %>'
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
         ]
       }
     },
@@ -511,9 +571,9 @@ module.exports = function ( grunt ) {
       /**
        * When the CSS files change, we need to compile and minify them.
        */
-      less: {
-        files: [ 'src/**/*.less' ],
-        tasks: [ 'less:build' ]
+      sass: {
+        files: [ 'src/**/*.scss' ],
+        tasks: [ 'sass:build' ]
       },
 
       /**
@@ -581,8 +641,8 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
-    'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
+    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'sass:build', 'svgmin',
+    'svgstore', 'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
     'karma:continuous' 
   ]);
@@ -592,7 +652,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'sass:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
   /**
@@ -634,7 +694,8 @@ module.exports = function ( grunt ) {
           data: {
             scripts: jsFiles,
             styles: cssFiles,
-            version: grunt.config( 'pkg.version' )
+            version: grunt.config( 'pkg.version' ),
+            name: grunt.config( 'pkg.name' )
           }
         });
       }

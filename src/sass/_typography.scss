@@ -1,0 +1,407 @@
+// Material Design Typography
+// -----------------------------
+// http://www.google.com/design/spec/style/typography.html
+
+// font-family
+// ----------------------------
+$font-family-base: 'RobotoDraft', Helvetica, Arial, sans-serif;
+$font-weight-base: 400;
+$font-size-base: 14px;
+$line-height-base: 20px;
+
+// font-weight
+// ----------------------------
+$font-weight-thin:         100;
+$font-weight-light:        300;
+$font-weight-regular:      400;
+$font-weight-medium:       500;
+$font-weight-bold:         700;
+$font-weight-black:        900;
+
+
+// font-size, base font size 14px
+// ----------------------------
+$font-size-112:            112px;
+$font-size-56:             56px;
+$font-size-45:             45px;
+$font-size-34:             34px; 
+$font-size-24:             24px; 
+$font-size-20:             20px;
+$font-size-16:             16px; 
+$font-size-15:             15px;
+$font-size-14:             14px; 
+$font-size-13:             13px; 
+$font-size-12:             12px;
+
+
+// line-height
+// ----------------------------
+$line-height-48:           48px; 
+$line-height-40:           40px; 
+$line-height-32:           32px;   
+$line-height-28:           28px; 
+$line-height-24:           24px;
+$line-height-20:           20px; 
+
+
+// color
+// ----------------------------
+$text-black-87:            rgba(0,0,0,0.87); //Body Text
+$text-black-54:            rgba(0,0,0,0.54); //Secondary Text and Icons
+$text-black-26:            rgba(0,0,0,0.26); //Hint Text
+$text-black-12:            rgba(0,0,0,0.12); //Dividers
+
+$text-white-100:           rgba(255,255,255,1); 
+$text-white-87:            rgba(255,255,255,0.87); 
+$text-white-54:            rgba(255,255,255,0.54); 
+$text-white-26:            rgba(255,255,255,0.26); 
+$text-white-12:            rgba(255,255,255,0.12); 
+
+
+// Mixins
+// ----------------------------
+@mixin text-display4 {
+  font-weight: $font-weight-light;
+  font-size: $font-size-112;
+  line-height: normal;
+  letter-spacing: .01em; //10 tracking in PSD/AI, 10/1000 = .01em
+}
+
+@mixin text-display3 {
+  font-weight: $font-weight-regular;
+  font-size: $font-size-56;
+  line-height: normal;
+  letter-spacing: .005em;
+}
+
+@mixin text-display2 {
+  font-weight: $font-weight-regular;
+  font-size: $font-size-45;
+  line-height: $line-height-48;
+}
+
+@mixin text-display1 {
+  font-weight: $font-weight-thin;
+  font-size: $font-size-34;
+  line-height: $line-height-40;
+}
+
+@mixin text-headline {
+  font-weight: $font-weight-regular;
+  font-size: $font-size-24;
+  line-height: $line-height-32;
+}
+
+@mixin text-title {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-20;
+  line-height: normal;
+  letter-spacing: .005em;
+} 
+
+@mixin text-subhead2 {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-16;
+  line-height: $line-height-28;
+  letter-spacing: .01em;
+} 
+
+@mixin text-subhead1 {
+  font-weight: $font-weight-regular;
+  font-size: $font-size-16;
+  line-height: $line-height-24;
+  letter-spacing: .01em;
+} 
+
+@mixin text-body2 {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-14;
+  line-height: $line-height-24;
+  letter-spacing: .01em;
+}  
+
+@mixin text-body1 {
+  font-weight: $font-weight-regular;
+  font-size: $font-size-14;
+  line-height: $line-height-20;
+  letter-spacing: .01em;
+} 
+
+@mixin text-caption {
+  font-weight: $font-weight-regular;
+  font-size: $font-size-12;
+  line-height: normal;
+  letter-spacing: .02em;
+} 
+
+@mixin text-menu {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-14;
+  line-height: normal;
+  letter-spacing: .01em;
+} 
+
+@mixin text-button {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-14;
+  line-height: normal;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: $font-weight-base;
+  line-height: 1.3333333333em;
+  margin: 0;
+
+  &.inverse {
+    color: $text-white-100;
+  }
+}
+
+.typography {
+
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+
+  h5, .h5,
+  h6, .h6 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+}
+
+
+h1, .h1 { font-size: $font-size-h1; }
+h2, .h2 { font-size: $font-size-h2; }
+h3, .h3 { font-size: $font-size-h3; }
+h4, .h4 { font-size: $font-size-h4; }
+h5, .h5 { font-size: $font-size-h5; }
+h6, .h6 { font-size: $font-size-h6; }
+
+h1 {
+  @include text-display4();
+}
+
+h2 {
+  @include text-display3();
+}
+
+h3 {
+  @include text-display2();
+}
+
+h4 {
+  @include text-display1();
+}
+
+h5 {
+  @include text-headline();
+}
+
+h6 {
+  @include text-subhead1();
+
+  &.text-title {
+    @include text-title();
+  }
+}
+
+
+// Body text
+// -------------------------
+
+p {
+  margin: 0 0 20px;
+
+  &.inverse {
+    color: $text-white-100;
+  }
+}
+
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+// Lists
+// -------------------------
+
+// Unordered and Ordered lists
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 16px;
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+// List options
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  @extend .list-unstyled;
+  margin-left: -5px;
+
+  > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+// Description Lists
+dl {
+  margin-top: 0; // Remove browser default
+  margin-bottom: $line-height-computed;
+}
+dt,
+dd {
+  line-height: $line-height-base;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 0; // Undo browser default
+}
+
+//Color for Text
+
+.color-white {
+  color: $text-white-100;
+}
+
+.color-primary {
+  color: $color-primary !important;
+}
+
+.color-primary-dark {
+  color: $color-primary-dark !important;
+}
+
+.color-primary-light {
+  color: $color-primary-light !important;
+}
+
+.color-accent {
+  color: $color-accent !important;
+}
+
+.color-accent-dark {
+  color: $color-accent-dark !important;
+}
+
+.color-accent-light {
+  color: $color-accent-light !important;
+}
+
+//Color for background
+.bgcolor-primary {
+  background-color: $color-primary !important;
+}
+
+.bgcolor-primary-dark {
+  background-color: $color-primary-dark !important;
+}
+
+.bgcolor-primary-light {
+  background-color: $color-primary-light !important;
+}
+
+.bgcolor-accent {
+  background-color: $color-accent !important;
+}
+
+.bgcolor-accent-dark {
+  background-color: $color-accent-dark !important;
+}
+
+.bgcolor-accent-light {
+  color: $color-accent-light !important;
+}
+
+
+.text-display4 {
+  @include text-display4();
+}
+
+.text-display3 {
+  @include text-display3();
+}
+
+.text-display2 {
+  @include text-display2();
+}
+
+.text-display1 {
+  @include text-display1();
+}
+
+.text-headline {
+  @include text-headline();
+}
+
+.text-title {
+  @include text-title();
+}
+
+.text-subhead2 {
+  @include text-subhead2();
+}
+
+.text-subhead1 {
+  @include text-subhead1();
+}
+
+.text-body2 {
+  @include text-body2();
+}
+
+.text-body1 {
+  @include text-body1();
+}
+
+.text-caption {
+  @include text-caption();
+}
+
+.text-menu {
+  @include text-menu();
+}
+
+.text-button {
+  @include text-button();
+}
+
+.text-secondary {
+  color: $text-black-54 !important;
+}
+
+.text-hint {
+  color: $text-black-54 !important;
+}

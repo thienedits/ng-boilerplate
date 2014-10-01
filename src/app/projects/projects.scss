@@ -1,0 +1,213 @@
+.copy {
+  h6 {
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+}
+.list-projects {
+  margin-left: -$layout-gutter-16;
+  margin-right: -$layout-gutter-16;
+
+  @media (min-width: $layout-breakpoint-sm)  { 
+    margin-left: -$layout-gutter-24;
+    margin-right: -$layout-gutter-24;
+  }
+
+  li.list-projects-item {
+    overflow: hidden;
+    width: 50%;
+    max-width: 400px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 0;
+
+    @media (min-width: $layout-breakpoint-md)  { 
+      width: 33%;
+      height: 33%;
+    }
+
+    @media (min-width: 1600px)  { 
+
+    }
+
+  }
+
+  figure {
+    background: $blue;
+    position: relative;
+
+    figcaption {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      font-weight: 700;
+      @include transform-scale(1.3);
+      @include transition(all 0.3s);
+    }
+
+    img {
+      opacity: 1;
+      @include transition(all 0.3s);
+      @include transform-scale(1);
+    }
+
+    &:hover figcaption {
+      opacity: 1;
+      @include transform-scale(1);
+    }
+
+    &:hover img {
+      opacity: 0.2;
+      @include transform-scale(1.05);
+    }
+
+  }
+
+}
+
+/**
+ * Slide Box
+ * --------------------------------------------------
+ */
+
+$indicatorHeight:25px;
+$indicatorTopPadding:10px;
+$controlHeight:30px;
+
+.slider {
+  min-height: 255px;
+  margin-left: -$layout-gutter-16;
+  margin-right: -$layout-gutter-16;
+  margin-bottom: $layout-gutter-24;
+
+    @media (min-width: $layout-breakpoint-sm)  { 
+      margin-left: -$layout-gutter-24;
+      margin-right: -$layout-gutter-24;
+    }
+}
+
+.slider-slides {
+  white-space: nowrap;
+  overflow: hidden; 
+}
+
+.slider-slide {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  vertical-align: top; 
+}
+
+.slider-slide > img {
+  width: 100%;
+}
+
+.slider-pager {
+  z-index: 2;
+  width: 100px;
+  height: 15px;
+  text-align: center;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  margin-left: -50px;
+
+  .ion-record {
+    font-style: normal;
+
+    &:before {
+      content: "\25cf";
+    }
+  }
+
+  @media (min-width: $layout-breakpoint-sm)  { 
+
+  }
+}
+
+.slider-pager .slider-pager-page {
+  font-size: $font-size-large;
+  display: inline-block;
+  width: 15px;
+  color: #000;
+  text-decoration: none;
+  opacity: 0.3; 
+  @include transition(opacity 0.3s);
+}
+
+.slider-pager .slider-pager-page.active {
+  color: $blue; 
+  opacity: 1;
+}
+
+.touch .slider-control {
+  display: none;
+  visibility: hidden;
+}
+
+.slider-control {
+  font-size: 24px;
+  position: absolute;
+  top: 15%;
+  cursor: pointer;
+  color: $text-white-100;
+  background: $blue;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  overflow: hidden;
+
+  @media (min-width: 480px)  { 
+    top: 20%;
+  }
+  
+  @media (min-width: $layout-breakpoint-md)  { 
+    top: 25%;
+  }
+
+  @media (min-width: $layout-breakpoint-md)  { 
+    top: 30%;
+  }
+
+  @media (min-width: $layout-breakpoint-lg)  { 
+    top: 35%;
+  }
+
+  &.icon-btn span.ripple {
+    background-color: $text-black-54;
+    width: 60px;
+    height: 60px;
+    top: -6px;
+    left: -6px;
+  }
+
+  &.slider-control-prev {
+    left: 4%;
+
+    @media (min-width: $layout-breakpoint-lg)  { 
+      left: 10%;
+    }
+
+    svg {
+      fill: $text-white-100;
+      width: 48px;
+      height: 48px;
+    }
+
+  }
+
+  &.slider-control-next {
+    right: 4%;
+
+    @media (min-width: $layout-breakpoint-lg)  { 
+      right: 10%;
+    }
+    
+    svg {
+      fill: $text-white-100;
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

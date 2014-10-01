@@ -1,46 +1,99 @@
-<div class="container">
-  <nav class="back">
-    <a ng-click="saveContact()" class="edit-save">Save</a>
-  </nav>
-  <div class="" >
-    <form class="form-horizontal">
-      <div class="form-group">
-        <div class="col-xs-3">
-          <span class="profile-img"></span>
-        </div>
-        
-        <div class="col-xs-9">
-          <input ng-model="contact.name" type="text" class="form-control" id="name" placeholder="Name">
-        </div>
-      </div>
-    </form>
-
-    <form>
-      <div class="form-group">
-        <label class="title" for="">Phone</label>
-        <input ng-model="contact.phone" type="text" class="form-control" id="phone" placeholder="phone">
-        
-      </div>
-      <div class="form-group">
-        <label class="title" for="">Email</label>
-        <input ng-model="contact.email" type="text" class="form-control" id="email" placeholder="email">
-        
-      </div>
-      <div class="form-group">
-        <label class="title" for="">Address</label>
-        <input ng-model="contact.address" type="text" class="form-control show-grid address" ng-focus="geolocate()" id="address" placeholder="Street Address" autofill required>
-        <input ng-model="contact.city" type="text" class="form-control show-grid" id="locality" placeholder="City" required>
-        <div class="row">
-        <div class="col-xs-8">
-          <!-- <input ng-model="contact.state" type="text" class="form-control" id="state" placeholder="state"> -->
-          <select ng-model="contact.state" ng-options="state.name as state.name for state in states" class="form-control" id="administrative_area_level_1" required>
-          </select>
-        </div>
-        <div class="col-xs-4"> 
-          <input ng-model="contact.zip" type="text" class="form-control" id="postal_code" placeholder="Zip" required>
-        </div>
-        </div>
-      </div>
-    </form>
+<header class="app-bar" ng-class="{dark: scroll > 50}" keylines="7">
+  <div class="container" layout="horizontal" layout-align="end center">
+    <a ng-click="saveContact()" class="icon-btn pull-right edit-save" title="Edit Contact" icon-btn>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-check"></use></svg>
+    </a>
   </div>
+</header>
+
+<div class="container" style="padding-top:56px;">
+  <form >
+    <div layout="horizontal" layout-align="start center">
+      <div class="tile">
+        <span class="icon-btn pull-left">
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-place"></use></svg>
+        </span>
+      </div>
+      
+      <div flex>
+        <material-input-group class="color-accent" layout="vertical"> 
+          <label class="title" for="name">Name</label>
+          <material-input ng-model="contact.name" type="text" class="" id="name">
+        </material-input-group>
+      </div>
+    </div>
+    <div layout="horizontal" layout-align="start center">
+      <div class="tile">
+        <span class="icon-btn pull-left">
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-call"></use></svg>
+        </span>
+      </div>
+      <div flex>
+        <material-input-group class="color-accent" layout="vertical"> 
+          <label class="title" for="phone">Phone</label>
+          <material-input ng-model="contact.phone" type="text" class="" id="phone">
+        </material-input-group>
+      </div>
+    </div>
+    <div layout="horizontal" layout-align="start center">
+      <div class="tile">
+        <span class="icon-btn pull-left">
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-mail"></use></svg>
+        </span>
+      </div>
+      <div flex>
+        <material-input-group class="color-accent" layout="vertical"> 
+          <label for="email" class="title" flex>Email</label> 
+          <material-input id="email" type="text" ng-model="contact.email" flex> 
+        </material-input-group>
+      </div>
+    </div>
+
+      
+    <div layout="horizontal" layout-align="start center">
+      <div class="tile">
+        <span class="icon-btn pull-left">
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-place"></use></svg>
+        </span>
+      </div>
+      <div flex>
+        <material-input-group class="color-accent" layout="vertical"> 
+          <label class="title" for="address">Address</label>
+          <material-input ng-model="contact.address" type="text" class="address" ng-focus="geolocate()" id="address" autofill required>
+        </material-input-group>
+      </div>
+    </div>
+    <div layout="horizontal" layout-align="start center">
+      <div class="tile">
+      </div>
+      <div flex>
+        <material-input-group class="color-accent" layout="vertical"> 
+          <label class="title" for="locality">City</label>
+          <material-input ng-model="contact.city" type="text" class="" id="locality" required>
+        </material-input-group>
+      </div>
+    </div>
+
+    <div layout="horizontal" layout-align="start center">
+      <div class="tile">
+      </div>
+      <div flex="50" padding-right>
+        <!-- <input ng-model="contact.state" type="text" class="form-control" id="state" placeholder="state"> -->
+        <select ng-model="contact.state" aria-label="State" ng-options="state.name as state.name for state in states" class="form-control" id="administrative_area_level_1" required>
+        </select>
+      </div>
+      <div flex>
+        <material-input-group class="color-accent" layout="vertical" flex> 
+          <label class="title" for="postal_code">Zip Code</label>
+          <material-input ng-model="contact.zip" type="text" class="" id="postal_code" required>
+        </material-input-group>
+      </div>
+    </div>
+  </form>
 </div>
+

@@ -31,12 +31,8 @@ angular.module( 'qpham.project', [
         return projectsFactory.collection();
       }]
     },
-    views: {
-      "main": {
-        controller: 'ProjectsCtrl',
-        template: '<div class="projects" ui-view></div>'
-      }
-    }
+    controller: 'ProjectsCtrl',
+    template: '<div ui-view></div>'
   })
   .state('projects.list', {
     url: '',

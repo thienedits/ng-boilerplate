@@ -14,6 +14,8 @@ module.exports = function ( karma ) {
       'vendor/firebase/firebase.js',
       'vendor/angularfire/angularfire.js',
       'vendor/smoothScroll/smoothscroll.js',
+      'vendor/classie/classie.js',
+      'vendor/material/dist/form/form.js',
       'build/templates-app.js',
       'build/templates-common.js',
       'vendor/angular-mocks/angular-mocks.js',

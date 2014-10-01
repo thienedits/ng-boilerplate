@@ -1,0 +1,150 @@
+// Forms and inputs
+
+$input-font-size: 0.75em;
+$input-line-height: 24px;
+
+$input-group-margin: 10px 0 10px 0;
+
+$input-label-focused-font-size: 0.7em;
+
+$input-focused-scale: 0.75;
+
+$input-label-transition: all ease-out 300ms;
+
+$input-border-color: #6D6D6D;
+$input-disabled-border-color: #a0a0a0;
+
+.color-accent.material-input-focused input {
+  border-color: $color-accent; }
+.color-accent.material-input-focused.material-input-has-value label {
+  color: $color-accent; }
+
+label {
+  display: block;
+  font-size: $input-font-size;
+}
+
+
+
+material-input-group,
+.material-input-group {
+  position: relative;
+  height: 48px;
+
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"] {
+    display: block;
+    border-width: 0 0 1px 0;
+    @include text-subhead1();
+    line-height: 1em;
+    border-color: $text-black-12;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  input, textarea {
+    @include input-placeholder($text-black-26);
+    padding-bottom: 8px;
+    margin-bottom: 7px;
+    margin-top: 16px;
+    background: none;
+  }
+
+  input, textarea {
+    @include transition($input-label-transition);
+    color: $text-black-87;
+  }
+
+  &.material-input-group-inverted {
+    input {
+      color: $text-white-100;
+    }
+  }
+
+  label {
+    -webkit-font-smoothing: antialiased;
+    z-index: 1;
+    @include text-subhead1();
+    line-height: 1em;
+    position: absolute;
+    top: 16px;
+
+    /* @include transform-translate3d(0, $input-line-height, 0);
+    @include transform-origin(left, center);
+    @include transition($input-label-transition); */
+
+    color: $text-black-26;
+
+    &:hover {
+      cursor: text;
+    }
+  }
+
+  &.material-input-has-value {
+
+    input {
+      
+    }
+
+    label {
+      display: none;
+    }
+  }
+
+  &.material-input-focused{
+
+    input {
+      border-bottom-width: 2px;
+    }
+
+    label {
+      color: $text-black-26;
+    }
+
+    &.material-input-has-value {
+      label {
+        display: none;
+      }
+    }
+  }
+
+  //floating label
+  /* &.material-input-has-value {
+
+    input {
+      
+    }
+
+    label {
+      @include transform-translate3d-scale(0, 0, 0, $input-focused-scale);
+      line-height: 12px;
+    }
+  }
+
+  &.material-input-focused{
+
+    input {
+      border-bottom-width: 2px;
+    }
+
+    label {
+      @include transform-translate3d-scale(0, 0, 0, $input-focused-scale);
+      line-height: 12px;
+    }
+  } */
+}

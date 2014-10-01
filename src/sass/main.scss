@@ -1,0 +1,60 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+ /**
+ * First, we include Twitter Bootstrap SCSS files. Only the ones used in the
+ * project should be imported as the rest are just wasting space.
+ */
+
+// Core variables and mixins
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss';
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_mixins.scss';
+
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_normalize.scss';
+
+// Core CSS
+/* @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss'; */
+/* @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_type.scss'; */
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss';
+
+
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss';
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_pagination.scss';
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_pager.scss';
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss';
+
+// Utility classes
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss';
+
+
+/**
+ * This is our site-wide files.
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+@import 'fonts';
+@import 'colors.scss';
+@import 'layout.scss';
+@import 'typography.scss';
+@import 'qpham-fonts.scss';
+@import 'scaffolding.scss';
+@import 'global.scss';
+@import 'plugins.scss';
+@import 'form.scss';
+
+
+/**
+ * Now that all app-wide styles have been applied, we can load the styles for
+ * all the submodules and components we are using. 
+ */
+
+@import '../app/home/home.scss';
+@import '../app/about/about.scss';
+@import '../app/projects/projects.scss';
+@import '../app/resume/resume.scss';
+@import '../app/contacts/contacts.scss';
+@import '../app/swipe/swipe.scss';

@@ -1,71 +1,41 @@
-
-<div class="container">
-  <nav class="back">
-    <a href="/projects" title="Go Back"><span class="qp-back qp-2x"></span></a>
-  </nav>
-</div>
-<div class="container">
-  <div id="search" class="search">
-    <input type="text" class="form-control" ng-model="search" placeholder="Search" search/>
-    <!-- <a>Search</a> -->
-  </div>
-
-<!-- <div ng-if="mobileSize == false">
-  <div class="info">
-    <h5>{{contactsCount}} Contacts</h5>
-    <span>Page {{page}} of {{numPages}}</span>
-    <div ng-show="contactsCount == 0">
-      <h3>No Contacts Found</h3>
+<header class="app-bar" ng-class="{dark: scroll > 50}">
+  <div class="container" layout="horizontal" layout-align="space-between center" keylines="7">
+    <div id="search" class="search" flex layout="horizontal" layout-align="start">
+      <span role="button" class="icon-btn icon-search pull-left" ng-hide="searchOpen" ng-click="searchOpen = !searchOpen" title="Search" aria-label="Search" icon-btn>
+        <span class="ripple"></span>
+        <svg><use xlink:href="assets/qpham-portfolio.svg#icon-search"></use></svg>
+      </span>
+      <div layout="horizontal" layout-align="space-between center" ng-show="searchOpen" flex>
+        <span role="button" class="icon-btn icon-search pull-left" ng-click="searchOpen = !searchOpen" title="Close Search" aria-label="Close Search" icon-btn>
+          <span class="ripple"></span>
+          <svg><use xlink:href="assets/qpham-portfolio.svg#icon-close"></use></svg>
+        </span>
+        <input id="search" type="text" class="form-control"  ng-model="search" placeholder="Search" search focus-me="searchOpen">
+      </div>
     </div>
+    <span role="button" class="icon-btn icon-menu pull-right" ng-click="openMenu()" title="Menu" aria-label="Menu" icon-btn>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-menu"></use></svg>
+    </span>
   </div>
-  <table class="table table-striped">
-    <thead >
-      <tr>
-        <th ng-repeat="header in headers">
-          <a sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</a>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr ng-click="$location.path('contacts/' + data.contactId)" ng-repeat="data in filtered | startFrom:(page-1)*entryLimit | limitTo:entryLimit">
-      <td>{{data.contactId + 1}}</td>
-      <td>{{data.name}}</td>
-      <td>{{data.email}}</td>
-      <td>{{data.address}}</td>
-      <td>{{data.city}}</td>
-      <td>{{data.state}}</td>
-    </tr>
-    </tbody>
-  </table>
-  <div ng-show="contactsCount == 0">
-    <h3>No Contacts Found</h3>
-  </div>
-  <div class="align-center">
-    <pagination  total-items="contactsCount" items-per-page="entryLimit" num-pages="numPages" page="page" rotate="false" boundary-links="true" max-size="10"></pagination>
-  </div>
-</div> -->
-
+</header>
+<div class="container main">
   <div class="" ng-swipe-left="setPage(page + 1)" ng-swipe-right="setPage(page - 1)">
-      <div class="clearfix">
-        <h5 class="pull-left">{{contactsCount}} Contacts <!-- <span ng-show="search">with "{{search}}"</span> --></h5>
-        <h5 class="pull-right">Page {{page}} of {{numPages}}</h5>
-      </div>
-      
-      <div >
-        <h3 ng-show="contactsCount == 0">No Contacts Found</h3>
-      </div>
-      <nav class="back">
-        <a href="" ng-click="predicate = 'name'; reverse=!reverse">Name <span class="qp-next" ng-class="{'down-arr': reverse, 'up-arr': !reverse}"></span></a><br>
-      </nav>
-    
+    <div class="subhead" layout="horizontal" layout-align="space-between center" keylines="6">
+      <h5 class="text-body2" flex ng-hide="contactsCount == 0">{{contactsCount}} Contacts <!-- <span ng-show="search">with "{{search}}"</span> --></h5>
+      <h5 class="text-body2" flex ng-hide="contactsCount == 0" style="text-align:right;">Page {{page}} of {{numPages}}</h5>
+      <h5 class="text-body2" flex ng-show="contactsCount == 0">No Contacts Found</h5>
+    </div>
+    <div layout="horizontal" layout-align="space-between center" keylines="6">
+      <a href="" ng-click="predicate = 'name'; reverse=!reverse">Name <span class="qp-next" ng-class="{'down-arr': reverse, 'up-arr': !reverse}"></span></a><br>
+    </div>
     <ul class="list-contacts list-group">
-      <li class="list-group-item" ng-click="$location.path('contacts/' + contact.$id)" ng-repeat="contact in filtered | orderBy:predicate:reverse | startFrom:(page-1)*entryLimit | limitTo:entryLimit">
-        <span class="profile-img"></span>
-        <span>{{contact.name}}</span>
+      <li class="" ng-click="$location.path('contacts/' + contact.$id)" ng-repeat="contact in filtered | orderBy:predicate:reverse | startFrom:(page-1)*entryLimit | limitTo:entryLimit" layout="horizontal" layout-align="space-between center" keylines="7">
+        <div class="tile" layout="horizontal" layout-align="start"><span class="profile-img"></span></div>
+        <span flex>{{contact.name}}</span>
         <span class="qp-next"></span>
       </li>
     </ul>
-    <h5>Page {{page}} of {{numPages}}</h5>
     <pagination on-select-page="setPage(page)" total-items="contactsCount" items-per-page="entryLimit" num-pages="numPages" page="page" rotate="false" boundary-links="false" max-size="3"></pagination>
   </div>
 </div>

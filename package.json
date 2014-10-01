@@ -7,7 +7,7 @@
     "type": "MIT",
     "url": ""
   },
-  "bugs": "",
+  "bugs": "https://github.com/thienedtis/ng-boilerplate/issues",
   "repository": {
     "type": "git",
     "url": "git@github.com:thienedits/portfolio.git"
@@ -16,8 +16,8 @@
     "express": "~3.2.6"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-less": "*",
+    "grunt": "0.4.5",
+    "grunt-contrib-sass": "0.8.1",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-jshint": "~0.4.3",
@@ -32,7 +32,9 @@
     "grunt-conventional-changelog": "~0.1.1",
     "grunt-bump": "0.0.6",
     "grunt-nodemon": "~0.2.0",
-    "grunt-concurrent": "~0.4.3"
+    "grunt-concurrent": "~0.4.3",
+    "grunt-svgstore": "0.3.3",
+    "grunt-svgmin": "0.4.0"
   },
   "engines": {
     "node": "0.8.x",

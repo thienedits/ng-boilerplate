@@ -1,10 +1,11 @@
-<div class="project large" ng-style="style()" resize>
-	<div class="container">
-		<nav class="back">
-			<a href="/projects/{{project.$id}}" title="Go Back"><span class="qp-back qp-2x"></span></a>
-		</nav>
-	</div>
+<header class="app-bar container" layout="horizontal" layout-align="end center" keylines="7">
+  <a href="/projects/{{project.$id}}" class="icon-btn pull-right" title="Close" icon-btn delay-click>
+    <span class="ripple"></span>
+    <svg><use xlink:href="assets/qpham-portfolio.svg#icon-close"></use></svg>
+  </a>
+</header>
 
+<div class="container main">
 	<ion-slide-box on-slide-changed="slideChanged(index)" delegate-handle="large-slide">
     <ion-slide ng-repeat="image in project.largeImages">
       <div class="defer-image image-ratio:4x3 is-loading">
@@ -13,7 +14,13 @@
     </ion-slide>
   </ion-slide-box>
   <div class="slider-controls">
-    <span class="slider-control slider-control-prev" ng-click="prevSlide()" ng-if="slideIndex > 0"></span>
-    <span class="slider-control slider-control-next" ng-click="nextSlide()" ng-if="slideIndex != imgLength - 1"></span>
+    <span class="slider-control slider-control-prev icon-btn" ng-click="prevSlide()" ng-if="slideIndex > 0" icon-btn>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-left"></use></svg>
+    </span>
+    <span class="slider-control slider-control-next icon-btn" ng-click="nextSlide()" ng-if="slideIndex != imgLength - 1" icon-btn>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-right"></use></svg>
+    </span>
   </div>
 </div>

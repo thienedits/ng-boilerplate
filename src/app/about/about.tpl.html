@@ -1,50 +1,212 @@
 <div class="about">
-	<div class="header-section">
+	<header class="app-bar" ng-class="{dark: scroll > 50}" keylines="7">
+		<div class="container" layout="horizontal" layout-align="space-between center">
+			<h4 class="text-title color-accent" flex>About Me</h4>
+			<span role="button" class="icon-btn icon-menu pull-right" ng-click="openMenu()" title="Menu" aria-label="Menu" icon-btn>
+		  	<span class="ripple"></span>
+		  	<svg><use xlink:href="assets/qpham-portfolio.svg#icon-menu"></use></svg>
+		  </span>
+		 </div>
+	</header>
+	
+		<div class="profile-section">
+			<div class="container">
+				<a href="https://plus.google.com/u/0/102157534092095391789/about" class="profile-img" target="_blank"></a>
+				<h5 class="text-center">Thien Pham</h5>
+				<h6 class="text-center">UX Web Designer at Simpson Strong-Tie</h6>
+				<h6 class="text-center">Attended University of Wisconsin-Madison</h6>
+				<h6 class="text-center">Lives in Fremont, CA</h6>
+				<ul class="social">
+					<li><a href="http://plus.google.com/102157534092095391789/about" target="_blank" title="Google Plus"><i class="qp-google-plus qp-lg"></i></a></li><li><a href="http://www.facebook.com/thienpham.us" target="_blank" title="Facebook"><i class="qp-facebook qp-lg"></i></a></li><li><a href="http://www.linkedin.com/in/thienpham" target="_blank"><i class="qp-linkedin qp-lg" title="Linkedin"></i></a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="container">
-			<nav class="back">
-				<a href="/projects" title="Go Back"><span class="qp-back qp-2x"></span></a>
-			</nav>
-			<a href="https://plus.google.com/u/0/102157534092095391789/about" class="profile-img" target="_blank"></a>
-			<h3 class="text-center">Thien Pham</h3>
-			<h5 class="text-center">UX Web Designer at Simpson Strong-Tie</h5>
-			<h5 class="text-center">Attended University of Wisconsin-Madison</h5>
-			<h5 class="text-center">Lives in Fremont, CA</h5>
-			<ul class="social">
-				<li><a href="http://plus.google.com/102157534092095391789/about" target="_blank" title="Google Plus"><i class="qp-google-plus qp-lg"></i></a></li><li><a href="http://www.facebook.com/thienpham.us" target="_blank" title="Facebook"><i class="qp-facebook qp-lg"></i></a></li><li><a href="http://www.linkedin.com/in/thienpham" target="_blank"><i class="qp-linkedin qp-lg" title="Linkedin"></i></a></li>
-			</ul>
-		</div>
-	</div>
-		<div class="container content-section">
-			<div class="copy-section">
-			<h4>About Me</h4>
-			<p>A recent bay area transplant originally from chicago interested in front-end web development and visual/UI design. I enjoy making clean, simple, engaging designs.</p>
+			<div class="about-section">
+				<h6 class="color-accent text-menu no-margin" keylines="6" layout="vertical" layout-align="center">About Me</h6>
+				<p>A recent bay area transplant originally from chicago interested in front-end web development and visual/UI design. I enjoy making clean, simple, engaging designs.</p>
 
-			<p>I'm passionate about designing websites and web applications using new technologies such as HTML5, CSS3 and Javascript. I really love front-end visual design and creating great user experiences.</p>
-			<hr>
-		</div>
-		<div class="contact-section">
-			<h4>Contact Info</h4>
-			<ul class="list-contact list-unstyled">
-				<li>
-					<a href="tel://1-312-380-5256">
-						<span class="content">
-							<p class="title">Phone</p>
-							<p>312-380-5256</p>
-						</span>
-						<span class="icon qp-phone qp-2x"></span>
-					</a>
-				</li>
+				<p>I'm passionate about designing websites and web applications using new technologies such as HTML5, CSS3 and Javascript. I really love front-end visual design and creating great user experiences.</p>
+				<hr>
+			</div>
+			<div class="contact-section">
+				<h6 class="color-accent text-menu no-margin" keylines="6" layout="vertical" layout-align="center">Contact Info</h6>
+				<ul class="list-contact list-unstyled">
+					<li layout="vertical" layout-align="center" keylines="9">
+						<a href="tel://1-312-380-5256" layout="horizontal" layout-align="space-between center">
+							<span class="content">
+								<p class="title text-secondary">Phone</p>
+								<p>312-380-5256</p>
+							</span>
+							<span class="icon-btn pull-right">
+								<span class="ripple"></span>
+								<svg><use xlink:href="assets/qpham-portfolio.svg#icon-call"></use></svg>
+							</span>
+						</a>
+					</li>
 
-				<li>
-					<a href="mailto:thienpham.us@gmail.com">
-						<span class="content">
-							<p class="title">Email</p>
-							<p>thienpham.us@gmail.com</p>
-						</span>
-						<span class="icon qp-mail qp-2x"></span>
-					</a>
-				</li>
-			</ul>
-		</div>
+					<li layout="vertical" layout-align="center" keylines="9"> 
+						<a href="mailto:thienpham.us@gmail.com" layout="horizontal" layout-align="space-between center">
+							<span class="content">
+								<p class="title text-secondary">Email</p>
+								<p>thienpham.us@gmail.com</p>
+							</span>
+							<span class="icon-btn pull-right">
+								<span class="ripple"></span>
+								<svg><use xlink:href="assets/qpham-portfolio.svg#icon-mail"></use></svg>
+							</span>
+						</a>
+					</li>
+				</ul>
+				<hr>
+			</div>
+			<div class="resume-section">
+				<a href="https://docs.google.com/file/d/0B0qdt7xwL6A8eVhrcEprQXdzTGc/edit?usp=sharing" class="icon-btn pull-right" title="Download My Resume" icon-btn delay-click>
+				   <span class="ripple"></span>
+				   <svg><use xlink:href="assets/qpham-portfolio.svg#icon-file-download"></use></svg>
+				</a>
+				<h6 class="color-accent text-menu no-margin" keylines="6" layout="vertical" layout-align="center">Resume</h6>
+					<div class="copy-section">
+						<h5 id="objective">Objective</h5>
+						<p>I am currently seeking a challenging position in a web/mobile environment utilizing my experience in visual design and
+							front-end web development.</p>
+					</div>
+
+					<div class="copy-section">
+						<h5 id="summary">Summary</h5>
+						<ul>
+							<li>10 years of experience working with Fortune 500 companies and small businesses.</li>
+							<li>Experience working in team environments with marketing managers, developers, ux architects, content writers, project managers, business analysts, and other designers.</li>
+							<li>Worked on web projects building sites using new technologies such as HTML5, CSS3, and Jquery. Additional experience in Responsive Design, Front-end Development and frameworks such as Angular JS and Twitter Bootstrap.</li>
+							<li>A passion for ux, visual design, web technologies and an entrepreneur attitude to getting things done.</li>
+						</ul>
+					</div>
+
+					<div class="copy-section">
+						<h5 id="skills">Skills</h5>
+						<ul class="list-skills">
+							<li>Visual Design</li> 
+							<li>Front-End Development</li> 
+							<li>Web Applications</li>
+							<li>Responsive Design</li> 
+							<li>HTML5</li> 
+							<li>CSS3</li>
+							<li>AngularJS</li>
+							<li>Javascript</li>
+							<li>JQuery</li>
+							<li>Twitter Bootstrap</li>
+							<li>HTML Email</li>
+							<li>Google Analytics</li>
+							<li>Graphic Design</li>
+							<li>Photoshop</li> 
+							<li>Illustrator</li>
+							<li>InDesign</li> 
+							<li>Actionscript 3</li> 
+						</ul>
+					</div>
+
+					<div class="copy-section">
+						<h5 id="experience">Experience</h5>
+						<div class="experience-section">
+							<h6 class="">Simpson Strong-Tie <span>/ Front-End Developer</span></h6>
+							<ul class="list-exp-title list-unstyled">
+								<li>Aug 2013&ndash;Aug 2014</li>
+								<li>Pleasanton, CA</li>
+							</ul>
+							<ul>
+								<li>Responsible for making updates and maintaining current consumer facing website <a href="http://www.strongtie.com" target="_blank">www.strongtie.com</a>.</li>
+
+								<li>Design photoshop mockups and create HTML5/CSS3/visual assets for retailer locator.</li>
+
+								<li>Design and create visual assets for Literature Library Android Application.</li>
+
+								<li>Design and build other various marketing related HTML5 websites.</li>
+
+								<li>Create icons for CFS Designer Windows based application.</li>
+
+								<li>Maintain various monthly email newsletters.</li>
+							</ul>
+						</div>
+
+						<div class="experience-section">
+							<h6 class="">Allstate Financial <span>/ Senior Web Designer</span></h6>
+							<ul class="list-exp-title list-unstyled">
+								<li>Sep 2010&ndash;Apr 2013</li>
+								<li>Chicago, IL</li>
+							</ul>
+							<ul>
+								<li>Worked on a variety of agent and consumer facing projects that include web applications, microsites, flash demos, html emails, banners and print materials.</li>
+								<li>Provided visual design and html/css support as part of a cross-functional team creating an online web application for selling life insurance.</li>
+								<li>Designed and coded various marketing related websites and landing pages implementing responsive design, crossbrowser compatibility/testing and Google Analytics.</li>
+								<li>Designed and concepted various flash demos using Actionscript 3.</li>
+								<li>Designed, created and tested HTML emails for various consumer based campaigns.</li>
+								<li>Executed multiple projects on time while managing work load, meeting critical deadlines and milestones.</li>
+							</ul>
+						</div>
+
+
+
+							<div class="experience-section">
+								<h6 class="">Harris Private Bank <span>/ Senior Graphic Designer</span></h6>
+								<ul class="list-exp-title list-unstyled">
+									<li>Nov 2007&ndash;Sep 2010</li>
+									<li>Chicago, IL</li>
+								</ul>
+								<ul>
+									<li>Produced various communication projects that include internal communication, marketing material, sales collateral,
+										and web related materials.</li>
+									<li>Designed a variety of B2C print, marketing material, collateral and presentations for Harris Private Bank.</li>
+									<li>Worked with Harris marketing managers, creating online banners and materials for web.</li>
+									<li>Worked with marketing managers to design and layout brochures and communication collateral.</li>
+								</ul>
+							</div>
+
+							<div class="experience-section">
+								<h6 class="">Blue Cross Blue Shield <span>/ Visual Designer</span></h6>
+								<ul class="list-exp-title list-unstyled">
+									<li>Mar 2006&ndash;Oct 2007</li>
+									<li>Chicago, IL</li>
+								</ul>
+								<ul>
+									<li>Responsible for internal communication material and presentations for executive level meetings.</li>
+									<li>Met with senior level management to assist in creating illustrations to visualize business and IT concepts for Information Security and Risk Management.</li>
+									<li>Analyzed content from word documents, handwritten notes, diagrams, drawings and ideas to create presentation content for the Director of Information Security.</li>
+								</ul>
+							</div>
+
+							<div class="experience-section">
+								<h6 class="">Raisenheadz Creative <span>/ Production Artist</span></h6>
+								<ul class="list-exp-title list-unstyled">
+									<li>Nov 2003&ndash;Nov 2005</li>
+									<li>Chicago, IL</li>
+								</ul>
+								<ul>
+									<li>Worked on communication projects that included print materials and video production.</li>
+									<li>Responsible for design, layout and typesetting of direct mail brochures for prospective customers.</li>
+									<li>Worked on both production and post-production of video and DVD projects.</li>
+								</ul>
+							</div>
+
+							</div>
+
+							<div class="education-section">
+								<h5 id="education">Education</h5>
+								<div>
+									<h6 class="">University of Wisconsin <span>/ BA Communications</span></h6>
+									<ul class="list-exp-title list-unstyled">
+										<li>May 2002</li>
+										<li>Madison, WI</li>
+									</ul>
+								</div>
+								<div>
+									<h6 class="">Awards & Interests</h5>
+									<ul>
+										<li>Powers-Knapp Scholar 1997-2002</li>
+										<li>MU National Scholarship 1997</li>
+										<li>Tennis, Poker, Certified Tech Geek, Apple and Android user <3</li>
+									</ul>
+								</div>
+							</div>
+						</div>
 	</div>
 </div>

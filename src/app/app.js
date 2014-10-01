@@ -1,10 +1,8 @@
   angular.module( 'qpham', [
-  'ionic',
   'templates-app',
   'templates-common',
   'qpham.about',
   'qpham.project',
-  'qpham.resume',
   'qpham.contacts',
   'ui.router',
   'qpham.services.projects',
@@ -30,11 +28,12 @@
 // should look something like: https://blahblahblah.firebaseio.com
 .constant('FBURL', 'https://qpham.firebaseio.com')
 
-.controller( 'AppCtrl', function AppCtrl ( $rootScope, $scope, $state, $stateParams, $window, $location, FBURL, projectsFactory) {
+.controller( 'AppCtrl', function AppCtrl ( $rootScope, $scope, $timeout, $state, $stateParams, $window, $location, FBURL, projectsFactory) {
   $scope.projects = projectsFactory.collection();
-  $scope.links = ['projects', 'about', 'resume', 'contacts'];
+  $scope.links = ['projects', 'about', 'contacts'];
 
   $scope.expand = false;
+  $scope.scroll = 0;
 
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
@@ -70,7 +69,7 @@
   };
 
   $scope.closeMenu = function() {
-    $scope.expand = false;
+    $timeout(function() {$scope.expand = false;}, 100); 
   };
 
   $scope.openMenu = function() {

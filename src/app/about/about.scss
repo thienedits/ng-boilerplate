@@ -1,0 +1,125 @@
+.about {
+
+  #objective {
+    margin-top: 0;
+  }
+
+  .content-section {
+    padding-top: 56px;
+  }
+
+  ul.list-contact {
+      margin-bottom: 0;
+
+      li {
+      padding: 0;
+      border-width: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .profile-section {
+    background-color: #1d222c;
+    padding: 56px 0 16px;
+    color: $text-white-100;
+
+    h3 {
+
+    }
+
+    h6 {
+      margin: 0;
+
+    }
+
+    a.profile-img {
+      border-radius:50%;
+      display: block;
+      width: 100px;
+      height: 100px;
+      background: url(assets/img/profile.jpg) no-repeat center center;
+      background-size: 100%;
+      margin: 0 auto;
+      margin-top: 0px;
+      
+      @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { 
+          background: url(assets/img/profile@2x.jpg) no-repeat center center;
+      }
+    }
+
+    ul.social {
+      margin: 10px auto;
+      width: 180px;
+
+      li {
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid #ff1915;
+        width: 42px;
+        height: 42px;
+        padding: 8px;
+      }
+    }
+  }
+
+  .resume-section {
+
+    h5 {
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+  }
+
+  ul.list-skills {
+    padding-left: 0;
+
+    li {
+        padding: 6px 10px;
+        border-radius:4px;
+        background-color: #1d222c;
+        display: inline-block;
+        margin: 6px;
+        font-style: italic;
+        color: $color-accent;
+        white-space: nowrap;
+    }
+  }
+
+
+
+  h6 {
+    color: $blue;
+    line-height: 20px;
+    @include text-body1();
+    
+    span {
+      line-height: 20px;
+      font-style: italic;
+      color: $text-black-87;
+      font-weight: 500;
+    }
+  }
+
+  ul {
+    margin-bottom: 24px;
+  }
+
+
+  ul.list-exp-title {
+    line-height: 20px;
+    font-style: italic;
+    color: $text-black-54;
+    margin-bottom: 6px;
+
+    li {
+      margin-bottom: 0;
+    }
+  }
+
+  .education-section {
+    
+    ul.list-exp-title {
+      margin-bottom: 20px;
+    }
+  } 
+   
+}
