@@ -470,11 +470,11 @@ angular.module("projects/projects.detail.tpl.html", []).run(["$templateCache", f
     "    </ion-slide>\n" +
     "  </ion-slide-box>\n" +
     "	<div class=\"slider-controls\">\n" +
-    "    <span class=\"slider-control slider-control-prev icon-btn\" ng-click=\"prevSlide()\" ng-if=\"slideIndex > 0\" icon-btn>\n" +
+    "    <span class=\"slider-control slider-control-prev icon-btn\" ng-click=\"prevSlide()\"  icon-btn>\n" +
     "      <span class=\"ripple\"></span>\n" +
     "      <svg><use xlink:href=\"assets/qpham-portfolio.svg#icon-chevron-left\"></use></svg>\n" +
     "    </span>\n" +
-    "    <span class=\"slider-control slider-control-next icon-btn\" ng-click=\"nextSlide()\" ng-if=\"slideIndex != imgLength - 1\" icon-btn>\n" +
+    "    <span class=\"slider-control slider-control-next icon-btn\" ng-click=\"nextSlide()\" \" icon-btn>\n" +
     "      <span class=\"ripple\"></span>\n" +
     "      <svg><use xlink:href=\"assets/qpham-portfolio.svg#icon-chevron-right\"></use></svg>\n" +
     "    </span>\n" +

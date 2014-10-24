@@ -30,7 +30,11 @@
       </ul>     
     </nav>
     <div class="main-content" ng-class="{expand: expand}" flex scroll-y ui-view></div>
-    <a class="back-to-top" ng-class="{show: scroll > 200}"></a>
+    <!-- <a class="back-to-top" ng-class="{show: scroll > 200}"></a> -->
+    <span class="back-to-top" ng-class="{show: scroll > 200}" icon-btn>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-up"></use></svg>
+    </span>
 
     <!-- Modernizr -->
     <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>

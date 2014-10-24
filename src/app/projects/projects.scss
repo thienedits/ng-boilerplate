@@ -105,21 +105,26 @@ $controlHeight:30px;
   width: 100%;
 }
 
+.touch .slider-pager .slider-pager-page {
+  font-size: 10px;
+}
+
 .slider-pager {
   z-index: 2;
-  width: 100px;
-  height: 15px;
   text-align: center;
   position: fixed;
-  top: 20px;
+  width: 100px;
+  top: 15px;
   left: 50%;
   margin-left: -50px;
+  
 
   .ion-record {
     font-style: normal;
+    
 
     &:before {
-      content: "\25cf";
+      //content: "\25cf";
     }
   }
 
@@ -129,17 +134,22 @@ $controlHeight:30px;
 }
 
 .slider-pager .slider-pager-page {
-  font-size: $font-size-large;
   display: inline-block;
-  width: 15px;
-  color: #000;
-  text-decoration: none;
+  vertical-align: middle;
+  width:10px;
+  height:10px;
+  margin: 2px;
+  border-radius:5px;
+  font-size:10px;
+  line-height:10px;
+  text-align:center;
+  background:#000;
   opacity: 0.3; 
   @include transition(opacity 0.3s);
 }
 
 .slider-pager .slider-pager-page.active {
-  color: $blue; 
+  background: $blue; 
   opacity: 1;
 }
 

@@ -90,14 +90,7 @@ ul.social {
 }
 
 .back-to-top {
-  text-indent: -119988px;
   overflow: hidden;
-  text-align: left;
-  background: transparent url(assets/img/back-to-top.svg) no-repeat 50% 50%;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
   cursor: pointer;
   display: block;
   opacity: 1;
@@ -107,18 +100,49 @@ ul.social {
   height: 48px;
   width: 48px;
   z-index: 1000;
+  background: $blue;
+  border-radius: 50%;
   @include transition(all 300ms);
   @include transform-translate3d(0, 150%, 0);
+  box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 
   &.show {
     @include transform-translate3d(0, 0, 0);
+
+  }
+
+  svg {
+    fill: white;
+    width: 48px;
+    height: 48px;
   }
 
   @media (min-width: $layout-breakpoint-sm) {
     display: none;
     visibility: hidden;
+  }
+
+  span.ripple {
+    position: absolute;
+    display: block;
+    background-color: #ccc;
+    width: 48px;
+    height:48px;
+    border-radius: 50%;
+    top:0;
+    left:0;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &.ripple {
+
+    span.ripple {
+      -webkit-animation: inkRippleCheckbox .3s ease;
+      animation: inkRippleCheckbox .3s ease;
+    }
   }
 
 }
@@ -509,12 +533,12 @@ footer {
   opacity: 0;
 
   a, a:hover, a:visited, a:active {
-    color: #999;
+    color: #fff;
     text-decoration: none;
   }
 
   p {
-    color: #fff;
+    color: #999;
     text-align: center;
   }
 

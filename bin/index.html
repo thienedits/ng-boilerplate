@@ -26,11 +26,15 @@
         <li class="menuitem" id="link{{$index}}" ng-repeat="link in links">
           <a ng-href="/{{link}}" class="text-headline" ng-click="closeMenu()" keylines="7" ng-cloak delay-click>{{link}}</a>
         </li>
-        <li layout="vertical" layout-align="center" keylines="7" ng-cloak>v2.3.1</li>
+        <li layout="vertical" layout-align="center" keylines="7" ng-cloak>v3.0.0</li>
       </ul>     
     </nav>
     <div class="main-content" ng-class="{expand: expand}" flex scroll-y ui-view></div>
-    <a class="back-to-top" ng-class="{show: scroll > 200}"></a>
+    <!-- <a class="back-to-top" ng-class="{show: scroll > 200}"></a> -->
+    <span class="back-to-top" ng-class="{show: scroll > 200}" icon-btn>
+      <span class="ripple"></span>
+      <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-up"></use></svg>
+    </span>
 
     <!-- Modernizr -->
     <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
@@ -61,7 +65,7 @@
         head.appendChild(style);
         }
         }
-        xmlhttp.open("GET","assets/qpham-portfolio-2.3.1.css",true);
+        xmlhttp.open("GET","assets/qpham-portfolio-3.0.0.css",true);
         xmlhttp.send();
       }
 
@@ -70,7 +74,7 @@
 
     <!-- Compiled JavaScript -->
     
-    <script type="text/javascript" src="assets/qpham-portfolio-2.3.1.js"></script>
+    <script type="text/javascript" src="assets/qpham-portfolio-3.0.0.js" async></script>
     
     
     
