@@ -10,6 +10,17 @@ svg {
   display: block;
 }
 
+//redisplay text because its set to display none in the inlined CSS(FOUT workaround)
+h1, .h1 { display: inherit; }
+h2, .h2 { display: inherit; }
+h3, .h3 { display: inherit;  }
+h4, .h4 { display: inherit;  }
+h5, .h5 { display: inherit;  }
+h6, .h6 { display: inherit;  }
+p{ display: inherit;  }
+ul{ display: inherit;  }
+
+
 //tweak to bootstrap container
 .container {
   padding: 0 $layout-gutter-16;
@@ -122,6 +133,11 @@ ul.social {
     fill: white;
     width: 48px;
     height: 48px;
+
+    @media (min-width: $layout-breakpoint-sm) {
+      display: none;
+      visibility: hidden;
+    }
   }
 
   @media (min-width: $layout-breakpoint-sm) {

@@ -11,7 +11,7 @@
   display: none;
 }
 
-.defer-image > img {
+.defer-image img {
   display: block;
   width: 100%;
   min-width: 100%;
@@ -98,11 +98,11 @@
   }
 }
 
-.defer-image.is-loading > img {
+.defer-image.is-loading img {
   display: none;
 }
 
-.defer-image.is-loaded > img {
+.defer-image.is-loaded img {
   display: block;
   -webkit-animation: fadeIn 200ms;
           animation: fadeIn 200ms;
