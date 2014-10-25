@@ -10,6 +10,8 @@
     /*inlined css for above the fold view*/
     @-webkit-keyframes bobble{0%{opacity:0;-webkit-transform:translateY(0)}35%{opacity:1;-webkit-transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(0)}}@keyframes bobble{0%{opacity:0;transform:translateY(0)}35%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(0)}}.defer-image.is-loading::after{content:' ';position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-.5em 0 0 -.5em;background:rgba(125,125,125,.5);border-radius:100%;-webkit-animation:bobble 1s 0s infinite;animation:bobble 1s 0s infinite}.spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c;opacity:1;min-height:480px}.spinner:after{position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px 0 0 -7px;background:#00afd8;border-radius:14px;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}.icon-btn,.menu,svg,ul.list-nav{visibility:hidden;display:none}figcaption{display:none}.list-unstyled{list-style-type:none}.list-projects li.list-projects-item{overflow:hidden;width:50%;max-width:400px;cursor:pointer;float:left;margin-bottom:0}@media (min-width:992px){.list-projects li.list-projects-item{width:33%;height:33%}}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6,p,ul{display:none}
     </style>
+    <!-- Modernizr -->
+    <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
   </head>
   <body id="body" ng-class="{expand: expand}" resize gmaps scroll-position="scroll">
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
@@ -35,9 +37,6 @@
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-up"></use></svg>
     </span>
-
-    <!-- Modernizr -->
-    <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
 
     <!-- Defer and Inject CSS -->
     
