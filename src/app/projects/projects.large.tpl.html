@@ -9,7 +9,16 @@
 	<ion-slide-box on-slide-changed="slideChanged(index)" delegate-handle="large-slide">
     <ion-slide ng-repeat="image in project.largeImages">
       <div class="defer-image image-ratio:4x3 is-loading">
-				<img ng-src="assets/img/{{image}}.jpg" imgload>
+				<picture >
+          <!--[if IE 9]><video style="display: none;"><![endif]-->
+          <source type="image/webp" 
+          srcset="assets/img/{{image}}-720.webp 720w, assets/img/{{image}}-360.webp 360w" 
+          sizes="(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw" />
+          <source srcset="assets/img/{{image}}-720.jpg 720w, assets/img/{{image}}-360.jpg 360w" 
+          sizes="(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw" />
+          <!--[if IE 9]></video><![endif]-->
+          <img class="" src="assets/img/{{image}}-720.jpg" alt="{{project.title}}" imgload/>
+        </picture>
 			</div>
     </ion-slide>
   </ion-slide-box>

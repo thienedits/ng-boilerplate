@@ -53,7 +53,7 @@ angular.module('qpham.directives', [])
       footer.css('opacity', 0);
 
       iElement.bind('load', function(e){
-        var parent = iElement.parent();
+        var parent = iElement.parent().parent();
         parent.removeClass('is-loading').addClass('is-loaded');
         footer.css('opacity', 1);
       }); 

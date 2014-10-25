@@ -42,7 +42,7 @@
   $scope.loadingObj = {};
   $scope.lastSearch = {};
   $scope.lastSearch.search = '';//saves last contacts search
-  $scope.loadingObj.loading = true; //shows loading spinner when true
+  $scope.loadingObj.loading = false; //shows loading spinner when true
 
   $scope.isActive = function(project) {
     if (project.$id && '/projects/' + project.$id == $location.path()) {

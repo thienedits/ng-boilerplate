@@ -37,13 +37,13 @@
       display: block;
       width: 100px;
       height: 100px;
-      background: url(assets/img/profile.jpg) no-repeat center center;
+      background: url(assets/img/profile-180.jpg) no-repeat center center;
       background-size: 100%;
       margin: 0 auto;
       margin-top: 0px;
       
       @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { 
-          background: url(assets/img/profile@2x.jpg) no-repeat center center;
+          background: url(assets/img/profile-180.jpg) no-repeat center center;
       }
     }
 

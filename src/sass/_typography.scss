@@ -81,7 +81,7 @@ $text-white-12:            rgba(255,255,255,0.12);
 }
 
 @mixin text-display1 {
-  font-weight: $font-weight-thin;
+  font-weight: $font-weight-regular;
   font-size: $font-size-34;
   line-height: $line-height-40;
 }
@@ -345,6 +345,10 @@ dd {
   color: $color-accent-light !important;
 }
 
+//Modifiers
+.text-light {
+  font-weight: $font-weight-light;
+}
 
 .text-display4 {
   @include text-display4();

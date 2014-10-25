@@ -241,7 +241,7 @@ angular.module("contacts/contacts.detail.tpl.html", []).run(["$templateCache", f
     "    <div class=\"tile\">\n" +
     "      <span class=\"profile-img\"></span>\n" +
     "    </div>\n" +
-    "    <h3>{{contact.name}}</h3>\n" +
+    "    <h5>{{contact.name}}</h5>\n" +
     "  </div>\n" +
     "  <ul class=\"list-contact list-unstyled\">\n" +
     "    <li>\n" +
@@ -465,16 +465,25 @@ angular.module("projects/projects.detail.tpl.html", []).run(["$templateCache", f
     "	<ion-slide-box on-slide-changed=\"slideChanged(index)\">\n" +
     "    <ion-slide ng-repeat=\"image in project.images\">\n" +
     "      <div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
-    "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
+    "        <picture >\n" +
+    "          <!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n" +
+    "          <source type=\"image/webp\" \n" +
+    "          srcset=\"assets/img/{{image}}-720.webp 720w, assets/img/{{image}}-360.webp 360w\" \n" +
+    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
+    "          <source srcset=\"assets/img/{{image}}-720.jpg 720w, assets/img/{{image}}-360.jpg 360w\" \n" +
+    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
+    "          <!--[if IE 9]></video><![endif]-->\n" +
+    "          <img class=\"\" src=\"assets/img/{{image}}-720.jpg\" alt=\"{{project.title}}\" imgload/>\n" +
+    "        </picture>\n" +
     "			</div>\n" +
     "    </ion-slide>\n" +
     "  </ion-slide-box>\n" +
     "	<div class=\"slider-controls\">\n" +
-    "    <span class=\"slider-control slider-control-prev icon-btn\" ng-click=\"prevSlide()\"  icon-btn>\n" +
+    "    <span class=\"slider-control slider-control-prev icon-btn\" ng-click=\"prevSlide()\" ng-if=\"slideIndex > 0\" icon-btn>\n" +
     "      <span class=\"ripple\"></span>\n" +
     "      <svg><use xlink:href=\"assets/qpham-portfolio.svg#icon-chevron-left\"></use></svg>\n" +
     "    </span>\n" +
-    "    <span class=\"slider-control slider-control-next icon-btn\" ng-click=\"nextSlide()\" \" icon-btn>\n" +
+    "    <span class=\"slider-control slider-control-next icon-btn\" ng-click=\"nextSlide()\" ng-if=\"slideIndex != imgLength - 1\" icon-btn>\n" +
     "      <span class=\"ripple\"></span>\n" +
     "      <svg><use xlink:href=\"assets/qpham-portfolio.svg#icon-chevron-right\"></use></svg>\n" +
     "    </span>\n" +
@@ -502,7 +511,16 @@ angular.module("projects/projects.large.tpl.html", []).run(["$templateCache", fu
     "	<ion-slide-box on-slide-changed=\"slideChanged(index)\" delegate-handle=\"large-slide\">\n" +
     "    <ion-slide ng-repeat=\"image in project.largeImages\">\n" +
     "      <div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
-    "				<img ng-src=\"assets/img/{{image}}.jpg\" imgload>\n" +
+    "				<picture >\n" +
+    "          <!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n" +
+    "          <source type=\"image/webp\" \n" +
+    "          srcset=\"assets/img/{{image}}-720.webp 720w, assets/img/{{image}}-360.webp 360w\" \n" +
+    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
+    "          <source srcset=\"assets/img/{{image}}-720.jpg 720w, assets/img/{{image}}-360.jpg 360w\" \n" +
+    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
+    "          <!--[if IE 9]></video><![endif]-->\n" +
+    "          <img class=\"\" src=\"assets/img/{{image}}-720.jpg\" alt=\"{{project.title}}\" imgload/>\n" +
+    "        </picture>\n" +
     "			</div>\n" +
     "    </ion-slide>\n" +
     "  </ion-slide-box>\n" +
@@ -534,12 +552,22 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
     "	<!-- <figure>\n" +
     "		<img src=\"http://d249o6o0sttdia.cloudfront.net/~/media/riotile.jpg\" alt=\"Rio Galeão.\">\n" +
     "	</figure> -->\n" +
-    "	<h4 layout=\"horizontal\" layout-align=\"center center\" keylines=\"8\">Recent Work</h4>\n" +
+    "	<h4 class=\"text-light\" layout=\"horizontal\" layout-align=\"center center\" keylines=\"8\">Recent Work</h4>\n" +
     "	<ul class=\"list-projects list-unstyled clearfix\">\n" +
     "		<li id=\"project{{project.$id}}\" class=\"list-projects-item\" ng-repeat=\"project in projects | orderByPriority\">\n" +
     "			<a href=\"projects/{{project.$id}}\" delay-click>\n" +
     "			<figure class=\"defer-image image-ratio:4x3 is-loading\">\n" +
-    "				<img ng-src=\"assets/img/{{project.cover}}.jpg\" imgload>\n" +
+    "				<picture >\n" +
+    "					<!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n" +
+    "					<source type=\"image/webp\" \n" +
+    "					srcset=\"assets/img/{{project.cover}}-360.webp 360w, assets/img/{{project.cover}}-180.webp 180w\" \n" +
+    "					sizes=\"(min-width: 992px) 317px, (min-width: 768px) 360px, 50vw\" />\n" +
+    "					<source srcset=\"assets/img/{{project.cover}}-360.jpg 360w, assets/img/{{project.cover}}-180.jpg 180w\" \n" +
+    "					sizes=\"(min-width: 992px) 317px, (min-width: 768px) 360px, 50vw\" />\n" +
+    "					<!--[if IE 9]></video><![endif]-->\n" +
+    "					<img class=\"\" src=\"assets/img/{{project.cover}}-180.jpg\" alt=\"{{project.title}}\" imgload/>\n" +
+    "				</picture>\n" +
+    "				<!-- <img ng-src=\"assets/img/{{project.cover}}.jpg\" imgload> -->\n" +
     "				<figcaption class=\"text-headline color-white text-center\" layout=\"vertical\" layout-align=\"center\">{{project.title}}</figcaption>\n" +
     "			</figure>\n" +
     "			</a>\n" +

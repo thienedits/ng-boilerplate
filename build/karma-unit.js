@@ -16,6 +16,7 @@ module.exports = function ( karma ) {
       'vendor/smoothScroll/smoothscroll.js',
       'vendor/classie/classie.js',
       'vendor/material/dist/form/form.js',
+      'vendor/picturefill/dist/picturefill.js',
       'build/templates-app.js',
       'build/templates-common.js',
       'vendor/angular-mocks/angular-mocks.js',

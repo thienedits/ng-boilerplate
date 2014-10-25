@@ -21,16 +21,25 @@
 	<ion-slide-box on-slide-changed="slideChanged(index)">
     <ion-slide ng-repeat="image in project.images">
       <div class="defer-image image-ratio:4x3 is-loading">
-				<img ng-src="assets/img/{{image}}.jpg" imgload>
+        <picture >
+          <!--[if IE 9]><video style="display: none;"><![endif]-->
+          <source type="image/webp" 
+          srcset="assets/img/{{image}}-720.webp 720w, assets/img/{{image}}-360.webp 360w" 
+          sizes="(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw" />
+          <source srcset="assets/img/{{image}}-720.jpg 720w, assets/img/{{image}}-360.jpg 360w" 
+          sizes="(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw" />
+          <!--[if IE 9]></video><![endif]-->
+          <img class="" src="assets/img/{{image}}-720.jpg" alt="{{project.title}}" imgload/>
+        </picture>
 			</div>
     </ion-slide>
   </ion-slide-box>
 	<div class="slider-controls">
-    <span class="slider-control slider-control-prev icon-btn" ng-click="prevSlide()"  icon-btn>
+    <span class="slider-control slider-control-prev icon-btn" ng-click="prevSlide()" ng-if="slideIndex > 0" icon-btn>
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-left"></use></svg>
     </span>
-    <span class="slider-control slider-control-next icon-btn" ng-click="nextSlide()" " icon-btn>
+    <span class="slider-control slider-control-next icon-btn" ng-click="nextSlide()" ng-if="slideIndex != imgLength - 1" icon-btn>
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-right"></use></svg>
     </span>

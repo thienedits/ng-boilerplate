@@ -59,14 +59,14 @@ nav {
 	width: 40px;
 	height: 40px;
 	margin: 4px;
-	background: url(assets/img/profile.jpg) no-repeat center center;
+	background: url(assets/img/profile-180.jpg) no-repeat center center;
 	background-size: 100% !important;
 	border-radius:50%;
 
 	@media 
 	(-webkit-min-device-pixel-ratio: 1.5), 
 	(min-resolution: 144dpi){ 
-			background: url(assets/img/profile@2x.jpg) no-repeat center center;
+			background: url(assets/img/profile-180.jpg) no-repeat center center;
 	}
 }
 

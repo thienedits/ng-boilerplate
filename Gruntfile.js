@@ -22,6 +22,9 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-svgmin');
+  grunt.loadNpmTasks('grunt-responsive-images');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-webp');
 
   /**
    * Load in our build configuration file.
@@ -279,6 +282,76 @@ module.exports = function ( grunt ) {
       }
     },
 
+    responsive_images: {
+      dev: {
+        options: {
+          sizes: [{
+            width: 180,
+            name: '180',
+            quality: 80
+          }, {
+            width: 360,
+            name: '360',
+            quality: 80
+          }, {
+            width: 720,
+            name: '720',
+            quality: 80
+          }]
+        },
+        files: [{
+          expand: true,
+          src: ['*.{jpg,gif,png}'],
+          cwd: 'src/img/',
+          dest: 'src/assets/img'
+        }]
+      }
+    },
+
+    // WebP configuration
+    webp: {
+      files: {
+        expand: true,
+        cwd: 'src/assets/im',
+        src: '*.jpg',
+        dest: 'src/assets/img'
+      },
+      options: {
+        binpath: 'cwebp',
+        preset: 'photo',
+        verbose: true,
+        quality: 80,
+        alphaQuality: 80,
+        compressionMethod: 6,
+        segments: 4,
+        psnr: 42,
+        sns: 50,
+        filterStrength: 40,
+        filterSharpness: 3,
+        simpleFilter: true,
+        partitionLimit: 50,
+        analysisPass: 6,
+        multiThreading: true,
+        lowMemory: false,
+        alphaMethod: 0,
+        alphaFilter: 'best',
+        alphaCleanup: true,
+        noAlpha: false,
+        lossless: false
+      }
+    },
+
+    imagemin: {                          // Task
+      dynamic: {                         // Another target
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: 'src/img/responsive',     // Src matches are relative to this path
+          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
+          dest: 'src/img/optimized'                  // Destination path prefix
+        }]
+      }
+    },
+
     sass: {                              // Task
       build: {                            // Target
         options: {                       // Target options
@@ -501,7 +574,7 @@ module.exports = function ( grunt ) {
        * plugin should auto-detect.
        */
       options: {
-        livereload: true
+        livereload: false
       },
 
       /**
@@ -642,7 +715,7 @@ module.exports = function ( grunt ) {
    */
   grunt.registerTask( 'build', [
     'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'sass:build', 'svgmin',
-    'svgstore', 'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
+    'svgstore', 'responsive_images', 'webp', 'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
     'karma:continuous' 
   ]);

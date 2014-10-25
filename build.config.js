@@ -71,7 +71,8 @@ module.exports = {
       'vendor/angularfire/angularfire.js',
       'vendor/smoothScroll/smoothscroll.js',
       'vendor/classie/classie.js',
-      'vendor/material/dist/form/form.js'
+      'vendor/material/dist/form/form.js',
+      'vendor/picturefill/dist/picturefill.js'
     ],
     css: [
       

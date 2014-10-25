@@ -48,7 +48,7 @@ angular.module('qpham', [
     $scope.loadingObj = {};
     $scope.lastSearch = {};
     $scope.lastSearch.search = '';
-    $scope.loadingObj.loading = true;
+    $scope.loadingObj.loading = false;
     $scope.isActive = function (project) {
       if (project.$id && '/projects/' + project.$id == $location.path()) {
         return true;

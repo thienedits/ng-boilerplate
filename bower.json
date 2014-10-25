@@ -13,7 +13,8 @@
     "angularfire": "~0.7.0",
     "ionic": "1.0.0-beta.11",
     "normalize.scss": "https://github.com/kristerkari/normalize.scss.git",
-    "compass-mixins": "0.12.3"
+    "compass-mixins": "0.12.3",
+    "picturefill":"~2.1.0"
   },
   "resolutions": {
     "angular": "~1.2.17"
