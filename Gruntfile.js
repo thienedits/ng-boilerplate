@@ -361,6 +361,11 @@ module.exports = function ( grunt ) {
       }
     },
 
+    /**
+     * `sass` handles our SASS compilation and uglification automatically.
+     * Only our `main.scss` file is included in compilation; all other files
+     * must be imported from this file.
+     */
     sass: {                              // Task
       build: {                            // Target
         options: {                       // Target options
@@ -379,36 +384,6 @@ module.exports = function ( grunt ) {
         }
       }
     },
-
-    /**
-     * `less` handles our LESS compilation and uglification automatically.
-     * Only our `main.less` file is included in compilation; all other files
-     * must be imported from this file.
-     */
-    /*less: {
-      build: {
-        src: [ '<%= app_files.less %>' ],
-        dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css',
-        options: {
-          compile: true,
-          compress: false,
-          noUnderscores: false,
-          noIDs: false,
-          zeroUnits: false
-        }
-      },
-      compile: {
-        src: [ '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css' ],
-        dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css',
-        options: {
-          compile: true,
-          compress: true,
-          noUnderscores: false,
-          noIDs: false,
-          zeroUnits: false
-        }
-      }
-    },*/
 
     /**
      * `jshint` defines the rules of our linter as well as which files we
