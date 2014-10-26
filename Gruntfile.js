@@ -693,15 +693,13 @@ module.exports = function ( grunt ) {
       heroku: {
         options: {
           remote: 'git@heroku.com:qpham.git',
-          branch: 'master',
-          tag: '<%= pkg.version %>'
+          branch: 'master'
         }
       },
       testing: {
         options: {
           remote: 'git@heroku.com:qpham-testing.git',
-          branch: 'master',
-          tag: '<%= pkg.version %>'
+          branch: 'master'
         }
       }
     }
