@@ -1,49 +1,4 @@
 angular.module('qpham.directives', [])
-  /*.directive('html', function ($window, $timeout, $location) {
-  return {
-    restrict: 'E',
-    link: function (scope, iElement, iAttrs) {
-
-      var windowEl = angular.element($window);
-
-      scope.scrollPos = {}; // scroll position of each view
-
-      scope.scrollClear = function(path) {
-        scope.scrollPos[path] = 0;
-      };
-
-      function getScrollTop() {
-        if(typeof pageYOffset !== 'undefined'){
-          //most browsers except IE before #9
-          return window.pageYOffset;
-        }
-        else{
-          var B= document.body; //IE 'quirks'
-          var D= document.documentElement; //IE with doctype
-          D= (D.clientHeight)? D: B;
-          return D.scrollTop;
-        }
-      }
-
-      windowEl.on('scroll', function() {
-        if (scope.okSaveScroll) { // false between $routeChangeStart and $routeChangeSuccess
-            scope.scrollPos[$location.path()] = getScrollTop();
-        }
-      });
-
-      scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-        scope.okSaveScroll = false;
-      });
-
-      scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-        $timeout(function() { // wait for DOM, then restore scroll position
-          window.scroll(0, scope.scrollPos[$location.path()] ? scope.scrollPos[$location.path()] : 0);
-          scope.okSaveScroll = true;
-        }, 100);
-      });
-    }
-  };
-})*/
 
 .directive('imgload', function () {
   return {
@@ -62,40 +17,6 @@ angular.module('qpham.directives', [])
   };
 })
 
-/*.directive('resize', function ($window) {
-  return {
-    restrict: 'A',
-    link: function (scope, iElement, iAttrs) {
-      
-      var win = angular.element($window);
-
-      scope.getWindowDimensions = function () {
-        return { 'h': $window.innerHeight, 'w': $window.innerWidth };
-      };
-      
-      scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) { 
-        if (newValue.w > 360) {
-          scope.mobileSize = false;
-        } else {
-          scope.mobileSize = true;
-        }
-
-        scope.style = function () {
-          return { 
-            'height': newValue.h + 'px'
-          };
-        };
-
-      }, true);
-
-      win.bind('resize', function () {
-        scope.$apply();
-      });
-
-    }
-  };
-})*/
-
 .directive('delayClick', function ($timeout, $location, $state, $window) {
   return {
     restrict: 'A',
@@ -104,10 +25,6 @@ angular.module('qpham.directives', [])
 
       iElement.bind('click', function(e){
         e.preventDefault();      
-        /*var timer = $timeout(function() {$location.path(link);}, 200),
-        deregister = scope.$on("$destroy", function( e ) {
-            $timeout.cancel( timer );
-        });*/
 
         if(link.indexOf('projects') >= 0 || link.indexOf('contacts') >= 0 || link.indexOf('about') >= 0 || link.indexOf('resume') >= 0) {
           $timeout(function() {$location.path(link);}, 100); 
@@ -216,36 +133,6 @@ angular.module('qpham.directives', [])
   return {
     restrict: 'A',
     link: function (scope, iElement, iAttrs) {
-      /*var iconBtn = Array.prototype.slice.call( document.querySelectorAll( 'button.icon-btn' ) ),
-        totalIconBtn = iconBtn.length;
-
-      iconBtn.forEach( function( el, i ) { el.addEventListener( 'click', activate, false ); } );
-
-      function activate() {
-        var self = this, activatedClass = 'btn-activated';
-
-        if( classie.has( this, 'icon-btn' ) ) {
-          // if it is the first of the two btn-7h then activatedClass = 'btn-error';
-          // if it is the second then activatedClass = 'btn-success'
-          activatedClass = 'ripple';
-        }
-
-        if( classie.has( this, 'btn-7h' ) ) {
-          // if it is the first of the two btn-7h then activatedClass = 'btn-error';
-          // if it is the second then activatedClass = 'btn-success'
-          activatedClass = buttons7Click.indexOf( this ) === totalButtons7Click-2 ? 'btn-error' : 'btn-success';
-        }
-        else if( classie.has( this, 'btn-8g' ) ) {
-          // if it is the first of the two btn-8g then activatedClass = 'btn-success3d';
-          // if it is the second then activatedClass = 'btn-error3d'
-          activatedClass = buttons9Click.indexOf( this ) === totalButtons9Click-2 ? 'btn-success3d' : 'btn-error3d';
-        }
-
-        if( !classie.has( this, activatedClass ) ) {
-          classie.add( this, activatedClass );
-          setTimeout( function() { classie.remove( self, activatedClass ) }, 1000 );
-        }
-      }*/
 
       iElement.bind('click', function(e){
         var activatedClass = 'ripple',

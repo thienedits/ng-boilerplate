@@ -328,7 +328,9 @@ module.exports = function ( grunt ) {
       }
     },
 
-    // WebP configuration
+    /**
+     * WebP configuration
+     */
     webp: {
       files: {
         expand: true,

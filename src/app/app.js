@@ -10,8 +10,6 @@
   'firebase'
 ])
 
-/*.value('$anchorScroll', angular.noop)*/
-
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise( '/projects' );
 
@@ -19,9 +17,7 @@
 })
 
 .run( function run (FBURL, $rootScope, $location) {
-  /*$rootScope.expand = false;*/
   $rootScope.FBURL = FBURL;
-
 })
 
 // your Firebase URL goes here

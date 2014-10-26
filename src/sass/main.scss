@@ -9,31 +9,31 @@
  * project should be imported as the rest are just wasting space.
  */
 
-// Core variables and mixins
+/**
+ * Core variables and mixins
+ */
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss';
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_mixins.scss';
-
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_normalize.scss';
 
-// Core CSS
-/* @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss'; */
-/* @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_type.scss'; */
+/**
+ * Core CSS
+ */
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss';
-
-
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss';
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_pagination.scss';
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_pager.scss';
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss';
 
-// Utility classes
+/**
+ * Utility Classes
+ */
 @import '../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss';
 
 
 /**
  * This is our site-wide files.
  */
-
 @import 'variables.scss';
 @import 'mixins.scss';
 @import 'fonts';

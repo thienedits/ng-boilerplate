@@ -71,7 +71,7 @@ material-button {
   border-radius: $button-border-radius;
   text-align: center;
 
-  // Always uppercase buttons
+  //Always uppercase buttons
   text-transform: uppercase;
   font-weight: inherit;
   font-style: inherit;
@@ -81,9 +81,9 @@ material-button {
   line-height: inherit;
 
   cursor: pointer;
-  overflow: hidden;   // for ink containment
+  overflow: hidden;   //for ink containment
 
-  // reserved for inner buttons and inner hrefs
+  //reserved for inner buttons and inner hrefs
   .material-button-inner {
     display: block;
     left: 0;
@@ -105,7 +105,7 @@ material-button {
     padding: 4px;
   }
 
-  // If we have a href and an inner anchor, let the clicks pass through to the anchor
+  //If we have a href and an inner anchor, let the clicks pass through to the anchor
   &[href] {
     pointer-events: none;
     .material-button-inner {
@@ -124,7 +124,7 @@ material-button {
   }
 
   &:hover:not([disabled]),
-  // Uses a .focus class because the child button/a is getting the actual focus
+  //Uses a .focus class because the child button/a is getting the actual focus
   &.focus {
     background-color: $button-hover-background;
   }

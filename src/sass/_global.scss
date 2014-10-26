@@ -10,7 +10,9 @@ svg {
   display: block;
 }
 
-//redisplay text because its set to display none in the inlined CSS(FOUT workaround)
+/**
+ * redisplay text because its set to display none in the inlined CSS(FOUT workaround) 
+ */
 h1, .h1 { display: inherit; }
 h2, .h2 { display: inherit; }
 h3, .h3 { display: inherit;  }
@@ -20,8 +22,9 @@ h6, .h6 { display: inherit;  }
 p{ display: inherit;  }
 ul{ display: inherit;  }
 
-
-//tweak to bootstrap container
+/**
+ * tweak to bootstrap container
+ */
 .container {
   padding: 0 $layout-gutter-16;
   margin-right: auto;
@@ -94,8 +97,11 @@ ul.social {
   }
 } 
 
+/**
+ * keep icon and text of different font-sizes middle aligned
+ */
 .btn-simple {
-  //keep icon and text of different font-sizes middle aligned
+
   span {
     vertical-align: middle;
   }
@@ -210,37 +216,6 @@ ul.social {
 
 }
 
-.no-touch .main-content {
-  
-}
-
-.main-content {
-  background: #fff;
-
-  @media (min-width: $layout-breakpoint-sm) {
-    //height: 100%;
-  }
-
-  @media (min-width: 1170px) {
-    
-  }
-
-  &.expand {
-    overflow: hidden;
-    
-
-    @media (min-width:768px) {
-     
-
-    }
-
-    @media (min-width: 1170px) {
- 
-    }
-  }
-  
-}
-
 .content-section {
   padding-bottom: 20px;
 }
@@ -266,18 +241,6 @@ header.app-bar {
      background-color: #1d222c;
      opacity: .9;
      box-shadow: none;
-  }
-
-  .container {
-    
-  }
-
-  @media (min-width: $layout-breakpoint-sm) {
-    
-
-    .container  {
-      
-    }
   }
 
   .btn-navbar {
@@ -351,7 +314,6 @@ header.app-bar {
 /**
  * Navigation
  */
-
 .menu {
   font-family: $headings-font-family;
   position: fixed;
@@ -369,18 +331,6 @@ header.app-bar {
   z-index: 1;
   overflow: auto;
 
-  @media (max-width:768px) {
-
-  }
-
-  @media (min-width: 768px)  { 
-
-  }
-
-  @media (min-width: 1170px) {
-
-  }
-
   &.expand {
     visibility: visible;
     opacity: 1;
@@ -394,39 +344,6 @@ header.app-bar {
       visibility: visible;
     }
   }
-
-  /* &.expand-add, &.expand-remove {
-    -webkit-transition: visibility 0.3s 0.2s linear, opacity 0.3s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: visibility 0.3s 0.2s linear, opacity 0.3s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  &.expand, &.expand-add.expand-add-active {
-    visibility: visible;
-    opacity: 1;
-    z-index: 100;
-
-    header {
-      visibility: visible;
-    }
-  
-    ul.list-nav {
-      visibility: visible;
-    }
-
-    @media (max-width: 768px)  { 
-      //@include translate3d(0, 0, 0);
-    }
-
-    @media (min-width: 1170px) {
-
-    }
-    
-  }
-
-  &.expand-remove.expand-remove-active {
-    visibility: hidden;
-    opacity: 0;
-  } */
 
   svg {
     fill: $text-white-100;
@@ -451,10 +368,6 @@ header.app-bar {
     padding-top: 56px;
     visibility: hidden;
     display: block;
-
-    @media (min-width: 768px)  { 
-
-    }
   }
 
   > ul > li {
@@ -547,7 +460,6 @@ button.icon-btn {
 /**
  * Footer
  */
-
 footer {
   padding: 30px 0;
   background-color: #1d222c;
