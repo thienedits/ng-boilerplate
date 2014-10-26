@@ -468,10 +468,10 @@ angular.module("projects/projects.detail.tpl.html", []).run(["$templateCache", f
     "        <picture >\n" +
     "          <!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n" +
     "          <source type=\"image/webp\" \n" +
-    "          srcset=\"assets/img/{{image}}-720.webp 720w, assets/img/{{image}}-360.webp 360w\" \n" +
-    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
-    "          <source srcset=\"assets/img/{{image}}-720.jpg 720w, assets/img/{{image}}-360.jpg 360w\" \n" +
-    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
+    "          srcset=\"assets/img/{{image}}-720.webp, assets/img/{{image}}-360.webp\" \n" +
+    "          media=\"(max-width: 768px)\" />\n" +
+    "          <source srcset=\"assets/img/{{image}}-720.jpg, assets/img/{{image}}-360.jpg\" \n" +
+    "          media=\"(min-width: 768px)\" />\n" +
     "          <!--[if IE 9]></video><![endif]-->\n" +
     "          <img class=\"\" src=\"assets/img/{{image}}-720.jpg\" alt=\"{{project.title}}\" imgload/>\n" +
     "        </picture>\n" +
@@ -513,13 +513,12 @@ angular.module("projects/projects.large.tpl.html", []).run(["$templateCache", fu
     "      <div class=\"defer-image image-ratio:4x3 is-loading\">\n" +
     "				<picture >\n" +
     "          <!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n" +
-    "          <source type=\"image/webp\" \n" +
-    "          srcset=\"assets/img/{{image}}-720.webp 720w, assets/img/{{image}}-360.webp 360w\" \n" +
-    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
-    "          <source srcset=\"assets/img/{{image}}-720.jpg 720w, assets/img/{{image}}-360.jpg 360w\" \n" +
-    "          sizes=\"(min-width: 992px) 960px, (min-width: 768px) 720px, 100vw\" />\n" +
+    "          <source type=\"image/webp\" srcset=\"assets/img/{{image}}-940.webp\" media=\"(min-width: 768px)\"/>\n" +
+    "          <source type=\"image/webp\" srcset=\"assets/img/{{image}}-720.webp, assets/img/{{image}}-360.webp\" media=\"(max-width: 768px)\"/>\n" +
+    "          <source srcset=\"assets/img/{{image}}-940.jpg\" media=\"(min-width: 768px)\"/>\n" +
+    "          <source srcset=\"assets/img/{{image}}-720.jpg, assets/img/{{image}}-360.jpg\" media=\"(max-width: 768px)\"/>\n" +
     "          <!--[if IE 9]></video><![endif]-->\n" +
-    "          <img class=\"\" src=\"assets/img/{{image}}-720.jpg\" alt=\"{{project.title}}\" imgload/>\n" +
+    "          <img class=\"\" src=\"assets/img/{{image}}-360.jpg\" alt=\"{{project.title}}\" imgload/>\n" +
     "        </picture>\n" +
     "			</div>\n" +
     "    </ion-slide>\n" +
@@ -560,10 +559,8 @@ angular.module("projects/projects.tpl.html", []).run(["$templateCache", function
     "				<picture >\n" +
     "					<!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n" +
     "					<source type=\"image/webp\" \n" +
-    "					srcset=\"assets/img/{{project.cover}}-360.webp 360w, assets/img/{{project.cover}}-180.webp 180w\" \n" +
-    "					sizes=\"(min-width: 992px) 317px, (min-width: 768px) 360px, 50vw\" />\n" +
-    "					<source srcset=\"assets/img/{{project.cover}}-360.jpg 360w, assets/img/{{project.cover}}-180.jpg 180w\" \n" +
-    "					sizes=\"(min-width: 992px) 317px, (min-width: 768px) 360px, 50vw\" />\n" +
+    "					srcset=\"assets/img/{{project.cover}}-360.webp, assets/img/{{project.cover}}-180.webp\" />\n" +
+    "					<source srcset=\"assets/img/{{project.cover}}-360.jpg, assets/img/{{project.cover}}-180.jpg\" />\n" +
     "					<!--[if IE 9]></video><![endif]-->\n" +
     "					<img class=\"\" src=\"assets/img/{{project.cover}}-180.jpg\" alt=\"{{project.title}}\" imgload/>\n" +
     "				</picture>\n" +

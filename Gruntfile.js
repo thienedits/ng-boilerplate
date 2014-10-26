@@ -23,7 +23,6 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-responsive-images');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-webp');
 
   /**
@@ -283,7 +282,30 @@ module.exports = function ( grunt ) {
     },
 
     responsive_images: {
-      dev: {
+      /*high: {
+        options: {
+          sizes: [{
+            width: 180,
+            name: '180',
+            quality: 100
+          }, {
+            width: 360,
+            name: '360',
+            quality: 100
+          }, {
+            width: 720,
+            name: '720',
+            quality: 100
+          }]
+        },
+        files: [{
+          expand: true,
+          src: ['*.{jpg,gif,png}'],
+          cwd: 'src/img/originals',
+          dest: 'src/img/responsive100quality'
+        }]
+      },*/
+      normal: {
         options: {
           sizes: [{
             width: 180,
@@ -302,7 +324,27 @@ module.exports = function ( grunt ) {
         files: [{
           expand: true,
           src: ['*.{jpg,gif,png}'],
-          cwd: 'src/img/',
+          cwd: 'src/img/originals',
+          dest: 'src/assets/img'
+        }]
+      },
+      large: {
+        options: {
+          sizes: [{
+            width: 360,
+            quality: 80
+          }, {
+            width: 720,
+            quality: 80
+          }, {
+            width: 940,
+            quality: 80
+          }]
+        },
+        files: [{
+          expand: true,
+          src: ['*.{jpg,gif,png}'],
+          cwd: 'src/img/originals/940',
           dest: 'src/assets/img'
         }]
       }
@@ -312,15 +354,15 @@ module.exports = function ( grunt ) {
     webp: {
       files: {
         expand: true,
-        cwd: 'src/assets/im',
-        src: '*.jpg',
+        cwd: 'src/assets/im',//turn on/off so grunt doesnt reprocess old files
+        src: '**/*.jpg',
         dest: 'src/assets/img'
       },
       options: {
         binpath: 'cwebp',
         preset: 'photo',
         verbose: true,
-        quality: 80,
+        quality: 100,
         alphaQuality: 80,
         compressionMethod: 6,
         segments: 4,
@@ -338,17 +380,6 @@ module.exports = function ( grunt ) {
         alphaCleanup: true,
         noAlpha: false,
         lossless: false
-      }
-    },
-
-    imagemin: {                          // Task
-      dynamic: {                         // Another target
-        files: [{
-          expand: true,                  // Enable dynamic expansion
-          cwd: 'src/img/responsive',     // Src matches are relative to this path
-          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
-          dest: 'src/img/optimized'                  // Destination path prefix
-        }]
       }
     },
 
