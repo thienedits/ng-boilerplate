@@ -24,6 +24,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-webp');
+  grunt.loadNpmTasks('grunt-build-control');
 
   /**
    * Load in our build configuration file.
@@ -282,29 +283,6 @@ module.exports = function ( grunt ) {
     },
 
     responsive_images: {
-      /*high: {
-        options: {
-          sizes: [{
-            width: 180,
-            name: '180',
-            quality: 100
-          }, {
-            width: 360,
-            name: '360',
-            quality: 100
-          }, {
-            width: 720,
-            name: '720',
-            quality: 100
-          }]
-        },
-        files: [{
-          expand: true,
-          src: ['*.{jpg,gif,png}'],
-          cwd: 'src/img/originals',
-          dest: 'src/img/responsive100quality'
-        }]
-      },*/
       normal: {
         options: {
           sizes: [{
@@ -719,6 +697,41 @@ module.exports = function ( grunt ) {
     nodemon: {
       dev: {
         script: 'server.js'
+      }
+    },
+
+    buildcontrol: {
+      options: {
+        dir: 'bin',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:thienedits/ng-boilerplate.git',
+          branch: 'gh-pages'
+        }
+      },
+      heroku: {
+        options: {
+          remote: 'git@heroku.com:qpham.git',
+          branch: 'master',
+          tag: '<%= pkg.version %>'
+        }
+      },
+      testing: {
+        options: {
+          remote: 'git@heroku.com:qpham-testing.git',
+          branch: 'master',
+          tag: '<%= pkg.version %>'
+        }
+      },
+      local: {
+        options: {
+          remote: '../',
+          branch: 'build'
+        }
       }
     }
   };

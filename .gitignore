@@ -1,5 +1,9 @@
 *.sw*
 *~
 _art/
+bin/
+build/
 /node_modules/
-/vendor/
+.sass-cache
+.sass-cache/*
+vendor/

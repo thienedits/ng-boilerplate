@@ -5,9 +5,9 @@
 
 var express = require('express'),
   fs = require('fs'),
-  api = require('./api'),
-  contactRepository = require('./api').ContactRepository,
-  data_file = 'contacts.json',
+  api = require('./server/api.js'),
+  contactRepository = require('./server/api.js').ContactRepository,
+  data_file = './server/contacts.json',
   http = require('http'),
   path = require('path');
 
