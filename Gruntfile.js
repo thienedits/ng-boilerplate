@@ -703,12 +703,6 @@ module.exports = function ( grunt ) {
           branch: 'master',
           tag: '<%= pkg.version %>'
         }
-      },
-      local: {
-        options: {
-          remote: '../',
-          branch: 'build'
-        }
       }
     }
   };
