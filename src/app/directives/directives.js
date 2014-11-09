@@ -1,5 +1,24 @@
 angular.module('qpham.directives', [])
 
+.directive('body', function ($timeout) {
+  return {
+    restrict: 'E',
+    link: function (scope, iElement, iAttrs) {
+      var el = iElement[0];
+      window.addEventListener('scroll', function() {
+        clearTimeout(timer);
+        if(!el.classList.contains('disable-hover')) {
+          el.classList.add('disable-hover');
+        }
+        var timer = $timeout(function() {
+          el.classList.remove('disable-hover');
+        }, 500);
+      }, false);
+
+    }
+  };
+})
+
 .directive('imgload', function () {
   return {
     restrict: 'A',

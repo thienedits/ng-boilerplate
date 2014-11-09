@@ -10,6 +10,54 @@
     /*inlined css for above the fold view*/
     @-webkit-keyframes bobble{0%{opacity:0;-webkit-transform:translateY(0)}35%{opacity:1;-webkit-transform:translateY(-20px)}100%{opacity:0;-webkit-transform:translateY(0)}}@keyframes bobble{0%{opacity:0;transform:translateY(0)}35%{opacity:1;transform:translateY(-20px)}100%{opacity:0;transform:translateY(0)}}.defer-image.is-loading::after{content:' ';position:absolute;top:50%;left:50%;width:1em;height:1em;margin:-.5em 0 0 -.5em;background:rgba(125,125,125,.5);border-radius:100%;-webkit-animation:bobble 1s 0s infinite;animation:bobble 1s 0s infinite}.spinner{display:block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:100%;margin:0;background-color:#1d222c;opacity:1;min-height:480px}.spinner:after{position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px 0 0 -7px;background:#00afd8;border-radius:14px;content:' ';-webkit-animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite;animation:bobble 1s cubic-bezier(0.6,1,1,1) infinite}.icon-btn,.menu,svg,ul.list-nav{visibility:hidden;display:none}figcaption{display:none}.list-unstyled{list-style-type:none}.list-projects li.list-projects-item{overflow:hidden;width:50%;max-width:400px;cursor:pointer;float:left;margin-bottom:0}@media (min-width:992px){.list-projects li.list-projects-item{width:33%;height:33%}}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6,p,ul{display:none}
     </style>
+    <% styles.forEach( function ( file ) { %>
+    <script>
+      /*!
+      loadCSS: load a CSS file asynchronously.
+      [c]2014 @scottjehl, Filament Group, Inc.
+      Licensed MIT
+      */
+      function loadCSS( href, before, media ){
+        "use strict";
+        // Arguments explained:
+        // `href` is the URL for your CSS file.
+        // `before` optionally defines the element we'll use as a reference for injecting our <link>
+        // By default, `before` uses the first <script> element in the page.
+        // However, since the order in which stylesheets are referenced matters, you might need a more specific location in your document.
+        // If so, pass a different reference element to the `before` argument and it'll insert before that instead
+        // note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
+        var ss = window.document.createElement( "link" );
+        var ref = before || window.document.getElementsByTagName( "script" )[ 0 ];
+        var sheets = window.document.styleSheets;
+        ss.rel = "stylesheet";
+        ss.href = href;
+        // temporarily, set media to something non-matching to ensure it'll fetch without blocking render
+        ss.media = "only x";
+        // inject link
+        ref.parentNode.insertBefore( ss, ref );
+        // This function sets the link's media back to `all` so that the stylesheet applies once it loads
+        // It is designed to poll until document.styleSheets includes the new sheet.
+        function toggleMedia(){
+          var defined;
+          for( var i = 0; i < sheets.length; i++ ){
+            if( sheets[ i ].href && sheets[ i ].href.indexOf( href ) > -1 ){
+              defined = true;
+            }
+          }
+          if( defined ){
+            ss.media = media || "all";
+          }
+          else {
+            setTimeout( toggleMedia );
+          }
+        }
+        toggleMedia();
+        return ss;
+      }
+
+      loadCSS("<%= file %>");
+    </script>
+    <noscript><link href="<%= file %>" rel="stylesheet"></noscript><% }); %>
   </head>
   <body id="body" ng-class="{expand: expand}" resize gmaps scroll-position="scroll">
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
@@ -36,49 +84,12 @@
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-up"></use></svg>
     </span>
 
-    <!-- Defer and Inject CSS -->
-    <% styles.forEach( function ( file ) { %>
-    <script type="text/javascript" async>
-      function loadXMLDoc() {
-        var xmlhttp, css,
-        head = document.head || document.getElementsByTagName('head')[0],
-        style = document.createElement('style');
-        style.type = 'text/css';
-
-        if (window.XMLHttpRequest)
-        {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-        }
-        else
-        {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange=function()
-        {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-        css=xmlhttp.responseText;
-        style.appendChild(document.createTextNode(css));
-        head.appendChild(style);
-        }
-        }
-        xmlhttp.open("GET","<%= file %>",true);
-        xmlhttp.send();
-      }
-
-      window.onload = loadXMLDoc;
-    </script><% }); %>
-
     <!-- Modernizr -->
     <script type="text/javascript" src="assets/modernizr.custom.06815.js"></script>
 
     <!-- Compiled JavaScript -->
     <% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
-    
-    
-    
-    
 
     <!-- Google Analytics -->
     <script>

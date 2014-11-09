@@ -23,6 +23,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-responsive-images');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-webp');
   grunt.loadNpmTasks('grunt-build-control');
 
@@ -288,42 +289,53 @@ module.exports = function ( grunt ) {
           sizes: [{
             width: 180,
             name: '180',
-            quality: 80
+            quality: 90
           }, {
             width: 360,
             name: '360',
-            quality: 80
+            quality: 90
           }, {
             width: 720,
             name: '720',
-            quality: 80
+            quality: 90
           }]
         },
         files: [{
           expand: true,
           src: ['*.{jpg,gif,png}'],
           cwd: 'src/img/originals',
-          dest: 'src/assets/img'
+          dest: 'src/img/responsive'
         }]
       },
       large: {
         options: {
           sizes: [{
             width: 360,
-            quality: 80
+            quality: 90
           }, {
             width: 720,
-            quality: 80
+            quality: 90
           }, {
             width: 940,
-            quality: 80
+            quality: 90
           }]
         },
         files: [{
           expand: true,
           src: ['*.{jpg,gif,png}'],
           cwd: 'src/img/originals/940',
-          dest: 'src/assets/img'
+          dest: 'src/img/responsive'
+        }]
+      }
+    },
+
+    imagemin: {                          // Task
+      dynamic: {                         // Another target
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: 'src/img/responsive',                   // Src matches are relative to this path
+          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
+          dest: 'src/assets/img'                  // Destination path prefix
         }]
       }
     },
@@ -334,7 +346,7 @@ module.exports = function ( grunt ) {
     webp: {
       files: {
         expand: true,
-        cwd: 'src/assets/im',//turn on/off so grunt doesnt reprocess old files
+        cwd: 'src/img/respon',//turn on/off providing a fake src destination so grunt doesnt reprocess old files
         src: '**/*.jpg',
         dest: 'src/assets/img'
       },
@@ -728,7 +740,7 @@ module.exports = function ( grunt ) {
    */
   grunt.registerTask( 'build', [
     'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'sass:build', 'svgmin',
-    'svgstore', 'responsive_images', 'webp', 'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
+    'svgstore', 'responsive_images', 'imagemin', 'webp', 'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
     'karma:continuous' 
   ]);
