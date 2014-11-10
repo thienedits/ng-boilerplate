@@ -1,0 +1,170 @@
+
+/*.contain-to-grid {
+background: #074f8c;
+}
+#aboutServices {
+border-top: 8px solid #074f8c;
+margin-top: -40px;
+padding: 40px 0 0;
+}
+.initial-content {
+padding-top: 40px !important;
+}
+.container-overlap {
+width: 1060px;
+max-width: 100%;
+background: #FFF;
+margin: 0 auto;
+margin-top: -60px;
+box-shadow: 0 0 15px rgba(0,0,0,0.13);
+-moz-box-shadow: 0 0 15px rgba(0,0,0,0.13);
+-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.13);
+}*/
+a {
+color:#074f8c;
+}
+.row {
+width: 100%;
+max-width: 980px;
+margin: 0 auto;
+}
+.page-padding {
+padding-left: 20px;
+padding-right: 20px;
+}
+.nav-bar {
+background: #074f8c;
+}
+.mto-header .container {
+background:#074f8c url(../images/mto-header.jpg) left center no-repeat;
+}
+.tabs dd.active a, .tabs li.active a {
+border-top: 5px solid #074f8c;
+}
+#countrywide {
+background: #efefef;
+}
+#countrywide .kit h6{
+text-align:center;
+}
+.materials img {
+border: 1px solid #ccc;
+border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+
+-webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+-moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+box-shadow: 1px 1px 2px 0 #d0d0d0;
+
+transition: all 0.1s ease-in-out 0s;
+-moz-transition: all 0.1s ease-in-out 0s;
+-webkit-transition: all 0.1s ease-in-out 0s;
+-o-transition: all 0.1s ease-in-out 0s;
+-ms-transition: all 0.1s ease-in-out 0s;
+}
+.materials img:hover {
+border: 5px solid #ff8800;
+}
+.materials h6 div {
+font-size:12px;
+font-weight:normal;
+}
+
+.row.materials.five-up .three {
+width:20%;
+}
+.row.materials.eight-up .three {
+width:12.5%;
+}
+#protector-series img {
+border: 1px solid #ddd;
+}
+#protector-video li {
+margin-left: 20px;
+}
+#protector-video ul {
+margin-left:0;
+}
+.materials-callout h6 {
+text-align: center;
+color:#ff8800;
+font-weight:500;
+}
+.line-graphic {
+height: 20px;
+border: 3px solid #ff8800;
+border-bottom: none;
+margin-bottom:0;
+width: 97%;
+margin-left: 1.5%;
+}
+.cool-link {
+border-left: 5px solid #ff8800;
+color: #ff8800;
+}
+.cool-link:hover {
+color: #ff8800 !important;
+}
+.panel.callout {
+background: #074f8c;
+}
+.panel.callout:after {
+border-color: #fff #6ec4ea;
+}
+.panel.callout h4 {
+color: #fff;
+}
+[class*="foundicon-"] {
+  margin-right: 8px;
+  margin-top: 2px;
+  vertical-align: middle;
+  font-size: 160%;
+  display: inline-block;
+  /*Dirty IE Hack*/
+  zoom: 1;
+  *display: inline;
+}
+
+
+@media only screen and (max-width: 900px) and (min-width: 768px) {
+
+.contact {
+background: #3d3d3d url(../images/chat-bubble.png) no-repeat -60px center;
+padding-left: 90px;
+background-size: 159px auto;
+}
+
+}
+
+
+/* small screen retina */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1.5)      and (min-width: 320px),
+only screen and (   min--moz-device-pixel-ratio: 1.5)      and (min-width: 320px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
+only screen and (        min-device-pixel-ratio: 1.5)      and (min-width: 320px),
+only screen and (                min-resolution: 192dpi) and (min-width: 320px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 320px) { 
+
+
+
+
+}
+
+/* Small display targeting */
+@media only screen and (max-width: 767px) {
+
+.page-padding {
+padding:0;
+}
+.initial-content {
+padding-top: 0px !important;
+}
+span.blue-highlight {
+padding: 0;
+}
+.touch h2 {
+color: #074f8c;
+}
+
+
+}

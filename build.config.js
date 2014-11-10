@@ -64,15 +64,12 @@ module.exports = {
   vendor_files: {
     js: [
       'vendor/ionic/release/js/ionic.bundle.js',
-      /*'vendor/angular/angular.js',
-      'vendor/angular-animate/angular-animate.js',
-      'vendor/angular-ui-router/release/angular-ui-router.js',*/
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'vendor/firebase/firebase.js',
       'vendor/angularfire/angularfire.js',
-      'vendor/smoothScroll/smoothscroll.js',
-      'vendor/classie/classie.js',
-      'vendor/material/dist/form/form.js',
+      'scripts/smoothScroll/smoothscroll.js',
+      'scripts/classie/classie.js',
+      'scripts/material/dist/form/form.js',
       'vendor/picturefill/dist/picturefill.js'
     ],
     css: [
