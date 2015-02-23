@@ -6,3 +6,4 @@ build/
 .sass-cache
 .sass-cache/*
 vendor/
+.DS_Store
