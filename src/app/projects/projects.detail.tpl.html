@@ -18,8 +18,9 @@
 </header>
 
 <div class="container main">
+  <div ng-show="isTouch">You are using a touch device, swipe left to view images</div>
 	<ion-slide-box on-slide-changed="slideChanged(index)">
-    <ion-slide ng-repeat="image in project.images">
+    <ion-slide ng-repeat="image in project.images" on-swipe="onSwipe($event)">
       <div class="defer-image image-ratio:4x3 is-loading">
         <picture >
           <!--[if IE 9]><video style="display: none;"><![endif]-->

@@ -41,11 +41,12 @@ angular.module( 'qpham.project', [
   })
   .state('projects.detail', {
     url: '/:projectId',
-    controller: ['$scope', '$stateParams', 'statesFactory', 'projectsFactory', 'FBURL', '$ionicSlideBoxDelegate', function($scope, $stateParams, statesFactory, projectsFactory, FBURL, $ionicSlideBoxDelegate) {
+    controller: ['$scope', '$stateParams', 'statesFactory', 'projectsFactory', 'FBURL', '$ionicSlideBoxDelegate', '$document',function($scope, $stateParams, statesFactory, projectsFactory, FBURL, $ionicSlideBoxDelegate, $document) {
       $scope.projectId = $stateParams.projectId;
       $scope.project = projectsFactory.find($stateParams.projectId);
       $scope.$parent.pageTitle = $scope.project.title + '| qpham.com';
       $scope.loadingObj.loading = false;
+      $scope.isTouch = isTouchDevice();
 
       var _fburl = new Firebase(FBURL);
       var projectRef = _fburl.child('projects/'+$stateParams.projectId);
@@ -71,7 +72,15 @@ angular.module( 'qpham.project', [
       $scope.slideChanged = function(index) {
         $scope.slideIndex = index;
       };
-       
+
+      $scope.onSwipe = function(event) {
+        $scope.isTouch = false;
+      };
+
+      function isTouchDevice() {
+          return 'ontouchstart' in $document[0].documentElement;
+      }
+      
     }],
     templateUrl: 'projects/projects.detail.tpl.html'
   })

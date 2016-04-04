@@ -81,6 +81,7 @@ $controlHeight:30px;
   margin-left: -$layout-gutter-16;
   margin-right: -$layout-gutter-16;
   margin-bottom: $layout-gutter-24;
+  overflow: hidden;
 
     @media (min-width: $layout-breakpoint-sm)  { 
       margin-left: -$layout-gutter-24;

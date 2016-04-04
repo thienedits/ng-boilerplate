@@ -346,7 +346,7 @@ module.exports = function ( grunt ) {
     webp: {
       files: {
         expand: true,
-        cwd: 'src/img/respon',//turn on/off providing a fake src destination so grunt doesnt reprocess old files
+        cwd: 'src/img/responsive',
         src: '**/*.jpg',
         dest: 'src/assets/img'
       },
@@ -736,11 +736,16 @@ module.exports = function ( grunt ) {
   grunt.registerTask( 'default', [ 'build', 'compile' ] );
 
   /**
+   * Create responsive images
+   */
+  grunt.registerTask( 'images', [ 'responsive_images', 'imagemin', 'webp' ] );
+
+  /**
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
     'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'sass:build', 'svgmin',
-    'svgstore', 'responsive_images', 'imagemin', 'webp', 'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
+    'svgstore', 'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
     'karma:continuous' 
   ]);
