@@ -44,10 +44,11 @@
     "grunt-contrib-imagemin": "0.7.0"
   },
   "engines": {
-    "node": "0.10.x",
-    "npm": "2.5.x"
+    "node": "4.1.1",
+    "npm": "2.14.4"
   },
   "scripts": {
-    "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt default"
+    "postinstall": "grunt default",
+    "start": "node server.js"
   }
 }
