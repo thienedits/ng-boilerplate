@@ -31,7 +31,7 @@ module.exports = function ( grunt ) {
    * Load in our build configuration file.
    */
   var userConfig = require( './build.config.js' );
-
+  
   /**
    * This is the configuration object Grunt uses to give each plugin its 
    * instructions.
@@ -351,7 +351,7 @@ module.exports = function ( grunt ) {
         dest: 'src/assets/img'
       },
       options: {
-        binpath: 'cwebp',
+        binpath: require('webp-bin').path,
         preset: 'photo',
         verbose: true,
         quality: 100,
@@ -733,7 +733,7 @@ module.exports = function ( grunt ) {
   /**
    * The default task is to build and compile.
    */
-  grunt.registerTask( 'default', [ 'build', 'compile' ] );
+  grunt.registerTask( 'default', [ 'build', 'images', 'compile' ] );
 
   /**
    * Create responsive images
