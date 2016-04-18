@@ -1,11 +1,11 @@
 <header class="app-bar" ng-class="{dark: scroll > 50}">
-  <div class="container" layout="horizontal" layout-align="space-between center" keylines="7">
-    <div id="search" class="search" flex layout="horizontal" layout-align="start">
+  <div class="container" layout="row" layout-align="space-between center" keylines="7">
+    <div id="search" class="search" flex layout="row" layout-align="start">
       <span role="button" class="icon-btn icon-search pull-left" ng-hide="searchOpen" ng-click="searchOpen = !searchOpen" title="Search" aria-label="Search" icon-btn>
         <span class="ripple"></span>
         <svg><use xlink:href="assets/qpham-portfolio.svg#icon-search"></use></svg>
       </span>
-      <div layout="horizontal" layout-align="space-between center" ng-show="searchOpen" flex>
+      <div layout="row" layout-align="space-between center" ng-show="searchOpen" flex>
         <span role="button" class="icon-btn icon-search pull-left" ng-click="searchOpen = !searchOpen" title="Close Search" aria-label="Close Search" icon-btn>
           <span class="ripple"></span>
           <svg><use xlink:href="assets/qpham-portfolio.svg#icon-close"></use></svg>
@@ -21,17 +21,17 @@
 </header>
 <div class="container main">
   <div class="" ng-swipe-left="setPage(page + 1)" ng-swipe-right="setPage(page - 1)">
-    <div class="subhead" layout="horizontal" layout-align="space-between center" keylines="6">
+    <div class="subhead" layout="row" layout-align="space-between center" keylines="6">
       <h5 class="text-body2" flex ng-hide="contactsCount == 0">{{contactsCount}} Contacts <!-- <span ng-show="search">with "{{search}}"</span> --></h5>
       <h5 class="text-body2" flex ng-hide="contactsCount == 0" style="text-align:right;">Page {{page}} of {{numPages}}</h5>
       <h5 class="text-body2" flex ng-show="contactsCount == 0">No Contacts Found</h5>
     </div>
-    <div layout="horizontal" layout-align="space-between center" keylines="6">
+    <div layout="row" layout-align="space-between center" keylines="6">
       <a href="" ng-click="predicate = 'name'; reverse=!reverse">Name <span class="qp-next" ng-class="{'down-arr': reverse, 'up-arr': !reverse}"></span></a><br>
     </div>
     <ul class="list-contacts list-group">
-      <li class="" ng-click="$location.path('contacts/' + contact.$id)" ng-repeat="contact in filtered | orderBy:predicate:reverse | startFrom:(page-1)*entryLimit | limitTo:entryLimit" layout="horizontal" layout-align="space-between center" keylines="7">
-        <div class="tile" layout="horizontal" layout-align="start"><span class="profile-img"></span></div>
+      <li class="" ng-click="$location.path('contacts/' + contact.$id)" ng-repeat="contact in filtered | orderBy:predicate:reverse | startFrom:(page-1)*entryLimit | limitTo:entryLimit" layout="row" layout-align="space-between center" keylines="7">
+        <div class="tile" layout="row" layout-align="start"><span class="profile-img"></span></div>
         <span flex>{{contact.name}}</span>
         <span class="qp-next"></span>
       </li>

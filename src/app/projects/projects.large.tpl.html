@@ -1,4 +1,4 @@
-<header class="app-bar container" layout="horizontal" layout-align="end center" keylines="7">
+<header class="app-bar container" layout="row" layout-align="end center" keylines="7">
   <a href="/projects/{{project.$id}}" class="icon-btn pull-right" title="Close" icon-btn delay-click>
     <span class="ripple"></span>
     <svg><use xlink:href="assets/qpham-portfolio.svg#icon-close"></use></svg>
@@ -6,6 +6,7 @@
 </header>
 
 <div class="container main">
+<div style="position:relative">
 	<ion-slide-box on-slide-changed="slideChanged(index)" delegate-handle="large-slide">
     <ion-slide ng-repeat="image in project.largeImages">
       <div class="defer-image image-ratio:4x3 is-loading">
@@ -21,7 +22,7 @@
 			</div>
     </ion-slide>
   </ion-slide-box>
-  <div class="slider-controls">
+  <div class="slider-controls" layout="row" layout-align="space-between">
     <span class="slider-control slider-control-prev icon-btn" ng-click="prevSlide()" ng-if="slideIndex > 0" icon-btn>
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-left"></use></svg>
@@ -30,5 +31,6 @@
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-right"></use></svg>
     </span>
+  </div>
   </div>
 </div>

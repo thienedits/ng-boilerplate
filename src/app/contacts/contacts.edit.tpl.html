@@ -1,5 +1,5 @@
 <header class="app-bar" ng-class="{dark: scroll > 50}" keylines="7">
-  <div class="container" layout="horizontal" layout-align="end center">
+  <div class="container" layout="row" layout-align="end center">
     <a ng-click="saveContact()" class="icon-btn pull-right edit-save" title="Edit Contact" icon-btn>
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-check"></use></svg>
@@ -9,7 +9,7 @@
 
 <div class="container" style="padding-top:56px;">
   <form >
-    <div layout="horizontal" layout-align="start center">
+    <div layout="row" layout-align="start center">
       <div class="tile">
         <span class="icon-btn pull-left">
           <span class="ripple"></span>
@@ -18,13 +18,13 @@
       </div>
       
       <div flex>
-        <material-input-group class="color-accent" layout="vertical"> 
+        <material-input-group class="color-accent" layout="column"> 
           <label class="title" for="name">Name</label>
           <material-input ng-model="contact.name" type="text" class="" id="name">
         </material-input-group>
       </div>
     </div>
-    <div layout="horizontal" layout-align="start center">
+    <div layout="row" layout-align="start center">
       <div class="tile">
         <span class="icon-btn pull-left">
           <span class="ripple"></span>
@@ -32,13 +32,13 @@
         </span>
       </div>
       <div flex>
-        <material-input-group class="color-accent" layout="vertical"> 
+        <material-input-group class="color-accent" layout="column"> 
           <label class="title" for="phone">Phone</label>
           <material-input ng-model="contact.phone" type="text" class="" id="phone">
         </material-input-group>
       </div>
     </div>
-    <div layout="horizontal" layout-align="start center">
+    <div layout="row" layout-align="start center">
       <div class="tile">
         <span class="icon-btn pull-left">
           <span class="ripple"></span>
@@ -46,7 +46,7 @@
         </span>
       </div>
       <div flex>
-        <material-input-group class="color-accent" layout="vertical"> 
+        <material-input-group class="color-accent" layout="column"> 
           <label for="email" class="title" flex>Email</label> 
           <material-input id="email" type="text" ng-model="contact.email" flex> 
         </material-input-group>
@@ -54,7 +54,7 @@
     </div>
 
       
-    <div layout="horizontal" layout-align="start center">
+    <div layout="row" layout-align="start center">
       <div class="tile">
         <span class="icon-btn pull-left">
           <span class="ripple"></span>
@@ -62,24 +62,24 @@
         </span>
       </div>
       <div flex>
-        <material-input-group class="color-accent" layout="vertical"> 
+        <material-input-group class="color-accent" layout="column"> 
           <label class="title" for="address">Address</label>
           <material-input ng-model="contact.address" type="text" class="address" ng-focus="geolocate()" id="address" autofill required>
         </material-input-group>
       </div>
     </div>
-    <div layout="horizontal" layout-align="start center">
+    <div layout="row" layout-align="start center">
       <div class="tile">
       </div>
       <div flex>
-        <material-input-group class="color-accent" layout="vertical"> 
+        <material-input-group class="color-accent" layout="column"> 
           <label class="title" for="locality">City</label>
           <material-input ng-model="contact.city" type="text" class="" id="locality" required>
         </material-input-group>
       </div>
     </div>
 
-    <div layout="horizontal" layout-align="start center">
+    <div layout="row" layout-align="start center">
       <div class="tile">
       </div>
       <div flex="50" padding-right>
@@ -88,7 +88,7 @@
         </select>
       </div>
       <div flex>
-        <material-input-group class="color-accent" layout="vertical" flex> 
+        <material-input-group class="color-accent" layout="column" flex> 
           <label class="title" for="postal_code">Zip Code</label>
           <material-input ng-model="contact.zip" type="text" class="" id="postal_code" required>
         </material-input-group>

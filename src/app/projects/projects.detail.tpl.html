@@ -1,5 +1,5 @@
 <header class="app-bar" ng-class="{dark: scroll > 30}" keylines="7">
-  <div class="container" layout="horizontal" layout-align="space-between center">
+  <div class="container" layout="row" layout-align="space-between center">
     <a href="/projects" class="icon-btn pull-left" title="Go Back" icon-btn delay-click>
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-arrow-back"></use></svg>
@@ -19,7 +19,8 @@
 
 <div class="container main">
   <div ng-show="isTouch">You are using a touch device, swipe left to view images</div>
-	<ion-slide-box on-slide-changed="slideChanged(index)">
+  <div style="position:relative">
+    <ion-slide-box on-slide-changed="slideChanged(index)">
     <ion-slide ng-repeat="image in project.images" on-swipe="onSwipe($event)">
       <div class="defer-image image-ratio:4x3 is-loading">
         <picture >
@@ -32,10 +33,10 @@
           <!--[if IE 9]></video><![endif]-->
           <img class="" src="assets/img/{{image}}-720.jpg" alt="{{project.title}}" imgload/>
         </picture>
-			</div>
+      </div>
     </ion-slide>
   </ion-slide-box>
-	<div class="slider-controls">
+  <div class="slider-controls" layout="row" layout-align="space-between">
     <span class="slider-control slider-control-prev icon-btn" ng-click="prevSlide()" ng-if="slideIndex > 0" icon-btn>
       <span class="ripple"></span>
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-left"></use></svg>
@@ -45,6 +46,8 @@
       <svg><use xlink:href="assets/qpham-portfolio.svg#icon-chevron-right"></use></svg>
     </span>
   </div>
+  </div>
+	
   <div class="copy">
     <h5 class="color-accent" ng-cloak>{{project.title}}</h5>
     <h6 class="text-secondary" ng-cloak>{{project.subtitle}}</h6>

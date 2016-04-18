@@ -1,6 +1,6 @@
 <div class="about">
 	<header class="app-bar" ng-class="{dark: scroll > 50}" keylines="7">
-		<div class="container" layout="horizontal" layout-align="space-between center">
+		<div class="container" layout="row" layout-align="space-between center">
 			<h4 class="text-title color-accent" flex>About Me</h4>
 			<span role="button" class="icon-btn icon-menu pull-right" ng-click="openMenu()" title="Menu" aria-label="Menu" icon-btn>
 				<span class="ripple"></span>
@@ -21,9 +21,9 @@
 			</ul>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container typography">
 		<div class="about-section">
-			<h6 class="color-accent text-menu no-margin" keylines="6" layout="vertical" layout-align="center">About Me</h6>
+			<h6 class="color-accent text-menu no-margin" keylines="6" layout="column" layout-align="center">About Me</h6>
 			<p>A bay area transplant originally from chicago interested in front-end web development. I'm passionate about building web applications using new technologies such as HTML5, CSS3 and Javascript. I really love creating interfaces that are, simple, engaging, and user friendly.</p>
 
 			<p>My Current projects include Polycom RealAccess, a web-based analytics and management tool for video and voice conferencing, and Inferno a video platform for live webcasts and on-demand video.</p>
@@ -36,10 +36,10 @@
 			<hr>
 		</div>
 		<div class="contact-section">
-			<h6 class="color-accent text-menu no-margin" keylines="6" layout="vertical" layout-align="center">Contact Info</h6>
+			<h6 class="color-accent text-menu no-margin" keylines="6" layout="column" layout-align="center">Contact Info</h6>
 			<ul class="list-contact list-unstyled">
-				<li layout="vertical" layout-align="center" keylines="9">
-					<a href="tel://1-312-380-5256" layout="horizontal" layout-align="space-between center">
+				<li layout="column" layout-align="center" keylines="9">
+					<a href="tel://1-312-380-5256" layout="row" layout-align="space-between center">
 						<span class="content">
 							<p class="title text-secondary">Phone</p>
 							<p>312-380-5256</p>
@@ -51,8 +51,8 @@
 					</a>
 				</li>
 
-				<li layout="vertical" layout-align="center" keylines="9"> 
-					<a href="mailto:thienpham.us@gmail.com" layout="horizontal" layout-align="space-between center">
+				<li layout="column" layout-align="center" keylines="9"> 
+					<a href="mailto:thienpham.us@gmail.com" layout="row" layout-align="space-between center">
 						<span class="content">
 							<p class="title text-secondary">Email</p>
 							<p>thienpham.us@gmail.com</p>
@@ -71,7 +71,7 @@
 				<span class="ripple"></span>
 				<svg><use xlink:href="assets/qpham-portfolio.svg#icon-file-download"></use></svg>
 			</a>
-			<h6 class="color-accent text-menu no-margin" keylines="6" layout="vertical" layout-align="center">Resume</h6>
+			<h6 class="color-accent text-menu no-margin" keylines="6" layout="column" layout-align="center">Resume</h6>
 			<div class="copy-section">
 				<h5 id="objective">Objective</h5>
 				<p>I am currently seeking a challenging position in a web/mobile environment utilizing my experience in visual design and

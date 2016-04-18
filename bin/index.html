@@ -61,9 +61,9 @@
   </head>
   <body id="body" ng-class="{expand: expand}" resize gmaps scroll-position="scroll">
     <div class="spinner" ng-show="loadingObj.loading == true"></div>
-    <nav class="menu" ng-class="{expand: expand}" layout="vertical">
+    <nav class="menu" ng-class="{expand: expand}" layout="column">
       <header class="app-bar" keylines="7">
-        <div class="container" layout="horizontal" layout-align="end center">
+        <div class="container" layout="row" layout-align="end center">
           <a href="#" class="icon-btn pull-right" title="Close" ng-click="closeMenu()" icon-btn>
             <span class="ripple"></span>
             <svg><use xlink:href="assets/qpham-portfolio.svg#icon-close"></use></svg>
@@ -74,7 +74,7 @@
         <li class="menuitem" id="link{{$index}}" ng-repeat="link in links">
           <a ng-href="/{{link}}" class="text-headline" ng-click="closeMenu()" keylines="7" ng-cloak delay-click>{{link}}</a>
         </li>
-        <li layout="vertical" layout-align="center" keylines="7" ng-cloak>v3.0.0</li>
+        <li layout="column" layout-align="center" keylines="7" ng-cloak>v3.0.0</li>
       </ul>     
     </nav>
     <div class="main-content" ng-class="{expand: expand}" flex scroll-y ui-view></div>

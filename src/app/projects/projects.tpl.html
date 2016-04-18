@@ -1,5 +1,5 @@
 <header class="app-bar" ng-class="{dark: scroll > 50}"  keylines="7" app-bar>
-	<div class="container" layout="horizontal" layout-align="start center">
+	<div class="container" layout="row" layout-align="start center">
 		<h6 class="text-title color-accent" flex>thienpham</h6>
 	  <span role="button" class="icon-btn icon-menu pull-right" ng-click="openMenu()" title="Menu" aria-label="Menu" icon-btn>
 	  	<span class="ripple"></span>
@@ -11,7 +11,7 @@
 	<!-- <figure>
 		<img src="http://d249o6o0sttdia.cloudfront.net/~/media/riotile.jpg" alt="Rio Galeão.">
 	</figure> -->
-	<h4 class="text-light" layout="horizontal" layout-align="center center" keylines="8">Recent Work</h4>
+	<h4 class="text-light" layout="row" layout-align="center center" keylines="8">Recent Work</h4>
 	<ul class="list-projects list-unstyled clearfix">
 		<li id="project{{project.$id}}" class="list-projects-item" ng-repeat="project in projects | orderByPriority">
 			<a href="projects/{{project.$id}}" delay-click>
@@ -25,7 +25,7 @@
 					<img class="" src="assets/img/{{project.cover}}-180.jpg" alt="{{project.title}}" imgload/>
 				</picture>
 				<!-- <img ng-src="assets/img/{{project.cover}}.jpg" imgload> -->
-				<figcaption class="text-headline color-white text-center" layout="vertical" layout-align="center">{{project.title}}</figcaption>
+				<figcaption class="text-headline color-white text-center" layout="column" layout-align="center">{{project.title}}</figcaption>
 			</figure>
 			</a>
 		</li>
